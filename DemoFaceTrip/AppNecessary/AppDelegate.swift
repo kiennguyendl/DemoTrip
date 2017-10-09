@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var navigation: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let homeController = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        //let navigationController = UINavigationController(rootViewController: homeController)
+        window?.rootViewController = homeController
+        window?.makeKeyAndVisible()
         return true
     }
 
