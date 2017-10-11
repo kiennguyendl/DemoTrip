@@ -20,6 +20,14 @@
 		FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */; };
 		FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */; };
 		FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */; };
+		FB9FB3EA1F8C86BD006CA1AE /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FB3E81F8C86BD006CA1AE /* LikeViewController.swift */; };
+		FB9FB3EB1F8C86BD006CA1AE /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */; };
+		FB9FB3EE1F8C86CC006CA1AE /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FB3EC1F8C86CC006CA1AE /* InboxViewController.swift */; };
+		FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3ED1F8C86CC006CA1AE /* InboxViewController.xib */; };
+		FB9FB3F31F8C86ED006CA1AE /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FB3F11F8C86ED006CA1AE /* BookingViewController.swift */; };
+		FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3F21F8C86ED006CA1AE /* BookingViewController.xib */; };
+		FB9FB3F71F8C8756006CA1AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FB3F51F8C8756006CA1AE /* ProfileViewController.swift */; };
+		FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */; };
 		FBA5F7E81F871E1D0080B890 /* RestDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */; };
 		FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E91F871E570080B890 /* Utils.swift */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
@@ -59,6 +67,14 @@
 		FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselsCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB9FB3E81F8C86BD006CA1AE /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
+		FB9FB3EC1F8C86CC006CA1AE /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
+		FB9FB3ED1F8C86CC006CA1AE /* InboxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboxViewController.xib; sourceTree = "<group>"; };
+		FB9FB3F11F8C86ED006CA1AE /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		FB9FB3F21F8C86ED006CA1AE /* BookingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
+		FB9FB3F51F8C8756006CA1AE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDataManager.swift; sourceTree = "<group>"; };
 		FBA5F7E91F871E570080B890 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +175,10 @@
 		FB03C66F1F84BFD3005FC7A2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FB9FB3E71F8C869B006CA1AE /* LikeViewController */,
+				FB9FB3E61F8C868D006CA1AE /* InboxViewController */,
+				FB9FB3E51F8C867D006CA1AE /* BookingViewController */,
+				FB9FB3E41F8C8668006CA1AE /* ProfileViewController */,
 				FB03C6851F84D9D3005FC7A2 /* LoginViewController */,
 				FB03C6781F84C202005FC7A2 /* BaseViewController */,
 				FB03C6771F84C007005FC7A2 /* HomeViewController */,
@@ -241,6 +261,42 @@
 				FBFBBCFA1F85C76A0062C6DC /* CarouselITitleViewCell */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		FB9FB3E41F8C8668006CA1AE /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3F51F8C8756006CA1AE /* ProfileViewController.swift */,
+				FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		FB9FB3E51F8C867D006CA1AE /* BookingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3F11F8C86ED006CA1AE /* BookingViewController.swift */,
+				FB9FB3F21F8C86ED006CA1AE /* BookingViewController.xib */,
+			);
+			path = BookingViewController;
+			sourceTree = "<group>";
+		};
+		FB9FB3E61F8C868D006CA1AE /* InboxViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3EC1F8C86CC006CA1AE /* InboxViewController.swift */,
+				FB9FB3ED1F8C86CC006CA1AE /* InboxViewController.xib */,
+			);
+			path = InboxViewController;
+			sourceTree = "<group>";
+		};
+		FB9FB3E71F8C869B006CA1AE /* LikeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3E81F8C86BD006CA1AE /* LikeViewController.swift */,
+				FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */,
+			);
+			path = LikeViewController;
 			sourceTree = "<group>";
 		};
 		FBFBBCFA1F85C76A0062C6DC /* CarouselITitleViewCell */ = {
@@ -363,7 +419,11 @@
 				FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */,
 				FBFBBD0C1F85D77E0062C6DC /* HomeTableViewCell.xib in Resources */,
 				FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */,
+				FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */,
+				FB9FB3EB1F8C86BD006CA1AE /* LikeViewController.xib in Resources */,
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
+				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
+				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FB03C6671F84BF2A005FC7A2 /* LaunchScreen.storyboard in Resources */,
 				FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */,
 				FBFE36A51F85EB290020F295 /* HeaderView.xib in Resources */,
@@ -442,8 +502,10 @@
 				FB03C68C1F84DC93005FC7A2 /* LoginViewController.swift in Sources */,
 				FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */,
 				FB03C6841F84D724005FC7A2 /* TabbarBaseController.swift in Sources */,
+				FB9FB3EA1F8C86BD006CA1AE /* LikeViewController.swift in Sources */,
 				FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */,
 				FBF90F951F8638DF007CF7EA /* Tour.swift in Sources */,
+				FB9FB3F71F8C8756006CA1AE /* ProfileViewController.swift in Sources */,
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBFE36A71F85EB480020F295 /* BaseView.swift in Sources */,
 				FB03C65D1F84BF2A005FC7A2 /* AppDelegate.swift in Sources */,
@@ -453,9 +515,11 @@
 				FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */,
 				FB03C6821F84D29F005FC7A2 /* NavigationController.swift in Sources */,
 				FBFE36A31F85EB190020F295 /* HeaderView.swift in Sources */,
+				FB9FB3EE1F8C86CC006CA1AE /* InboxViewController.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,
 				FB03C6751F84C004005FC7A2 /* HomeViewController.swift in Sources */,
 				FB03C67B1F84C21F005FC7A2 /* BaseViewController.swift in Sources */,
+				FB9FB3F31F8C86ED006CA1AE /* BookingViewController.swift in Sources */,
 				FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,7 +651,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6TYQTXBT26;
 				INFOPLIST_FILE = DemoFaceTrip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KienNguyen.DemoFaceTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,7 +668,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6TYQTXBT26;
 				INFOPLIST_FILE = DemoFaceTrip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KienNguyen.DemoFaceTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";

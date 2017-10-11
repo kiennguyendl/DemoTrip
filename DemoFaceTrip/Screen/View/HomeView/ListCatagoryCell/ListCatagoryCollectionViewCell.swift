@@ -10,6 +10,7 @@ import UIKit
 
 class ListCatagoryCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var viewBackGroud: UIView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var numberLbl: UILabel!
     @IBOutlet weak var nameCatagory: UILabel!

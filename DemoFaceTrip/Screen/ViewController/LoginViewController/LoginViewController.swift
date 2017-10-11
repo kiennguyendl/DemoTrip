@@ -12,7 +12,6 @@ class LoginViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -39,16 +38,28 @@ class LoginViewController: BaseViewController {
     func initTabbarController() -> TabbarBaseController{
         let tabbarController = TabbarBaseController()
         let homeNavController = initNavHomeViewController()
-        let profile = initNavigationControllerWithVC(HomeViewController(nibName: "HomeViewController", bundle: nil))
-        setTabbarItem(homeNavController, title: "Home", image: UIImage(named: "HomeIcon")!)
-        setTabbarItem(profile, title: "Profile", image: UIImage(named: "profile")!)
-        tabbarController.viewControllers = [homeNavController, profile]
+        
+        let profile = initNavigationControllerWithVC(ProfileViewController(nibName: "ProfileViewController", bundle: nil))
+        let like = initNavigationControllerWithVC(LikeViewController(nibName: "LikeViewController", bundle: nil))
+        let inbox = initNavigationControllerWithVC(InboxViewController(nibName: "InboxViewController", bundle: nil))
+        let booking = initNavigationControllerWithVC(BookingViewController(nibName: "BookingViewController", bundle: nil))
+        
+        setTabbarItem(homeNavController, title: "HOME", image: UIImage(named: "home1")!, selectedImage: UIImage(named: "home2")!)
+        setTabbarItem(like, title: "LIKE", image: UIImage(named: "like1")!, selectedImage: UIImage(named: "like2")!)
+        setTabbarItem(inbox, title: "INBOX", image: UIImage(named: "inbox1")!, selectedImage: UIImage(named: "inbox2")!)
+        setTabbarItem(booking, title: "BOOKING", image: UIImage(named: "booking1")!, selectedImage: UIImage(named: "booking2")!)
+        setTabbarItem(profile, title: "PROFILE", image: UIImage(named: "profile1")!, selectedImage: UIImage(named: "profile2")!)
+        tabbarController.viewControllers = [homeNavController, like, inbox, booking, profile]
         return tabbarController
     }
     
-    func setTabbarItem(_ controller: UIViewController, title: String, image: UIImage) {
+    func setTabbarItem(_ controller: UIViewController, title: String, image: UIImage, selectedImage: UIImage) {
         controller.tabBarItem?.title = title
-        controller.tabBarItem?.image = image
+        controller.tabBarItem?.image = image.af_imageAspectScaled(toFit: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal)
+        controller.tabBarItem.selectedImage = selectedImage.af_imageAspectScaled(toFit: CGSize(width: 25, height: 25)).withRenderingMode(.alwaysOriginal)
+        
+        controller.tabBarItem?.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black], for: .normal)
+        controller.tabBarItem?.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)], for: .selected)
     }
     
     func initNavHomeViewController() -> NavigationController{
@@ -57,7 +68,7 @@ class LoginViewController: BaseViewController {
     }
     
     func initNavigationControllerWithVC(_ controller: BaseViewController) -> NavigationController {
-        var navigationController = NavigationController()
+        let navigationController = NavigationController()
         navigationController.viewControllers = [controller]
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             if appDelegate.navigation != nil {

@@ -25,6 +25,7 @@ class HomeTableViewCell: UITableViewCell {
         collectionViewForCell.dataSource = self
         collectionViewForCell.delegate = self
         collectionViewForCell.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
+        collectionViewForCell.showsHorizontalScrollIndicator = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,8 +50,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if let items = self.catagoryItems{
             switch self.type{
             case .hotelType:
-                for index in 0..<4 {
-                    if let item = items[index] as? Hotel{
+                for _ in 0..<4 {
+                    if let item = items[indexPath.row] as? Hotel{
                         if let nameHotel = item.nameHotel{
                             cell.name.text = nameHotel
                         }
@@ -67,20 +68,20 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let price = item.price{
-                            print(price)
+                           // print(price)
                             cell.price.text = "Price: " + "\(price)" + "$"
                         }
                         
                         if let review = item.numPersonReview{
                             cell.Review.text = "Review: " + "\(review)"
-                            print(review)
+                            //print(review)
                         }
                     }
                 }
                 break
             case .experienceType:
-                for index in 0..<4 {
-                    if let item = items[index] as? Experience{
+                for _ in 0..<4 {
+                    if let item = items[indexPath.row] as? Experience{
                         if let nameExp = item.experience{
                             cell.name.text = nameExp
                         }
@@ -107,8 +108,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                 }
                 break
             case .tourType:
-                for index in 0..<4{
-                    if let item = items[index] as? Tour{
+                for _ in 0..<4{
+                    if let item = items[indexPath.row] as? Tour{
                         if let nameTour = item.tour{
                             cell.name.text = nameTour
                         }
@@ -143,7 +144,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let witdh = collectionViewForCell.frame.width / 1.5
-        let height = collectionViewForCell.frame.height
+        let height = witdh * 3 / 2
         return CGSize(width: witdh, height: height)
     }
 }

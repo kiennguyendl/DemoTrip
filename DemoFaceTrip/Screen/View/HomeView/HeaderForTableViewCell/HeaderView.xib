@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
                 <outlet property="nameOfCarousel" destination="iDc-p1-drK" id="jX8-V6-GX3"/>
+                <outlet property="targetView" destination="jrC-we-n50" id="Q17-ce-1BI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -28,20 +31,29 @@
                         <color key="titleColor" red="0.4967211787564767" green="0.4967211787564767" blue="0.4967211787564767" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-p1-drK">
-                    <rect key="frame" x="0.0" y="5" width="265" height="49"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-p1-drK">
+                    <rect key="frame" x="20" y="5" width="250" height="49"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
+                    <rect key="frame" x="0.0" y="17" width="10" height="24.5"/>
+                    <color key="backgroundColor" red="0.16862745098039217" green="0.98431372549019602" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="Bxz-3N-LZn"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6Ic-Ov-STR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="2iT-E9-PzR"/>
-                <constraint firstItem="iDc-p1-drK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="G2m-gV-To3"/>
+                <constraint firstItem="jrC-we-n50" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KNL-nj-zcs"/>
+                <constraint firstItem="jrC-we-n50" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="QD7-Rc-67u"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Ic-Ov-STR" secondAttribute="bottom" constant="5" id="RL9-mA-3Ho"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Ic-Ov-STR" secondAttribute="trailing" constant="5" id="YVz-7D-v35"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="bKL-Vy-JUY"/>
                 <constraint firstItem="6Ic-Ov-STR" firstAttribute="leading" secondItem="iDc-p1-drK" secondAttribute="trailing" constant="20" id="dBS-TS-Pdn"/>
+                <constraint firstItem="jrC-we-n50" firstAttribute="height" secondItem="iDc-p1-drK" secondAttribute="height" multiplier="1/2" id="dU0-TN-8wr"/>
+                <constraint firstItem="iDc-p1-drK" firstAttribute="leading" secondItem="jrC-we-n50" secondAttribute="trailing" constant="10" id="hDv-HQ-QZU"/>
                 <constraint firstItem="6Ic-Ov-STR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="hjX-yh-yvD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iDc-p1-drK" secondAttribute="bottom" constant="5" id="qRY-H2-pdb"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="tcV-uL-YHD"/>

@@ -10,6 +10,7 @@ import UIKit
 
 class HeaderView: BaseView{
 
+    @IBOutlet weak var targetView: UIView!
     @IBOutlet weak var nameOfCarousel: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
@@ -21,6 +22,8 @@ class HeaderView: BaseView{
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        //targetView.layer.cornerRadius = targetView.frame.width / 10
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

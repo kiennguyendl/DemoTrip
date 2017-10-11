@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,39 +20,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="213" height="167"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-51-4X6">
-                        <rect key="frame" x="66.5" y="22.5" width="80" height="80"/>
+                    <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-51-4X6">
+                        <rect key="frame" x="71.5" y="27.5" width="70" height="70"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="1ht-wW-8bA"/>
-                            <constraint firstAttribute="width" constant="80" id="rqF-a1-4zT"/>
+                            <constraint firstAttribute="height" constant="70" id="1ht-wW-8bA"/>
+                            <constraint firstAttribute="width" constant="70" id="rqF-a1-4zT"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBE-X5-7hM">
-                        <rect key="frame" x="66.5" y="52.5" width="80" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="TJw-Jp-SVM"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-5G-i20">
-                        <rect key="frame" x="66.5" y="112.5" width="80" height="20"/>
+                        <rect key="frame" x="54" y="107.5" width="105" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="k2c-nM-fLd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
+                        <rect key="frame" x="71.5" y="27.5" width="70" height="70"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="X3B-lC-pnK"/>
+                            <constraint firstAttribute="height" constant="70" id="oAE-xX-VfZ"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDM-9e-bgO">
+                        <rect key="frame" x="71.5" y="52.5" width="70" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Q7b-am-VL3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Fam-5G-i20" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" id="2P8-Yn-Exd"/>
-                <constraint firstItem="UBE-X5-7hM" firstAttribute="centerY" secondItem="J9F-51-4X6" secondAttribute="centerY" id="VY3-no-ubu"/>
+                <constraint firstItem="Fam-5G-i20" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" multiplier="3/2" id="2P8-Yn-Exd"/>
+                <constraint firstItem="fDM-9e-bgO" firstAttribute="centerX" secondItem="CRC-LO-hnP" secondAttribute="centerX" id="Fyg-aO-wgK"/>
+                <constraint firstItem="fDM-9e-bgO" firstAttribute="centerY" secondItem="CRC-LO-hnP" secondAttribute="centerY" id="Keo-Mh-ypo"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="height" secondItem="J9F-51-4X6" secondAttribute="height" id="Kv3-MR-UT9"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="3/4" id="OS1-jC-ica"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Wvi-CF-4S7"/>
                 <constraint firstItem="J9F-51-4X6" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="aUc-GM-mDm"/>
                 <constraint firstItem="Fam-5G-i20" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="cmY-z8-ajE"/>
-                <constraint firstItem="UBE-X5-7hM" firstAttribute="centerX" secondItem="J9F-51-4X6" secondAttribute="centerX" id="fEm-VZ-znV"/>
-                <constraint firstItem="UBE-X5-7hM" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" id="h2c-Wm-c3H"/>
+                <constraint firstItem="fDM-9e-bgO" firstAttribute="width" secondItem="CRC-LO-hnP" secondAttribute="width" id="css-ud-ff7"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" id="fod-gY-ngC"/>
                 <constraint firstItem="Fam-5G-i20" firstAttribute="top" secondItem="J9F-51-4X6" secondAttribute="bottom" constant="10" id="ohh-m3-pEz"/>
                 <constraint firstItem="J9F-51-4X6" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="3/4" id="qfj-Lc-tgO"/>
             </constraints>
@@ -60,7 +74,8 @@
             <connections>
                 <outlet property="avatar" destination="J9F-51-4X6" id="gtn-rq-UBP"/>
                 <outlet property="nameCatagory" destination="Fam-5G-i20" id="fCd-5x-2aO"/>
-                <outlet property="numberLbl" destination="UBE-X5-7hM" id="Jo0-nb-uCp"/>
+                <outlet property="numberLbl" destination="fDM-9e-bgO" id="kDm-8Y-Ids"/>
+                <outlet property="viewBackGroud" destination="CRC-LO-hnP" id="acv-Cg-ZIl"/>
             </connections>
             <point key="canvasLocation" x="20.5" y="70.5"/>
         </collectionViewCell>

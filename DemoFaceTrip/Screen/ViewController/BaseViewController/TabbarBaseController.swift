@@ -14,10 +14,18 @@ class TabbarBaseController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabbarFont()
+        self.delegate = self
     }
     
     func setTabbarFont() {
         
     }
 
+}
+
+extension TabbarBaseController: UITabBarControllerDelegate{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+    }
+    
 }

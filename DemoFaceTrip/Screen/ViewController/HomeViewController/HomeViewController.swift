@@ -26,6 +26,7 @@ let viewCorlorScale: UIColor = UIColor.white
 
 class HomeViewController: BaseViewController {
     @IBOutlet weak var viewMenu: UIView!
+    @IBOutlet weak var childViewMenu: UIView!
     
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
     @IBOutlet weak var collectionViewFriends: UICollectionView!
@@ -41,6 +42,16 @@ class HomeViewController: BaseViewController {
     var indexPathSelected: IndexPath = []
     var isScaleMenuView = false
     
+    let gradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
+        layer.colors = [
+            UIColor(red: 226.0/255.0, green: 67.0/255.0, blue: 99.0/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 236.0/255.0, green: 111.0/255.0, blue: 115.0/255.0, alpha: 1.0).cgColor,
+            UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0).cgColor
+        ]
+        return layer
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionViewDetail.isHidden = true
@@ -49,6 +60,8 @@ class HomeViewController: BaseViewController {
         initCollectionView()
         initTableView()
         restDataForHome()
+        setColorForMenuView()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +73,12 @@ class HomeViewController: BaseViewController {
 //        newCell.viewColor.backgroundColor = UIColor.white
         //self.dataForHome = self.catagory
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        gradientLayer.frame = self.viewMenu.bounds
+    }
     /// init and register cell for collection view
     func initCollectionView() {
         collectionViewCarousels.delegate = self
@@ -74,6 +92,14 @@ class HomeViewController: BaseViewController {
         collectionViewDetail.delegate = self
         collectionViewDetail.dataSource = self
         collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
+        collectionViewDetail.showsVerticalScrollIndicator = false
+    }
+    
+    func setColorForMenuView() {
+        self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
+        gradientLayer.frame = self.viewMenu.bounds
+        self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+        self.childViewMenu.layer.cornerRadius = self.childViewMenu.frame.width / 97
     }
     
     //init and register cell for tableview
@@ -81,6 +107,8 @@ class HomeViewController: BaseViewController {
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
         tableViewCarousels.register(UINib.init(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
+        tableViewCarousels.showsHorizontalScrollIndicator = false
+        tableViewCarousels.showsVerticalScrollIndicator = false
     }
     
     // rest data from api for home
@@ -124,12 +152,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.collectionViewCarousels{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath) as! CarouselsCollectionViewCell
-            cell.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             if indexPath.item == 0{
                     cell.viewColor.backgroundColor = UIColor.white
                     indexPathSelected = indexPath
             }else{
-                cell.viewColor.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             }
             cell.nameCarousel.text = menuCatagory[indexPath.row]
             
@@ -138,6 +166,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatagoryCell", for: indexPath) as! ListCatagoryCollectionViewCell
             //cell.nameCarousel.text = Carousels[indexPath.row]
             cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
+            cell.viewBackGroud.layer.cornerRadius = cell.viewBackGroud.frame.width / 2
             cell.avatar.clipsToBounds = true
             cell.nameCatagory.text = catagory[indexPath.row].type
             
@@ -275,8 +304,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.collectionViewCarousels{
-            let width = collectionViewCarousels.frame.width / 4
-            let height = collectionViewCarousels.frame.height
+            var width: CGFloat = 0.0
+            var height: CGFloat = 0.0
+            if menuCatagory.count > 1 {
+                width = collectionViewCarousels.frame.width / 4
+                height = collectionViewCarousels.frame.height
+                
+            }else{
+                width = collectionViewCarousels.frame.width
+                height = collectionViewCarousels.frame.height
+            }
             
             return CGSize(width: width, height: height)
         }else if collectionView == self.collectionViewFriends{
@@ -286,7 +323,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: width, height: height)
         }else{
             let width = collectionViewDetail.frame.width - 10
-            return CGSize(width: width, height: width * 3 / 4)
+            return CGSize(width: width, height: width * 2 / 3)
         }
     }
     
@@ -305,15 +342,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     oldCell.viewColor.backgroundColor = UIColor.white
                     oldCell.nameCarousel.textColor = UIColor.gray
                 }else{
-                    oldCell.viewColor.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                    oldCell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
                 }
                 indexPathSelected = []
             }
             
             let newCell = collectionView.cellForItem(at: indexPath) as! CarouselsCollectionViewCell
             if self.isScaleMenuView{
-                newCell.viewColor.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
-                newCell.nameCarousel.textColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                newCell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                newCell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             }else{
                 newCell.viewColor.backgroundColor = UIColor.white
             }
@@ -389,6 +426,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         let view = HeaderView()
         view.backgroundColor = UIColor.white
         view.nameOfCarousel.text = catagory[section].type
+        view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
         return view
 
     }
@@ -398,7 +436,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         //handle when scroll up
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
-            print("move down")
+            //print("move down")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     if self.view.frame.origin.y < 0{
@@ -406,17 +444,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                         //move origin coordinates of main view to up
                         self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - newPos)
                         
+                        self.setColorForMenuView()
+                        
                         //change color when scroll up
                         self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                        
                         for index in 0..<self.menuCatagory.count {
                             let indexPath = IndexPath(item: index, section: 0)
                             let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as! CarouselsCollectionViewCell
                             if self.indexPathSelected == indexPath{
                                 cell.viewColor.backgroundColor = UIColor.white
                             }else{
-                                cell.viewColor.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
                             }
-                            cell.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
                             cell.nameCarousel.textColor = UIColor.white
                         }
                         self.isScaleMenuView = false
@@ -427,27 +468,34 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             
         }else{
             //handle when scroll down
-            print("move up")
+            //print("move up")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     if self.view.frame.origin.y >= 0{
                         //move origin coordinates of main view to 0
                         self.view.frame = CGRect(x: self.view.frame.origin.x, y: -newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + newPos)
-                        
+                       
                         //change color when scroll down
                         self.viewMenu.backgroundColor = UIColor.white
                         for index in 0..<self.menuCatagory.count {
                             let indexPath = IndexPath(item: index, section: 0)
                             let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as! CarouselsCollectionViewCell
                             if self.indexPathSelected == indexPath{
-                                cell.viewColor.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue:129.0/255.0, alpha: 1.0)
-                                cell.nameCarousel.textColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                                cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
                             }else{
                                 cell.viewColor.backgroundColor = UIColor.white
                                 cell.nameCarousel.textColor = UIColor.gray
                             }
                             cell.backgroundColor = UIColor.white
                             
+                        }
+                        if let view = self.viewMenu{
+                            for layer in view.layer.sublayers!{
+                                if layer == self.gradientLayer{
+                                    layer.removeFromSuperlayer()
+                                }
+                            }
                         }
                         self.isScaleMenuView = true
                     }
