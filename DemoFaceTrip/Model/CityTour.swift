@@ -1,15 +1,15 @@
 //
-//  Tour.swift
+//  CityTour.swift
 //  DemoFaceTrip
 //
-//  Created by Kiên Nguyễn on 10/5/17.
+//  Created by Kiên Nguyễn on 10/11/17.
 //  Copyright © 2017 Kien Nguyen. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class Tour: NSObject, Mappable {
+class CityTour: NSObject, Mappable {
     
     var tour: String?
     var place: String?

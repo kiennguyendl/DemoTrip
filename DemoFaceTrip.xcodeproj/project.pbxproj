@@ -30,6 +30,14 @@
 		FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */; };
 		FBA5F7E81F871E1D0080B890 /* RestDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */; };
 		FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E91F871E570080B890 /* Utils.swift */; };
+		FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066001F8DACD8002BF21C /* DetailViewController.swift */; };
+		FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB066011F8DACD8002BF21C /* DetailViewController.xib */; };
+		FBB066051F8DEDE9002BF21C /* LocalGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066041F8DEDE9002BF21C /* LocalGuide.swift */; };
+		FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066071F8DEFB8002BF21C /* TravelAgency.swift */; };
+		FBB0660A1F8DF53F002BF21C /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066091F8DF53F002BF21C /* Attraction.swift */; };
+		FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660B1F8DF615002BF21C /* ThemeParks.swift */; };
+		FBB0660E1F8DF6F2002BF21C /* FoodTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */; };
+		FBB066101F8DF879002BF21C /* CityTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660F1F8DF879002BF21C /* CityTour.swift */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
 		FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F8A1F8636EC007CF7EA /* Hotel.swift */; };
 		FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */; };
@@ -77,6 +85,14 @@
 		FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDataManager.swift; sourceTree = "<group>"; };
 		FBA5F7E91F871E570080B890 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		FBB066001F8DACD8002BF21C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FBB066011F8DACD8002BF21C /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		FBB066041F8DEDE9002BF21C /* LocalGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGuide.swift; sourceTree = "<group>"; };
+		FBB066071F8DEFB8002BF21C /* TravelAgency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAgency.swift; sourceTree = "<group>"; };
+		FBB066091F8DF53F002BF21C /* Attraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		FBB0660B1F8DF615002BF21C /* ThemeParks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeParks.swift; sourceTree = "<group>"; };
+		FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTour.swift; sourceTree = "<group>"; };
+		FBB0660F1F8DF879002BF21C /* CityTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTour.swift; sourceTree = "<group>"; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F8A1F8636EC007CF7EA /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +191,7 @@
 		FB03C66F1F84BFD3005FC7A2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FBB065FF1F8DACC3002BF21C /* DetailViewController */,
 				FB9FB3E71F8C869B006CA1AE /* LikeViewController */,
 				FB9FB3E61F8C868D006CA1AE /* InboxViewController */,
 				FB9FB3E51F8C867D006CA1AE /* BookingViewController */,
@@ -211,6 +228,12 @@
 				FBF90F921F86388E007CF7EA /* Experience.swift */,
 				FBF90F941F8638DF007CF7EA /* Tour.swift */,
 				FBF90F961F86396C007CF7EA /* Catagory.swift */,
+				FBB066041F8DEDE9002BF21C /* LocalGuide.swift */,
+				FBB066071F8DEFB8002BF21C /* TravelAgency.swift */,
+				FBB066091F8DF53F002BF21C /* Attraction.swift */,
+				FBB0660B1F8DF615002BF21C /* ThemeParks.swift */,
+				FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */,
+				FBB0660F1F8DF879002BF21C /* CityTour.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +320,15 @@
 				FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */,
 			);
 			path = LikeViewController;
+			sourceTree = "<group>";
+		};
+		FBB065FF1F8DACC3002BF21C /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FBB066001F8DACD8002BF21C /* DetailViewController.swift */,
+				FBB066011F8DACD8002BF21C /* DetailViewController.xib */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 		FBFBBCFA1F85C76A0062C6DC /* CarouselITitleViewCell */ = {
@@ -425,6 +457,7 @@
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FB03C6671F84BF2A005FC7A2 /* LaunchScreen.storyboard in Resources */,
+				FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */,
 				FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */,
 				FBFE36A51F85EB290020F295 /* HeaderView.xib in Resources */,
 				FBFBBD071F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib in Resources */,
@@ -499,9 +532,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */,
 				FB03C68C1F84DC93005FC7A2 /* LoginViewController.swift in Sources */,
 				FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */,
+				FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */,
 				FB03C6841F84D724005FC7A2 /* TabbarBaseController.swift in Sources */,
+				FBB066051F8DEDE9002BF21C /* LocalGuide.swift in Sources */,
 				FB9FB3EA1F8C86BD006CA1AE /* LikeViewController.swift in Sources */,
 				FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */,
 				FBF90F951F8638DF007CF7EA /* Tour.swift in Sources */,
@@ -511,13 +547,17 @@
 				FB03C65D1F84BF2A005FC7A2 /* AppDelegate.swift in Sources */,
 				FBFBBD061F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift in Sources */,
 				FBA5F7E81F871E1D0080B890 /* RestDataManager.swift in Sources */,
+				FBB0660E1F8DF6F2002BF21C /* FoodTour.swift in Sources */,
 				FBFBBD101F85DA610062C6DC /* HomeCollectionViewCell.swift in Sources */,
 				FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */,
 				FB03C6821F84D29F005FC7A2 /* NavigationController.swift in Sources */,
 				FBFE36A31F85EB190020F295 /* HeaderView.swift in Sources */,
 				FB9FB3EE1F8C86CC006CA1AE /* InboxViewController.swift in Sources */,
+				FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */,
+				FBB066101F8DF879002BF21C /* CityTour.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,
 				FB03C6751F84C004005FC7A2 /* HomeViewController.swift in Sources */,
+				FBB0660A1F8DF53F002BF21C /* Attraction.swift in Sources */,
 				FB03C67B1F84C21F005FC7A2 /* BaseViewController.swift in Sources */,
 				FB9FB3F31F8C86ED006CA1AE /* BookingViewController.swift in Sources */,
 				FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */,

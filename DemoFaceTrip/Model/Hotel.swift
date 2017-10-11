@@ -17,6 +17,7 @@ class Hotel: NSObject, Mappable {
     var urlImg: String?
     var descriptionHotel: String?
     var price: Double?
+    var country: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -25,6 +26,7 @@ class Hotel: NSObject, Mappable {
     func mapping(map: Map) {
         nameHotel           <- map["nameHotel"]
         place               <- map["place"]
+        country             <- map["country"]
         numRoom             <- map["numRoom"]
         numPersonReview     <- map["numPersonReview"]
         urlImg              <- map["url"]

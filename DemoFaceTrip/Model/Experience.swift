@@ -13,6 +13,7 @@ class Experience: NSObject, Mappable {
     
     var experience: String?
     var place: String?
+    var country: String?
     var descriptionExp: String?
     var price: Double?
     var numPersonReview: Int?
@@ -25,6 +26,7 @@ class Experience: NSObject, Mappable {
     func mapping(map: Map) {
         experience          <- map["experience"]
         place               <- map["place"]
+        country             <- map["country"]
         descriptionExp      <- map["description"]
         price               <- map["price"]
         numPersonReview     <- map["numPersonReview"]
