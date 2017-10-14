@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A4D4FEC40A75DAF65C55227A /* Pods_DemoFaceTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE28780A6C95820F760A88E /* Pods_DemoFaceTrip.framework */; };
+		FB037E931F8F582B0081D787 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB037E911F8F582B0081D787 /* DetailTableViewCell.swift */; };
+		FB037E941F8F582B0081D787 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB037E921F8F582B0081D787 /* DetailTableViewCell.xib */; };
 		FB03C65D1F84BF2A005FC7A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03C65C1F84BF2A005FC7A2 /* AppDelegate.swift */; };
 		FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6631F84BF2A005FC7A2 /* Assets.xcassets */; };
 		FB03C6671F84BF2A005FC7A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6651F84BF2A005FC7A2 /* LaunchScreen.storyboard */; };
@@ -30,6 +32,8 @@
 		FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */; };
 		FBA5F7E81F871E1D0080B890 /* RestDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */; };
 		FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA5F7E91F871E570080B890 /* Utils.swift */; };
+		FBA644831F8F0BBB007E968C /* ListDetailCatagoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA644811F8F0BBB007E968C /* ListDetailCatagoryViewController.swift */; };
+		FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA644821F8F0BBB007E968C /* ListDetailCatagoryViewController.xib */; };
 		FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066001F8DACD8002BF21C /* DetailViewController.swift */; };
 		FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB066011F8DACD8002BF21C /* DetailViewController.xib */; };
 		FBB066051F8DEDE9002BF21C /* LocalGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066041F8DEDE9002BF21C /* LocalGuide.swift */; };
@@ -38,13 +42,13 @@
 		FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660B1F8DF615002BF21C /* ThemeParks.swift */; };
 		FBB0660E1F8DF6F2002BF21C /* FoodTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */; };
 		FBB066101F8DF879002BF21C /* CityTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660F1F8DF879002BF21C /* CityTour.swift */; };
+		FBE079DF1F9074090080EC84 /* ReadMoreTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
 		FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F8A1F8636EC007CF7EA /* Hotel.swift */; };
 		FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */; };
 		FBF90F8D1F8637CF007CF7EA /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */; };
 		FBF90F8E1F8637CF007CF7EA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F911F8637CF007CF7EA /* Starscream.framework */; };
 		FBF90F931F86388E007CF7EA /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F921F86388E007CF7EA /* Experience.swift */; };
-		FBF90F951F8638DF007CF7EA /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F941F8638DF007CF7EA /* Tour.swift */; };
 		FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F961F86396C007CF7EA /* Catagory.swift */; };
 		FBFBBD061F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFBBD041F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift */; };
 		FBFBBD071F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFBBD051F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib */; };
@@ -61,6 +65,8 @@
 		5BEB5D435609B86147CB7C17 /* Pods-DemoFaceTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoFaceTrip.release.xcconfig"; path = "Pods/Target Support Files/Pods-DemoFaceTrip/Pods-DemoFaceTrip.release.xcconfig"; sourceTree = "<group>"; };
 		78816EBD73CD6C17F0E823A3 /* Pods-DemoFaceTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoFaceTrip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DemoFaceTrip/Pods-DemoFaceTrip.debug.xcconfig"; sourceTree = "<group>"; };
 		7BE28780A6C95820F760A88E /* Pods_DemoFaceTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoFaceTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB037E911F8F582B0081D787 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		FB037E921F8F582B0081D787 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		FB03C6591F84BF2A005FC7A2 /* DemoFaceTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoFaceTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB03C65C1F84BF2A005FC7A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB03C6631F84BF2A005FC7A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDataManager.swift; sourceTree = "<group>"; };
 		FBA5F7E91F871E570080B890 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		FBA644811F8F0BBB007E968C /* ListDetailCatagoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailCatagoryViewController.swift; sourceTree = "<group>"; };
+		FBA644821F8F0BBB007E968C /* ListDetailCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailCatagoryViewController.xib; sourceTree = "<group>"; };
 		FBB066001F8DACD8002BF21C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FBB066011F8DACD8002BF21C /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FBB066041F8DEDE9002BF21C /* LocalGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGuide.swift; sourceTree = "<group>"; };
@@ -93,13 +101,13 @@
 		FBB0660B1F8DF615002BF21C /* ThemeParks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeParks.swift; sourceTree = "<group>"; };
 		FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTour.swift; sourceTree = "<group>"; };
 		FBB0660F1F8DF879002BF21C /* CityTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTour.swift; sourceTree = "<group>"; };
+		FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReadMoreTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F8A1F8636EC007CF7EA /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F911F8637CF007CF7EA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F921F86388E007CF7EA /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
-		FBF90F941F8638DF007CF7EA /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		FBF90F961F86396C007CF7EA /* Catagory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catagory.swift; sourceTree = "<group>"; };
 		FBFBBD041F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCatagoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBFBBD051F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCatagoryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -117,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE079DF1F9074090080EC84 /* ReadMoreTextView.framework in Frameworks */,
 				FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */,
 				FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */,
 				FBF90F8D1F8637CF007CF7EA /* ObjectMapper.framework in Frameworks */,
@@ -131,6 +140,7 @@
 		345D02271C24035AB7DD711A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */,
 				FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */,
 				FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */,
 				FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */,
@@ -147,6 +157,15 @@
 				5BEB5D435609B86147CB7C17 /* Pods-DemoFaceTrip.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB037E901F8F57FB0081D787 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB037E911F8F582B0081D787 /* DetailTableViewCell.swift */,
+				FB037E921F8F582B0081D787 /* DetailTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FB03C6501F84BF2A005FC7A2 = {
@@ -171,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				FB03C6681F84BF2A005FC7A2 /* Info.plist */,
+				FBE079DC1F906EC30080EC84 /* Extension */,
 				FBFBBD131F85DC4F0062C6DC /* AppNecessary */,
 				FB03C6721F84BFEB005FC7A2 /* Model */,
 				FB03C6711F84BFE2005FC7A2 /* Service */,
@@ -182,34 +202,17 @@
 		FB03C66E1F84BFC7005FC7A2 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				FB03C6701F84BFDB005FC7A2 /* View */,
-				FB03C66F1F84BFD3005FC7A2 /* ViewController */,
+				FBA6447A1F8EFE9C007E968C /* Base */,
+				FBA644801F8F0B8F007E968C /* ListDetailCatagoryScreen */,
+				FBB065FF1F8DACC3002BF21C /* DetailScreen */,
+				FB9FB3E71F8C869B006CA1AE /* LikeScreen */,
+				FB9FB3E61F8C868D006CA1AE /* InboxScreen */,
+				FB9FB3E51F8C867D006CA1AE /* BookingScreen */,
+				FB9FB3E41F8C8668006CA1AE /* ProfileScreen */,
+				FB03C6851F84D9D3005FC7A2 /* LoginViewController */,
+				FB03C6771F84C007005FC7A2 /* HomeScreen */,
 			);
 			path = Screen;
-			sourceTree = "<group>";
-		};
-		FB03C66F1F84BFD3005FC7A2 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				FBB065FF1F8DACC3002BF21C /* DetailViewController */,
-				FB9FB3E71F8C869B006CA1AE /* LikeViewController */,
-				FB9FB3E61F8C868D006CA1AE /* InboxViewController */,
-				FB9FB3E51F8C867D006CA1AE /* BookingViewController */,
-				FB9FB3E41F8C8668006CA1AE /* ProfileViewController */,
-				FB03C6851F84D9D3005FC7A2 /* LoginViewController */,
-				FB03C6781F84C202005FC7A2 /* BaseViewController */,
-				FB03C6771F84C007005FC7A2 /* HomeViewController */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		FB03C6701F84BFDB005FC7A2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FB03C6791F84C20D005FC7A2 /* BaseView */,
-				FB03C68E1F84E83D005FC7A2 /* HomeView */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		FB03C6711F84BFE2005FC7A2 /* Service */ = {
@@ -226,7 +229,6 @@
 			children = (
 				FBF90F8A1F8636EC007CF7EA /* Hotel.swift */,
 				FBF90F921F86388E007CF7EA /* Experience.swift */,
-				FBF90F941F8638DF007CF7EA /* Tour.swift */,
 				FBF90F961F86396C007CF7EA /* Catagory.swift */,
 				FBB066041F8DEDE9002BF21C /* LocalGuide.swift */,
 				FBB066071F8DEFB8002BF21C /* TravelAgency.swift */,
@@ -238,13 +240,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FB03C6771F84C007005FC7A2 /* HomeViewController */ = {
+		FB03C6771F84C007005FC7A2 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FB03C6731F84C004005FC7A2 /* HomeViewController.swift */,
-				FB03C6741F84C004005FC7A2 /* HomeViewController.xib */,
+				FBA644791F8EFE64007E968C /* View */,
+				FBA644781F8EFE58007E968C /* ViewController */,
 			);
-			path = HomeViewController;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		FB03C6781F84C202005FC7A2 /* BaseViewController */ = {
@@ -274,7 +276,48 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
-		FB03C68E1F84E83D005FC7A2 /* HomeView */ = {
+		FB9FB3E41F8C8668006CA1AE /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6447F1F8EFF35007E968C /* ViewController */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		FB9FB3E51F8C867D006CA1AE /* BookingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6447E1F8EFF21007E968C /* ViewController */,
+			);
+			path = BookingScreen;
+			sourceTree = "<group>";
+		};
+		FB9FB3E61F8C868D006CA1AE /* InboxScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6447D1F8EFF06007E968C /* ViewController */,
+			);
+			path = InboxScreen;
+			sourceTree = "<group>";
+		};
+		FB9FB3E71F8C869B006CA1AE /* LikeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FBA6447C1F8EFEF1007E968C /* ViewController */,
+			);
+			path = LikeScreen;
+			sourceTree = "<group>";
+		};
+		FBA644781F8EFE58007E968C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB03C6731F84C004005FC7A2 /* HomeViewController.swift */,
+				FB03C6741F84C004005FC7A2 /* HomeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA644791F8EFE64007E968C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FBFE36A11F85EAF10020F295 /* HeaderForTableViewCell */,
@@ -283,52 +326,86 @@
 				FBFBBCFB1F85C7860062C6DC /* ListCatagoryCell */,
 				FBFBBCFA1F85C76A0062C6DC /* CarouselITitleViewCell */,
 			);
-			path = HomeView;
+			path = View;
 			sourceTree = "<group>";
 		};
-		FB9FB3E41F8C8668006CA1AE /* ProfileViewController */ = {
+		FBA6447A1F8EFE9C007E968C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				FB9FB3F51F8C8756006CA1AE /* ProfileViewController.swift */,
-				FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */,
+				FB03C6781F84C202005FC7A2 /* BaseViewController */,
+				FB03C6791F84C20D005FC7A2 /* BaseView */,
 			);
-			path = ProfileViewController;
+			path = Base;
 			sourceTree = "<group>";
 		};
-		FB9FB3E51F8C867D006CA1AE /* BookingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				FB9FB3F11F8C86ED006CA1AE /* BookingViewController.swift */,
-				FB9FB3F21F8C86ED006CA1AE /* BookingViewController.xib */,
-			);
-			path = BookingViewController;
-			sourceTree = "<group>";
-		};
-		FB9FB3E61F8C868D006CA1AE /* InboxViewController */ = {
-			isa = PBXGroup;
-			children = (
-				FB9FB3EC1F8C86CC006CA1AE /* InboxViewController.swift */,
-				FB9FB3ED1F8C86CC006CA1AE /* InboxViewController.xib */,
-			);
-			path = InboxViewController;
-			sourceTree = "<group>";
-		};
-		FB9FB3E71F8C869B006CA1AE /* LikeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				FB9FB3E81F8C86BD006CA1AE /* LikeViewController.swift */,
-				FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */,
-			);
-			path = LikeViewController;
-			sourceTree = "<group>";
-		};
-		FBB065FF1F8DACC3002BF21C /* DetailViewController */ = {
+		FBA6447B1F8EFED1007E968C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				FBB066001F8DACD8002BF21C /* DetailViewController.swift */,
 				FBB066011F8DACD8002BF21C /* DetailViewController.xib */,
 			);
-			path = DetailViewController;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA6447C1F8EFEF1007E968C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3E81F8C86BD006CA1AE /* LikeViewController.swift */,
+				FB9FB3E91F8C86BD006CA1AE /* LikeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA6447D1F8EFF06007E968C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3EC1F8C86CC006CA1AE /* InboxViewController.swift */,
+				FB9FB3ED1F8C86CC006CA1AE /* InboxViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA6447E1F8EFF21007E968C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3F11F8C86ED006CA1AE /* BookingViewController.swift */,
+				FB9FB3F21F8C86ED006CA1AE /* BookingViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA6447F1F8EFF35007E968C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB9FB3F51F8C8756006CA1AE /* ProfileViewController.swift */,
+				FB9FB3F61F8C8756006CA1AE /* ProfileViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FBA644801F8F0B8F007E968C /* ListDetailCatagoryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FBA644811F8F0BBB007E968C /* ListDetailCatagoryViewController.swift */,
+				FBA644821F8F0BBB007E968C /* ListDetailCatagoryViewController.xib */,
+			);
+			path = ListDetailCatagoryScreen;
+			sourceTree = "<group>";
+		};
+		FBB065FF1F8DACC3002BF21C /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB037E901F8F57FB0081D787 /* View */,
+				FBA6447B1F8EFED1007E968C /* ViewController */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		FBE079DC1F906EC30080EC84 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		FBFBBCFA1F85C76A0062C6DC /* CarouselITitleViewCell */ = {
@@ -456,11 +533,13 @@
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
+				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
 				FB03C6671F84BF2A005FC7A2 /* LaunchScreen.storyboard in Resources */,
 				FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */,
 				FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */,
 				FBFE36A51F85EB290020F295 /* HeaderView.xib in Resources */,
 				FBFBBD071F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib in Resources */,
+				FB037E941F8F582B0081D787 /* DetailTableViewCell.xib in Resources */,
 				FB03C6761F84C004005FC7A2 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +575,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReadMoreTextView/ReadMoreTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -503,6 +583,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadMoreTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,7 +621,6 @@
 				FBB066051F8DEDE9002BF21C /* LocalGuide.swift in Sources */,
 				FB9FB3EA1F8C86BD006CA1AE /* LikeViewController.swift in Sources */,
 				FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */,
-				FBF90F951F8638DF007CF7EA /* Tour.swift in Sources */,
 				FB9FB3F71F8C8756006CA1AE /* ProfileViewController.swift in Sources */,
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBFE36A71F85EB480020F295 /* BaseView.swift in Sources */,
@@ -551,9 +631,11 @@
 				FBFBBD101F85DA610062C6DC /* HomeCollectionViewCell.swift in Sources */,
 				FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */,
 				FB03C6821F84D29F005FC7A2 /* NavigationController.swift in Sources */,
+				FB037E931F8F582B0081D787 /* DetailTableViewCell.swift in Sources */,
 				FBFE36A31F85EB190020F295 /* HeaderView.swift in Sources */,
 				FB9FB3EE1F8C86CC006CA1AE /* InboxViewController.swift in Sources */,
 				FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */,
+				FBA644831F8F0BBB007E968C /* ListDetailCatagoryViewController.swift in Sources */,
 				FBB066101F8DF879002BF21C /* CityTour.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,
 				FB03C6751F84C004005FC7A2 /* HomeViewController.swift in Sources */,

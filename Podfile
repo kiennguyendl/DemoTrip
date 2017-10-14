@@ -9,5 +9,7 @@ target 'DemoFaceTrip' do
   	pod 'Alamofire'
 	pod 'ObjectMapper'
 	pod 'Starscream'
-    pod 'AlamofireImage'
+    	pod 'AlamofireImage'
+	pod 'ReadMoreTextView'
+
 end

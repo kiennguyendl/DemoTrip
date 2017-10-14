@@ -18,6 +18,8 @@ class CityTour: NSObject, Mappable {
     var price: Double?
     var numPersonReview: Int?
     var urlImg: String?
+    var highlight: String?
+    
     required convenience init?(map: Map) {
         self.init()
     }
@@ -30,5 +32,6 @@ class CityTour: NSObject, Mappable {
         price           <- map["price"]
         numPersonReview <- map["numPersonReview"]
         urlImg          <- map["url"]
+        highlight       <- map["highlight"]
     }
 }
