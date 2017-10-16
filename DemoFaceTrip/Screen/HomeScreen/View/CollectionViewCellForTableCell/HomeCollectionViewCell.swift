@@ -19,6 +19,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        place.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        name.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        price.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        Review.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 
 }

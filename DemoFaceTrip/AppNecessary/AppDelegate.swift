@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigation: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        self.window?.frame = CGRect(x: 0, y: 20, width: (self.window?.frame.size.width)!, height: (self.window?.frame.size.height)! - 20)
+        
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let homeController = LoginViewController(nibName: "LoginViewController", bundle: nil)

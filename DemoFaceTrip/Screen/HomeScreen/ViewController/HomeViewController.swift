@@ -23,6 +23,7 @@ enum typeCatagoryForHome{
 let color1: UIColor = UIColor(red: 226.0/255.0, green: 67.0/255.0, blue: 99.0/255.0, alpha: 1.0)
 let color2: UIColor = UIColor(red: 236.0/255.0, green: 111.0/255.0, blue: 115.0/255.0, alpha: 1.0)
 let color3: UIColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+let color4: UIColor = UIColor(red: 248.0/255.0, green: 229.0/255.0, blue: 213.0/255.0, alpha: 1.0)
 
 class HomeViewController: BaseViewController {
     @IBOutlet weak var viewMenu: UIView!
@@ -68,28 +69,29 @@ class HomeViewController: BaseViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //select default cell for first time load data
-        //        let indexPath = IndexPath(item: 0, section: 0)
-        //        indexPathSelected = indexPath
-        //        let newCell = self.collectionViewCarousels.cellForItem(at: indexPath) as! CarouselsCollectionViewCell
-        //        newCell.viewColor.backgroundColor = UIColor.white
-        //self.dataForHome = self.catagory
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        navigationController?.isNavigationBarHidden = false
+//        tabBarController?.tabBar.isHidden = false
+//        
+//
+//    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        navigationController?.isNavigationBarHidden = true
+//        tabBarController?.tabBar.isHidden = true
+//    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
-        //if tabBarController?.tabBar.isHidden == true{
-            tabBarController?.tabBar.isHidden = false
-        //}
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
-        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
+        
     }
     
     
@@ -114,6 +116,8 @@ class HomeViewController: BaseViewController {
         collectionViewDetail.dataSource = self
         collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
         collectionViewDetail.showsVerticalScrollIndicator = false
+        
+        
     }
     
     func setColorForMenuView() {
@@ -167,7 +171,10 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionViewCarousels{
-            return menuCatagory1.count
+            if menuCatagory1.count > 1{
+                return menuCatagory1.count
+            }
+            return 0
         }else if collectionView == self.collectionViewFriends{
             return dataForMenu2.count
         }else{
@@ -182,12 +189,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             if indexPath.item == 0{
                 cell.viewColor.backgroundColor = UIColor.white
+                cell.nameCarousel.textColor = UIColor.white
                 indexPathSelected = indexPath
             }else{
                 cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                cell.nameCarousel.textColor = color4
             }
             
-            cell.nameCarousel.text = menuCatagory1[indexPath.row]
+            cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
             return cell
             
         }else if collectionView == self.collectionViewFriends{
@@ -403,16 +412,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: width, height: height)
         }else{
             let width = collectionViewDetail.frame.width / 2 - 10
-            return CGSize(width: width, height: width + 20)
+            return CGSize(width: width, height: width * 1.5)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.collectionViewFriends{
-            //            DispatchQueue.main.async {
-            //                let index = IndexPath(item: 0, section: indexPath.row)
-            //                self.tableViewCarousels.scrollToRow(at: index, at: .none, animated: true)
-            //            }
             let vc = ListDetailCatagoryViewController()
             vc.typeCatagory = dataForMenu2[indexPath.row].typeCatagory
             vc.listDetail = dataForMenu2[indexPath.row].catagoryItems
@@ -427,6 +432,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     oldCell.nameCarousel.textColor = UIColor.gray
                 }else{
                     oldCell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    oldCell.nameCarousel.textColor = color4
                 }
                 indexPathSelected = []
             }
@@ -437,6 +443,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 newCell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             }else{
                 newCell.viewColor.backgroundColor = UIColor.white
+                newCell.nameCarousel.textColor = UIColor.white
             }
             indexPathSelected = indexPath
             collectionViewDetail.isHidden = false
@@ -465,6 +472,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 type = .ForYou
                 tableViewCarousels.reloadData()
             }
+        }else if collectionView == collectionViewDetail{
+            
+            let vc = DetailViewController()
+            let data = dataForMenu1[self.indexPathSelected.row - 1]
+            vc.type = data.typeCatagory
+            if let item = data.catagoryItems?[indexPath.row]{
+                vc.item = item
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     
@@ -481,6 +498,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
+        
         cell.delegate = self
         let currentSection = indexPath.section
         cell.collectionViewForCell.tag = currentSection
@@ -506,7 +524,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         default:
             cell.type = .None
         }
-        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -517,13 +534,46 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
+    @objc func showAllItem(sender: UIButton) {
+        let section = sender.tag
+        switch catagory[section].typeCatagory {
+            
+        case .localGuideType, .travelAgencyType, .hotelType, .experienceType:
+            
+            let typeMenu1 = catagory[section].typeCatagory
+            
+            for index in 0..<dataForMenu1.count{
+                if typeMenu1 == dataForMenu1[index].typeCatagory{
+                    
+                    self.collectionViewCarousels.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                    self.collectionView(collectionViewCarousels, didSelectItemAt: IndexPath(row: index + 1, section: 0))
+                    self.collectionViewDetail.isHidden = false
+                    self.collectionViewDetail.reloadData()
+                }
+            }
+            
+        case .attractionType, .themParkType, .cityTourType, .foodTourType:
+            
+            let vc = ListDetailCatagoryViewController()
+            let dataMenu2 = catagory[section]
+            vc.typeCatagory = dataMenu2.typeCatagory
+            if let item = dataMenu2.catagoryItems{
+                vc.listDetail = item
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        default:
+            print("")
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //add custome view for header
         let view = HeaderView()
         view.backgroundColor = UIColor.white
         view.nameOfCarousel.text = catagory[section].type
         view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+        view.seeAllBtn.tag = section
+        view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
         return view
         
     }
@@ -531,21 +581,21 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // cần fix animation. tách thread
-        if let _ = scrollView as? UITableView{
-            let newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height + 5
+        //if let _ = scrollView as? UITableView{
+            let newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height 
             
             //handle when scroll up
             if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
-                //print("move down")
+                print("move down")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y < 0{
-                            
+
                             //move origin coordinates of main view to up
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - newPos)
-                            
+
                             self.setColorForMenuView()
-                            
+
                             //change color when scroll up
                             self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                             self.collectionViewCarousels.backgroundColor = color3
@@ -554,25 +604,28 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
                                     if self.indexPathSelected == indexPath{
                                         cell.viewColor.backgroundColor = UIColor.white
+                                        cell.nameCarousel.textColor = UIColor.white
                                     }else{
                                         cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                                        cell.nameCarousel.textColor = color4
+                                        
                                     }
                                     cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                    cell.nameCarousel.textColor = UIColor.white
+                                    //cell.nameCarousel.textColor = UIColor.white
                                 }
-                                
+
                             }
-                            
-                            
+
+
                             self.isScaleMenuView = false
                         }
-                        
+
                     })
                 }
                 
             }else{
                 //handle when scroll down
-                //print("move up")
+                print("move up")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y >= 0{
@@ -606,11 +659,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                             }
                             self.isScaleMenuView = true
                         }
+                        //self.isScaleMenuView = true
                     })
                 }
                 
             }
-        }
+        //}
     }
 }
 

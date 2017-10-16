@@ -20,6 +20,9 @@ class DetailViewController: BaseViewController {
     }
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var numReview: UILabel!
+    @IBOutlet weak var bookingBtn: UIButton!
     
     var currentSection = -1
     
@@ -27,21 +30,183 @@ class DetailViewController: BaseViewController {
     var type: catagoryType = .None
     var item: AnyObject?
     var isCoslap = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewDetail.delegate = self
         tableViewDetail.dataSource = self
         tableViewDetail.register(UINib.init(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailCell")
+        setImageForView()
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initBackButton()
-        
+        bookingBtn.layer.cornerRadius = bookingBtn.frame.width / 12
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
+        //tableViewDetail.reloadData()
+    }
+    func setImageForView() {
+        switch type {
+        case .attractionType:
+            //if let imageView = imageView{
+                if let item = item as? Attraction{
+                    if let urlStr = item.image{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let place = item.place{
+                        price.text = ("Place: \(place)")
+                    }
+                    
+                    if let reviewCount = item.numReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .cityTourType:
+            //if let imageView = imageView{
+                if let item = item as? CityTour{
+                    if let urlStr = item.urlImg{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numPersonReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .experienceType:
+            //if let imageView = imageView{
+                if let item = item as? Experience{
+                    if let urlStr = item.urlImg{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numPersonReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .foodTourType:
+            //if let imageView = imageView{
+                if let item = item as? FoodTour{
+                    if let urlStr = item.image{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .hotelType:
+            //if let imageView = imageView{
+                if let item = item as? Hotel{
+                    if let urlStr = item.urlImg{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numPersonReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .localGuideType:
+            //if let imageView = imageView{
+                if let item = item as? LocalGuide{
+                    if let urlStr = item.avatar{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numLike{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .themParkType:
+            //if let imageView = imageView{
+                if let item = item as? ThemeParks{
+                    if let urlStr = item.image{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.price{
+                        price.text = ("Price: \(priceTour)$/person")
+                    }
+                    
+                    if let reviewCount = item.numReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        case .travelAgencyType:
+            //if let imageView = imageView{
+                if let item = item as? TravelAgency{
+                    if let urlStr = item.image{
+                        let url = URL(string: urlStr)
+                        let dafautImg = UIImage(named: "default")
+                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                    if let priceTour = item.place{
+                        price.text = ("Place: \(priceTour)")
+                    }
+                    
+                    if let reviewCount = item.numReview{
+                        numReview.text = ("Review: \(reviewCount)")
+                    }
+                }
+            //}
+        default:
+            print("")
+        }
         //tableViewDetail.reloadData()
     }
 
@@ -58,45 +223,81 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
 
+        let currentSection = indexPath.section
         
-
         switch type {
         case .attractionType:
             if let item = item as? Attraction{
-                cell.textView.text = item.descriptionAttraction
-                
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
+                    cell.textView.text = item.descriptionAttraction
+                }
             }
             break
         case .themParkType:
             if let item = item as? ThemeParks{
-                cell.textView.text = item.descriptionThemePark
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
+                    cell.textView.text = item.descriptionThemePark
+                }
+                
             }
             break
         case .localGuideType:
             if let item = item as? LocalGuide{
-                cell.textView.text = item.descriptionGuide
+                if currentSection == 0{
+                    cell.textView.text = item.aboutTour
+                }else{
+                    cell.textView.text = item.descriptionGuide
+                }
             }
             break
         case .hotelType:
             if let item = item as? Hotel{
-                cell.textView.text = item.descriptionHotel
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
+                    cell.textView.text = item.descriptionHotel
+                }
             }
             break
         case .experienceType:
             if let item = item as? Experience{
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
                 cell.textView.text = item.descriptionExp
+                }
             }
             break
         case .foodTourType:
             if let item = item as? FoodTour{
-                cell.textView.text = item.descriptionTour
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
+                    cell.textView.text = item.descriptionTour
+                }
             }
             break
         case .cityTourType:
             if let item = item as? CityTour{
-                cell.textView.text = item.descriptionTour
+                if currentSection == 0{
+                    cell.textView.text = item.highlight
+                }else{
+                    cell.textView.text = item.descriptionTour
+                }
             }
             break
+        case .travelAgencyType:
+            if let item = item as? TravelAgency{
+                if currentSection == 0{
+                    cell.textView.text = item.contact
+                }else{
+                    cell.textView.text = item.descriptionAgency
+                }
+            }
         default:
             print("")
         }
@@ -135,15 +336,24 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
         //add custome view for header
         let view = HeaderView()
         view.backgroundColor = UIColor.white
-        //view.nameOfCarousel.text = catagory[section].type
         view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
         view.seeAllBtn.isHidden = true
         if section == 0{
-            view.nameOfCarousel.text = "Hightlight"
+            if type == .localGuideType{
+                view.nameOfCarousel.text = "About Tour"
+            }else if type == .travelAgencyType{
+                view.nameOfCarousel.text = "Contact"
+            }else{
+                view.nameOfCarousel.text = "Hightlight"
+            }
         }else{
             view.nameOfCarousel.text = "Full Decription"
         }
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 
 }

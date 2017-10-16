@@ -25,6 +25,13 @@ class ListDetailCatagoryViewController: BaseViewController {
         super.viewWillAppear(animated)
         initBackButton()
         navigationItem.title = "Ho Chi Minh"
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -157,7 +164,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
         let width = listDetailCollectionView.frame.width / 2 - 10
         let height = listDetailCollectionView.frame.height / 2
         
-        return CGSize(width: width, height: width + 10)
+        return CGSize(width: width, height: width * 1.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

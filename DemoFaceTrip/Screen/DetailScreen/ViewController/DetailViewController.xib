@@ -13,9 +13,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="bookingBtn" destination="Bsn-0W-lBg" id="7v6-oN-b6O"/>
                 <outlet property="bottomView" destination="wA5-Y4-cUj" id="mWr-RX-dKT"/>
                 <outlet property="imageView" destination="pzd-Hs-uBu" id="ssZ-Rc-ACH"/>
                 <outlet property="likeButton" destination="lnd-u4-P8J" id="koG-XQ-s3j"/>
+                <outlet property="numReview" destination="Msz-1R-HqY" id="92n-9Y-RXO"/>
+                <outlet property="price" destination="kaD-Y6-y8b" id="5cs-lq-xru"/>
                 <outlet property="tableViewDetail" destination="Dcv-OV-s99" id="kPC-g9-SCr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,11 +32,11 @@
                     <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Y6-y8b">
-                            <rect key="frame" x="20" y="10" width="42" height="20"/>
+                            <rect key="frame" x="20.000000000000004" y="10" width="37.333333333333343" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="1AW-IM-YTV"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -49,11 +52,11 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msz-1R-HqY">
-                            <rect key="frame" x="20" y="30" width="42" height="20"/>
+                            <rect key="frame" x="20.000000000000004" y="30" width="37.333333333333343" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="jJe-CP-dwo"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
