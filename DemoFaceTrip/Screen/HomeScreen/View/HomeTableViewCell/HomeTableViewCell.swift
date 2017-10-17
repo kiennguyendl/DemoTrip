@@ -289,8 +289,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let witdh = collectionViewForCell.frame.width / 1.5
-        let height = witdh * 2
+        let witdh = collectionViewForCell.frame.width / 1.3
+        let height = self.frame.height
         return CGSize(width: witdh, height: height)
     }
     

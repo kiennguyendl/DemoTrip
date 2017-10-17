@@ -31,10 +31,16 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
     @IBOutlet weak var collectionViewFriends: UICollectionView!
-    @IBOutlet weak var tableViewCarousels: UITableView!
+    //@IBOutlet weak var tableViewCarousels: UITableView!
     @IBOutlet weak var collectionViewDetail: UICollectionView!
     
+    @IBOutlet weak var viewIndicator: UIView!
+    @IBOutlet weak var indicator: UIView!
+    
+    @IBOutlet weak var viewContentTableViewCarousels: UIView!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
+    
+    var tableViewCarousels: UITableView = UITableView(frame: CGRect.zero)
     
     var catagory: [Catagory] = []
     var menuCatagory1 = ["For You"]
@@ -129,13 +135,38 @@ class HomeViewController: BaseViewController {
     
     //init and register cell for tableview
     func initTableView() {
+        let frame = self.viewContentTableViewCarousels.frame
+        tableViewCarousels = UITableView(frame: frame, style: .grouped)
+        tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
+        tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        
+        
+        
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
         tableViewCarousels.register(UINib.init(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
         tableViewCarousels.showsHorizontalScrollIndicator = false
         tableViewCarousels.showsVerticalScrollIndicator = false
+        self.viewContentTableViewCarousels.addSubview(tableViewCarousels)
+        
+//        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0)
+//        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+//        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+//        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//
+//        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
+        
+        let dict = ["view": tableViewCarousels]
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
+        
+        self.viewContentTableViewCarousels.addConstraints(horizontalConstraints)
+        self.viewContentTableViewCarousels.addConstraints(verticalConstraints)
+
+
     }
-    
+
     // rest data from api for home
     func restDataForHome() {
         RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
@@ -527,8 +558,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = self.view.frame.height / 2.7
-        return height
+        //let height = self.view.frame.height / 2.7
+        return tableViewCarousels.frame.size.height
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -578,6 +609,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        print(">>>>>>>>>>>>>>>>>>>>test<<<<<<<<<<<<<<<<<<<<<")
+//        if let visiblerows = tableViewCarousels.indexPathsForVisibleRows{
+//            let indexPath = visiblerows[1]
+//            if visiblerows.count > 1{
+//                tableViewCarousels.scrollToRow(at: indexPath, at: .top, animated: true)
+//            }
+//        }
+//    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // cần fix animation. tách thread
@@ -586,7 +627,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             
             //handle when scroll up
             if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
-                print("move down")
+                //print("move down")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y < 0{
@@ -625,7 +666,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 
             }else{
                 //handle when scroll down
-                print("move up")
+                //print("move up")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y >= 0{
