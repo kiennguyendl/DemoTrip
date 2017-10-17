@@ -37,7 +37,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var viewIndicator: UIView!
     @IBOutlet weak var indicator: UIView!
     
-    @IBOutlet weak var viewContentTableViewCarousels: UIView!
+    //@IBOutlet weak var viewContentTableViewCarousels: UIView!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
     
     var tableViewCarousels: UITableView = UITableView(frame: CGRect.zero)
@@ -66,7 +66,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         collectionViewDetail.isHidden = true
-        
+        collectionViewDetail.superview?.bringSubview(toFront: tableViewCarousels)
         
         initCollectionView()
         initTableView()
@@ -122,7 +122,7 @@ class HomeViewController: BaseViewController {
         collectionViewDetail.dataSource = self
         collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
         collectionViewDetail.showsVerticalScrollIndicator = false
-        
+        collectionViewDetail.tag = 1
         
     }
     
@@ -135,38 +135,91 @@ class HomeViewController: BaseViewController {
     
     //init and register cell for tableview
     func initTableView() {
-        let frame = self.viewContentTableViewCarousels.frame
-        tableViewCarousels = UITableView(frame: frame, style: .grouped)
-        tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
-        tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        
-        
-        
+        addContrailForTableView()
+        addSwipeForController()
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
         tableViewCarousels.register(UINib.init(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
         tableViewCarousels.showsHorizontalScrollIndicator = false
         tableViewCarousels.showsVerticalScrollIndicator = false
-        self.viewContentTableViewCarousels.addSubview(tableViewCarousels)
-        
-//        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0)
-//        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
-//        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-//        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.viewContentTableViewCarousels, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-//
-//        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
-        
-        let dict = ["view": tableViewCarousels]
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
-        
-        self.viewContentTableViewCarousels.addConstraints(horizontalConstraints)
-        self.viewContentTableViewCarousels.addConstraints(verticalConstraints)
-
-
+        tableViewCarousels.isHidden = false
+        tableViewCarousels.tag = 2
     }
 
+    func addContrailForTableView() {
+        
+        let frame = self.view.frame
+        tableViewCarousels = UITableView(frame: frame, style: .grouped)
+        
+        self.view.addSubview(tableViewCarousels)
+        //        let dict = ["view": tableViewCarousels]
+        //        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
+        //        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
+        //
+        //        self.view.addConstraints(horizontalConstraints)
+        //        self.view.addConstraints(verticalConstraints)
+        
+        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewIndicator, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        
+        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
+        
+        
+        tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
+        tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableViewCarousels.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 50, 0)
+    }
+    
+    // add swipe
+    func addSwipeForController() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeAction(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeAction(gesture:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func handleSwipeAction(gesture: UIGestureRecognizer) {
+        UIView.animate(withDuration: 0.5, animations: {
+//            self.collectionViewCarousels.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+//            self.collectionView(collectionViewCarousels, didSelectItemAt: IndexPath(row: index + 1, section: 0))
+            if let swipeGesture = gesture as? UISwipeGestureRecognizer{
+                switch swipeGesture.direction{
+                case .left:
+                    let row = self.indexPathSelected.row
+                    if row < 4{
+                        self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                        self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
+                        self.tableViewCarousels.isHidden = true
+                        self.collectionViewDetail.isHidden = false
+                        self.collectionViewDetail.reloadData()
+                    }
+                    break
+                case .right:
+                    let row = self.indexPathSelected.row
+                    if row > 0{
+                        self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                        self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
+                        if row == 1{
+                            self.tableViewCarousels.isHidden = false
+                            self.collectionViewDetail.isHidden = true
+                            self.tableViewCarousels.reloadData()
+                        }else{
+                            self.tableViewCarousels.isHidden = true
+                            self.collectionViewDetail.isHidden = false
+                            self.collectionViewDetail.reloadData()
+                        }
+                    }
+                default:
+                    print("abc")
+                }
+            }
+        })
+    }
     // rest data from api for home
     func restDataForHome() {
         RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
@@ -477,6 +530,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 newCell.nameCarousel.textColor = UIColor.white
             }
             indexPathSelected = indexPath
+            tableViewCarousels.isHidden = true
             collectionViewDetail.isHidden = false
             if indexPath.row > 0{
                 dataForHome.removeAll()
@@ -499,6 +553,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 collectionViewDetail.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
             }else{
                 dataForHome.removeAll()
+                tableViewCarousels.isHidden = false
                 collectionViewDetail.isHidden = true
                 type = .ForYou
                 tableViewCarousels.reloadData()
@@ -609,21 +664,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        print(">>>>>>>>>>>>>>>>>>>>test<<<<<<<<<<<<<<<<<<<<<")
-//        if let visiblerows = tableViewCarousels.indexPathsForVisibleRows{
-//            let indexPath = visiblerows[1]
-//            if visiblerows.count > 1{
-//                tableViewCarousels.scrollToRow(at: indexPath, at: .top, animated: true)
-//            }
-//        }
-//    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // cần fix animation. tách thread
-        //if let _ = scrollView as? UITableView{
-            let newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height 
+        if scrollView.tag == 1 || scrollView.tag == 2{
+            let newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height
             
             //handle when scroll up
             if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
@@ -631,81 +676,75 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y < 0{
-
                             //move origin coordinates of main view to up
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - newPos)
-
                             self.setColorForMenuView()
-
-                            //change color when scroll up
-                            self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
-                            self.collectionViewCarousels.backgroundColor = color3
-                            for index in 0..<self.menuCatagory1.count {
-                                let indexPath = IndexPath(item: index, section: 0)
-                                if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
-                                    if self.indexPathSelected == indexPath{
-                                        cell.viewColor.backgroundColor = UIColor.white
-                                        cell.nameCarousel.textColor = UIColor.white
-                                    }else{
-                                        cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                        cell.nameCarousel.textColor = color4
-                                        
-                                    }
-                                    cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                    //cell.nameCarousel.textColor = UIColor.white
-                                }
-
-                            }
-
-
-                            self.isScaleMenuView = false
                         }
 
                     })
+                    
+                    //change color when scroll up
+                    self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
+                    self.collectionViewCarousels.backgroundColor = color3
+                    for index in 0..<self.menuCatagory1.count {
+                        let indexPath = IndexPath(item: index, section: 0)
+                        if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
+                            if self.indexPathSelected == indexPath{
+                                cell.viewColor.backgroundColor = UIColor.white
+                                cell.nameCarousel.textColor = UIColor.white
+                            }else{
+                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                                cell.nameCarousel.textColor = color4
+                                
+                            }
+                            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                        }
+                        
+                    }
+                    self.isScaleMenuView = false
                 }
                 
             }else{
                 //handle when scroll down
-                //print("move up")
+                ///print("move up")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y >= 0{
                             //move origin coordinates of main view to 0
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: -newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + newPos)
-                            
-                            //change color when scroll down
-                            self.viewMenu.backgroundColor = UIColor.white
-                            self.collectionViewCarousels.backgroundColor = UIColor.white
-                            for index in 0..<self.menuCatagory1.count {
-                                let indexPath = IndexPath(item: index, section: 0)
-                                if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
-                                    if self.indexPathSelected == indexPath{
-                                        cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                        cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                    }else{
-                                        cell.viewColor.backgroundColor = UIColor.white
-                                        cell.nameCarousel.textColor = UIColor.gray
-                                    }
-                                    cell.backgroundColor = UIColor.white
-                                }
-                                
-                                
-                            }
-                            if let view = self.viewMenu{
-                                for layer in view.layer.sublayers!{
-                                    if layer == self.gradientLayer{
-                                        layer.removeFromSuperlayer()
-                                    }
-                                }
-                            }
-                            self.isScaleMenuView = true
                         }
-                        //self.isScaleMenuView = true
                     })
+                    
+                    //change color when scroll down
+                    self.viewMenu.backgroundColor = UIColor.white
+                    self.collectionViewCarousels.backgroundColor = UIColor.white
+                    for index in 0..<self.menuCatagory1.count {
+                        let indexPath = IndexPath(item: index, section: 0)
+                        if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
+                            if self.indexPathSelected == indexPath{
+                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                                cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                            }else{
+                                cell.viewColor.backgroundColor = UIColor.white
+                                cell.nameCarousel.textColor = UIColor.gray
+                            }
+                            cell.backgroundColor = UIColor.white
+                        }
+                        
+                        
+                    }
+                    if let view = self.viewMenu{
+                        for layer in view.layer.sublayers!{
+                            if layer == self.gradientLayer{
+                                layer.removeFromSuperlayer()
+                            }
+                        }
+                    }
+                    self.isScaleMenuView = true
                 }
                 
             }
-        //}
+        }
     }
 }
 

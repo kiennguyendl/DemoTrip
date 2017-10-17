@@ -19,7 +19,6 @@
                 <outlet property="heightOfViewMenu" destination="asD-Jo-FHK" id="S1E-lB-n0i"/>
                 <outlet property="indicator" destination="PpY-Z5-k7K" id="zDX-ej-sAw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewContentTableViewCarousels" destination="66S-fH-mdJ" id="hS3-df-QZd"/>
                 <outlet property="viewIndicator" destination="vnc-h6-0w9" id="kWL-6C-6fC"/>
                 <outlet property="viewMenu" destination="D9d-85-y9Q" id="A28-kT-6nO"/>
             </connections>
@@ -29,10 +28,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66S-fH-mdJ">
-                    <rect key="frame" x="0.0" y="300" width="375" height="367"/>
-                    <color key="backgroundColor" red="1" green="0.5343356386" blue="0.4942288306" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-h6-0w9">
                     <rect key="frame" x="0.0" y="300" width="375" height="2"/>
                     <subviews>
@@ -147,17 +142,13 @@
                 <constraint firstItem="QTH-pk-3eU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="CZ8-aN-hLF"/>
                 <constraint firstItem="4fX-br-Q8S" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="bottom" id="Kt9-VS-JJK"/>
                 <constraint firstItem="vnc-h6-0w9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LNF-Cj-xnt"/>
-                <constraint firstItem="66S-fH-mdJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NJF-Hx-rxL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QTH-pk-3eU" secondAttribute="trailing" constant="20" id="OZ6-pl-iWb"/>
                 <constraint firstItem="QTH-pk-3eU" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="bottom" id="OZj-dc-GgK"/>
                 <constraint firstItem="4fX-br-Q8S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RtN-xL-F72"/>
-                <constraint firstItem="66S-fH-mdJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UXP-un-L3u"/>
-                <constraint firstItem="66S-fH-mdJ" firstAttribute="top" secondItem="QTH-pk-3eU" secondAttribute="bottom" id="YMa-CK-f4P"/>
                 <constraint firstItem="4fX-br-Q8S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="a2i-tm-9wj"/>
                 <constraint firstItem="4fX-br-Q8S" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="bUK-JI-Nix"/>
                 <constraint firstItem="vnc-h6-0w9" firstAttribute="top" secondItem="QTH-pk-3eU" secondAttribute="bottom" id="e8G-h8-Cbg"/>
                 <constraint firstItem="D9d-85-y9Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iRD-Fx-afa"/>
-                <constraint firstItem="66S-fH-mdJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kh9-iV-ihr"/>
                 <constraint firstItem="D9d-85-y9Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nmV-l8-JlU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vnc-h6-0w9" secondAttribute="trailing" id="wUL-80-rTT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D9d-85-y9Q" secondAttribute="trailing" id="yxA-w9-dT4"/>
