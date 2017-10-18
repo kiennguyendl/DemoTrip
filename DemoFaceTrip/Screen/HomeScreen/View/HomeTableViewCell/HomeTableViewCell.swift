@@ -31,16 +31,35 @@ class HomeTableViewCell: UITableViewCell {
         collectionViewForCell.delegate = self
         collectionViewForCell.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
         collectionViewForCell.showsHorizontalScrollIndicator = false
-
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-
+    //    func downloadImageForHome(url: String,key: IndexPath) -> UIImage {
+    //        //if cache has images
+    //        if self.cache.object(forKey: key as AnyObject) != nil {
+    //            return self.cache.object(forKey: key as AnyObject) as! UIImage
+    //        }else /*if cache haven't any thing*/{
+    //            let urlImg = URL(string: url)
+    //            var image: UIImage!
+    //            DispatchQueue.global().async {
+    //                let data = try? Data(contentsOf: urlImg!)
+    //                //DispatchQueue.main.async {
+    //                image = UIImage(data: data!)
+    //                //save image to cache
+    //                self.cache.setObject(image!, forKey: key as AnyObject)
+    //                //}
+    //            }
+    //            return image
+    //        }
+    //    }
+    
+    
 }
 
 extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -53,6 +72,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
+        
         if let items = self.catagoryItems{
             switch self.type{
             case .hotelType:
@@ -63,12 +83,23 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.urlImg{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { [weak self] response in
+                                    //guard let strongSelf = self else {return}
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -76,7 +107,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let price = item.price{
-                           // print(price)
+                            // print(price)
                             cell.price.text = "Price: " + "\(price)" + "$"
                         }
                         
@@ -95,12 +126,22 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.urlImg{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -125,12 +166,22 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.urlImg{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -155,12 +206,22 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.image{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -185,12 +246,16 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.avatar{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -215,12 +280,22 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.image{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -245,12 +320,12 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.image{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                let dafautImg = UIImage(named: "default")
+                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{
@@ -275,12 +350,22 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                         }
                         
                         if let urlStr = item.image{
-                            DispatchQueue.main.async {
-                            let url = URL(string: urlStr)
-                            let dafautImg = UIImage(named: "default")
-                            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            }
+//                            DispatchQueue.main.async {
+//                                let url = URL(string: urlStr)
+//                                let dafautImg = UIImage(named: "default")
+//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                            }
+                            //DispatchQueue.main.async {
+                                let url = URL(string: urlStr)
+                                //let dafautImg = UIImage(named: "default")
+                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                                cell.image.af_setImage(withURL: url!, completion: { response in
+                                    guard let image = response.result.value else{return}
+                                    cell.image.image = image.squaredImageForHome
+                                })
+                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+                            //}
                         }
                         
                         if let place = item.place{

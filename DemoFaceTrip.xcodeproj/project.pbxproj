@@ -44,6 +44,7 @@
 		FBB066101F8DF879002BF21C /* CityTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB0660F1F8DF879002BF21C /* CityTour.swift */; };
 		FBE079DF1F9074090080EC84 /* ReadMoreTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
+		FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */; };
 		FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F8A1F8636EC007CF7EA /* Hotel.swift */; };
 		FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */; };
 		FBF90F8D1F8637CF007CF7EA /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */; };
@@ -103,6 +104,7 @@
 		FBB0660F1F8DF879002BF21C /* CityTour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTour.swift; sourceTree = "<group>"; };
 		FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReadMoreTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		FBF90F8A1F8636EC007CF7EA /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,6 +406,7 @@
 		FBE079DC1F906EC30080EC84 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */,
+				FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */,
 				FB03C68C1F84DC93005FC7A2 /* LoginViewController.swift in Sources */,
 				FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */,
 				FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */,

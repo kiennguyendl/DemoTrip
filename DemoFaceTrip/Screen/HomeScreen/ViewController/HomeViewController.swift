@@ -358,12 +358,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                     
                     if let urlStr = item.urlImg{
+//                        let url = URL(string: urlStr)
+//                        let dafautImg = UIImage(named: "default")
+//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
+                        //let dafautImg = UIImage(named: "default")
+                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                         
                     }
+                    
                     
                     if let place = item.place{
                         cell.place.text = place
@@ -387,10 +396,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                     
                     if let urlStr = item.urlImg{
+//                        let url = URL(string: urlStr)
+//                        let dafautImg = UIImage(named: "default")
+//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
+                        //let dafautImg = UIImage(named: "default")
+                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
@@ -417,10 +434,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                     
                     if let urlStr = item.avatar{
+//                        let url = URL(string: urlStr)
+//                        let dafautImg = UIImage(named: "default")
+//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
+                        //let dafautImg = UIImage(named: "default")
+                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
@@ -445,8 +470,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
                         let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        cell.image.af_setImage(withURL: url!)
                         cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
+                        
                     }
                     
                     if let place = item.place{
