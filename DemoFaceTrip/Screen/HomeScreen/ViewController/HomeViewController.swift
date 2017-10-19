@@ -62,6 +62,8 @@ class HomeViewController: BaseViewController {
         return layer
     }()
     
+    var newPos: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,7 +74,7 @@ class HomeViewController: BaseViewController {
         initTableView()
         restDataForHome()
         setColorForMenuView()
-        
+        newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -162,9 +164,11 @@ class HomeViewController: BaseViewController {
         let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewIndicator, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
         let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+        //let height = self.view.frame.height - (self.viewMenu.frame.height + self.collectionViewFriends.frame.height + self.viewIndicator.frame.height)
         let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        
+        //let heightContraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0)
         NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
+        
         
         
         tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
@@ -352,19 +356,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case .ForYou:
                 break
             case .Hotel:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "room")
+                
                 if let item = self.dataForHome[indexPath.row] as? Hotel{
-                    if let nameHotel = item.nameHotel{
-                        cell.name.text = nameHotel
+                    if let nameHotel = item.nameHotel, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(nameHotel)")
                     }
                     
                     if let urlStr = item.urlImg{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        //let dafautImg = UIImage(named: "default")
-                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
                             cell.image.image = image.squaredImageForHome
@@ -373,36 +376,31 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         
                     }
                     
-                    
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let price = item.price{
-                        print(price)
-                        cell.price.text = "Price: " + "\(price)" + "$"
+                    if let numbooking = item.numBook{
+                        cell.lbl2.text = "\(numbooking) booked"
                     }
                     
-                    if let review = item.numPersonReview{
-                        cell.Review.text = "Review: " + "\(review)"
-                        print(review)
+                    if let room = item.numRoom{
+                        cell.lbl3.text = "\(room) room"
                     }
                 }
                 break
             case .Experience:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numboking")
+                cell.img3.image = UIImage(named: "time")
                 if let item = self.dataForHome[indexPath.row] as? Experience{
-                    if let nameExp = item.experience{
-                        cell.name.text = nameExp
+                    if let nameExp = item.experience, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(nameExp)")
                     }
                     
                     if let urlStr = item.urlImg{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        //let dafautImg = UIImage(named: "default")
-                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
                             cell.image.image = image.squaredImageForHome
@@ -411,15 +409,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
-                    }
-                    
-                    if let price = item.price{
-                        cell.price.text = "Price: " + "\(price)" + "$"
+                        cell.lbl1.text = place
                     }
                     
                     if let review = item.numPersonReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl2.text = "\(review) review"
+                    }
+                    
+                    if let time = item.time{
+                        cell.lbl3.text = time
                     }
                 }
                 break
@@ -428,19 +426,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case .FoodTour:
                 break
             case .LocalGuide:
+                cell.hidingView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numlike")
+                cell.img3.image = UIImage(named: "language")
+                
                 if let item = dataForHome[indexPath.row] as? LocalGuide{
-                    if let nameGuide = item.nameGuide{
-                        cell.name.text = nameGuide
+                    if let nameGuide = item.nameGuide, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(nameGuide)")
                     }
                     
                     if let urlStr = item.avatar{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
                         let url = URL(string: urlStr)
-                        //let dafautImg = UIImage(named: "default")
-                        //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
                             cell.image.image = image.squaredImageForHome
@@ -449,42 +446,46 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let price = item.price{
-                        cell.price.text = "Price: " + "\(price)" + "$/Person"
-                    }
                     
                     if let numLike = item.numLike{
-                        cell.Review.text = "Like: " + "\(numLike)"
+                        cell.lbl2.text = "\(numLike)"
+                    }
+                    
+                    if let language = item.language{
+                        cell.lbl3.text = language
                     }
                 }
                 break
             case .TravelAgency:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 if let item = dataForHome[indexPath.row] as? TravelAgency{
-                    if let name = item.name{
-                        cell.name.text = name
+                    if let name = item.name, let country = item.country{
+                        cell.name.text = ("\(country) - \(name)")
                     }
                     
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
                         let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!)
-                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
-                        
+                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let country = item.country{
-                        cell.price.text = "Country: " + "\(country)"
+                    if let numbook = item.numbook{
+                        cell.lbl2.text = ("\(numbook) booked")
                     }
-                    
                     if let review = item.numReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl3.text = "\(review) review"
                     }
                 }
                 break
@@ -584,6 +585,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 type = .ForYou
                 tableViewCarousels.reloadData()
             }
+            collectionViewCarousels.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }else if collectionView == collectionViewDetail{
             
             let vc = DetailViewController()
@@ -640,7 +642,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //let height = self.view.frame.height / 2.7
-        return tableViewCarousels.frame.size.height
+        if isScaleMenuView{
+            return tableViewCarousels.frame.size.height - (newPos + 30)
+        }else{
+            return tableViewCarousels.frame.size.height - 30
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -694,7 +701,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         // cần fix animation. tách thread
         if scrollView.tag == 1 || scrollView.tag == 2{
-            let newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height
+            
             
             //handle when scroll up
             if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
@@ -703,7 +710,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y < 0{
                             //move origin coordinates of main view to up
-                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - newPos)
+                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.newPos)
+                            //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height - 30
+                           //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height - self.newPos
+                            
                             self.setColorForMenuView()
                         }
 
@@ -737,7 +747,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                     UIView.animate(withDuration: 0.3, animations: {
                         if self.view.frame.origin.y >= 0{
                             //move origin coordinates of main view to 0
-                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + newPos)
+                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
+                             //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height + self.newPos
+                            
                         }
                     })
                     

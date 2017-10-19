@@ -19,6 +19,7 @@ class FoodTour: NSObject, Mappable {
     var highlight: String?
     var descriptionTour: String?
     var numReview: Int?
+    var numbook: Int?
     
     required convenience init?(map: Map) {
         self.init()
@@ -33,6 +34,7 @@ class FoodTour: NSObject, Mappable {
         highlight               <- map["highlight"]
         descriptionTour         <- map["description"]
         numReview               <- map["numReview"]
+        numbook                 <- map["numbook"]
     }
     
     

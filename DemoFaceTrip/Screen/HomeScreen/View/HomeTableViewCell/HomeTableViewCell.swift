@@ -76,308 +76,273 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         if let items = self.catagoryItems{
             switch self.type{
             case .hotelType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "room")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? Hotel{
-                        if let nameHotel = item.nameHotel{
-                            cell.name.text = nameHotel
+                        if let nameHotel = item.nameHotel, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(nameHotel)")
                         }
                         
                         if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                                cell.image.af_setImage(withURL: url!, completion: { [weak self] response in
-                                    //guard let strongSelf = self else {return}
+                                cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
+                        
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
                         
-                        if let price = item.price{
-                            // print(price)
-                            cell.price.text = "Price: " + "\(price)" + "$"
+                        if let numbooking = item.numBook{
+                            cell.lbl2.text = "\(numbooking) booked"
                         }
                         
-                        if let review = item.numPersonReview{
-                            cell.Review.text = "Review: " + "\(review)"
-                            //print(review)
+                        if let room = item.numRoom{
+                            cell.lbl3.text = "\(room) room"
                         }
                     }
                 }
                 break
             case .experienceType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numboking")
+                cell.img3.image = UIImage(named: "time")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? Experience{
-                        if let nameExp = item.experience{
-                            cell.name.text = nameExp
+                        if let nameExp = item.experience, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(nameExp)")
                         }
                         
                         if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
-                        }
-                        
-                        if let price = item.price{
-                            cell.price.text = "Price: " + "\(price)" + "$"
+                            cell.lbl1.text = place
                         }
                         
                         if let review = item.numPersonReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl2.text = "\(review) review"
+                        }
+                        
+                        if let time = item.time{
+                            cell.lbl3.text = time
                         }
                     }
                 }
                 break
             case .cityTourType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 for _ in 0..<4{
                     if let item = items[indexPath.row] as? CityTour{
-                        if let nameTour = item.tour{
-                            cell.name.text = nameTour
+                        if let nameTour = item.tour, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(nameTour)")
                         }
                         
                         if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
-                        
-                        if let price = item.price{
-                            cell.price.text = "Price: " + "\(price)" + "$"
+   
+                        if let numbooking = item.numbook{
+                            cell.lbl2.text = "\(numbooking) booked"
                         }
                         
                         if let review = item.numPersonReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl3.text = "\(review) review"
                         }
                     }
                 }
                 break
             case .foodTourType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? FoodTour{
-                        if let name = item.name{
-                            cell.name.text = name
+                        if let name = item.name, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(name)")
                         }
                         
                         if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
                         
-                        if let price = item.price{
-                            cell.price.text = "Price: " + "\(price)" + "$"
+                        if let numbooking = item.numbook{
+                            cell.lbl2.text = "\(numbooking) booked"
                         }
                         
                         if let review = item.numReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl3.text = "\(review) review"
                         }
                     }
                 }
                 break
             case .localGuideType:
+                cell.hidingView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numlike")
+                cell.img3.image = UIImage(named: "language")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? LocalGuide{
-                        if let nameGuide = item.nameGuide{
-                            cell.name.text = nameGuide
+                        if let nameGuide = item.nameGuide, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(nameGuide)")
                         }
                         
                         if let urlStr = item.avatar{
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
                         
-                        if let price = item.price{
-                            cell.price.text = "Price: " + "\(price)" + "$/Person"
-                        }
                         
                         if let numLike = item.numLike{
-                            cell.Review.text = "Like: " + "\(numLike)"
+                            cell.lbl2.text = "\(numLike)"
+                        }
+                        
+                        if let language = item.language{
+                            cell.lbl3.text = language
                         }
                     }
                 }
                 break
             case .attractionType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "opentime")
+                cell.img3.image = UIImage(named: "numbooking")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? Attraction{
-                        if let name = item.name{
-                            cell.name.text = name
+                        if let name = item.name, let country = item.country{
+                            cell.name.text = ("\(country) - \(name)")
                         }
                         
                         if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
-                        }
-                        
-                        if let country = item.country{
-                            cell.price.text = "country: " + "\(country)"
+                            cell.lbl1.text = place
                         }
                         
                         if let review = item.numReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl2.text = "\(review) review"
+                        }
+                        
+                        if let timeOpen = item.openTime{
+                            cell.lbl3.text = timeOpen
                         }
                     }
                 }
                 break
             case .travelAgencyType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? TravelAgency{
-                        if let name = item.name{
-                            cell.name.text = name
+                        if let name = item.name, let country = item.country{
+                            cell.name.text = ("\(country) - \(name)")
                         }
                         
                         if let urlStr = item.image{
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
                                 let dafautImg = UIImage(named: "default")
                                 cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
                         
-                        if let country = item.country{
-                            cell.price.text = "Country: " + "\(country)"
+                        if let numbook = item.numbook{
+                            cell.lbl2.text = ("\(numbook) booked")
                         }
-                        
                         if let review = item.numReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl3.text = "\(review) review"
                         }
                     }
                 }
                 break
             case .themParkType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "opentime")
+                cell.img3.image = UIImage(named: "numbooking")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? ThemeParks{
-                        if let name = item.name{
-                            cell.name.text = name
+                        if let name = item.name, let price = item.price{
+                            cell.name.text = ("$\(price)USD - \(name)")
                         }
                         
                         if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-                            //DispatchQueue.main.async {
                                 let url = URL(string: urlStr)
-                                //let dafautImg = UIImage(named: "default")
-                                //cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
                                     cell.image.image = image.squaredImageForHome
                                 })
                                 cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-                            //}
                         }
                         
                         if let place = item.place{
-                            cell.place.text = place
+                            cell.lbl1.text = place
                         }
                         
-                        if let price = item.price{
-                            cell.price.text = "Price: " + "\(price)" + "$"
+                        if let opentime = item.openTime{
+                            cell.lbl2.text = opentime
                         }
                         
                         if let review = item.numReview{
-                            cell.Review.text = "Review: " + "\(review)"
+                            cell.lbl3.text = "\(review) review"
                         }
                     }
                 }

@@ -19,6 +19,7 @@ class Experience: NSObject, Mappable {
     var numPersonReview: Int?
     var urlImg: String?
     var highlight: String?
+    var time: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -33,5 +34,6 @@ class Experience: NSObject, Mappable {
         numPersonReview     <- map["numPersonReview"]
         urlImg              <- map["url"]
         highlight           <- map["highlight"]
+        time                <- map["time"]
     }
 }

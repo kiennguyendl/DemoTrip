@@ -19,6 +19,7 @@ class ThemeParks: NSObject, Mappable {
     var descriptionThemePark: String?
     var numReview: Int?
     var highlight: String?
+    var openTime: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -33,6 +34,7 @@ class ThemeParks: NSObject, Mappable {
         descriptionThemePark    <- map["description"]
         numReview               <- map["numReview"]
         highlight               <- map["highlight"]
+        openTime                <- map["openTime"]
     }
 
 }

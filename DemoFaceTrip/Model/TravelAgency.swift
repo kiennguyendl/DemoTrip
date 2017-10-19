@@ -18,6 +18,7 @@ class TravelAgency: NSObject, Mappable {
     var descriptionAgency: String?
     var contact: String?
     var numReview: Int?
+    var numbook: Int?
     
     required convenience init?(map: Map) {
         self.init()
@@ -31,6 +32,7 @@ class TravelAgency: NSObject, Mappable {
         descriptionAgency   <- map["description"]
         contact             <- map["contact"]
         numReview           <- map["numReview"]
+        numbook             <- map["numbook"]
     }
     
     

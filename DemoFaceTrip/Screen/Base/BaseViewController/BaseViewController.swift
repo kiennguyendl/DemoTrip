@@ -22,11 +22,11 @@ class BaseViewController: UIViewController {
     }
     
     func initBackButton() {
-        navigationController?.navigationBar.barTintColor = color3
+        //navigationController?.navigationBar.barTintColor = color3
         
         navigationItem.hidesBackButton = true
-        let backBtn = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-        backBtn.setImage(UIImage(named: "backBtn")?.af_imageAspectScaled(toFit: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysOriginal), for: UIControlState())
+        let backBtn = UIButton.init(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        backBtn.setImage(UIImage(named: "backBtn")?.af_imageAspectScaled(toFit: CGSize(width: 20, height: 30)).withRenderingMode(.alwaysOriginal), for: UIControlState())
         backBtn.imageView?.contentMode = .scaleAspectFit
         backBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0)
         backBtn.addTarget(self, action: #selector(backToHome(sender:)), for: .touchUpInside)

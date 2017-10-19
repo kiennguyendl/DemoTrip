@@ -50,106 +50,140 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
         if let listDetail = listDetail{
             switch typeCatagory{
             case .attractionType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "opentime")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 if let item = listDetail[indexPath.row] as? Attraction{
-                    if let name = item.name{
-                        cell.name.text = name
+
+                    if let name = item.name, let country = item.country{
+                        cell.name.text = ("\(country) - \(name)")
                     }
                     
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
-                    }
-                    
-                    if let country = item.country{
-                        cell.price.text = "country: " + "\(country)"
+                        cell.lbl1.text = place
                     }
                     
                     if let review = item.numReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl2.text = "\(review) review"
                     }
+                    
+                    if let timeOpen = item.openTime{
+                        cell.lbl3.text = timeOpen
+                    }
+
                 }
                 break
             case .themParkType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "opentime")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 if let item = listDetail[indexPath.row] as? ThemeParks{
-                    if let name = item.name{
-                        cell.name.text = name
+                    
+                    if let name = item.name, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(name)")
                     }
                     
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let price = item.price{
-                        cell.price.text = "Price: " + "\(price)" + "$"
+                    if let opentime = item.openTime{
+                        cell.lbl2.text = opentime
                     }
                     
                     if let review = item.numReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl3.text = "\(review) review"
                     }
                 }
                 break
             case .foodTourType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 if let item = listDetail[indexPath.row] as? FoodTour{
-                    if let name = item.name{
-                        cell.name.text = name
+                    
+                    if let name = item.name, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(name)")
                     }
                     
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let price = item.price{
-                        cell.price.text = "Price: " + "\(price)" + "$"
+                    if let numbooking = item.numbook{
+                        cell.lbl2.text = "\(numbooking) booked"
                     }
                     
                     if let review = item.numReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl3.text = "\(review) review"
                     }
+                    
+                    
                 }
                 break
             case .cityTourType:
+                cell.displayView()
+                cell.img1.image = UIImage(named: "place")
+                cell.img2.image = UIImage(named: "numbooking")
+                cell.img3.image = UIImage(named: "numbooking")
+                
                 if let item = listDetail[indexPath.row] as? CityTour{
-                    if let nameTour = item.tour{
-                        cell.name.text = nameTour
+                    if let name = item.tour, let price = item.price{
+                        cell.name.text = ("$\(price)USD - \(name)")
                     }
                     
                     if let urlStr = item.urlImg{
                         let url = URL(string: urlStr)
-                        let dafautImg = UIImage(named: "default")
-                        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                        
+                        cell.image.af_setImage(withURL: url!, completion: { response in
+                            guard let image = response.result.value else{return}
+                            cell.image.image = image.squaredImageForHome
+                        })
+                        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
                     
                     if let place = item.place{
-                        cell.place.text = place
+                        cell.lbl1.text = place
                     }
                     
-                    if let price = item.price{
-                        cell.price.text = "Price: " + "\(price)" + "$"
+                    if let numbooking = item.numbook{
+                        cell.lbl2.text = "\(numbooking) booked"
                     }
                     
                     if let review = item.numPersonReview{
-                        cell.Review.text = "Review: " + "\(review)"
+                        cell.lbl3.text = "\(review) review"
                     }
                 }
                 break
