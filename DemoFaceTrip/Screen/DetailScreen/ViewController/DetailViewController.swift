@@ -24,6 +24,9 @@ class DetailViewController: BaseViewController {
     @IBOutlet weak var numReview: UILabel!
     @IBOutlet weak var bookingBtn: UIButton!
     
+    @IBOutlet weak var img1: UIImageView!
+    @IBOutlet weak var img2: UIImageView!
+
     var currentSection = -1
     
     var expandedCells = Set<Int>()
@@ -53,6 +56,9 @@ class DetailViewController: BaseViewController {
     func setImageForView() {
         switch type {
         case .attractionType:
+            
+            img1.image = #imageLiteral(resourceName: "place")
+            img2.image = #imageLiteral(resourceName: "numbooking")
             //if let imageView = imageView{
                 if let item = item as? Attraction{
                     if let urlStr = item.image{
@@ -63,16 +69,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let place = item.place{
-                        price.text = ("Place: \(place)")
+                        price.text = ("\(place)")
                     }
                     
                     if let reviewCount = item.numReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .cityTourType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? CityTour{
                     if let urlStr = item.urlImg{
                         let url = URL(string: urlStr)
@@ -82,16 +90,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numPersonReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .experienceType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Experience{
                     if let urlStr = item.urlImg{
                         let url = URL(string: urlStr)
@@ -101,16 +111,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numPersonReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .foodTourType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? FoodTour{
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
@@ -120,16 +132,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .hotelType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Hotel{
                     if let urlStr = item.urlImg{
                         let url = URL(string: urlStr)
@@ -139,16 +153,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numPersonReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .localGuideType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numlike")
                 if let item = item as? LocalGuide{
                     if let urlStr = item.avatar{
                         let url = URL(string: urlStr)
@@ -158,16 +174,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numLike{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) like")
                     }
                 }
             //}
         case .themParkType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "money")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? ThemeParks{
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
@@ -177,16 +195,18 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("Price: \(priceTour)$/person")
+                        price.text = ("\(priceTour)$/person")
                     }
                     
                     if let reviewCount = item.numReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
         case .travelAgencyType:
             //if let imageView = imageView{
+            img1.image = #imageLiteral(resourceName: "place")
+            img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? TravelAgency{
                     if let urlStr = item.image{
                         let url = URL(string: urlStr)
@@ -196,11 +216,11 @@ class DetailViewController: BaseViewController {
                     }
                     
                     if let priceTour = item.place{
-                        price.text = ("Place: \(priceTour)")
+                        price.text = ("\(priceTour)")
                     }
                     
                     if let reviewCount = item.numReview{
-                        numReview.text = ("Review: \(reviewCount)")
+                        numReview.text = ("\(reviewCount) review")
                     }
                 }
             //}
@@ -327,6 +347,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cell = tableView.cellForRow(at: indexPath)!
+        tableViewDetail.scrollToRow(at: indexPath, at: .middle, animated: true)
         let readMoreTextView = cell.contentView.viewWithTag(1) as! ReadMoreTextView
         readMoreTextView.shouldTrim = !readMoreTextView.shouldTrim
        
@@ -353,7 +374,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 40
     }
 
 }

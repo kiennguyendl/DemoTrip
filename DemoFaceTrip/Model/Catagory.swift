@@ -9,17 +9,6 @@
 import Foundation
 import ObjectMapper
 
-enum catagoryType{
-    case hotelType
-    case experienceType
-    case localGuideType
-    case travelAgencyType
-    case attractionType
-    case themParkType
-    case foodTourType
-    case cityTourType
-    case None
-}
 class Catagory: NSObject, Mappable {
     var typeCatagory: catagoryType = .None
     var type: String?

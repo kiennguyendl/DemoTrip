@@ -9,38 +9,24 @@
 import UIKit
 import AlamofireImage
 
-enum typeCatagoryForHome{
-    case ForYou
-    case Hotel
-    case Experience
-    case CityTour
-    case FoodTour
-    case LocalGuide
-    case TravelAgency
-    case Attraction
-}
 
-let color1: UIColor = UIColor(red: 226.0/255.0, green: 67.0/255.0, blue: 99.0/255.0, alpha: 1.0)
-let color2: UIColor = UIColor(red: 236.0/255.0, green: 111.0/255.0, blue: 115.0/255.0, alpha: 1.0)
-let color3: UIColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-let color4: UIColor = UIColor(red: 248.0/255.0, green: 229.0/255.0, blue: 213.0/255.0, alpha: 1.0)
 
 class HomeViewController: BaseViewController {
     @IBOutlet weak var viewMenu: UIView!
     @IBOutlet weak var childViewMenu: UIView!
     
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
-    @IBOutlet weak var collectionViewFriends: UICollectionView!
+    //@IBOutlet weak var collectionViewFriends: UICollectionView!
     //@IBOutlet weak var tableViewCarousels: UITableView!
     @IBOutlet weak var collectionViewDetail: UICollectionView!
     
-    @IBOutlet weak var viewIndicator: UIView!
-    @IBOutlet weak var indicator: UIView!
+    //@IBOutlet weak var viewIndicator: UIView!
+    //@IBOutlet weak var indicator: UIView!
     
     //@IBOutlet weak var viewContentTableViewCarousels: UIView!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
     
-    var tableViewCarousels: UITableView = UITableView(frame: CGRect.zero)
+    var tableViewCarousels: UITableView!
     
     var catagory: [Catagory] = []
     var menuCatagory1 = ["For You"]
@@ -68,12 +54,13 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         collectionViewDetail.isHidden = true
-        collectionViewDetail.superview?.bringSubview(toFront: tableViewCarousels)
+       
         
         initCollectionView()
         initTableView()
         restDataForHome()
         setColorForMenuView()
+        addSwipeForController()
         newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height
     }
     
@@ -115,11 +102,7 @@ class HomeViewController: BaseViewController {
         collectionViewCarousels.register(UINib.init(nibName: "CarouselsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCell")
         collectionViewCarousels.backgroundColor = color3
         collectionViewCarousels.showsHorizontalScrollIndicator = false
-        
-        collectionViewFriends.delegate = self
-        collectionViewFriends.dataSource = self
-        collectionViewFriends.register(UINib.init(nibName: "ListCatagoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CatagoryCell")
-        
+
         collectionViewDetail.delegate = self
         collectionViewDetail.dataSource = self
         collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
@@ -138,7 +121,6 @@ class HomeViewController: BaseViewController {
     //init and register cell for tableview
     func initTableView() {
         addContrailForTableView()
-        addSwipeForController()
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
         tableViewCarousels.register(UINib.init(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
@@ -146,6 +128,8 @@ class HomeViewController: BaseViewController {
         tableViewCarousels.showsVerticalScrollIndicator = false
         tableViewCarousels.isHidden = false
         tableViewCarousels.tag = 2
+        collectionViewDetail.superview?.bringSubview(toFront: tableViewCarousels)
+        tableViewCarousels.backgroundColor = UIColor.white
     }
 
     func addContrailForTableView() {
@@ -154,26 +138,19 @@ class HomeViewController: BaseViewController {
         tableViewCarousels = UITableView(frame: frame, style: .grouped)
         
         self.view.addSubview(tableViewCarousels)
-        //        let dict = ["view": tableViewCarousels]
-        //        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
-        //        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: dict)
-        //
-        //        self.view.addConstraints(horizontalConstraints)
-        //        self.view.addConstraints(verticalConstraints)
         
-        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewIndicator, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.collectionViewDetail, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0)
         let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-        //let height = self.view.frame.height - (self.viewMenu.frame.height + self.collectionViewFriends.frame.height + self.viewIndicator.frame.height)
         let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        //let heightContraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0)
         NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
         
         
         
         tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
         tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableViewCarousels.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 50, 0)
+        tableViewCarousels.separatorStyle = .none
+        tableViewCarousels.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     // add swipe
@@ -196,27 +173,33 @@ class HomeViewController: BaseViewController {
                 case .left:
                     let row = self.indexPathSelected.row
                     if row < 4{
-                        self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                        self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
-                        self.tableViewCarousels.isHidden = true
-                        self.collectionViewDetail.isHidden = false
-                        self.collectionViewDetail.reloadData()
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
+                            self.tableViewCarousels.isHidden = true
+                            self.collectionViewDetail.isHidden = false
+                            self.collectionViewDetail.reloadData()
+                        })
+                        
                     }
                     break
                 case .right:
                     let row = self.indexPathSelected.row
                     if row > 0{
-                        self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                        self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
-                        if row == 1{
-                            self.tableViewCarousels.isHidden = false
-                            self.collectionViewDetail.isHidden = true
-                            self.tableViewCarousels.reloadData()
-                        }else{
-                            self.tableViewCarousels.isHidden = true
-                            self.collectionViewDetail.isHidden = false
-                            self.collectionViewDetail.reloadData()
-                        }
+                        UIView.animate(withDuration: 0.8, animations: {
+                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
+                            if row == 1{
+                                self.tableViewCarousels.isHidden = false
+                                self.collectionViewDetail.isHidden = true
+                                self.tableViewCarousels.reloadData()
+                            }else{
+                                self.tableViewCarousels.isHidden = true
+                                self.collectionViewDetail.isHidden = false
+                                self.collectionViewDetail.reloadData()
+                            }
+                        })
+                        
                     }
                 default:
                     print("abc")
@@ -244,7 +227,7 @@ class HomeViewController: BaseViewController {
                     }
                     strongSelf.tableViewCarousels.reloadData()
                     strongSelf.collectionViewCarousels.reloadData()
-                    strongSelf.collectionViewFriends.reloadData()
+                    //strongSelf.collectionViewFriends.reloadData()
                     
                 }
                 print("success")
@@ -263,9 +246,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return menuCatagory1.count
             }
             return 0
-        }else if collectionView == self.collectionViewFriends{
-            return dataForMenu2.count
         }else{
+            
+//        } if collectionView == self.collectionViewFriends{
+//            return dataForMenu2.count
+//        }else{
             return dataForHome.count
         }
         //return 0
@@ -286,70 +271,70 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
             return cell
-            
-        }else if collectionView == self.collectionViewFriends{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatagoryCell", for: indexPath) as! ListCatagoryCollectionViewCell
-            //cell.nameCarousel.text = Carousels[indexPath.row]
-            cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
-            cell.viewBackGroud.layer.cornerRadius = cell.viewBackGroud.frame.width / 2
-            cell.avatar.clipsToBounds = true
-            cell.nameCatagory.text = dataForMenu2[indexPath.row].type
-            
-            let strURL = dataForMenu2[indexPath.row].avatar
-            let url = URL(string: strURL!)
-            cell.avatar.af_setImage(withURL: url!)
-            
-            switch dataForMenu2[indexPath.row].typeCatagory{
-                
-            case .attractionType:
-                var sumReview = 0
-                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [Attraction]{
-                    for index in 0 ..< catagoryItems.count{
-                        if let numReview = catagoryItems[index].numReview{
-                            sumReview = sumReview + numReview
-                        }
-                    }
-                }
-                cell.numberLbl.text = ("\(sumReview)+")
-                break
-            case .themParkType:
-                var sumReview = 0
-                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [ThemeParks]{
-                    for index in 0 ..< catagoryItems.count{
-                        if let numReview = catagoryItems[index].numReview{
-                            sumReview = sumReview + numReview
-                        }
-                    }
-                }
-                cell.numberLbl.text = ("\(sumReview)+")
-                break
-            case .cityTourType:
-                var sumReview = 0
-                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [CityTour]{
-                    for index in 0 ..< catagoryItems.count{
-                        if let numReview = catagoryItems[index].numPersonReview{
-                            sumReview = sumReview + numReview
-                        }
-                    }
-                }
-                cell.numberLbl.text = ("\(sumReview)+")
-                break
-            case .foodTourType:
-                var sumReview = 0
-                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [FoodTour]{
-                    for index in 0 ..< catagoryItems.count{
-                        if let numReview = catagoryItems[index].numReview{
-                            sumReview = sumReview + numReview
-                        }
-                    }
-                }
-                cell.numberLbl.text = ("\(sumReview)+")
-                break
-            default:
-                print("")
-            }
-            
-            return cell
+        
+//        }else if collectionView == self.collectionViewFriends{
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatagoryCell", for: indexPath) as! ListCatagoryCollectionViewCell
+//            //cell.nameCarousel.text = Carousels[indexPath.row]
+//            cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
+//            cell.viewBackGroud.layer.cornerRadius = cell.viewBackGroud.frame.width / 2
+//            cell.avatar.clipsToBounds = true
+//            cell.nameCatagory.text = dataForMenu2[indexPath.row].type
+//
+//            let strURL = dataForMenu2[indexPath.row].avatar
+//            let url = URL(string: strURL!)
+//            cell.avatar.af_setImage(withURL: url!)
+//
+//            switch dataForMenu2[indexPath.row].typeCatagory{
+//
+//            case .attractionType:
+//                var sumReview = 0
+//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [Attraction]{
+//                    for index in 0 ..< catagoryItems.count{
+//                        if let numReview = catagoryItems[index].numReview{
+//                            sumReview = sumReview + numReview
+//                        }
+//                    }
+//                }
+//                cell.numberLbl.text = ("\(sumReview)+")
+//                break
+//            case .themParkType:
+//                var sumReview = 0
+//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [ThemeParks]{
+//                    for index in 0 ..< catagoryItems.count{
+//                        if let numReview = catagoryItems[index].numReview{
+//                            sumReview = sumReview + numReview
+//                        }
+//                    }
+//                }
+//                cell.numberLbl.text = ("\(sumReview)+")
+//                break
+//            case .cityTourType:
+//                var sumReview = 0
+//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [CityTour]{
+//                    for index in 0 ..< catagoryItems.count{
+//                        if let numReview = catagoryItems[index].numPersonReview{
+//                            sumReview = sumReview + numReview
+//                        }
+//                    }
+//                }
+//                cell.numberLbl.text = ("\(sumReview)+")
+//                break
+//            case .foodTourType:
+//                var sumReview = 0
+//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [FoodTour]{
+//                    for index in 0 ..< catagoryItems.count{
+//                        if let numReview = catagoryItems[index].numReview{
+//                            sumReview = sumReview + numReview
+//                        }
+//                    }
+//                }
+//                cell.numberLbl.text = ("\(sumReview)+")
+//                break
+//            default:
+//                print("")
+//            }
+//
+//            return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
             switch type{
@@ -516,11 +501,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             
             return CGSize(width: width, height: height)
-        }else if collectionView == self.collectionViewFriends{
-            let width = collectionViewFriends.frame.width / 4
-            let height = collectionViewFriends.frame.height
-            
-            return CGSize(width: width, height: height)
+//        }else if collectionView == self.collectionViewFriends{
+//            let width = collectionViewFriends.frame.width / 4
+//            let height = collectionViewFriends.frame.height
+//
+//            return CGSize(width: width, height: height)
         }else{
             let width = collectionViewDetail.frame.width / 2 - 10
             return CGSize(width: width, height: width * 1.5)
@@ -528,12 +513,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.collectionViewFriends{
-            let vc = ListDetailCatagoryViewController()
-            vc.typeCatagory = dataForMenu2[indexPath.row].typeCatagory
-            vc.listDetail = dataForMenu2[indexPath.row].catagoryItems
-            navigationController?.pushViewController(vc, animated: true)
-        }
+//        if collectionView == self.collectionViewFriends{
+//            let vc = ListDetailCatagoryViewController()
+//            vc.typeCatagory = dataForMenu2[indexPath.row].typeCatagory
+//            vc.listDetail = dataForMenu2[indexPath.row].catagoryItems
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
         if collectionView == self.collectionViewCarousels{
             
             if !indexPathSelected.isEmpty{
@@ -604,54 +589,69 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //// TableView
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return catagory.count
+        return catagory.count + 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return 0
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
-        
-        cell.delegate = self
-        let currentSection = indexPath.section
-        cell.collectionViewForCell.tag = currentSection
-        cell.currentSection = currentSection
-        cell.catagoryItems = catagory[currentSection].catagoryItems
-        switch catagory[currentSection].typeCatagory {
-        case .hotelType:
-            cell.type = .hotelType
-        case .experienceType:
-            cell.type = .experienceType
-        case .localGuideType:
-            cell.type = .localGuideType
-        case .attractionType:
-            cell.type = .attractionType
-        case .themParkType:
-            cell.type = .themParkType
-        case .cityTourType:
-            cell.type = .cityTourType
-        case .foodTourType:
-            cell.type = .foodTourType
-        case .travelAgencyType:
-            cell.type = .travelAgencyType
-        default:
-            cell.type = .None
+        if indexPath.section != 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
+
+            cell.delegate = self
+            let currentSection = indexPath.section - 1
+            cell.collectionViewForCell.tag = currentSection
+            cell.currentSection = currentSection
+            cell.catagoryItems = catagory[currentSection].catagoryItems
+            switch catagory[currentSection].typeCatagory {
+            case .hotelType:
+                cell.type = .hotelType
+            case .experienceType:
+                cell.type = .experienceType
+            case .localGuideType:
+                cell.type = .localGuideType
+            case .attractionType:
+                cell.type = .attractionType
+            case .themParkType:
+                cell.type = .themParkType
+            case .cityTourType:
+                cell.type = .cityTourType
+            case .foodTourType:
+                cell.type = .foodTourType
+            case .travelAgencyType:
+                cell.type = .travelAgencyType
+            default:
+                cell.type = .None
+            }
+            return cell
         }
-        return cell
+        return UITableViewCell(style: .default, reuseIdentifier: "HomeTableCell")
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
+//
+//            return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //let height = self.view.frame.height / 2.7
+        if indexPath.section == 0{
+            return 0
+        }
         if isScaleMenuView{
             return tableViewCarousels.frame.size.height - (newPos + 30)
         }else{
             return tableViewCarousels.frame.size.height - 30
         }
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        if section == 0{
+            return 140
+        }else{
+            return 50
+        }
     }
     @objc func showAllItem(sender: UIButton) {
         let section = sender.tag
@@ -687,14 +687,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //add custome view for header
-        let view = HeaderView()
-        view.backgroundColor = UIColor.white
-        view.nameOfCarousel.text = catagory[section].type
-        view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
-        view.seeAllBtn.tag = section
-        view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
+        if section == 0{
+            let view = HeaderZeroView()
+            view.dataForMenu2 = dataForMenu2
+            view.delegate = self
+            return view
+        }else{
+            let view = HeaderView()
+            view.backgroundColor = UIColor.clear
+            view.nameOfCarousel.text = catagory[section - 1].type
+            view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+            view.seeAllBtn.tag = section
+            view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
         return view
-        
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -821,6 +827,16 @@ extension HomeViewController: HomeCellDelegate{
             }
         }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+
+extension HomeViewController: HeaderZeroProtocol{
+    func didPressOnCellHeaderZero(index: Int, type: catagoryType) {
+        let vc = ListDetailCatagoryViewController()
+        vc.typeCatagory = type
+        vc.listDetail = dataForMenu2[index].catagoryItems
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
