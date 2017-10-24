@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="leadingViewOfHeaderView" destination="KNL-nj-zcs" id="a7W-a4-Fj6"/>
                 <outlet property="nameOfCarousel" destination="iDc-p1-drK" id="jX8-V6-GX3"/>
                 <outlet property="seeAllBtn" destination="6Ic-Ov-STR" id="u4e-cL-cUa"/>
                 <outlet property="targetView" destination="jrC-we-n50" id="Q17-ce-1BI"/>
@@ -44,15 +45,15 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-p1-drK">
-                    <rect key="frame" x="20" y="5" width="250" height="49"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <rect key="frame" x="18" y="5" width="49.5" height="49"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
-                    <rect key="frame" x="0.0" y="17" width="10" height="24.5"/>
+                    <rect key="frame" x="0.0" y="17" width="8" height="24.5"/>
                     <color key="backgroundColor" red="0.16862745098039217" green="0.98431372549019602" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="10" id="Bxz-3N-LZn"/>
+                        <constraint firstAttribute="width" constant="8" id="Bxz-3N-LZn"/>
                     </constraints>
                 </view>
             </subviews>
@@ -64,7 +65,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Ic-Ov-STR" secondAttribute="bottom" constant="5" id="RL9-mA-3Ho"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Ic-Ov-STR" secondAttribute="trailing" constant="5" id="YVz-7D-v35"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="bKL-Vy-JUY"/>
-                <constraint firstItem="6Ic-Ov-STR" firstAttribute="leading" secondItem="iDc-p1-drK" secondAttribute="trailing" constant="20" id="dBS-TS-Pdn"/>
                 <constraint firstItem="jrC-we-n50" firstAttribute="height" secondItem="iDc-p1-drK" secondAttribute="height" multiplier="1/2" id="dU0-TN-8wr"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="leading" secondItem="jrC-we-n50" secondAttribute="trailing" constant="10" id="hDv-HQ-QZU"/>
                 <constraint firstItem="6Ic-Ov-STR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="hjX-yh-yvD"/>

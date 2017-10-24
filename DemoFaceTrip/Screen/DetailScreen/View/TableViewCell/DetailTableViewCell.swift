@@ -13,6 +13,7 @@ class DetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textView: ReadMoreTextView!
     
+    @IBOutlet weak var subView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,7 +39,7 @@ class DetailTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        textView.text = ""
         textView.onSizeChange = { _ in }
         textView.shouldTrim = true
     }

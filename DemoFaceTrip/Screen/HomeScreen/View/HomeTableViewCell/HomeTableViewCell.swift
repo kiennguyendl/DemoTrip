@@ -24,16 +24,14 @@ class HomeTableViewCell: UITableViewCell {
             collectionViewForCell.reloadData()
         }
     }
-    
-    var cache:NSCache<AnyObject, AnyObject>!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         collectionViewForCell.dataSource = self
         collectionViewForCell.delegate = self
-        collectionViewForCell.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
+        collectionViewForCell.register(UINib.init(nibName: "NewHomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewHomeCollectionCell")
         collectionViewForCell.showsHorizontalScrollIndicator = false
-        cache = NSCache()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,21 +59,7 @@ class HomeTableViewCell: UITableViewCell {
     //        }
     //    }
     
-    func cropImage(image:UIImage)-> UIImage {
-//        print("key: >>>>>>>>>>>>>>>\(key)")
-//        if self.cache.object(forKey: key as AnyObject) != nil{
-//            return self.cache.object(forKey: key as AnyObject) as! UIImage
-//        }else{
-            var centerPoint: CGPoint{
-                return CGPoint(x: image.size.width / 2, y: image.size.height / 2)
-            }
-            
-            guard let cgImage = image.cgImage?.cropping(to: CGRect(origin: CGPoint(x: centerPoint.x , y: centerPoint.y), size: CGSize(width: image.size.width * 2, height: image.size.height * 2))) else {return image}
-            let img = UIImage(cgImage: cgImage)
-            //self.cache.setObject(img, forKey: key as AnyObject)
-            return img
-        //}
-    }
+    
 }
 
 extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -91,7 +75,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCollectionViewCell
 //
 //        return cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath) as! NewHomeCollectionViewCell
         
         if let items = self.catagoryItems{
             switch self.type{
@@ -111,9 +95,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                             }
@@ -136,7 +119,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             case .experienceType:
                 cell.displayView()
                 cell.img1.image = UIImage(named: "place")
-                cell.img2.image = UIImage(named: "numboking")
+                cell.img2.image = UIImage(named: "numbooking")
                 cell.img3.image = UIImage(named: "time")
                 for _ in 0..<4 {
                     if let item = items[indexPath.row] as? Experience{
@@ -149,7 +132,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
@@ -188,9 +171,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                             }
@@ -226,9 +208,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                             }
@@ -264,9 +245,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                             
@@ -305,9 +285,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
 //                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                                 
@@ -345,7 +324,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 let dafautImg = UIImage(named: "default")
                                 cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-                                //cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                             }
                         }
                             
@@ -379,10 +358,9 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                                 let url = URL(string: urlStr)
                                 cell.image.af_setImage(withURL: url!, completion: { response in
                                     guard let image = response.result.value else{return}
-                                    let img = self.cropImage(image: image)
+                                    let img = image.cropImage(image: image)
                                     cell.image.image = img
-//                                    cell.image.image = image.squaredImageForHome
-                                    //cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+//                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                                 })
                             }
                             
@@ -411,7 +389,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let witdh = collectionViewForCell.frame.width / 1.3
+        let witdh = collectionViewForCell.frame.width / 1.7
         let height = self.frame.height
         return CGSize(width: witdh, height: height )
     }

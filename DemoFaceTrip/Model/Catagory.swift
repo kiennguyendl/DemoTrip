@@ -55,7 +55,7 @@ class Catagory: NSObject, Mappable {
                     }
                 }
                 break
-            case "City Tour":
+            case "City Tours":
                 //get city tours
                 typeCatagory = .cityTourType
                 var _cityTours: [[String: AnyObject]]?
@@ -70,7 +70,7 @@ class Catagory: NSObject, Mappable {
                     }
                 }
                 break
-            case "Food Tour":
+            case "Food Tours":
                 //get food tours
                 typeCatagory = .foodTourType
                 var _foodTours: [[String: AnyObject]]?
@@ -100,7 +100,7 @@ class Catagory: NSObject, Mappable {
                     }
                 }
                 break
-            case "Attraction":
+            case "Attractions":
                 
                 // get attractions
                 typeCatagory = .attractionType

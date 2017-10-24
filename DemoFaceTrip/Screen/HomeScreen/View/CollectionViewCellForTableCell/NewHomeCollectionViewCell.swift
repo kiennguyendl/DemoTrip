@@ -1,14 +1,14 @@
 //
-//  HomeCollectionViewCell.swift
+//  NewHomeCollectionViewCell.swift
 //  DemoFaceTrip
 //
-//  Created by Kiên Nguyễn on 10/5/17.
+//  Created by Kiên Nguyễn on 10/23/17.
 //  Copyright © 2017 Kien Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class NewHomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var viewContents: UIView!
     //@IBOutlet weak var SuperView: UIView!
@@ -28,8 +28,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var img1: UIImageView!
     @IBOutlet weak var img2: UIImageView!
     @IBOutlet weak var img3: UIImageView!
-    
-    @IBOutlet weak var heightOfNameLbl: NSLayoutConstraint!
     var isViewHiden = false
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,15 +38,16 @@ class HomeCollectionViewCell: UICollectionViewCell {
         lbl2.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         lbl3.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        self.backgroundColor = UIColor.clear
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.cornerRadius = self.frame.width / 70
+        self.viewContents.backgroundColor = UIColor.clear
+        self.viewContents.layer.borderWidth = 0.5
+        self.viewContents.layer.borderColor = UIColor.gray.cgColor
+        self.viewContents.layer.cornerRadius = self.frame.width / 70
+        self.viewContents.dropShadow(color: UIColor.white, opacity: 0.4, offSet: CGSize(width: 2, height: 1), radius: 10, scale: true)
         //self.dropShadow(color: UIColor.white, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 1, scale: true)
         
         imageViewYellow.image = UIImage(named: "yellow")?.af_imageAspectScaled(toFit: CGSize(width: imageViewYellow.frame.width + 10, height: imageViewYellow.frame.height + 10)).withRenderingMode(.alwaysOriginal)
     }
-
+    
     func hidingView() {
         imageViewYellow.isHidden = true
         persenLbl.isHidden = true
@@ -62,4 +61,5 @@ class HomeCollectionViewCell: UICollectionViewCell {
         todayLbl.isHidden = false
         decriptionLbl.isHidden = false
     }
+
 }

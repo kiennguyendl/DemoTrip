@@ -76,5 +76,19 @@ extension UIImage{
 
     }
     
+    func cropImage(image:UIImage)-> UIImage {
+        let width = image.size.width
+        let height = image.size.height
+        
+        var centerPoint: CGPoint{
+            return CGPoint(x: width / 2, y: height / 2)
+        }
+        guard let cgImage = image.cgImage?.cropping(to: CGRect(origin: CGPoint(x: centerPoint.x , y: centerPoint.y), size: CGSize(width: image.size.width * 2, height: image.size.height * 2))) else {return image}
+        
+        let img = UIImage(cgImage: cgImage)
+        return img
+
+        
+    }
     
 }

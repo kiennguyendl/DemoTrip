@@ -94,6 +94,8 @@ class HomeViewController: BaseViewController {
         super.viewDidLayoutSubviews()
         
         gradientLayer.frame = self.viewMenu.bounds
+        //setColorForMenuView()
+        //collectionViewCarousels.backgroundColor = color3
     }
     /// init and register cell for collection view
     func initCollectionView() {
@@ -377,7 +379,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case .Experience:
                 cell.displayView()
                 cell.img1.image = UIImage(named: "place")
-                cell.img2.image = UIImage(named: "numboking")
+                cell.img2.image = UIImage(named: "numbooking")
                 cell.img3.image = UIImage(named: "time")
                 if let item = self.dataForHome[indexPath.row] as? Experience{
                     if let nameExp = item.experience, let price = item.price{
@@ -640,9 +642,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             return 0
         }
         if isScaleMenuView{
-            return tableViewCarousels.frame.size.height - (newPos + 30)
+            return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
         }else{
-            return tableViewCarousels.frame.size.height - 30
+            return (tableViewCarousels.frame.size.height * 4) / 8 + 20
         }
     }
     
@@ -796,6 +798,7 @@ extension HomeViewController: HomeCellDelegate{
     func didPressCell(currentSection: Int, index: Int, type: catagoryType) {
         let vc = DetailViewController()
         vc.type = type
+        //self.setColorForMenuView()
         if let items = catagory[currentSection].catagoryItems   {
             switch type {
             case .attractionType:

@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,23 +21,23 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-51-4X6">
-                        <rect key="frame" x="76.5" y="32.5" width="60" height="60"/>
+                        <rect key="frame" x="76.5" y="37" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="1ht-wW-8bA"/>
                             <constraint firstAttribute="width" constant="60" id="rqF-a1-4zT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-5G-i20">
-                        <rect key="frame" x="46.5" y="102.5" width="120" height="20"/>
+                        <rect key="frame" x="91" y="107" width="31.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="k2c-nM-fLd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <color key="textColor" red="0.54631979695431476" green="0.54631979695431476" blue="0.54631979695431476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
-                        <rect key="frame" x="76.5" y="32.5" width="60" height="60"/>
+                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
+                        <rect key="frame" x="76.5" y="37" width="60" height="60"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="X3B-lC-pnK"/>
@@ -45,7 +45,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDM-9e-bgO">
-                        <rect key="frame" x="76.5" y="52.5" width="60" height="20"/>
+                        <rect key="frame" x="76.5" y="57" width="60" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Q7b-am-VL3"/>
                         </constraints>
@@ -56,18 +56,17 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Fam-5G-i20" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" multiplier="2" id="2P8-Yn-Exd"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ChP-4k-w5g"/>
+                <constraint firstItem="Fam-5G-i20" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ENW-i2-vsP"/>
                 <constraint firstItem="fDM-9e-bgO" firstAttribute="centerX" secondItem="CRC-LO-hnP" secondAttribute="centerX" id="Fyg-aO-wgK"/>
                 <constraint firstItem="fDM-9e-bgO" firstAttribute="centerY" secondItem="CRC-LO-hnP" secondAttribute="centerY" id="Keo-Mh-ypo"/>
                 <constraint firstItem="CRC-LO-hnP" firstAttribute="height" secondItem="J9F-51-4X6" secondAttribute="height" id="Kv3-MR-UT9"/>
-                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="3/4" id="OS1-jC-ica"/>
-                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Wvi-CF-4S7"/>
-                <constraint firstItem="J9F-51-4X6" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="aUc-GM-mDm"/>
-                <constraint firstItem="Fam-5G-i20" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="cmY-z8-ajE"/>
+                <constraint firstItem="J9F-51-4X6" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Mf6-aR-WXr"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="4/5" id="OS1-jC-ica"/>
                 <constraint firstItem="fDM-9e-bgO" firstAttribute="width" secondItem="CRC-LO-hnP" secondAttribute="width" id="css-ud-ff7"/>
                 <constraint firstItem="CRC-LO-hnP" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" id="fod-gY-ngC"/>
                 <constraint firstItem="Fam-5G-i20" firstAttribute="top" secondItem="J9F-51-4X6" secondAttribute="bottom" constant="10" id="ohh-m3-pEz"/>
-                <constraint firstItem="J9F-51-4X6" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="3/4" id="qfj-Lc-tgO"/>
+                <constraint firstItem="J9F-51-4X6" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="4/5" id="qfj-Lc-tgO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="213" height="167"/>

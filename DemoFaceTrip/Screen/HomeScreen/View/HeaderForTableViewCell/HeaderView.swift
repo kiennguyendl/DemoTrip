@@ -13,6 +13,7 @@ class HeaderView: BaseView{
     @IBOutlet weak var targetView: UIView!
     @IBOutlet weak var nameOfCarousel: UILabel!
     @IBOutlet weak var seeAllBtn: UIButton!
+    @IBOutlet weak var leadingViewOfHeaderView: NSLayoutConstraint!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
