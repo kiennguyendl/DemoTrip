@@ -9,21 +9,20 @@
 import UIKit
 import AlamofireImage
 
-
-
 class HomeViewController: BaseViewController {
     @IBOutlet weak var viewMenu: UIView!
     @IBOutlet weak var childViewMenu: UIView!
+    @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var inputTextSearchTf: UITextField!
+    @IBOutlet weak var bottomViewLineMenu: UIView!
+    @IBOutlet weak var heightOfViewBottomLineMenu: NSLayoutConstraint!
+    
+    
     
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
-    //@IBOutlet weak var collectionViewFriends: UICollectionView!
-    //@IBOutlet weak var tableViewCarousels: UITableView!
     @IBOutlet weak var collectionViewDetail: UICollectionView!
     
-    //@IBOutlet weak var viewIndicator: UIView!
-    //@IBOutlet weak var indicator: UIView!
-    
-    //@IBOutlet weak var viewContentTableViewCarousels: UIView!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
     
     var tableViewCarousels: UITableView!
@@ -35,8 +34,7 @@ class HomeViewController: BaseViewController {
     var dataForMenu2: [Catagory] = []
     var dataForHome: [AnyObject] = []
     var type: typeCatagoryForHome = .ForYou
-    var indexPathSelected: IndexPath = []
-    var isScaleMenuView = false
+    var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
     
     let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -53,50 +51,55 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setRedColorForStatusBar()
         collectionViewDetail.isHidden = true
-       
-        
+        self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
         initTableView()
         restDataForHome()
         setColorForMenuView()
         addSwipeForController()
-        newPos = self.viewMenu.frame.height - collectionViewCarousels.frame.height
+        newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        navigationController?.isNavigationBarHidden = false
-//        tabBarController?.tabBar.isHidden = false
-//        
-//
-//    }
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        navigationController?.isNavigationBarHidden = true
-//        tabBarController?.tabBar.isHidden = true
-//    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tableViewCarousels.contentOffset = CGPoint(x: 0, y: 0)
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = false
+        
+        
+        if Settings.isScaleMenuView!{
+            
+            //hidenSubMenu()
+            setWhiteColorForStatusBar()
+            self.viewMenu.frame.origin.y = self.viewMenu.frame.origin.y - newPos
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
+            //self.viewMenu.backgroundColor = UIColor.blue
+        }else{
+            showSubMenu()
+            collectionViewCarousels.backgroundColor = color3
+            collectionViewCarousels.reloadData()
+        }
+        tableViewCarousels.isScrollEnabled = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setWhiteColorForStatusBar()
         navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = false
-        
+
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         gradientLayer.frame = self.viewMenu.bounds
-        //setColorForMenuView()
-        //collectionViewCarousels.backgroundColor = color3
+        
     }
+    
     /// init and register cell for collection view
     func initCollectionView() {
         collectionViewCarousels.delegate = self
@@ -113,11 +116,35 @@ class HomeViewController: BaseViewController {
         
     }
     
-    func setColorForMenuView() {
-        self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
-        gradientLayer.frame = self.viewMenu.bounds
+    func showSubMenu() {
+        childViewMenu.isHidden = false
+        menuBtn.isHidden = false
+        searchBtn.isHidden = false
+        inputTextSearchTf.isHidden = false
+        setColorForMenuView()
         self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
-        self.childViewMenu.layer.cornerRadius = self.childViewMenu.frame.width / 97
+        self.heightOfViewBottomLineMenu.constant = 0
+    }
+    
+    func hidenSubMenu() {
+        childViewMenu.isHidden = true
+        menuBtn.isHidden = true
+        searchBtn.isHidden = true
+        inputTextSearchTf.isHidden = true
+        self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+        self.heightOfViewBottomLineMenu.constant = 1
+        
+    }
+    
+    func setColorForMenuView() {
+        if Settings.isScaleMenuView!{
+            print("abc")
+        }else{
+            self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
+            gradientLayer.frame = self.viewMenu.bounds
+            self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+            self.childViewMenu.layer.cornerRadius = self.childViewMenu.frame.width / 97
+        }
     }
     
     //init and register cell for tableview
@@ -168,8 +195,7 @@ class HomeViewController: BaseViewController {
     
     @objc func handleSwipeAction(gesture: UIGestureRecognizer) {
         UIView.animate(withDuration: 0.5, animations: {
-//            self.collectionViewCarousels.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-//            self.collectionView(collectionViewCarousels, didSelectItemAt: IndexPath(row: index + 1, section: 0))
+            
             if let swipeGesture = gesture as? UISwipeGestureRecognizer{
                 switch swipeGesture.direction{
                 case .left:
@@ -262,81 +288,31 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.collectionViewCarousels{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath) as! CarouselsCollectionViewCell
             cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-            if indexPath.item == 0{
-                cell.viewColor.backgroundColor = UIColor.white
-                cell.nameCarousel.textColor = UIColor.white
-                indexPathSelected = indexPath
+            if Settings.isScaleMenuView!{
+                
+                if self.indexPathSelected == indexPath{
+                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                }else{
+                    cell.viewColor.backgroundColor = UIColor.white
+                    cell.nameCarousel.textColor = UIColor.gray
+                }
+                cell.backgroundColor = UIColor.white
             }else{
-                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                cell.nameCarousel.textColor = color4
+                if indexPath == indexPathSelected{
+                    cell.viewColor.backgroundColor = UIColor.white
+                    cell.nameCarousel.textColor = UIColor.white
+                    self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+                }else{
+                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    cell.nameCarousel.textColor = color4
+                }
+                cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
             }
-            
+
             cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
             return cell
-        
-//        }else if collectionView == self.collectionViewFriends{
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatagoryCell", for: indexPath) as! ListCatagoryCollectionViewCell
-//            //cell.nameCarousel.text = Carousels[indexPath.row]
-//            cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
-//            cell.viewBackGroud.layer.cornerRadius = cell.viewBackGroud.frame.width / 2
-//            cell.avatar.clipsToBounds = true
-//            cell.nameCatagory.text = dataForMenu2[indexPath.row].type
-//
-//            let strURL = dataForMenu2[indexPath.row].avatar
-//            let url = URL(string: strURL!)
-//            cell.avatar.af_setImage(withURL: url!)
-//
-//            switch dataForMenu2[indexPath.row].typeCatagory{
-//
-//            case .attractionType:
-//                var sumReview = 0
-//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [Attraction]{
-//                    for index in 0 ..< catagoryItems.count{
-//                        if let numReview = catagoryItems[index].numReview{
-//                            sumReview = sumReview + numReview
-//                        }
-//                    }
-//                }
-//                cell.numberLbl.text = ("\(sumReview)+")
-//                break
-//            case .themParkType:
-//                var sumReview = 0
-//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [ThemeParks]{
-//                    for index in 0 ..< catagoryItems.count{
-//                        if let numReview = catagoryItems[index].numReview{
-//                            sumReview = sumReview + numReview
-//                        }
-//                    }
-//                }
-//                cell.numberLbl.text = ("\(sumReview)+")
-//                break
-//            case .cityTourType:
-//                var sumReview = 0
-//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [CityTour]{
-//                    for index in 0 ..< catagoryItems.count{
-//                        if let numReview = catagoryItems[index].numPersonReview{
-//                            sumReview = sumReview + numReview
-//                        }
-//                    }
-//                }
-//                cell.numberLbl.text = ("\(sumReview)+")
-//                break
-//            case .foodTourType:
-//                var sumReview = 0
-//                if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [FoodTour]{
-//                    for index in 0 ..< catagoryItems.count{
-//                        if let numReview = catagoryItems[index].numReview{
-//                            sumReview = sumReview + numReview
-//                        }
-//                    }
-//                }
-//                cell.numberLbl.text = ("\(sumReview)+")
-//                break
-//            default:
-//                print("")
-//            }
-//
-//            return cell
+            
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
             switch type{
@@ -513,36 +489,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(width: width, height: width * 1.5)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if collectionView == self.collectionViewFriends{
-//            let vc = ListDetailCatagoryViewController()
-//            vc.typeCatagory = dataForMenu2[indexPath.row].typeCatagory
-//            vc.listDetail = dataForMenu2[indexPath.row].catagoryItems
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
+
         if collectionView == self.collectionViewCarousels{
             
-            if !indexPathSelected.isEmpty{
-                let oldCell = collectionView.cellForItem(at: indexPathSelected) as! CarouselsCollectionViewCell
-                if self.isScaleMenuView{
-                    oldCell.viewColor.backgroundColor = UIColor.white
-                    oldCell.nameCarousel.textColor = UIColor.gray
-                }else{
-                    oldCell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                    oldCell.nameCarousel.textColor = color4
-                }
-                indexPathSelected = []
-            }
-            
-            let newCell = collectionView.cellForItem(at: indexPath) as! CarouselsCollectionViewCell
-            if self.isScaleMenuView{
-                newCell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                newCell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-            }else{
-                newCell.viewColor.backgroundColor = UIColor.white
-                newCell.nameCarousel.textColor = UIColor.white
-            }
+            indexPathSelected = []
             indexPathSelected = indexPath
             tableViewCarousels.isHidden = true
             collectionViewDetail.isHidden = false
@@ -563,6 +515,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                         print("abc")
                     }
                 }
+                collectionViewCarousels.reloadData()
+                collectionViewCarousels.scrollToItem(at: indexPathSelected, at: .centeredHorizontally, animated: true)
                 collectionViewDetail.reloadData()
                 collectionViewDetail.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredVertically, animated: true)
             }else{
@@ -570,9 +524,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 tableViewCarousels.isHidden = false
                 collectionViewDetail.isHidden = true
                 type = .ForYou
+                collectionViewCarousels.reloadData()
+                collectionViewCarousels.scrollToItem(at: indexPathSelected, at: .centeredHorizontally, animated: true)
                 tableViewCarousels.reloadData()
             }
             collectionViewCarousels.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            
         }else if collectionView == collectionViewDetail{
             
             let vc = DetailViewController()
@@ -641,7 +598,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.section == 0{
             return 0
         }
-        if isScaleMenuView{
+        if Settings.isScaleMenuView!{
             return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
         }else{
             return (tableViewCarousels.frame.size.height * 4) / 8 + 20
@@ -704,7 +661,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         return view
         }
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // cần fix animation. tách thread
@@ -715,70 +672,48 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
                 //print("move down")
                 DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.3, animations: {
+                    UIView.animate(withDuration: 0.2, animations: {
                         if self.view.frame.origin.y < 0{
                             //move origin coordinates of main view to up
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.newPos)
-                            //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height - 30
-                           //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height - self.newPos
                             
-                            self.setColorForMenuView()
+                            Settings.isScaleMenuView = false
+                            print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
                         }
 
                     })
+                    self.setColorForMenuView()
+                    self.collectionViewCarousels.reloadData()
                     
+                    self.setRedColorForStatusBar()
+                    self.showSubMenu()
                     //change color when scroll up
                     self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                     self.collectionViewCarousels.backgroundColor = color3
-                    for index in 0..<self.menuCatagory1.count {
-                        let indexPath = IndexPath(item: index, section: 0)
-                        if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
-                            if self.indexPathSelected == indexPath{
-                                cell.viewColor.backgroundColor = UIColor.white
-                                cell.nameCarousel.textColor = UIColor.white
-                            }else{
-                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                cell.nameCarousel.textColor = color4
-                                
-                            }
-                            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                        }
-                        
-                    }
-                    self.isScaleMenuView = false
+                    
+                    
                 }
                 
-            }else{
+            }else if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0{
                 //handle when scroll down
                 ///print("move up")
                 DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.3, animations: {
+                    UIView.animate(withDuration: 0.2, animations: {
                         if self.view.frame.origin.y >= 0{
+                            self.setWhiteColorForStatusBar()
                             //move origin coordinates of main view to 0
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
-                             //self.tableViewCarousels.frame.size.height = self.tableViewCarousels.frame.size.height + self.newPos
-                            
+                            Settings.isScaleMenuView = true
+                            print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
                         }
                     })
+                    self.collectionViewCarousels.reloadData()
                     
+                    self.hidenSubMenu()
                     //change color when scroll down
                     self.viewMenu.backgroundColor = UIColor.white
                     self.collectionViewCarousels.backgroundColor = UIColor.white
-                    for index in 0..<self.menuCatagory1.count {
-                        let indexPath = IndexPath(item: index, section: 0)
-                        if let cell = self.collectionViewCarousels.cellForItem(at: indexPath) as? CarouselsCollectionViewCell{
-                            if self.indexPathSelected == indexPath{
-                                cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                                cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                            }else{
-                                cell.viewColor.backgroundColor = UIColor.white
-                                cell.nameCarousel.textColor = UIColor.gray
-                            }
-                            cell.backgroundColor = UIColor.white
-                        }
-                        
-                        
-                    }
+
                     if let view = self.viewMenu{
                         for layer in view.layer.sublayers!{
                             if layer == self.gradientLayer{
@@ -786,12 +721,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                             }
                         }
                     }
-                    self.isScaleMenuView = true
+                   
                 }
                 
+//            }else{
+//                if Settings.isScaleMenuView!{
+//                     //self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
+//                }
             }
         }
     }
+
 }
 
 extension HomeViewController: HomeCellDelegate{
@@ -829,6 +769,9 @@ extension HomeViewController: HomeCellDelegate{
                 print("")
             }
         }
+        self.setWhiteColorForStatusBar()
+        //Settings.isScaleMenuView = false
+        self.tableViewCarousels.isScrollEnabled = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

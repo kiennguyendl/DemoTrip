@@ -39,11 +39,20 @@ class NewHomeCollectionViewCell: UICollectionViewCell {
         lbl3.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         self.viewContents.backgroundColor = UIColor.clear
-        self.viewContents.layer.borderWidth = 0.5
-        self.viewContents.layer.borderColor = UIColor.gray.cgColor
-        self.viewContents.layer.cornerRadius = self.frame.width / 70
-        self.viewContents.dropShadow(color: UIColor.white, opacity: 0.4, offSet: CGSize(width: 2, height: 1), radius: 10, scale: true)
+        self.viewContents.layer.borderWidth = 0.20
+        self.viewContents.layer.borderColor = UIColor.lightGray.cgColor
+        self.viewContents.layer.cornerRadius = self.frame.width / 60
+        
+        self.viewContents.layer.shadowColor = UIColor.black.cgColor
+        self.viewContents.layer.shadowOffset = CGSize(width: 0,height: -0.5)
+        self.viewContents.layer.shadowOpacity = 0.5
+        self.viewContents.layer.shadowRadius = 1.0
+        
+        self.viewContents.layer.masksToBounds = true
+        //self.viewContents.dropShadow(color: UIColor.white, opacity: 0.4, offSet: CGSize(width: 2, height: 1), radius: 10, scale: true)
         //self.dropShadow(color: UIColor.white, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 1, scale: true)
+        
+        
         
         imageViewYellow.image = UIImage(named: "yellow")?.af_imageAspectScaled(toFit: CGSize(width: imageViewYellow.frame.width + 10, height: imageViewYellow.frame.height + 10)).withRenderingMode(.alwaysOriginal)
     }

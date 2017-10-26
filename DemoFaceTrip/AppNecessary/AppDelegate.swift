@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let navigationController = UINavigationController(rootViewController: homeController)
         window?.rootViewController = homeController
         window?.makeKeyAndVisible()
+        Settings.isScaleMenuView = false
         return true
     }
 

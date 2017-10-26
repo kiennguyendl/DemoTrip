@@ -37,7 +37,7 @@
                             <fragment content="See all">
                                 <attributes>
                                     <color key="NSColor" red="0.4967211787564767" green="0.4967211787564767" blue="0.4967211787564767" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" metaFont="system" size="15"/>
+                                    <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -45,12 +45,12 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-p1-drK">
-                    <rect key="frame" x="18" y="5" width="49.5" height="49"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <rect key="frame" x="18" y="5" width="48.5" height="49"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
-                    <rect key="frame" x="0.0" y="17" width="8" height="24.5"/>
+                    <rect key="frame" x="0.0" y="19.5" width="8" height="19.5"/>
                     <color key="backgroundColor" red="0.16862745098039217" green="0.98431372549019602" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="8" id="Bxz-3N-LZn"/>
@@ -65,7 +65,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Ic-Ov-STR" secondAttribute="bottom" constant="5" id="RL9-mA-3Ho"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Ic-Ov-STR" secondAttribute="trailing" constant="5" id="YVz-7D-v35"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="bKL-Vy-JUY"/>
-                <constraint firstItem="jrC-we-n50" firstAttribute="height" secondItem="iDc-p1-drK" secondAttribute="height" multiplier="1/2" id="dU0-TN-8wr"/>
+                <constraint firstItem="jrC-we-n50" firstAttribute="height" secondItem="iDc-p1-drK" secondAttribute="height" multiplier="2/5" id="dU0-TN-8wr"/>
                 <constraint firstItem="iDc-p1-drK" firstAttribute="leading" secondItem="jrC-we-n50" secondAttribute="trailing" constant="10" id="hDv-HQ-QZU"/>
                 <constraint firstItem="6Ic-Ov-STR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="hjX-yh-yvD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iDc-p1-drK" secondAttribute="bottom" constant="5" id="qRY-H2-pdb"/>

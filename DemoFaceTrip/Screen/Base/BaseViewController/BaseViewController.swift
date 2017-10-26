@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
-    
+    //static var isScaleMenuView = false
+    var statusBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        statusBar  = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        
     }
     
     
@@ -48,6 +50,13 @@ class BaseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightNavBarButton
     }
     
+    func setRedColorForStatusBar() {
+        statusBar.backgroundColor = color1
+    }
+    
+    func setWhiteColorForStatusBar() {
+        statusBar.backgroundColor = UIColor.white
+    }
 }
 
 

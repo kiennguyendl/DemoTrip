@@ -28,24 +28,32 @@ class DetailViewController: BaseViewController {
     var type: catagoryType = .None
     var item: AnyObject?
     var isCoslap = false
-    let viewA = CustomViewForNavigationBarDetailController(frame: CGRect(x: 10, y: 10, width: 250, height: 50))
+    
+    var customNavigationBar: CustomNavigationbarForDetailViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //setColorForStatusBarWhenScrollUp()
+        //init table view
         initTableView()
+        
+        // init custom navigation bar
+        initCustomNavigationBar()
+        
+        //set content for bottom view
         setContentForBootView()
         
-        
-        viewA.backgroundColor = UIColor.red
-        self.navigationItem.titleView = viewA
-        //self.navigationItem.titleView?.sizeToFit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initBackButton()
-        addShareButton()
+        setWhiteColorForStatusBar()
+        //initBackButton()
+        //addShareButton()
+
+        //set shadow for booking button
         bookingBtn.layer.cornerRadius = bookingBtn.frame.width / 30
-        //        bookingBtn.dropShadow(color: UIColor.black, opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
         bookingBtn.layer.shadowColor = UIColor.gray.cgColor
         bookingBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
         bookingBtn.layer.shadowOpacity = 0.3
@@ -53,11 +61,27 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.masksToBounds = false
         bookingBtn.layer.cornerRadius = 4.0
         tabBarController?.tabBar.isHidden = true
+        
+        
     }
     
-    
     override func viewDidLayoutSubviews() {
-        //tableViewDetail.reloadData()
+    }
+    
+    func initCustomNavigationBar(){
+        customNavigationBar = CustomNavigationbarForDetailViewController(frame: CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!))
+        navigationController?.navigationBar.addSubview(customNavigationBar)
+        customNavigationBar.backBtn.addTarget(self, action: #selector(backButtonTarget(sender:)), for: .touchUpInside)
+        customNavigationBar.shareBtn.addTarget(self, action: #selector(shareButtonTarget(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func backButtonTarget(sender: UIButton) {
+        setRedColorForStatusBar()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func shareButtonTarget(sender: UIButton) {
+        print("sharing")
     }
     
     func initTableView() {
@@ -68,6 +92,7 @@ class DetailViewController: BaseViewController {
         tableViewDetail.backgroundColor = UIColor.clear
         tableViewDetail.showsVerticalScrollIndicator = false
     }
+    
     func addContrailForTableView() {
         
         let frame = self.view.frame
@@ -92,24 +117,31 @@ class DetailViewController: BaseViewController {
         tableViewDetail.separatorStyle = .none
         tableViewDetail.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
+    
+    func setTitleForNavigationBar(title: String) {
+        customNavigationBar.title.text = title
+        customNavigationBar.title.sizeToFit()
+        if customNavigationBar.title.frame.width >= customNavigationBar.centerView.frame.width{
+            
+            customNavigationBar.leadingContraint.constant = -customNavigationBar.title.frame.width
+            UIView.animate(withDuration: 8, delay: 0.5, options: .repeat, animations: {
+                self.customNavigationBar.title.frame.origin.x = self.customNavigationBar.frame.width
+                self.customNavigationBar.leadingContraint.constant = self.customNavigationBar.frame.width
+            }, completion: nil)
+        }else{
+            customNavigationBar.title.frame.origin.x = (customNavigationBar.centerView.frame.width / 2) - (customNavigationBar.title.frame.width / 2)
+            customNavigationBar.leadingContraint.constant = (customNavigationBar.centerView.frame.width / 2) - (customNavigationBar.title.frame.width / 2)
+        }
+    }
     func setContentForBootView() {
         switch type {
         case .attractionType:
             img1.image = #imageLiteral(resourceName: "place")
             img2.image = #imageLiteral(resourceName: "numbooking")
-            //if let imageView = imageView{
             if let item = item as? Attraction{
                 if let title = item.name{
-                    //navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-                    
-//                    if let urlStr = item.image{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                 
                     if let place = item.place{
                         price.text = ("\(place)")
@@ -119,22 +151,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .cityTourType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? CityTour{
                     if let title = item.tour{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.urlImg{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
@@ -144,22 +167,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .experienceType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Experience{
                     if let title = item.experience{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.urlImg{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
@@ -169,22 +183,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .foodTourType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? FoodTour{
                     if let title = item.name{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.image{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
@@ -194,22 +199,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .hotelType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Hotel{
                     if let title = item.nameHotel{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.urlImg{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
@@ -219,22 +215,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .localGuideType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numlike")
                 if let item = item as? LocalGuide{
                     if let title = item.nameGuide{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.avatar{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
@@ -244,23 +231,14 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) like")
                     }
                 }
-            //}
         case .themParkType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "money")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? ThemeParks{
                     if let title = item.name{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.image{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
-                    
+
                     if let priceTour = item.price{
                         price.text = ("\(priceTour)$/person")
                     }
@@ -269,22 +247,13 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         case .travelAgencyType:
-            //if let imageView = imageView{
             img1.image = #imageLiteral(resourceName: "place")
             img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? TravelAgency{
                     if let title = item.name{
-//                        navigationItem.title = title
-                        viewA.titleLbl.text = "systemgroup.com.apple.configurationprofiles path is"
+                        setTitleForNavigationBar(title: title)
                     }
-//                    if let urlStr = item.image{
-//                        let url = URL(string: urlStr)
-//                        let dafautImg = UIImage(named: "default")
-//                        imageView.af_setImage(withURL: url!, placeholderImage: dafautImg)
-//                        imageView.image?.af_imageAspectScaled(toFit: CGSize(width: imageView.frame.width, height: imageView.frame.height)).withRenderingMode(.alwaysOriginal)
-//                    }
                     
                     if let priceTour = item.place{
                         price.text = ("\(priceTour)")
@@ -294,11 +263,9 @@ class DetailViewController: BaseViewController {
                         numReview.text = ("\(reviewCount) review")
                     }
                 }
-            //}
         default:
             print("")
         }
-        //tableViewDetail.reloadData()
     }
 
 }
