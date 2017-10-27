@@ -88,6 +88,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? Hotel{
                         if let nameHotel = item.nameHotel, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(nameHotel)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.urlImg{
@@ -125,6 +126,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? Experience{
                         if let nameExp = item.experience, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(nameExp)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.urlImg{
@@ -164,6 +166,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? CityTour{
                         if let nameTour = item.tour, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(nameTour)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.urlImg{
@@ -201,6 +204,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? FoodTour{
                         if let name = item.name, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(name)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.image{
@@ -238,6 +242,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? LocalGuide{
                         if let nameGuide = item.nameGuide, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(nameGuide)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.avatar{
@@ -278,6 +283,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? Attraction{
                         if let name = item.name, let country = item.country{
                             cell.name.text = ("\(country) - \(name)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.image{
@@ -317,6 +323,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? TravelAgency{
                         if let name = item.name, let country = item.country{
                             cell.name.text = ("\(country) - \(name)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.image{
@@ -351,6 +358,7 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
                     if let item = items[indexPath.row] as? ThemeParks{
                         if let name = item.name, let price = item.price{
                             cell.name.text = ("$\(price)USD - \(name)")
+                            cell.name.sizeToFit()
                         }
 
                         if let urlStr = item.image{

@@ -57,6 +57,11 @@ class NewHomeCollectionViewCell: UICollectionViewCell {
         imageViewYellow.image = UIImage(named: "yellow")?.af_imageAspectScaled(toFit: CGSize(width: imageViewYellow.frame.width + 10, height: imageViewYellow.frame.height + 10)).withRenderingMode(.alwaysOriginal)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        name.sizeToFit()
+    }
+    
     func hidingView() {
         imageViewYellow.isHidden = true
         persenLbl.isHidden = true

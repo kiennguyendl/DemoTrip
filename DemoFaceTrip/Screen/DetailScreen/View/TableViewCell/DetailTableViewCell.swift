@@ -18,11 +18,11 @@ class DetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         let readMoreTextAttributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.foregroundColor: UIColor.blue,
+            NSAttributedStringKey.foregroundColor: UIColor(red: 13.0/255.0, green: 69.0/255.0, blue: 173.0/255.0, alpha: 1.0),
             NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)
         ]
         let readLessTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.blue,
+            NSAttributedStringKey.foregroundColor: UIColor(red: 13.0/255.0, green: 69.0/255.0, blue: 173.0/255.0, alpha: 1.0),
             NSAttributedStringKey.font: UIFont.italicSystemFont(ofSize: 14)
         ]
         //let readMore = "... Read more"
@@ -42,6 +42,11 @@ class DetailTableViewCell: UITableViewCell {
         textView.text = ""
         textView.onSizeChange = { _ in }
         textView.shouldTrim = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        textView.sizeToFit()
     }
     
 }

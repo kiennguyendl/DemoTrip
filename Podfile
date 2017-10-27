@@ -11,5 +11,6 @@ target 'DemoFaceTrip' do
 	pod 'Starscream'
     	pod 'AlamofireImage'
 	pod 'ReadMoreTextView'
+	pod 'Cosmos', '~> 12.0'
 
 end

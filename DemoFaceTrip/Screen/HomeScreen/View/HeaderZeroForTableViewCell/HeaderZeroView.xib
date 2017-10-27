@@ -13,6 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderZeroView" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
                 <outlet property="collectionViewFriends" destination="y32-pe-yiz" id="jea-oh-sqD"/>
+                <outlet property="indicatorView" destination="vi6-Q9-RSO" id="k7i-yG-Pxj"/>
+                <outlet property="leadingOfLineView" destination="Lp9-RL-nHa" id="7at-yN-kja"/>
+                <outlet property="widthOfLineView" destination="iJW-Rt-1Uz" id="IKk-C3-uUR"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -39,7 +42,7 @@
                         <constraint firstAttribute="bottom" secondItem="vi6-Q9-RSO" secondAttribute="bottom" id="qLP-H9-FIY"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="y32-pe-yiz">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="y32-pe-yiz">
                     <rect key="frame" x="20" y="0.0" width="335" height="198"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="rT4-Mi-MQ2">

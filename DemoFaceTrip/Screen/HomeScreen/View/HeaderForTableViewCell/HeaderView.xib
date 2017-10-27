@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="heightOfTargetView" destination="dU0-TN-8wr" id="RBW-cd-3xJ"/>
                 <outlet property="leadingViewOfHeaderView" destination="KNL-nj-zcs" id="a7W-a4-Fj6"/>
                 <outlet property="nameOfCarousel" destination="iDc-p1-drK" id="jX8-V6-GX3"/>
                 <outlet property="seeAllBtn" destination="6Ic-Ov-STR" id="u4e-cL-cUa"/>
@@ -45,15 +46,15 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-p1-drK">
-                    <rect key="frame" x="18" y="5" width="48.5" height="49"/>
+                    <rect key="frame" x="17" y="5" width="48.5" height="49"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
-                    <rect key="frame" x="0.0" y="19.5" width="8" height="19.5"/>
+                    <rect key="frame" x="0.0" y="19.5" width="7" height="19.5"/>
                     <color key="backgroundColor" red="0.16862745098039217" green="0.98431372549019602" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="8" id="Bxz-3N-LZn"/>
+                        <constraint firstAttribute="width" constant="7" id="Bxz-3N-LZn"/>
                     </constraints>
                 </view>
             </subviews>

@@ -11,12 +11,16 @@ import UIKit
 
 protocol HeaderZeroProtocol {
     func didPressOnCellHeaderZero(index: Int, type: catagoryType)
+    func scrollCustomIndicator()
 }
 
 class HeaderZeroView: BaseView {
 
     @IBOutlet weak var collectionViewFriends: UICollectionView!
     
+    @IBOutlet weak var indicatorView: UIView!
+    @IBOutlet weak var leadingOfLineView: NSLayoutConstraint!
+    @IBOutlet weak var widthOfLineView: NSLayoutConstraint!
     var dataForMenu2: [Catagory] = []
     var delegate: HeaderZeroProtocol?
     
@@ -26,6 +30,10 @@ class HeaderZeroView: BaseView {
         collectionViewFriends.delegate = self
         collectionViewFriends.dataSource = self
         collectionViewFriends.register(UINib.init(nibName: "ListCatagoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CatagoryCell")
+        collectionViewFriends.tag = 4
+        
+        widthOfLineView.constant = collectionViewFriends.frame.width - 20
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -124,5 +132,21 @@ extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, 
 //        navigationController?.pushViewController(vc, animated: true)
         let type = dataForMenu2[indexPath.row].typeCatagory
         delegate?.didPressOnCellHeaderZero(index: indexPath.row, type: type)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.tag == 4{
+        DispatchQueue.main.async {
+            let indicator = scrollView.subviews.last
+            indicator?.isHidden = true
+            self.leadingOfLineView.constant = (indicator?.frame.origin.x)!
+            self.widthOfLineView.constant = (indicator?.frame.width)! - 10
+//            print("-----------------------------")
+//            print(self.widthOfLineView.constant)
+//            print(self.indicatorView.frame.maxX)
+
+            //print(self.collectionViewFriends.frame.maxX)
+        }
+        }
     }
 }

@@ -17,10 +17,11 @@ class DetailViewController: BaseViewController {
     
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var price1: UILabel!
     @IBOutlet weak var numReview: UILabel!
     @IBOutlet weak var bookingBtn: UIButton!
     
-    @IBOutlet weak var img1: UIImageView!
+    //@IBOutlet weak var img1: UIImageView!
     @IBOutlet weak var img2: UIImageView!
     
     var currentSection = -1
@@ -56,13 +57,17 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.cornerRadius = bookingBtn.frame.width / 30
         bookingBtn.layer.shadowColor = UIColor.gray.cgColor
         bookingBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
-        bookingBtn.layer.shadowOpacity = 0.3
+        bookingBtn.layer.shadowOpacity = 0.7
         bookingBtn.layer.shadowRadius = 1.0
         bookingBtn.layer.masksToBounds = false
         bookingBtn.layer.cornerRadius = 4.0
         tabBarController?.tabBar.isHidden = true
         
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        customNavigationBar.removeFromSuperview()
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,7 +77,8 @@ class DetailViewController: BaseViewController {
         customNavigationBar = CustomNavigationbarForDetailViewController(frame: CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!))
         navigationController?.navigationBar.addSubview(customNavigationBar)
         customNavigationBar.backBtn.addTarget(self, action: #selector(backButtonTarget(sender:)), for: .touchUpInside)
-        customNavigationBar.shareBtn.addTarget(self, action: #selector(shareButtonTarget(sender:)), for: .touchUpInside)
+        customNavigationBar.shareBtn.addTarget(customNavigationBar.leftView, action: #selector(shareButtonTarget(sender:)), for: .touchUpInside)
+        
     }
     
     @objc func backButtonTarget(sender: UIButton) {
@@ -95,7 +101,7 @@ class DetailViewController: BaseViewController {
     
     func addContrailForTableView() {
         
-        let frame = self.view.frame
+        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - self.bottomView.frame.height - self.lineView.frame.height)
         tableViewDetail = UITableView(frame: frame, style: .grouped)
         
         self.view.addSubview(tableViewDetail)
@@ -136,132 +142,155 @@ class DetailViewController: BaseViewController {
     func setContentForBootView() {
         switch type {
         case .attractionType:
-            img1.image = #imageLiteral(resourceName: "place")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = true
+            price1.isHidden = true
+            //img1.image = #imageLiteral(resourceName: "place")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
             if let item = item as? Attraction{
                 if let title = item.name{
                         setTitleForNavigationBar(title: title)
                     }
                 
-                    if let place = item.place{
-                        price.text = ("\(place)")
-                    }
-                    
-                    if let reviewCount = item.numReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+                
+//                    if let place = item.place{
+//                        price.text = ("$\(place)")
+//                    }
+                
+//                    if let reviewCount = item.numReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .cityTourType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? CityTour{
                     if let title = item.tour{
                         setTitleForNavigationBar(title: title)
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
                     
-                    if let reviewCount = item.numPersonReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let reviewCount = item.numPersonReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .experienceType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Experience{
                     if let title = item.experience{
                         setTitleForNavigationBar(title: title)
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
                     
-                    if let reviewCount = item.numPersonReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let reviewCount = item.numPersonReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .foodTourType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? FoodTour{
                     if let title = item.name{
                         setTitleForNavigationBar(title: title)
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
                     
-                    if let reviewCount = item.numReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let reviewCount = item.numReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .hotelType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? Hotel{
                     if let title = item.nameHotel{
                         setTitleForNavigationBar(title: title)
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
                     
-                    if let reviewCount = item.numPersonReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let reviewCount = item.numPersonReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .localGuideType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numlike")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numlike")
                 if let item = item as? LocalGuide{
                     if let title = item.nameGuide{
                         setTitleForNavigationBar(title: title)
                     }
                     
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
-                    
-                    if let reviewCount = item.numLike{
-                        numReview.text = ("\(reviewCount) like")
-                    }
+
+//                    if let reviewCount = item.numLike{
+//                        numReview.text = ("\(reviewCount) like")
+//                    }
                 }
         case .themParkType:
-            img1.image = #imageLiteral(resourceName: "money")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = false
+            price1.isHidden = false
+            //img1.image = #imageLiteral(resourceName: "money")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? ThemeParks{
                     if let title = item.name{
                         setTitleForNavigationBar(title: title)
                     }
 
                     if let priceTour = item.price{
-                        price.text = ("\(priceTour)$/person")
+                        price1.text = ("$\(priceTour)")
+                        price.text = "per person"
                     }
                     
-                    if let reviewCount = item.numReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let reviewCount = item.numReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         case .travelAgencyType:
-            img1.image = #imageLiteral(resourceName: "place")
-            img2.image = #imageLiteral(resourceName: "numbooking")
+            price.isHidden = true
+            price1.isHidden = true
+            //img1.image = #imageLiteral(resourceName: "place")
+            //img2.image = #imageLiteral(resourceName: "numbooking")
                 if let item = item as? TravelAgency{
                     if let title = item.name{
                         setTitleForNavigationBar(title: title)
                     }
                     
-                    if let priceTour = item.place{
-                        price.text = ("\(priceTour)")
-                    }
-                    
-                    if let reviewCount = item.numReview{
-                        numReview.text = ("\(reviewCount) review")
-                    }
+//                    if let priceTour = item.place{
+//                        price.text = ("\(priceTour)")
+//                    }
+//
+//                    if let reviewCount = item.numReview{
+//                        numReview.text = ("\(reviewCount) review")
+//                    }
                 }
         default:
             print("")
@@ -494,6 +523,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             let view = HeaderView()
             view.backgroundColor = UIColor.white
             view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+            view.heightOfTargetView.constant = 5
             view.seeAllBtn.isHidden = true
             if section == 1{
             if type == .localGuideType{
@@ -506,17 +536,19 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             }else if section == 2{
                 view.nameOfCarousel.text = "Full Decriptions"
             }
-            view.nameOfCarousel.font = UIFont.boldSystemFont(ofSize: 15)
+            view.nameOfCarousel.font = UIFont.boldSystemFont(ofSize: 16)
             view.leadingViewOfHeaderView.constant = 20
+            
+            //view.backgroundColor = UIColor.gray
             return view
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
-            return self.tableViewDetail.frame.height / 2
+            return self.tableViewDetail.frame.height * 2 / 5 + 10
         }
-        return 40
+        return 30
     }
     
 }

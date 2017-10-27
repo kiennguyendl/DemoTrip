@@ -35,6 +35,7 @@ class HomeViewController: BaseViewController {
     var dataForHome: [AnyObject] = []
     var type: typeCatagoryForHome = .ForYou
     var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
+    static var verticalContentOffset: CGFloat!
     
     let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -107,6 +108,7 @@ class HomeViewController: BaseViewController {
         collectionViewCarousels.register(UINib.init(nibName: "CarouselsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCell")
         collectionViewCarousels.backgroundColor = color3
         collectionViewCarousels.showsHorizontalScrollIndicator = false
+        collectionViewCarousels.tag = 3
 
         collectionViewDetail.delegate = self
         collectionViewDetail.dataSource = self
@@ -490,6 +492,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
 
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if collectionView == self.collectionViewCarousels{
@@ -538,6 +541,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if let item = data.catagoryItems?[indexPath.row]{
                 vc.item = item
             }
+            HomeViewController.verticalContentOffset = collectionViewDetail.contentOffset.y
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
@@ -598,10 +602,15 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.section == 0{
             return 0
         }
+//        if Settings.isScaleMenuView!{
+//            return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
+//        }else{
+//            return (tableViewCarousels.frame.size.height * 4) / 8 + 20
+//        }
         if Settings.isScaleMenuView!{
-            return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
+            return ((tableViewCarousels.frame.size.height * 4) / 9) - 20
         }else{
-            return (tableViewCarousels.frame.size.height * 4) / 8 + 20
+            return (tableViewCarousels.frame.size.height * 4) / 8 - 20
         }
     }
     
@@ -658,18 +667,45 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
             view.seeAllBtn.tag = section
             view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
+            //view.heightOfTargetView.constant = 4
         return view
         }
     }
 
+    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
+        if Settings.isScaleMenuView!{
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.0, animations: {
+                    if self.view.frame.origin.y >= 0{
+                        self.setWhiteColorForStatusBar()
+                        //move origin coordinates of main view to 0
+                        self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
+                        Settings.isScaleMenuView = true
+                        //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
+                        if self.tableViewCarousels.isHidden == false{
+                            self.tableViewCarousels.setContentOffset(CGPoint(x: 0,y:  HomeViewController.verticalContentOffset), animated: false)
+                        }else if self.collectionViewDetail.isHidden == false{
+                            self.collectionViewDetail.setContentOffset(CGPoint(x: 0,y:  HomeViewController.verticalContentOffset), animated: false)
+                        }
+                    }
+                })
+            }
+        }else{
+            //print("test>>>>>>>>>>>>>>>>>>>>>> :) not scale")
+        }
+        
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // cần fix animation. tách thread
+        
+        
         if scrollView.tag == 1 || scrollView.tag == 2{
             
             
             //handle when scroll up
-            if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y >= 0{
+            if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0{
                 //print("move down")
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.2, animations: {
@@ -678,7 +714,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.newPos)
                             
                             Settings.isScaleMenuView = false
-                            print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
+                           //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
                         }
 
                     })
@@ -704,7 +740,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                             //move origin coordinates of main view to 0
                             self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
                             Settings.isScaleMenuView = true
-                            print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
+                            //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
                         }
                     })
                     self.collectionViewCarousels.reloadData()
@@ -771,6 +807,7 @@ extension HomeViewController: HomeCellDelegate{
         }
         self.setWhiteColorForStatusBar()
         //Settings.isScaleMenuView = false
+        HomeViewController.verticalContentOffset = self.tableViewCarousels.contentOffset.y
         self.tableViewCarousels.isScrollEnabled = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -778,6 +815,10 @@ extension HomeViewController: HomeCellDelegate{
 }
 
 extension HomeViewController: HeaderZeroProtocol{
+    func scrollCustomIndicator() {
+        print("kien testing")
+    }
+    
     func didPressOnCellHeaderZero(index: Int, type: catagoryType) {
         let vc = ListDetailCatagoryViewController()
         vc.typeCatagory = type
@@ -786,3 +827,5 @@ extension HomeViewController: HeaderZeroProtocol{
     }
     
 }
+
+

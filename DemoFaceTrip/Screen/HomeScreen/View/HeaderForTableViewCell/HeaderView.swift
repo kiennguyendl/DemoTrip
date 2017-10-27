@@ -10,6 +10,7 @@ import UIKit
 
 class HeaderView: BaseView{
 
+    @IBOutlet weak var heightOfTargetView: NSLayoutConstraint!
     @IBOutlet weak var targetView: UIView!
     @IBOutlet weak var nameOfCarousel: UILabel!
     @IBOutlet weak var seeAllBtn: UIButton!

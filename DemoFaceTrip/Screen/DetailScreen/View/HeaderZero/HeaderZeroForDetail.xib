@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="33E-Ue-oeh">
-                    <rect key="frame" x="1" y="0.0" width="396" height="315"/>
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="ac4-2x-72f">
                     <rect key="frame" x="353" y="20" width="25" height="25"/>
@@ -35,9 +35,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="33E-Ue-oeh" secondAttribute="bottom" id="2U0-Vw-rYf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="33E-Ue-oeh" secondAttribute="trailing" constant="1" id="6bz-1n-aEv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="33E-Ue-oeh" secondAttribute="trailing" id="6bz-1n-aEv"/>
                 <constraint firstItem="33E-Ue-oeh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Oua-n9-eZu"/>
-                <constraint firstItem="33E-Ue-oeh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="QfK-IX-7Zu"/>
+                <constraint firstItem="33E-Ue-oeh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QfK-IX-7Zu"/>
                 <constraint firstItem="ac4-2x-72f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="YO3-Fh-Yga"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ac4-2x-72f" secondAttribute="trailing" constant="20" id="g2v-rd-aCA"/>
             </constraints>
