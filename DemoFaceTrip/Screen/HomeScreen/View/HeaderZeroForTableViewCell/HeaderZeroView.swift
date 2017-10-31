@@ -11,7 +11,6 @@ import UIKit
 
 protocol HeaderZeroProtocol {
     func didPressOnCellHeaderZero(index: Int, type: catagoryType)
-    func scrollCustomIndicator()
 }
 
 class HeaderZeroView: BaseView {
