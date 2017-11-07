@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MonthHeader" id="U6b-Vx-4bR" customClass="HeaderMonthCollectionReusableView" customModule="DemoFaceTrip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBY-av-usW">
+                    <rect key="frame" x="15" y="0.0" width="305" height="42.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWa-jy-ZZS">
+                    <rect key="frame" x="0.0" y="74" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kvz-UA-s72"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1xz-Me-bAm">
+                    <rect key="frame" x="0.0" y="43" width="320" height="31"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="3" id="q0a-pG-Ihp">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="VBY-av-usW" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="15" id="2Mx-ck-a3F"/>
+                <constraint firstItem="VBY-av-usW" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" multiplier="1/2" id="Bv6-Lx-Fzw"/>
+                <constraint firstAttribute="bottom" secondItem="UWa-jy-ZZS" secondAttribute="bottom" constant="10" id="C5c-VE-Q0u"/>
+                <constraint firstItem="UWa-jy-ZZS" firstAttribute="top" secondItem="1xz-Me-bAm" secondAttribute="bottom" id="KQo-b3-Oef"/>
+                <constraint firstItem="1xz-Me-bAm" firstAttribute="top" secondItem="VBY-av-usW" secondAttribute="bottom" id="WWj-jC-zC6"/>
+                <constraint firstItem="VBY-av-usW" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="X1b-K6-jxe"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="1xz-Me-bAm" secondAttribute="trailing" id="fCk-Jp-uBQ"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="UWa-jy-ZZS" secondAttribute="trailing" id="mNm-gJ-YAH"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="VBY-av-usW" secondAttribute="trailing" id="pab-q3-CaE"/>
+                <constraint firstItem="1xz-Me-bAm" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="pkn-cK-UuB"/>
+                <constraint firstItem="UWa-jy-ZZS" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="zkq-2f-jEW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="collectionviewDayOfWeek" destination="1xz-Me-bAm" id="TQQ-Ai-EDQ"/>
+                <outlet property="monthForSection" destination="VBY-av-usW" id="3Hv-4R-Eou"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="69.5"/>
+        </collectionReusableView>
+    </objects>
+</document>

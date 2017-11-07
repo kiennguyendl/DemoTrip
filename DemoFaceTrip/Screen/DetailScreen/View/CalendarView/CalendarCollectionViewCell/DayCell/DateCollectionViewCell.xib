@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,37 +21,48 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrt-Y9-JwB">
-                        <rect key="frame" x="0.0" y="0.0" width="106" height="94"/>
+                        <rect key="frame" x="5.5" y="4.5" width="95" height="85"/>
                         <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slash" translatesAutoresizingMaskIntoConstraints="NO" id="nSD-6D-vPi">
+                                <rect key="frame" x="24" y="21.5" width="47.5" height="42.5"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0D-eM-dHs">
-                                <rect key="frame" x="0.0" y="0.5" width="106" height="94"/>
+                                <rect key="frame" x="0.0" y="0.0" width="95" height="85"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="P0D-eM-dHs" firstAttribute="centerY" secondItem="Qrt-Y9-JwB" secondAttribute="centerY" id="9hj-rT-BSg"/>
-                            <constraint firstItem="P0D-eM-dHs" firstAttribute="width" secondItem="Qrt-Y9-JwB" secondAttribute="width" id="XNM-hS-7pp"/>
-                            <constraint firstItem="P0D-eM-dHs" firstAttribute="height" secondItem="Qrt-Y9-JwB" secondAttribute="height" id="l7q-FC-edO"/>
-                            <constraint firstItem="P0D-eM-dHs" firstAttribute="centerX" secondItem="Qrt-Y9-JwB" secondAttribute="centerX" id="uFh-AB-gYh"/>
+                            <constraint firstItem="nSD-6D-vPi" firstAttribute="centerX" secondItem="Qrt-Y9-JwB" secondAttribute="centerX" id="PsI-hm-7fS"/>
+                            <constraint firstAttribute="bottom" secondItem="P0D-eM-dHs" secondAttribute="bottom" id="QxB-dU-Wr3"/>
+                            <constraint firstItem="P0D-eM-dHs" firstAttribute="top" secondItem="Qrt-Y9-JwB" secondAttribute="top" id="TQ5-5X-CYc"/>
+                            <constraint firstItem="P0D-eM-dHs" firstAttribute="leading" secondItem="Qrt-Y9-JwB" secondAttribute="leading" id="VEw-ir-Wak"/>
+                            <constraint firstAttribute="trailing" secondItem="P0D-eM-dHs" secondAttribute="trailing" id="dNM-Lt-DbO"/>
+                            <constraint firstItem="nSD-6D-vPi" firstAttribute="height" secondItem="Qrt-Y9-JwB" secondAttribute="height" multiplier="1/2" id="f7p-jx-69s"/>
+                            <constraint firstItem="nSD-6D-vPi" firstAttribute="width" secondItem="Qrt-Y9-JwB" secondAttribute="width" multiplier="1/2" id="gTh-wT-Nqe"/>
+                            <constraint firstItem="nSD-6D-vPi" firstAttribute="centerY" secondItem="Qrt-Y9-JwB" secondAttribute="centerY" id="goX-Qx-Pzz"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BBA-ZJ-btR"/>
-                <constraint firstAttribute="trailing" secondItem="Qrt-Y9-JwB" secondAttribute="trailing" id="UsP-Fo-hQP"/>
-                <constraint firstAttribute="bottom" secondItem="Qrt-Y9-JwB" secondAttribute="bottom" id="Zzt-QM-6wm"/>
-                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="umT-V3-Jgg"/>
+                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="9/10" id="3hd-Jr-oTp"/>
+                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="9/10" id="HPh-f4-b1g"/>
+                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="LFI-dW-By4"/>
+                <constraint firstItem="Qrt-Y9-JwB" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="cBE-Mn-qo9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="106" height="94"/>
             <connections>
                 <outlet property="borderView" destination="Qrt-Y9-JwB" id="5cf-EB-Jer"/>
                 <outlet property="dateLbl" destination="P0D-eM-dHs" id="wdd-aU-ecR"/>
+                <outlet property="slashImg" destination="nSD-6D-vPi" id="Q0K-pD-MPs"/>
             </connections>
             <point key="canvasLocation" x="60" y="97"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="slash" width="50" height="50"/>
+    </resources>
 </document>

@@ -43,6 +43,9 @@
                             <state key="normal" title="Book now">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="bookingBtn:" destination="-1" eventType="touchUpInside" id="WgY-gy-7RT"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-4K-O3T">
                             <rect key="frame" x="19.999999999999996" y="14" width="44.666666666666657" height="21"/>

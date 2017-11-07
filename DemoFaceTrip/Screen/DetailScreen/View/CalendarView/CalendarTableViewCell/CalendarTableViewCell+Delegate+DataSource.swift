@@ -7,14 +7,13 @@
 //
 
 let NUMBER_OF_DAYS_IN_WEEK = 7
-let MAXIMUM_NUMBER_OF_ROWS = 5
+let MAXIMUM_NUMBER_OF_ROWS = 6
 
 import UIKit
 
 extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //guard let dataSource = self.dataSource else{return 0}
         
         self.startDateCache = startDate()
         self.endDateCache = endDate()
@@ -27,7 +26,8 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         firtDateOfStartMonth.day = 1
         
         let dateFromDayOneComponents = self.calendar.date(from: firtDateOfStartMonth)!
-        self.startDateCache = dateFromDayOneComponents
+        
+        self.startOfMonthCache = dateFromDayOneComponents
         
         let today = Date()
         
@@ -36,6 +36,7 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             let distanceFromTodayComponents = self.calendar.dateComponents([.month, .day], from: self.startOfMonthCache, to: today)
             
             self.todayIndexPath = IndexPath(item: distanceFromTodayComponents.day!, section: distanceFromTodayComponents.month!)
+            print("today: \(today) + today index: \(todayIndexPath!) + distanceFromTodayComponents.day: \(distanceFromTodayComponents.day!)")
         }
         
         
@@ -53,8 +54,7 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             
             monthInfoForSection[section] = info
             
-                    return 1
-//            return 42
+            return 1
         }
     }
     
@@ -79,29 +79,31 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             
             
             return cell
-        }else{
-            
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as! DateCollectionViewCell
-            
+        }else if collectionView == collectionViewCalendar{
+     
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionCell", for: indexPath) as! CalendarCollectionViewCell
-
-            cell.monthInfo = monthInfoForSection[indexPath.section]
-            cell.index = indexPath.section
-
+            //cell.delegate = self
             let today = Date()
             let monthNow = self.calendar.component(.month, from: today)
             var year = self.calendar.component(.year, from: today)
-
+            
             var month = monthNow + indexPath.section - 1
             if month > 11{
                 month -= 12
                 year += 1
             }
+            
+            cell.month = month
+            cell.year = year
+            cell.monthInfo = monthInfoForSection[indexPath.section]
+            cell.index = indexPath.section
             cell.todayIndex = todayIndexPath
-//            cell.dateLbl.text = "1"
+            cell.monthCollectionView.reloadData()
             return cell
         }
+        return UICollectionViewCell()
     }
+
     
     //get month info
     internal func getMonthInfo(for date: Date) -> (firstDay: Int, daysTotal: Int)? {
@@ -120,9 +122,9 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == headerSection{
-            return CGSize(width: headerSection.frame.width / 2, height: collectionView.frame.height)
+            return CGSize(width: headerSection.frame.width / 2 - 1, height: collectionView.frame.height)
         }else{
-            return CGSize(width: collectionViewCalendar.frame.width / 2, height: collectionView.frame.height )
+            return CGSize(width: collectionViewCalendar.frame.width / 2 - 1, height: collectionView.frame.height)
         }
     }
     
@@ -141,4 +143,8 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    }
 }
+

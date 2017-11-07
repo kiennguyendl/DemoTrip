@@ -8,6 +8,10 @@
 
 import UIKit
 
+//protocol calendarProtocol {
+//    func pushToBookingView(vc: UIViewController)
+//}
+
 class CalendarCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var monthCollectionView: UICollectionView!
@@ -16,7 +20,10 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     var monthInfo: (firstDay:Int, daysTotal:Int)!
     var index: Int!
     var todayIndex: IndexPath!
+    var month: Int!
+    var year: Int!
     
+    //var delegar: calendarProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,8 +31,26 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         monthCollectionView.dataSource = self
         monthCollectionView.register(UINib.init(nibName: "DateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
         // Initialization code
+        
+        if let layout = monthCollectionView.collectionViewLayout as? CalendarFlowLayout{
+            layout.scrollDirection = .horizontal
+            layout.itemSize = cellSize(in: self.bounds)
+            layout.minimumInteritemSpacing = 1
+            layout.minimumLineSpacing = 1
+        }
     }
-
+    
+    private func cellSize(in bounds: CGRect) -> CGSize {
+        return CGSize(
+            width:   monthCollectionView.frame.size.width / CGFloat(NUMBER_OF_DAYS_IN_WEEK * 2) + 1.2,
+            height: (monthCollectionView.frame.size.height) / CGFloat(MAXIMUM_NUMBER_OF_ROWS * 2)
+        )
+    }
+    
+    deinit {
+        //removeObserverForDetail()
+    }
+    
 }
 
 extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -42,12 +67,56 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
         
         let fromStartOfMonthIndexPath = IndexPath(item: indexPath.item - firstDayIndex, section: indexPath.section)
         let lastDayIndex = firstDayIndex + numberOfDaysTotal
+    
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let month = calendar.component(.month, from: date)
         
         if (firstDayIndex..<lastDayIndex).contains(indexPath.item) {
             
             cell.dateLbl.text = String(fromStartOfMonthIndexPath.item + 1)
             
+            /*set color for day
+             if day <= current day -> gray color
+             else -> black color
+             */
+            let idx = todayIndex!
+            if (indexPath.item <= idx.item + firstDayIndex) && ((month - 1) == self.month){
+                cell.dateLbl.textColor = UIColor.gray
+            }else{
+                /*
+                 render day booking
+                 */
+                
+                for daybooking in listBookingDay{
+                    let dayBook = daybooking.day
+                    let monthBook = daybooking.month
+                    let yearBook = daybooking.year
+                    
+                    if dayBook! == (fromStartOfMonthIndexPath.item + 1) && (monthBook! - 1) == self.month! && yearBook == self.year!{
+                        //cell.dateLbl.textColor = UIColor.blue
+                        DispatchQueue.main.async {
+                            cell.borderView.layer.cornerRadius = cell.borderView.frame.width / 2
+                            cell.borderView.layer.borderWidth = 1
+                            cell.borderView.layer.borderColor = UIColor(red: 44.0/255.0, green: 120.0/255.0, blue: 104.0/255.0, alpha: 1).cgColor
+                            cell.dateLbl.textColor = UIColor(red: 44.0/255.0, green: 120.0/255.0, blue: 104.0/255.0, alpha: 1)
+                            cell.borderView.layer.masksToBounds = true
+                        }
+                        
+                    }else{
+                        cell.dateLbl.textColor = UIColor.black
+                    }
+                }
+                
+            }
+            
+            
+        }else{
+            cell.dateLbl.text = ""
+            
         }
+        
         
         return cell
     }
@@ -60,8 +129,9 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as! DateCollectionViewCell
-        //selectedIndexPaths.append(indexPath)
-        //cell.isSelected = selectedIndexPaths.contains(indexPath)
+//        let vc = BookingTourViewController()
+//        delegar?.pushToBookingView(vc: vc)
+        NotificationCenter.default.post(name: calendarPushtoBookingNotification, object: nil)
     }
+    
 }

@@ -10,14 +10,92 @@ import UIKit
 
 var monthInfoForSection = [Int:(firstDay:Int, daysTotal:Int)]()
 
+
+
+var listBookingDay: [TimeBooking] = [TimeBooking(day: 5, month: 11, year: 2017),
+                                     TimeBooking(day: 7, month: 11, year: 2017),
+                                     TimeBooking(day: 11, month: 11, year: 2017),
+                                     TimeBooking(day: 16, month: 11, year: 2017),
+                                     TimeBooking(day: 17, month: 11, year: 2017),
+                                     TimeBooking(day: 23, month: 11, year: 2017),
+                                     TimeBooking(day: 24, month: 11, year: 2017),
+                                     TimeBooking(day: 25, month: 11, year: 2017),
+                                     TimeBooking(day: 29, month: 11, year: 2017),
+                                     
+                                     TimeBooking(day: 5, month: 12, year: 2017),
+                                     TimeBooking(day: 7, month: 12, year: 2017),
+                                     TimeBooking(day: 11, month: 12, year: 2017),
+                                     TimeBooking(day: 16, month: 12, year: 2017),
+                                     TimeBooking(day: 17, month: 12, year: 2017),
+                                     TimeBooking(day: 23, month: 12, year: 2017),
+                                     TimeBooking(day: 24, month: 12, year: 2017),
+                                     TimeBooking(day: 25, month: 12, year: 2017),
+                                     TimeBooking(day: 29, month: 12, year: 2017),
+                                     
+                                     TimeBooking(day: 5, month: 1, year: 2018),
+                                     TimeBooking(day: 7, month: 1, year: 2018),
+                                     TimeBooking(day: 11, month: 1, year: 2018),
+                                     TimeBooking(day: 16, month: 1, year: 2018),
+                                     TimeBooking(day: 17, month: 1, year: 2018),
+                                     TimeBooking(day: 23, month: 1, year: 2018),
+                                     TimeBooking(day: 24, month: 1, year: 2018),
+                                     TimeBooking(day: 25, month: 1, year: 2018),
+                                     TimeBooking(day: 29, month: 1, year: 2018),
+                                     
+                                     TimeBooking(day: 5, month: 2, year: 2018),
+                                     TimeBooking(day: 7, month: 2, year: 2018),
+                                     TimeBooking(day: 11, month: 2, year: 2018),
+                                     TimeBooking(day: 16, month: 2, year: 2018),
+                                     TimeBooking(day: 17, month: 2, year: 2018),
+                                     TimeBooking(day: 23, month: 2, year: 2018),
+                                     TimeBooking(day: 24, month: 2, year: 2018),
+                                     TimeBooking(day: 25, month: 2, year: 2018),
+                                     TimeBooking(day: 28, month: 2, year: 2018),
+                                     
+                                     TimeBooking(day: 5, month: 3, year: 2018),
+                                     TimeBooking(day: 7, month: 3, year: 2018),
+                                     TimeBooking(day: 11, month: 3, year: 2018),
+                                     TimeBooking(day: 16, month: 3, year: 2018),
+                                     TimeBooking(day: 17, month: 3, year: 2018),
+                                     TimeBooking(day: 23, month: 3, year: 2018),
+                                     TimeBooking(day: 24, month: 3, year: 2018),
+                                     TimeBooking(day: 25, month: 3, year: 2018),
+                                     TimeBooking(day: 29, month: 3, year: 2018),
+                                     
+                                     TimeBooking(day: 5, month: 4, year: 2018),
+                                     TimeBooking(day: 7, month: 4, year: 2018),
+                                     TimeBooking(day: 11, month: 4, year: 2018),
+                                     TimeBooking(day: 16, month: 4, year: 2018),
+                                     TimeBooking(day: 17, month: 4, year: 2018),
+                                     TimeBooking(day: 23, month: 4, year: 2018),
+                                     TimeBooking(day: 24, month: 4, year: 2018),
+                                     TimeBooking(day: 25, month: 4, year: 2018),
+                                     TimeBooking(day: 29, month: 4, year: 2018),
+                                     
+                                     TimeBooking(day: 5, month: 5, year: 2018),
+                                     TimeBooking(day: 7, month: 5, year: 2018),
+                                     TimeBooking(day: 11, month: 5, year: 2018),
+                                     TimeBooking(day: 16, month: 5, year: 2018),
+                                     TimeBooking(day: 17, month: 5, year: 2018),
+                                     TimeBooking(day: 23, month: 5, year: 2018),
+                                     TimeBooking(day: 24, month: 5, year: 2018),
+                                     TimeBooking(day: 25, month: 5, year: 2018),
+                                     TimeBooking(day: 29, month: 5, year: 2018)
+                                    ]
+
+
+//protocol calendarProtocol {
+//    func pushToBookingView(vc: UIViewController)
+//}
+
 class CalendarTableViewCell: UITableViewCell{
     
     @IBOutlet weak var collectionViewCalendar: UICollectionView!
     @IBOutlet weak var headerSection: UICollectionView!
     @IBOutlet weak var lineView: UIView!
-
-//    var dataSource  : CalendarViewDataSource?
-//    var delegate    : CalendarViewDelegate?
+    @IBOutlet weak var calendarView: UIView!
+    
+    //var delegate: calendarProtocol?
     
     lazy var calendar : Calendar = {
         var gregorian = Calendar(identifier: .gregorian)
@@ -34,8 +112,6 @@ class CalendarTableViewCell: UITableViewCell{
     
     internal(set) var selectedIndexPaths    = [IndexPath]()
     internal(set) var selectedDates         = [Date]()
-    
-   
 
     
     override func awakeFromNib() {
@@ -44,14 +120,11 @@ class CalendarTableViewCell: UITableViewCell{
         collectionViewCalendar.delegate = self
         collectionViewCalendar.dataSource = self
         collectionViewCalendar.register(UINib.init(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCollectionCell")
-//        collectionViewCalendar.register(UINib.init(nibName: "DateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
         
         headerSection.delegate = self
         headerSection.dataSource = self
         headerSection.register(UINib.init(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderSection")
         
-//        self.dataSource = self
-//        self.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,7 +153,7 @@ class CalendarTableViewCell: UITableViewCell{
         
         var dateComponents = DateComponents()
         
-        dateComponents.month = 5;
+        dateComponents.month = 6
         let today = Date()
         
         let sixMonthFromNow = self.calendar.date(byAdding: dateComponents, to: today)!
@@ -90,34 +163,4 @@ class CalendarTableViewCell: UITableViewCell{
     }
 }
 
-//extension CalendarTableViewCell: CalendarViewDataSource, CalendarViewDelegate
-//{
-//    //get current month
-//    func startDate() -> Date {
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.month = 0
-//        
-//        let today = Date()
-//        
-//        let threeMonthsAgo = self.calendar.date(byAdding: dateComponents, to: today)!
-//        
-//        return threeMonthsAgo
-//    }
-//    
-//    
-//    //get 6 month future
-//    func endDate() -> Date {
-//        
-//        var dateComponents = DateComponents()
-//        
-//        dateComponents.month = 5;
-//        let today = Date()
-//        
-//        let sixMonthFromNow = self.calendar.date(byAdding: dateComponents, to: today)!
-//        
-//        return sixMonthFromNow
-//        
-//    }
-//}
 

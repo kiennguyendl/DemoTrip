@@ -11,7 +11,7 @@ import ReadMoreTextView
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -111,11 +111,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath) as! CalendarTableViewCell
+                //cell.delegate = self
             return cell
-//        case 4:
-//             return UITableViewCell(style: .default, reuseIdentifier: "DetailCell")
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingPointCell", for: indexPath) as! MeetingPointTableViewCell
+            cell.selectionStyle = .none
+            cell.delegate = self
+             return cell
         default:
-            return UITableViewCell(style: .default, reuseIdentifier: "DetailCell")
+            return UITableViewCell(style: .default, reuseIdentifier: "")
         }
         
     }
@@ -139,7 +143,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //
-        //        let cell = tableView.cellForRow(at: indexPath)!
+                //let cell = tableView.cellForRow(at: indexPath)!
+        
         //
         //        let readMoreTextView = cell.contentView.viewWithTag(1) as! ReadMoreTextView
         //        readMoreTextView.shouldTrim = !readMoreTextView.shouldTrim
@@ -256,8 +261,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                 view.nameOfCarousel.text = "Full Decriptions"
             case 3:
                 view.nameOfCarousel.text = "Availability"
-//            case 4:
-//                view.nameOfCarousel.text = "Meeting oints"
+            case 4:
+                view.nameOfCarousel.text = "Meeting Points"
             default:
                 print("")
             }
@@ -282,6 +287,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewAutomaticDimension
         case 3:
             return tableViewDetail.frame.height / 3.2
+        case 4:
+            return tableViewDetail.frame.height / 2.5
         default:
             return 0
         }

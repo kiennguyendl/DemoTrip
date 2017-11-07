@@ -8,6 +8,8 @@
 
 import UIKit
 import ReadMoreTextView
+import MapKit
+import CoreLocation
 
 class DetailViewController: BaseViewController {
     
@@ -30,7 +32,7 @@ class DetailViewController: BaseViewController {
     var item: AnyObject?
     var isCoslap = false
     
-    var customNavigationBar: CustomNavigationbarForDetailViewController!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +47,24 @@ class DetailViewController: BaseViewController {
         //set content for bottom view
         setContentForBootView()
         
+        addNotificationForDetail()
+    }
+    
+    
+    deinit {
+        notificationCenter.removeObserver(self, name: calendarPushtoBookingNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setWhiteColorForStatusBar()
-        //initBackButton()
-        //addShareButton()
-
         //set shadow for booking button
+        // init custom navigation bar
+        DispatchQueue.main.async {
+            self.initCustomNavigationBar()
+            self.setContentForBootView()
+        }
+        
         bookingBtn.layer.cornerRadius = bookingBtn.frame.width / 30
         bookingBtn.layer.shadowColor = UIColor.gray.cgColor
         bookingBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
@@ -63,32 +74,21 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.cornerRadius = 4.0
         tabBarController?.tabBar.isHidden = true
         
-        
+        //tableViewDetail.reloadData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        customNavigationBar.removeFromSuperview()
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        removeCustomBar()
+//    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeCustomBar()
     }
     
-    override func viewDidLayoutSubviews() {
-    }
     
-    func initCustomNavigationBar(){
-        customNavigationBar = CustomNavigationbarForDetailViewController(frame: CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!))
-        navigationController?.navigationBar.addSubview(customNavigationBar)
-        customNavigationBar.backBtn.addTarget(self, action: #selector(backButtonTarget(sender:)), for: .touchUpInside)
-        customNavigationBar.shareBtn.addTarget(customNavigationBar.leftView, action: #selector(shareButtonTarget(sender:)), for: .touchUpInside)
-        
-    }
-    
-    @objc func backButtonTarget(sender: UIButton) {
-        setRedColorForStatusBar()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc func shareButtonTarget(sender: UIButton) {
-        print("sharing")
-    }
+   
     
     func initTableView() {
         addContrailForTableView()
@@ -98,6 +98,8 @@ class DetailViewController: BaseViewController {
         tableViewDetail.register(UINib.init(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailCell")
         
         tableViewDetail.register(UINib.init(nibName: "CalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
+        
+        tableViewDetail.register(UINib.init(nibName: "MeetingPointTableViewCell", bundle: nil), forCellReuseIdentifier: "MeetingPointCell")
         
         tableViewDetail.backgroundColor = UIColor.clear
         tableViewDetail.showsVerticalScrollIndicator = false
@@ -128,21 +130,7 @@ class DetailViewController: BaseViewController {
         tableViewDetail.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
-    func setTitleForNavigationBar(title: String) {
-        customNavigationBar.title.text = title
-        customNavigationBar.title.sizeToFit()
-        if customNavigationBar.title.frame.width >= customNavigationBar.centerView.frame.width{
-            
-            customNavigationBar.leadingContraint.constant = -customNavigationBar.title.frame.width
-            UIView.animate(withDuration: 8, delay: 0.5, options: .repeat, animations: {
-                self.customNavigationBar.title.frame.origin.x = self.customNavigationBar.frame.width
-                self.customNavigationBar.leadingContraint.constant = self.customNavigationBar.frame.width
-            }, completion: nil)
-        }else{
-            customNavigationBar.title.frame.origin.x = (customNavigationBar.centerView.frame.width / 2) - (customNavigationBar.title.frame.width / 2)
-            customNavigationBar.leadingContraint.constant = (customNavigationBar.centerView.frame.width / 2) - (customNavigationBar.title.frame.width / 2)
-        }
-    }
+    
     func setContentForBootView() {
         switch type {
         case .attractionType:
@@ -245,5 +233,19 @@ class DetailViewController: BaseViewController {
             print("")
         }
     }
-
+    
+    @IBAction func bookingBtn(_ sender: Any) {
+    }
+    
 }
+
+
+extension DetailViewController: MeetingPointTableViewCellProtocol{
+    func presentMapView() {
+        let vc = MapViewViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+  
+    
+}
+

@@ -129,7 +129,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
         if Settings.isScaleMenuView!{
-            print("test>>>>>>>>>>>>>>>>>>>>>> :) scaled")
+            //print("test>>>>>>>>>>>>>>>>>>>>>> :) scaled")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.0, animations: {
                     if self.view.frame.origin.y >= 0{
@@ -147,7 +147,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 })
             }
         }else{
-            print("test>>>>>>>>>>>>>>>>>>>>>> :) not scale")
+            //print("test>>>>>>>>>>>>>>>>>>>>>> :) not scale")
         }
         
     }
@@ -162,7 +162,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         //handle when scroll up
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0{
-            print("move down")
+            //print("move down")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     if self.view.frame.origin.y < 0{
@@ -186,7 +186,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             
         }else if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0{
             //handle when scroll down
-            print("move up")
+            //print("move up")
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.5, animations: {
                     if self.view.frame.origin.y >= 0{
