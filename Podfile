@@ -12,5 +12,7 @@ target 'DemoFaceTrip' do
     	pod 'AlamofireImage'
 	pod 'ReadMoreTextView'
 	pod 'Cosmos', '~> 12.0'
-
+	pod 'GoogleMaps'
+	pod 'GooglePlaces'
+	pod 'SwiftyJSON'
 end

@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigation: UINavigationController?
-
+    let googleMapsApiKey = "AIzaSyAcQ6DygC5hMoUY5RSzBNxcbXeCfGhmYjI"
+    let directionAPIKey = "AIzaSyCVloQ1V5dIJPvNgKa0DnnWdSGqD7E8t6U"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         
         self.window?.frame = CGRect(x: 0, y: 20, width: (self.window?.frame.size.width)!, height: (self.window?.frame.size.height)! - 20)
         
@@ -25,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = homeController
         window?.makeKeyAndVisible()
         Settings.isScaleMenuView = false
+        GMSServices.provideAPIKey(googleMapsApiKey)
+        GMSPlacesClient.provideAPIKey(googleMapsApiKey)
         return true
     }
 

@@ -17,6 +17,7 @@ class MapViewViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
+        mapView.showsUserLocation = true
         let location = CLLocationCoordinate2D(latitude: 10.768376, longitude: 106.666808)
         let spanOfMap = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location, span: spanOfMap)
@@ -26,6 +27,8 @@ class MapViewViewController: UIViewController {
         pin.coordinate = location
         pin.title = "Where we'll meet"
         pin.subtitle = "District 10, HCM City"
+        
+        mapView(mapView, viewFor: pin)?.annotation = pin
         mapView.addAnnotation(pin)
         mapView.selectedAnnotations = [pin]
         //mapView.isUserInteractionEnabled = false
@@ -42,17 +45,36 @@ extension MapViewViewController: MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
+//        if annotation is MKUserLocation {
+//            return nil
+//        }
+//        let identifier = "MyCustomAnnotation"
+//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//        if annotationView == nil {
+//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            annotationView?.canShowCallout = true
+//        } else {
+//            annotationView!.annotation = annotation
+//        }
+//        return annotationView
+        if !(annotation is MKUserLocation) {
             return nil
         }
-        let identifier = "MyCustomAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        let annotationIdentifier = "AnnotationIdentifier"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
         if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-        } else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+            let pinImage = UIImage(named: "250px-025Pikachu.png")
+            annotationView!.image = pinImage
+            
+        }
+        else {
             annotationView!.annotation = annotation
         }
+        
         return annotationView
     }
 }

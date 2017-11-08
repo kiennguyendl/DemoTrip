@@ -96,6 +96,13 @@
 		FBF90F8E1F8637CF007CF7EA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F911F8637CF007CF7EA /* Starscream.framework */; };
 		FBF90F931F86388E007CF7EA /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F921F86388E007CF7EA /* Experience.swift */; };
 		FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F961F86396C007CF7EA /* Catagory.swift */; };
+		FBFB7F301FB29AC7006DDE2A /* 250px-025Pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = FBFB7F2F1FB29AC7006DDE2A /* 250px-025Pikachu.png */; };
+		FBFB7F331FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFB7F311FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift */; };
+		FBFB7F341FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFB7F321FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib */; };
+		FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFB7F3C1FB2E057006DDE2A /* NewMapViewViewController.swift */; };
+		FBFB7F3F1FB2E057006DDE2A /* NewMapViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFB7F3D1FB2E057006DDE2A /* NewMapViewViewController.xib */; };
+		FBFB7F421FB305F0006DDE2A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB7F431FB305F0006DDE2A /* SwiftyJSON.framework */; };
+		FBFB7F451FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFB7F441FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift */; };
 		FBFB8AC31F9ADFA60087D0DD /* HeaderZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFB8AC21F9ADFA60087D0DD /* HeaderZeroView.xib */; };
 		FBFB8AC51F9ADFB50087D0DD /* HeaderZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFB8AC41F9ADFB50087D0DD /* HeaderZeroView.swift */; };
 		FBFBBD061F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFBBD041F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift */; };
@@ -205,6 +212,14 @@
 		FBF90F911F8637CF007CF7EA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F921F86388E007CF7EA /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		FBF90F961F86396C007CF7EA /* Catagory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catagory.swift; sourceTree = "<group>"; };
+		FBFB7F2F1FB29AC7006DDE2A /* 250px-025Pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "250px-025Pikachu.png"; sourceTree = "<group>"; };
+		FBFB7F311FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetingPointTableViewCell.swift; sourceTree = "<group>"; };
+		FBFB7F321FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMeetingPointTableViewCell.xib; sourceTree = "<group>"; };
+		FBFB7F3C1FB2E057006DDE2A /* NewMapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMapViewViewController.swift; sourceTree = "<group>"; };
+		FBFB7F3D1FB2E057006DDE2A /* NewMapViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMapViewViewController.xib; sourceTree = "<group>"; };
+		FBFB7F411FB30560006DDE2A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBFB7F431FB305F0006DDE2A /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBFB7F441FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewBookingViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
 		FBFB8AC21F9ADFA60087D0DD /* HeaderZeroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderZeroView.xib; sourceTree = "<group>"; };
 		FBFB8AC41F9ADFB50087D0DD /* HeaderZeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderZeroView.swift; sourceTree = "<group>"; };
 		FBFBBD041F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCatagoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBFB7F421FB305F0006DDE2A /* SwiftyJSON.framework in Frameworks */,
 				FBC7BC521FA4214800D31BC6 /* Cosmos.framework in Frameworks */,
 				FBBD8C841FA0253D00BCD169 /* ReadMoreTextView.framework in Frameworks */,
 				FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */,
@@ -239,6 +255,8 @@
 		345D02271C24035AB7DD711A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FBFB7F431FB305F0006DDE2A /* SwiftyJSON.framework */,
+				FBFB7F411FB30560006DDE2A /* SwiftyJSON.framework */,
 				FBC7BC541FA4214F00D31BC6 /* EventKit.framework */,
 				FBC7BC531FA4214800D31BC6 /* Cosmos.framework */,
 				FBBD8C851FA0253D00BCD169 /* ReadMoreTextView.framework */,
@@ -414,6 +432,7 @@
 		FB452A941F99B5DE00D0709D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FBFB7F2F1FB29AC7006DDE2A /* 250px-025Pikachu.png */,
 				FB452A971F99B64A00D0709D /* ListEnum.swift */,
 				FB452A951F99B60A00D0709D /* Color.swift */,
 				FB8051A31FAADB8000AD635E /* KeyNotifications.swift */,
@@ -593,6 +612,8 @@
 			children = (
 				FBB3F6961FB14980003BC910 /* MeetingPointTableViewCell.swift */,
 				FBB3F6971FB14980003BC910 /* MeetingPointTableViewCell.xib */,
+				FBFB7F311FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift */,
+				FBFB7F321FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib */,
 			);
 			path = MeetingPointView;
 			sourceTree = "<group>";
@@ -602,6 +623,8 @@
 			children = (
 				FBB3F6A11FB1AF67003BC910 /* MapViewViewController.swift */,
 				FBB3F6A21FB1AF67003BC910 /* MapViewViewController.xib */,
+				FBFB7F3C1FB2E057006DDE2A /* NewMapViewViewController.swift */,
+				FBFB7F3D1FB2E057006DDE2A /* NewMapViewViewController.xib */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -718,6 +741,7 @@
 			children = (
 				FBEB182C1FB01C8600E52E59 /* NewBookingViewController.swift */,
 				FBEB182D1FB01C8600E52E59 /* NewBookingViewController.xib */,
+				FBFB7F441FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift */,
 			);
 			path = BookingViewController;
 			sourceTree = "<group>";
@@ -869,6 +893,7 @@
 				FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */,
 				FB0036C21FAC5C4900D9C38A /* BookingCollectionViewCell.xib in Resources */,
 				FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */,
+				FBFB7F3F1FB2E057006DDE2A /* NewMapViewViewController.xib in Resources */,
 				FB9FB3EB1F8C86BD006CA1AE /* LikeViewController.xib in Resources */,
 				FBC7BC761FA449CD00D31BC6 /* HeaderCollectionViewCell.xib in Resources */,
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
@@ -884,11 +909,13 @@
 				FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */,
 				FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */,
 				FBFE36A51F85EB290020F295 /* HeaderView.xib in Resources */,
+				FBFB7F301FB29AC7006DDE2A /* 250px-025Pikachu.png in Resources */,
 				FB11F4021FA70B98008DD080 /* DateCollectionViewCell.xib in Resources */,
 				FBEB18311FB01C8700E52E59 /* NewBookingViewController.xib in Resources */,
 				FBFBBD071F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib in Resources */,
 				FB037E941F8F582B0081D787 /* DetailTableViewCell.xib in Resources */,
 				FB03C6761F84C004005FC7A2 /* HomeViewController.xib in Resources */,
+				FBFB7F341FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib in Resources */,
 				FBEB18321FB01C8700E52E59 /* MonthCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -927,6 +954,7 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReadMoreTextView/ReadMoreTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -936,6 +964,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReadMoreTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -948,9 +977,13 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DemoFaceTrip/Pods-DemoFaceTrip-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -965,6 +998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB3872F21FA81390005FFBCD /* CalendarProtocols.swift in Sources */,
+				FBFB7F451FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift in Sources */,
 				FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */,
 				FB8D2A641FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift in Sources */,
 				FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */,
@@ -977,6 +1011,7 @@
 				FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */,
 				FBC7BC5C1FA424A600D31BC6 /* HomeExtension.swift in Sources */,
 				FB9FB3F71F8C8756006CA1AE /* ProfileViewController.swift in Sources */,
+				FBFB7F331FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift in Sources */,
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBC8892E1F9DD9070017241E /* NewHomeCollectionViewCell.swift in Sources */,
 				FB0036BD1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift in Sources */,
@@ -996,6 +1031,7 @@
 				FBE241191F9EF2A700833E8A /* HeaderZeroForDetail.swift in Sources */,
 				FB03C6821F84D29F005FC7A2 /* NavigationController.swift in Sources */,
 				FB8051A41FAADB8000AD635E /* KeyNotifications.swift in Sources */,
+				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
 				FB452A961F99B60A00D0709D /* Color.swift in Sources */,
 				FB037E931F8F582B0081D787 /* DetailTableViewCell.swift in Sources */,
 				FBFE36A31F85EB190020F295 /* HeaderView.swift in Sources */,

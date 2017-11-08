@@ -99,7 +99,7 @@ class DetailViewController: BaseViewController {
         
         tableViewDetail.register(UINib.init(nibName: "CalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
         
-        tableViewDetail.register(UINib.init(nibName: "MeetingPointTableViewCell", bundle: nil), forCellReuseIdentifier: "MeetingPointCell")
+        tableViewDetail.register(UINib.init(nibName: "NewMeetingPointTableViewCell", bundle: nil), forCellReuseIdentifier: "NewMeetingPointCell")
         
         tableViewDetail.backgroundColor = UIColor.clear
         tableViewDetail.showsVerticalScrollIndicator = false

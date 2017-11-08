@@ -114,9 +114,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                 //cell.delegate = self
             return cell
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingPointCell", for: indexPath) as! MeetingPointTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewMeetingPointCell", for: indexPath) as! NewMeetingPointTableViewCell
             cell.selectionStyle = .none
-            cell.delegate = self
+            //cell.delegate = self
              return cell
         default:
             return UITableViewCell(style: .default, reuseIdentifier: "")
@@ -149,6 +149,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
         //        let readMoreTextView = cell.contentView.viewWithTag(1) as! ReadMoreTextView
         //        readMoreTextView.shouldTrim = !readMoreTextView.shouldTrim
         //       tableViewDetail.scrollToRow(at: indexPath, at: .top, animated: true)
+        if indexPath.section == 4{
+            print("hihi")
+            let vc = NewMapViewViewController()
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
