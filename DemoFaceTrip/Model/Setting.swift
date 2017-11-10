@@ -11,6 +11,7 @@ import UIKit
 class Settings{
     
     fileprivate static let kScaleHome = "ScaleHome"
+    fileprivate static let kCityPicked = "kCityPicked"
     
     static var isScaleMenuView: Bool? {
         get{
@@ -18,6 +19,16 @@ class Settings{
         }
         set{
             UserDefaults.standard.set(newValue, forKey: kScaleHome)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    static var cityPicked: String?{
+        get{
+            return UserDefaults.standard.object(forKey: kCityPicked) as? String
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: kCityPicked)
             UserDefaults.standard.synchronize()
         }
     }

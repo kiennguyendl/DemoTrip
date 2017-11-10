@@ -31,7 +31,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il8-26-w5l">
-                        <rect key="frame" x="0.0" y="158.5" width="320" height="1"/>
+                        <rect key="frame" x="20" y="158.5" width="280" height="1"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="9Dg-S6-b9X"/>
@@ -54,8 +54,8 @@
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JPa-Ov-gx5"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="top" secondItem="weA-Ff-ZZR" secondAttribute="bottom" id="KGR-vS-WGW"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3/4" id="Plw-Ha-m86"/>
-                    <constraint firstAttribute="trailing" secondItem="Il8-26-w5l" secondAttribute="trailing" id="QNi-hC-87W"/>
-                    <constraint firstItem="Il8-26-w5l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="W0K-ad-w43"/>
+                    <constraint firstAttribute="trailing" secondItem="Il8-26-w5l" secondAttribute="trailing" constant="20" id="QNi-hC-87W"/>
+                    <constraint firstItem="Il8-26-w5l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="W0K-ad-w43"/>
                     <constraint firstAttribute="trailing" secondItem="weA-Ff-ZZR" secondAttribute="trailing" constant="20" id="aDV-N9-OXF"/>
                     <constraint firstAttribute="trailing" secondItem="d3P-Ds-qKE" secondAttribute="trailing" constant="20" id="dCS-1b-8HP"/>
                     <constraint firstAttribute="bottom" secondItem="Il8-26-w5l" secondAttribute="bottom" id="dMx-L4-MOG"/>

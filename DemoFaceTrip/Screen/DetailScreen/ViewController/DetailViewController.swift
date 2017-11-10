@@ -23,8 +23,9 @@ class DetailViewController: BaseViewController {
     @IBOutlet weak var numReview: UILabel!
     @IBOutlet weak var bookingBtn: UIButton!
     
-    //@IBOutlet weak var img1: UIImageView!
-    @IBOutlet weak var img2: UIImageView!
+    @IBOutlet weak var viewMenu: UIView!
+    @IBOutlet weak var contraintBottomMenuView: NSLayoutConstraint!
+    @IBOutlet weak var buttonMenu: UIButton!
     
     var currentSection = -1
     var expandedCells = Set<Int>()
@@ -32,6 +33,7 @@ class DetailViewController: BaseViewController {
     var item: AnyObject?
     var isCoslap = false
     
+    @IBOutlet weak var hiddenView: UIView!
     
 
     override func viewDidLoad() {
@@ -39,6 +41,7 @@ class DetailViewController: BaseViewController {
 
         //setColorForStatusBarWhenScrollUp()
         //init table view
+        self.automaticallyAdjustsScrollViewInsets = false
         initTableView()
         
         // init custom navigation bar
@@ -48,6 +51,17 @@ class DetailViewController: BaseViewController {
         setContentForBootView()
         
         addNotificationForDetail()
+        
+//        self.view.bringSubview(toFront: viewMenu)
+        viewMenu.layer.cornerRadius = viewMenu.frame.width / 2
+        viewMenu.layer.shadowColor = UIColor.gray.cgColor
+        viewMenu.layer.shadowOpacity = 1
+        viewMenu.layer.shadowOffset = CGSize.zero
+        viewMenu.layer.shadowRadius = 1
+        viewMenu.isHidden = true
+//        viewMenu.frame.origin.y = self.view.frame.height
+//        contraintBottomMenuView.constant = self.view.frame.height + viewMenu.frame.height
+        hiddenView.isHidden = true
     }
     
     
@@ -73,8 +87,7 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.masksToBounds = false
         bookingBtn.layer.cornerRadius = 4.0
         tabBarController?.tabBar.isHidden = true
-        
-        //tableViewDetail.reloadData()
+
     }
     
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -101,8 +114,18 @@ class DetailViewController: BaseViewController {
         
         tableViewDetail.register(UINib.init(nibName: "NewMeetingPointTableViewCell", bundle: nil), forCellReuseIdentifier: "NewMeetingPointCell")
         
+        tableViewDetail.register(UINib.init(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingCell")
+        
+        tableViewDetail.register(UINib.init(nibName: "ReviewsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReviewsCell")
         tableViewDetail.backgroundColor = UIColor.clear
         tableViewDetail.showsVerticalScrollIndicator = false
+        
+//        tableViewDetail.contentInset = UIEdgeInsets.zero
+//
+//        tableViewDetail.scrollIndicatorInsets = UIEdgeInsets.zero
+//
+//        tableViewDetail.contentOffset = CGPoint(x: 0.0, y: 0.0)
+
     }
     
     func addContrailForTableView() {
@@ -237,6 +260,17 @@ class DetailViewController: BaseViewController {
     @IBAction func bookingBtn(_ sender: Any) {
     }
     
+    @IBAction func showMenuDetail(_ sender: Any) {
+        
+        let vc = MenuDetailViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
+    }
+    @IBAction func hidenViewMenu(_ sender: Any) {
+        hiddenView.isHidden = true
+    }
+    
 }
 
 
@@ -245,7 +279,11 @@ extension DetailViewController: MeetingPointTableViewCellProtocol{
         let vc = MapViewViewController()
         self.present(vc, animated: true, completion: nil)
     }
-  
-    
+}
+
+extension DetailViewController: MenuDetailProtocol{
+    func scrollToItemAtIndexPath(indexPath: IndexPath) {
+        tableViewDetail.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
 }
 

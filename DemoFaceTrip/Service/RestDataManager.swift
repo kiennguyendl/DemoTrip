@@ -38,8 +38,37 @@ class RestDataManager: NSObject {
                     completionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
                 }
             case .failure(let error):
-                completionHandler(nil, error as? NSError)
+                completionHandler(nil, error as NSError)
             }
         })
+    }
+    
+    func restDataForChooseCity<T: Mappable>(_ url: String, type: String, completionHandler: @escaping([T]?, NSError?) -> Void){
+        let data = [
+            "type": type
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: { response in
+            
+            switch response.result{
+                
+            case .success(let data):
+                var result = [T]()
+                if let cities = data as? [AnyObject]{
+                        for city in cities{
+                            let itemMapper = Mapper<T>()
+                            let item = itemMapper.map(JSONObject: city)
+                            result.append(item!)
+                        }
+                }
+                if result.count > 0{
+                    completionHandler(result, nil)
+                }else{
+                    completionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
+            case .failure(let error):
+                completionHandler(nil, error as NSError)
+            }
+            })
     }
 }

@@ -35,15 +35,17 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         if let layout = monthCollectionView.collectionViewLayout as? CalendarFlowLayout{
             layout.scrollDirection = .horizontal
             layout.itemSize = cellSize(in: self.bounds)
-            layout.minimumInteritemSpacing = 1
-            layout.minimumLineSpacing = 1
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
         }
+//        self.isUserInteractionEnabled = false
     }
     
     private func cellSize(in bounds: CGRect) -> CGSize {
         return CGSize(
-            width:   monthCollectionView.frame.size.width / CGFloat(NUMBER_OF_DAYS_IN_WEEK * 2) + 1.2,
-            height: (monthCollectionView.frame.size.height) / CGFloat(MAXIMUM_NUMBER_OF_ROWS * 2)
+            width:   monthCollectionView.frame.size.width / CGFloat(8 * 2),
+            height: monthCollectionView.frame.size.width / CGFloat(8 * 2)
+            /*(monthCollectionView.frame.size.height) / CGFloat(MAXIMUM_NUMBER_OF_ROWS * 2)*/
         )
     }
     
@@ -123,8 +125,8 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.frame.width / 7 - 1
-        let height = self.frame.height / 6 - 1
-        return CGSize(width: width, height: height)
+        //let height = self.frame.height / 6 - 1
+        return CGSize(width: width, height: width)
     }
     
     

@@ -58,10 +58,10 @@ extension NewMeetingPointTableViewCell: CLLocationManagerDelegate{
         DispatchQueue.main.async {
             let location = CLLocationCoordinate2D(latitude: 10.757300, longitude: 106.659722)
             let camera = GMSCameraPosition.camera(withLatitude: 10.757300, longitude: 106.659722, zoom: 15)
-            self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), camera: camera)
+            self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), camera: camera)
             self.googleMapsView.camera = camera
             self.googleMapsView.isMyLocationEnabled = true
-            self.addSubview(self.googleMapsView)
+            self.view.addSubview(self.googleMapsView)
             let marker =  GMSMarker(position: location)
             marker.groundAnchor = CGPoint(x: 0.5, y: 0.3)
             marker.title = "When we'll meet"

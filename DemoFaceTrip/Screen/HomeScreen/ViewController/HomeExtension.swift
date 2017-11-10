@@ -62,3 +62,19 @@ extension HomeViewController: HeaderZeroProtocol{
     }
     
 }
+
+extension HomeViewController: ChooseCityProtocol{
+    func loadDataForHome() {
+        inputTextSearchTf.text = Settings.cityPicked
+        self.restDataForHome()
+    }
+}
+
+extension HomeViewController: UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("test")
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}

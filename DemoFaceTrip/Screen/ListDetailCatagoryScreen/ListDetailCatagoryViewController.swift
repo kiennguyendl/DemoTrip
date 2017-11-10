@@ -196,7 +196,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = listDetailCollectionView.frame.width / 2 - 10
-        let height = listDetailCollectionView.frame.height / 2
+        //let height = listDetailCollectionView.frame.height / 2
         
         return CGSize(width: width, height: width * 1.5)
     }

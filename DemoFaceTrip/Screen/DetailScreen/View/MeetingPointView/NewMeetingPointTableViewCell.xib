@@ -20,14 +20,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-Ng-eL2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="164.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="153.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSV-V5-Szb">
+                        <rect key="frame" x="20" y="163.5" width="280" height="1"/>
+                        <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="mre-Hi-XGC"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="wSV-V5-Szb" firstAttribute="top" secondItem="P2A-Ng-eL2" secondAttribute="bottom" constant="10" id="3lK-Zd-IHt"/>
+                    <constraint firstAttribute="trailing" secondItem="wSV-V5-Szb" secondAttribute="trailing" constant="20" id="4Fs-RO-H0j"/>
                     <constraint firstItem="P2A-Ng-eL2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5lS-P8-US8"/>
                     <constraint firstAttribute="trailing" secondItem="P2A-Ng-eL2" secondAttribute="trailing" id="6Fo-d6-WgW"/>
-                    <constraint firstAttribute="bottom" secondItem="P2A-Ng-eL2" secondAttribute="bottom" id="Gwc-7e-YT1"/>
+                    <constraint firstItem="wSV-V5-Szb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="a2a-Fm-5MD"/>
+                    <constraint firstAttribute="bottom" secondItem="wSV-V5-Szb" secondAttribute="bottom" id="j84-oc-Z5m"/>
                     <constraint firstItem="P2A-Ng-eL2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="r6X-1x-XvR"/>
                 </constraints>
             </tableViewCellContentView>

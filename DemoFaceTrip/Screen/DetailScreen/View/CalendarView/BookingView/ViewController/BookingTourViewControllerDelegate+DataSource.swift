@@ -76,7 +76,7 @@ extension BookingTourViewController: UICollectionViewDelegate, UICollectionViewD
         
         let today = Date()
         let month = self.calendar.component(.month, from: today)
-        var year = self.calendar.component(.year, from: today)
+        let year = self.calendar.component(.year, from: today)
         
         var monthForSection = month + indexPath.section - 1
         var yearForSection = year

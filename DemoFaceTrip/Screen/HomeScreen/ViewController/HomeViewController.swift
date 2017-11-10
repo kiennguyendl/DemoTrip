@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import GooglePlaces
 
 class HomeViewController: BaseViewController {
     @IBOutlet weak var viewMenu: UIView!
@@ -46,6 +47,8 @@ class HomeViewController: BaseViewController {
     
     var newPos: CGFloat!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,10 +57,28 @@ class HomeViewController: BaseViewController {
         self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
         initTableView()
-        restDataForHome()
+//        restDataForHome()
         setColorForMenuView()
         addSwipeForController()
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
+        
+        inputTextSearchTf.addTarget(self, action: #selector(presentChooseCityView(textField:)), for: .touchDown)
+        
+        if Settings.cityPicked == nil{
+            let vc = ChooseCityViewController()
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }else{
+            inputTextSearchTf.text = Settings.cityPicked
+            restDataForHome()
+        }
+    }
+    
+    @objc func presentChooseCityView(textField: UITextField) {
+        let vc = ChooseCityViewController()
+        self.view.endEditing(true)
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -257,4 +278,10 @@ class HomeViewController: BaseViewController {
             }
         })
     }
+    
+    
 }
+
+
+
+
