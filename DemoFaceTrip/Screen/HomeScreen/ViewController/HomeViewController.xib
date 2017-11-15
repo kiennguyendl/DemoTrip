@@ -92,7 +92,7 @@
                                 <constraint firstItem="o1Y-yi-uZd" firstAttribute="centerY" secondItem="hF7-rh-uFc" secondAttribute="centerY" id="uZZ-NC-opf"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-b7-ucc">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-b7-ucc">
                             <rect key="frame" x="20" y="92" width="335" height="32"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="25" id="2YA-CA-OEb">
                                 <size key="itemSize" width="50" height="50"/>

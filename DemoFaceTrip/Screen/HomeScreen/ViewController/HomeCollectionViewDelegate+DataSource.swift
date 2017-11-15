@@ -40,7 +40,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 if indexPath == indexPathSelected{
                     cell.viewColor.backgroundColor = UIColor.white
                     cell.nameCarousel.textColor = UIColor.white
-                    self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+                    //self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
                 }else{
                     cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
                     cell.nameCarousel.textColor = color4

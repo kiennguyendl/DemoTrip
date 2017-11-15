@@ -58,16 +58,17 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.section == 0{
             return 0
         }
-        //        if Settings.isScaleMenuView!{
-        //            return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
-        //        }else{
-        //            return (tableViewCarousels.frame.size.height * 4) / 8 + 20
-        //        }
-        if Settings.isScaleMenuView!{
-            return ((tableViewCarousels.frame.size.height * 4) / 9) - 20
-        }else{
-            return (tableViewCarousels.frame.size.height * 4) / 8 - 20
-        }
+                if Settings.isScaleMenuView!{
+                    return ((tableViewCarousels.frame.size.height * 4) / 9 + 10)
+                }else{
+                    return (tableViewCarousels.frame.size.height * 4) / 8 + 20
+                }
+        
+//        if Settings.isScaleMenuView!{
+//            return ((tableViewCarousels.frame.size.height * 4) / 9) - 20
+//        }else{
+//            return (tableViewCarousels.frame.size.height * 4) / 8 - 20
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -139,9 +140,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                         Settings.isScaleMenuView = true
                         //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
                         if self.tableViewCarousels.isHidden == false{
-                            self.tableViewCarousels.setContentOffset(CGPoint(x: 0,y:  HomeViewController.verticalContentOffset), animated: false)
+                            if let contentOffset = HomeViewController.verticalContentOffset{
+                                self.tableViewCarousels.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
+                            }
                         }else if self.collectionViewDetail.isHidden == false{
-                            self.collectionViewDetail.setContentOffset(CGPoint(x: 0,y:  HomeViewController.verticalContentOffset), animated: false)
+                            if let contentOffset = HomeViewController.verticalContentOffset{
+                                self.collectionViewDetail.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
+                            }
                         }
                     }
                 })
@@ -157,7 +162,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         // cần fix animation. tách thread
         
         
-        //if scrollView.tag == 1 || scrollView.tag == 2{
+        if scrollView.tag == 1 || scrollView.tag == 2{
         
         
         //handle when scroll up
@@ -214,7 +219,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             }
             
         }
-        //}
+        }
     }
     
 }

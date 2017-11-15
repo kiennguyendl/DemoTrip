@@ -16,9 +16,12 @@ class BaseViewController: UIViewController {
     var customNavigationBar: CustomNavigationbarForDetailViewController!
     
     var backBtn: UIButton!
+    var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         statusBar  = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         
     }
     
@@ -122,6 +125,21 @@ class BaseViewController: UIViewController {
     
     func setWhiteColorForStatusBar() {
         statusBar.backgroundColor = UIColor.white
+    }
+    
+    func initIndicator() {
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator.center = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2)
+        activityIndicator.color = UIColor.gray
+        
+        self.view.addSubview(activityIndicator)
+    }
+    func displayIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func hideIndicator() {
+        activityIndicator.stopAnimating()
     }
 }
 

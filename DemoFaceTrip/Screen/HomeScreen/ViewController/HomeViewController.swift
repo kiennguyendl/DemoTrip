@@ -72,6 +72,9 @@ class HomeViewController: BaseViewController {
             inputTextSearchTf.text = Settings.cityPicked
             restDataForHome()
         }
+        self.initIndicator()
+        self.view.bringSubview(toFront: activityIndicator)
+        self.displayIndicator()
     }
     
     @objc func presentChooseCityView(textField: UITextField) {
@@ -100,6 +103,7 @@ class HomeViewController: BaseViewController {
             collectionViewCarousels.reloadData()
         }
         tableViewCarousels.isScrollEnabled = true
+        //restDataForHome()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -129,7 +133,7 @@ class HomeViewController: BaseViewController {
         collectionViewDetail.dataSource = self
         collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
         collectionViewDetail.showsVerticalScrollIndicator = false
-        
+        collectionViewDetail.tag = 1
     }
     
     func showSubMenu() {
@@ -253,6 +257,7 @@ class HomeViewController: BaseViewController {
     }
     // rest data from api for home
     func restDataForHome() {
+        //self.displayIndicator()
         RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
             guard let strongSelf = self else{return}
             if error == nil{
@@ -271,6 +276,7 @@ class HomeViewController: BaseViewController {
                     }
                     strongSelf.tableViewCarousels.reloadData()
                     strongSelf.collectionViewCarousels.reloadData()
+                    //strongSelf.hideIndicator()
                 }
                 print("success")
             }else{

@@ -71,4 +71,53 @@ class RestDataManager: NSObject {
             }
             })
     }
+    
+    func searchCityFollowText<T: Mappable>(_ url: String, action: String, keyword: String, completionHandler: @escaping([T]?, NSError?)-> Void) {
+        
+        let data = [
+            "action": action,
+            "keyword": keyword
+        ]
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: { response in
+            
+            switch response.result{
+                
+            case .success(let data):
+                var result = [T]()
+                if let items = data as? [AnyObject]{
+                    for item in items{
+                        let itemMapper = Mapper<T>()
+                        let item = itemMapper.map(JSONObject: item)
+                        result.append(item!)
+                    }
+                }
+                
+                if result.count > 0{
+                    completionHandler(result, nil)
+                }else{
+                    completionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
+            case .failure(let error):
+                completionHandler(nil, error as NSError)
+            }
+            
+        })
+    }
+    
+    func restDataFollowCity<T: Mappable>(_ url: String, action: String, keyword: String, completionHandler: @escaping([T]?, NSError?)-> Void) {
+        let data = [
+            "action": action,
+            "keyword": keyword
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: {response in
+            
+            switch response.result{
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
 }

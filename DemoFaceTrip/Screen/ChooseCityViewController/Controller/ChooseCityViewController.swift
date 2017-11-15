@@ -46,10 +46,20 @@ class ChooseCityViewController: UIViewController {
             self.clearBtn.isHidden = false
         }
         
-        filterData = (textField.text?.isEmpty)! ? cities: cities.filter({(city: City) -> Bool in
-            return city.name?.range(of: textField.text!, options: .caseInsensitive) != nil
+//        filterData = (textField.text?.isEmpty)! ? cities: cities.filter({(city: City) -> Bool in
+//            return city.name?.range(of: textField.text!, options: .caseInsensitive) != nil
+//        })
+        RestDataManager.shareInstance.searchCityFollowText(urlForHome, action: "search", keyword: textField.text!, completionHandler: {[weak self] (cities: [City]?, error: NSError?) in
+            
+            guard let strongSelf = self else{return}
+            if let cities = cities{
+                strongSelf.cities = cities
+                strongSelf.filterData = strongSelf.cities
+                strongSelf.tableViewCities.reloadData()
+            }
+            
         })
-        tableViewCities.reloadData()
+        //tableViewCities.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,6 +68,7 @@ class ChooseCityViewController: UIViewController {
     
 
     @IBAction func dismissView(_ sender: Any) {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -65,7 +76,8 @@ class ChooseCityViewController: UIViewController {
         citySearch.text = ""
         filterData = cities
         clearBtn.isHidden = true
-        tableViewCities.reloadData()
+        restDataCity()
+        //tableViewCities.reloadData()
     }
     
     
