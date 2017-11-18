@@ -11,7 +11,7 @@ import GooglePlaces
 import GoogleMaps
 
 protocol ChooseCityProtocol {
-    func loadDataForHome()
+    func loadDataForHome(listID: [ListInforMenu])
 }
 
 class ChooseCityViewController: UIViewController {
@@ -89,7 +89,7 @@ class ChooseCityViewController: UIViewController {
                 let placeMark = placemarkArray.last
                 let city = placeMark?.addressDictionary!["City"] as! String
                 Settings.cityPicked = city
-                self.delegate?.loadDataForHome()
+                self.delegate?.loadDataForHome(listID: [])
                 self.dismiss(animated: true, completion: nil)
                 //self.tableViewCities.reloadData()
             }
@@ -141,7 +141,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource{
         }else{
             let city = cities[indexPath.row].name! + " City"
             Settings.cityPicked = city
-            delegate?.loadDataForHome()
+            delegate?.loadDataForHome(listID: cities[indexPath.row].listID!)
             self.dismiss(animated: true, completion: nil)
         }
     }

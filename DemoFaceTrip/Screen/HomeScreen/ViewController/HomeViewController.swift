@@ -47,6 +47,7 @@ class HomeViewController: BaseViewController {
     
     var newPos: CGFloat!
     
+    var listID: [ListInforMenu] = []
     
     
     override func viewDidLoad() {

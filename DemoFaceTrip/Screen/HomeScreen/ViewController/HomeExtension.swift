@@ -64,10 +64,12 @@ extension HomeViewController: HeaderZeroProtocol{
 }
 
 extension HomeViewController: ChooseCityProtocol{
-    func loadDataForHome() {
+    func loadDataForHome(listID: [ListInforMenu]) {
         inputTextSearchTf.text = Settings.cityPicked
+        self.listID = listID
         self.restDataForHome()
     }
+
 }
 
 extension HomeViewController: UITextFieldDelegate{

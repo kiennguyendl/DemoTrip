@@ -125,6 +125,7 @@
 		FBF90F8E1F8637CF007CF7EA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F911F8637CF007CF7EA /* Starscream.framework */; };
 		FBF90F931F86388E007CF7EA /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F921F86388E007CF7EA /* Experience.swift */; };
 		FBF90F971F86396C007CF7EA /* Catagory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F961F86396C007CF7EA /* Catagory.swift */; };
+		FBFA2DB91FBFDEC6004AC35B /* ListInforMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFA2DB81FBFDEC6004AC35B /* ListInforMenu.swift */; };
 		FBFB7F301FB29AC7006DDE2A /* 250px-025Pikachu.png in Resources */ = {isa = PBXBuildFile; fileRef = FBFB7F2F1FB29AC7006DDE2A /* 250px-025Pikachu.png */; };
 		FBFB7F331FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFB7F311FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift */; };
 		FBFB7F341FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFB7F321FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib */; };
@@ -274,6 +275,7 @@
 		FBF90F911F8637CF007CF7EA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F921F86388E007CF7EA /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		FBF90F961F86396C007CF7EA /* Catagory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catagory.swift; sourceTree = "<group>"; };
+		FBFA2DB81FBFDEC6004AC35B /* ListInforMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInforMenu.swift; sourceTree = "<group>"; };
 		FBFB7F2F1FB29AC7006DDE2A /* 250px-025Pikachu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "250px-025Pikachu.png"; sourceTree = "<group>"; };
 		FBFB7F311FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetingPointTableViewCell.swift; sourceTree = "<group>"; };
 		FBFB7F321FB2A40E006DDE2A /* NewMeetingPointTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMeetingPointTableViewCell.xib; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				FBB0660D1F8DF6F2002BF21C /* FoodTour.swift */,
 				FBB0660F1F8DF879002BF21C /* CityTour.swift */,
 				FBCDD21C1FB55FDC00BB0F00 /* City.swift */,
+				FBFA2DB81FBFDEC6004AC35B /* ListInforMenu.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1351,6 +1354,7 @@
 				FBA5F7E81F871E1D0080B890 /* RestDataManager.swift in Sources */,
 				FBCDD2211FB581A600BB0F00 /* ChooseCityViewController.swift in Sources */,
 				FBB1754F1FBD497E004E0EE7 /* Passes.swift in Sources */,
+				FBFA2DB91FBFDEC6004AC35B /* ListInforMenu.swift in Sources */,
 				FBC7BC751FA449CD00D31BC6 /* HeaderCollectionViewCell.swift in Sources */,
 				FB0036C11FAC5C4900D9C38A /* BookingCollectionViewCell.swift in Sources */,
 				FBDD2E051FBC45C400F94EE1 /* Coordination.swift in Sources */,

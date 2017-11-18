@@ -1,19 +1,17 @@
 //
-//  City.swift
+//  ListInforMenu.swift
 //  DemoFaceTrip
 //
-//  Created by Kiên Nguyễn on 11/10/17.
+//  Created by Kiên Nguyễn on 11/18/17.
 //  Copyright © 2017 Kien Nguyen. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class City: NSObject, Mappable {
+class ListInforMenu: NSObject, Mappable {
     var id: Int?
-    var listID: [ListInforMenu]?
-    var name: String?
-    var image: String?
+    var type: String?
     
     required convenience init?(map: Map) {
         self.init()
@@ -21,9 +19,7 @@ class City: NSObject, Mappable {
     
     func mapping(map: Map) {
         id      <- map["id"]
-        name    <- map["name"]
-        image   <- map["image"]
-        listID  <- map["listMenuID"]
+        type    <- map["type"]
     }
-
+    
 }
