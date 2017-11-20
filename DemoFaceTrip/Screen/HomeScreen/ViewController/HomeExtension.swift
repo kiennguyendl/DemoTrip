@@ -68,6 +68,7 @@ extension HomeViewController: ChooseCityProtocol{
         inputTextSearchTf.text = Settings.cityPicked
         self.listID = listID
         self.restDataForHome()
+        self.restDataForCategory()
     }
 
 }

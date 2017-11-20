@@ -1,15 +1,15 @@
 //
-//  ClimbingAndTrekkingTour.swift
+//  Nightlife.swift
 //  DemoFaceTrip
 //
-//  Created by Kiên Nguyễn on 11/16/17.
+//  Created by Kiên Nguyễn on 11/20/17.
 //  Copyright © 2017 Kien Nguyen. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class ClimbingAndTrekkingTour: NSObject, Mappable {
+class Nightlife: NSObject, Mappable {
     var id: Int?
     var name: String?
     var listUrlImg: [String]?

@@ -120,4 +120,24 @@ class RestDataManager: NSObject {
             }
         })
     }
+    
+    func restDataFollowTypeOfMenu<T: Mappable>(_ url: String, action: String, id: Int, idMenu: Int, type: String, complertionHandler: @escaping(T?, NSError?)->Void){
+        
+        let data = [
+            "action" : action,
+            "id": id,
+            "idMenu": idMenu,
+            "type": type
+            ] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: {response in
+            
+            switch response.result{
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
 }

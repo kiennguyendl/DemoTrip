@@ -256,6 +256,12 @@ class HomeViewController: BaseViewController {
             }
         })
     }
+    
+    func restDataForCategory() {
+        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, action: "getlist", id: 01, idMenu: 1005, type: "Attractions", complertionHandler: {[weak self] (catagory: ShowAndAttrachtions?, error: NSError?) in
+            guard let strongSelf = self else{return}
+        })
+    }
     // rest data from api for home
     func restDataForHome() {
         //self.displayIndicator()
