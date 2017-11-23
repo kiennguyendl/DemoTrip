@@ -17,12 +17,18 @@ class HeaderZeroView: BaseView {
 
     @IBOutlet weak var collectionViewFriends: UICollectionView!
     
+    @IBOutlet weak var parentIndicatorView: UIView!
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var leadingOfLineView: NSLayoutConstraint!
+    @IBOutlet weak var trailingOfLineView: NSLayoutConstraint!
     @IBOutlet weak var widthOfLineView: NSLayoutConstraint!
-    var dataForMenu2: [Catagory] = []
+    //var dataForMenu2: [Catagory] = []
     var delegate: HeaderZeroProtocol?
+
+    var menu: [CategoryMenu] = []
     
+    static var horizontalContentOffset: CGFloat = 0.0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -30,10 +36,17 @@ class HeaderZeroView: BaseView {
         collectionViewFriends.dataSource = self
         collectionViewFriends.register(UINib.init(nibName: "ListCatagoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CatagoryCell")
         collectionViewFriends.tag = 4
-        
-        widthOfLineView.constant = collectionViewFriends.frame.width - 20
+
+        let scrollBar = collectionViewFriends.subviews.last
+        scrollBar?.isHidden = false
+
+        restDataForMenuHeaderZero()
+        DispatchQueue.main.async {
+            self.collectionViewFriends.setContentOffset(CGPoint(x: 0,y:  HeaderZeroView.horizontalContentOffset), animated: false)
+        }
         
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,14 +55,26 @@ class HeaderZeroView: BaseView {
         super.awakeFromNib()
     }
     
-    deinit {
-        dataForMenu2.removeAll()
+    func restDataForMenuHeaderZero() {
+        RestDataManager.shareInstance.restDataForHeaderZero(urlForHome, idCity: 01, type: "submenu", completionHandler: {[weak self](menu: [CategoryMenu]?,error: NSError?) in
+            guard let strongSelf = self else{return}
+            if error == nil{
+                if let menu = menu{
+                    strongSelf.menu = menu
+                    strongSelf.collectionViewFriends.reloadData()
+                    
+                }
+            }else{
+                print("error")
+            }
+        })
     }
 }
 
 extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataForMenu2.count
+        //return dataForMenu2.count
+        return menu.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,64 +83,17 @@ extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.avatar.layer.cornerRadius = cell.avatar.frame.width / 2
         cell.viewBackGroud.layer.cornerRadius = cell.viewBackGroud.frame.width / 2
         cell.avatar.clipsToBounds = true
-        cell.nameCatagory.text = dataForMenu2[indexPath.row].type
+        //cell.nameCatagory.text = dataForMenu2[indexPath.row].type
         
-        let strURL = dataForMenu2[indexPath.row].avatar
+        let strURL = menu[indexPath.row].avatar
         let url = URL(string: strURL!)
         cell.avatar.af_setImage(withURL: url!)
-        
-        switch dataForMenu2[indexPath.row].typeCatagory{
-            
-        case .attractionType:
-            var sumReview = 0
-            if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [Attraction]{
-                for index in 0 ..< catagoryItems.count{
-                    if let numReview = catagoryItems[index].numReview{
-                        sumReview = sumReview + numReview
-                    }
-                }
-            }
-            cell.numberLbl.text = ("\(sumReview)+")
-            break
-        case .themParkType:
-            var sumReview = 0
-            if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [ThemeParks]{
-                for index in 0 ..< catagoryItems.count{
-                    if let numReview = catagoryItems[index].numReview{
-                        sumReview = sumReview + numReview
-                    }
-                }
-            }
-            cell.numberLbl.text = ("\(sumReview)+")
-            break
-        case .cityTourType:
-            var sumReview = 0
-            if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [CityTour]{
-                for index in 0 ..< catagoryItems.count{
-                    if let numReview = catagoryItems[index].numPersonReview{
-                        sumReview = sumReview + numReview
-                    }
-                }
-            }
-            cell.numberLbl.text = ("\(sumReview)+")
-            break
-        case .foodTourType:
-            var sumReview = 0
-            if let catagoryItems = dataForMenu2[indexPath.row].catagoryItems as? [FoodTour]{
-                for index in 0 ..< catagoryItems.count{
-                    if let numReview = catagoryItems[index].numReview{
-                        sumReview = sumReview + numReview
-                    }
-                }
-            }
-            cell.numberLbl.text = ("\(sumReview)+")
-            break
-        default:
-            print("")
-        }
+        cell.nameCatagory.text = menu[indexPath.row].type
+        cell.numberLbl.isHidden = true
         
         return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionViewFriends.frame.width / 4
@@ -125,27 +103,39 @@ extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = ListDetailCatagoryViewController()
-//        vc.typeCatagory = dataForMenu2[indexPath.row].typeCatagory
-//        vc.listDetail = dataForMenu2[indexPath.row].catagoryItems
-//        navigationController?.pushViewController(vc, animated: true)
-        let type = dataForMenu2[indexPath.row].typeCatagory
-        delegate?.didPressOnCellHeaderZero(index: indexPath.row, type: type)
+
     }
+    
+    func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView){
+        print("hihi")
+    }
+    
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.tag == 4{
-        DispatchQueue.main.async {
-            let indicator = scrollView.subviews.last
-            indicator?.isHidden = true
-            self.leadingOfLineView.constant = (indicator?.frame.origin.x)!
-            self.widthOfLineView.constant = (indicator?.frame.width)! - 10
-//            print("-----------------------------")
-//            print(self.widthOfLineView.constant)
-//            print(self.indicatorView.frame.maxX)
-
-            //print(self.collectionViewFriends.frame.maxX)
-        }
+            DispatchQueue.main.async {
+                let indicator = scrollView.subviews.last
+                indicator?.isHidden = true
+                self.indicatorView.frame.origin.x = (indicator?.frame.origin.x)!
+                self.leadingOfLineView.constant = (indicator?.frame.origin.x)!
+                self.widthOfLineView.constant = (indicator?.frame.width)!
+                
+                if self.indicatorView.frame.origin.x < 0{
+                    
+                    self.indicatorView.frame.origin.x = 0
+                    self.leadingOfLineView.constant = 0
+                    
+                } else if ((self.indicatorView.frame.origin.x + self.widthOfLineView.constant) > self.parentIndicatorView.frame.width) {
+                    
+                    self.indicatorView.frame.origin.x = self.parentIndicatorView.frame.width - self.widthOfLineView.constant
+                    
+                    self.leadingOfLineView.constant = self.parentIndicatorView.frame.width - self.widthOfLineView.constant
+                }
+                
+            }
+            HeaderZeroView.horizontalContentOffset = self.collectionViewFriends.contentOffset.x
+            print("contentOffset: \(self.collectionViewFriends.contentOffset.x)")
         }
     }
 }

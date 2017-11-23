@@ -31,6 +31,7 @@ class BaseView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addSubview(contentView)
     }
+    
 }
 
 extension UIView {

@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class ListInforMenu: NSObject, Mappable {
+class ListInforMenu: NSObject, Mappable, NSCoding {
     var id: Int?
     var type: String?
     
@@ -22,4 +22,15 @@ class ListInforMenu: NSObject, Mappable {
         type    <- map["type"]
     }
     
+    required convenience init(coder aDecoder: NSCoder) {
+        self.init()
+        id = (aDecoder.decodeObject(forKey: "id") as! Int)
+        type = (aDecoder.decodeObject(forKey: "type") as! String)
+        
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(type, forKey: "type")
+    }
 }

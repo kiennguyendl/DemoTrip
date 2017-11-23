@@ -36,7 +36,7 @@
                         <color key="textColor" red="0.54631979695431476" green="0.54631979695431476" blue="0.54631979695431476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
+                    <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
                         <rect key="frame" x="76.5" y="41.5" width="60" height="60"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>

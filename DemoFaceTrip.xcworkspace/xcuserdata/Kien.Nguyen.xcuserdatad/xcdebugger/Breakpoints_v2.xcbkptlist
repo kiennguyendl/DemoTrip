@@ -297,22 +297,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
-            timestampString = "532860496.838296"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
-            landmarkName = "HomeViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/MapViewController/NewMapViewViewController.swift"
             timestampString = "531988748.568997"
             startingColumnNumber = "9223372036854775807"
@@ -330,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/Base/BaseViewController/BaseViewController.swift"
-            timestampString = "532317175.928566"
+            timestampString = "533026966.714599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
@@ -345,45 +329,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/ChooseCityViewController/Controller/ChooseCityViewController.swift"
-            timestampString = "532669270.030949"
+            filePath = "DemoFaceTrip/Screen/HomeScreen/View/HeaderZeroForTableViewCell/HeaderZeroView.swift"
+            timestampString = "533040805.225556"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "getCurrentCity()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Service/RestDataManager.swift"
-            timestampString = "532860496.838515"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "restDataFollowTypeOfMenu(_:action:id:idMenu:type:complertionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Service/RestDataManager.swift"
-            timestampString = "532860496.838593"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "restDataFollowTypeOfMenu(_:action:id:idMenu:type:complertionHandler:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "scrollViewDidChangeAdjustedContentInset(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

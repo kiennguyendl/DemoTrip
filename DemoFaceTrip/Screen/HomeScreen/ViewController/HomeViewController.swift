@@ -23,15 +23,16 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
     
+    @IBOutlet weak var categoryMenuView: UIView!
     var tableViewCarousels: UITableView!
-    
-    var catagory: [Catagory] = []
-    var menuCatagory1 = ["For You"]
-    var menuCatagory2: [String] = []
-    var dataForMenu1: [Catagory] = []
-    var dataForMenu2: [Catagory] = []
-    var dataForHome: [AnyObject] = []
-    var type: typeCatagoryForHome = .ForYou
+    var previousOffset: CGFloat = 0
+//    var catagory: [Catagory] = []
+//    var menuCatagory1 = ["For You"]
+//    var menuCatagory2: [String] = []
+//    var dataForMenu1: [Catagory] = []
+//    var dataForMenu2: [Catagory] = []
+//    var dataForHome: [AnyObject] = []
+//    var type: typeCatagoryForHome = .ForYou
     var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
     static var verticalContentOffset: CGFloat!
     
@@ -49,6 +50,8 @@ class HomeViewController: BaseViewController {
     
     var listID: [ListInforMenu] = []
     
+    var viewForHeaderZero: UIView!
+    var city: City!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,26 +59,30 @@ class HomeViewController: BaseViewController {
         setRedColorForStatusBar()
         collectionViewDetail.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
-        initCollectionView()
+//        initCollectionView()
         initTableView()
+        viewForHeaderZero  = HeaderZeroView()
 //        restDataForHome()
         setColorForMenuView()
-        addSwipeForController()
+        //addSwipeForController()
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
         
         inputTextSearchTf.addTarget(self, action: #selector(presentChooseCityView(textField:)), for: .touchDown)
         
-        if Settings.cityPicked == nil{
+        if Settings.city == nil{
             let vc = ChooseCityViewController()
             vc.delegate = self
             self.present(vc, animated: true, completion: nil)
         }else{
             inputTextSearchTf.text = Settings.cityPicked
-            restDataForHome()
+            city = NSKeyedUnarchiver.unarchiveObject(with: Settings.city!) as! City
+            listID = city.listID!
+            tableViewCarousels.reloadData()
+//            restDataForHome()
         }
-        self.initIndicator()
-        self.view.bringSubview(toFront: activityIndicator)
-        self.displayIndicator()
+//        self.initIndicator()
+//        self.view.bringSubview(toFront: activityIndicator)
+//        self.displayIndicator()
     }
     
     @objc func presentChooseCityView(textField: UITextField) {
@@ -84,6 +91,7 @@ class HomeViewController: BaseViewController {
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -104,6 +112,7 @@ class HomeViewController: BaseViewController {
             collectionViewCarousels.reloadData()
         }
         tableViewCarousels.isScrollEnabled = true
+        restDataForCategory()
         //restDataForHome()
     }
 
@@ -130,11 +139,11 @@ class HomeViewController: BaseViewController {
         collectionViewCarousels.backgroundColor = color3
         collectionViewCarousels.showsHorizontalScrollIndicator = false
 
-        collectionViewDetail.delegate = self
-        collectionViewDetail.dataSource = self
-        collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
-        collectionViewDetail.showsVerticalScrollIndicator = false
-        collectionViewDetail.tag = 1
+//        collectionViewDetail.delegate = self
+//        collectionViewDetail.dataSource = self
+//        collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
+//        collectionViewDetail.showsVerticalScrollIndicator = false
+//        collectionViewDetail.tag = 1
     }
     
     func showSubMenu() {
@@ -189,7 +198,7 @@ class HomeViewController: BaseViewController {
         
         self.view.addSubview(tableViewCarousels)
         
-        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.collectionViewDetail, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewMenu, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
         let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
@@ -223,8 +232,8 @@ class HomeViewController: BaseViewController {
                     let row = self.indexPathSelected.row
                     if row < 4{
                         UIView.animate(withDuration: 0.5, animations: {
-                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
+//                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+//                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
                             self.tableViewCarousels.isHidden = true
                             self.collectionViewDetail.isHidden = false
                             self.collectionViewDetail.reloadData()
@@ -236,8 +245,8 @@ class HomeViewController: BaseViewController {
                     let row = self.indexPathSelected.row
                     if row > 0{
                         UIView.animate(withDuration: 0.8, animations: {
-                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
+//                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+//                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
                             if row == 1{
                                 self.tableViewCarousels.isHidden = false
                                 self.collectionViewDetail.isHidden = true
@@ -258,39 +267,42 @@ class HomeViewController: BaseViewController {
     }
     
     func restDataForCategory() {
-        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, action: "getlist", id: 01, idMenu: 1005, type: "Attractions", complertionHandler: {[weak self] (catagory: ShowAndAttrachtions?, error: NSError?) in
+        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome,menu: "menu", action: "getlist", id: 01, idMenu: 1005, type: "Attractions", complertionHandler: {[weak self] (catagory: ShowAndAttrachtions?, error: NSError?) in
             guard let strongSelf = self else{return}
+            print(strongSelf)
         })
     }
+
+    
     // rest data from api for home
-    func restDataForHome() {
-        //self.displayIndicator()
-        RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
-            guard let strongSelf = self else{return}
-            if error == nil{
-                if let catagory = catagory{
-                    strongSelf.catagory = catagory
-                    for index in catagory{
-                        if let type = index.type{
-                            if type == "Local Guide" || type == "Travel Agency" || type == "Hotel" || type == "Experience"{
-                                strongSelf.menuCatagory1.append(type)
-                                strongSelf.dataForMenu1.append(index)
-                            }else{
-                                strongSelf.menuCatagory2.append(type)
-                                strongSelf.dataForMenu2.append(index)
-                            }
-                        }
-                    }
-                    strongSelf.tableViewCarousels.reloadData()
-                    strongSelf.collectionViewCarousels.reloadData()
-                    //strongSelf.hideIndicator()
-                }
-                print("success")
-            }else{
-                print("false")
-            }
-        })
-    }
+//    func restDataForHome() {
+//        //self.displayIndicator()
+//        RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
+//            guard let strongSelf = self else{return}
+//            if error == nil{
+//                if let catagory = catagory{
+//                    strongSelf.catagory = catagory
+//                    for index in catagory{
+//                        if let type = index.type{
+//                            if type == "Local Guide" || type == "Travel Agency" || type == "Hotel" || type == "Experience"{
+//                                strongSelf.menuCatagory1.append(type)
+//                                strongSelf.dataForMenu1.append(index)
+//                            }else{
+//                                strongSelf.menuCatagory2.append(type)
+//                                strongSelf.dataForMenu2.append(index)
+//                            }
+//                        }
+//                    }
+//                    strongSelf.tableViewCarousels.reloadData()
+//                    strongSelf.collectionViewCarousels.reloadData()
+//                    //strongSelf.hideIndicator()
+//                }
+//                print("success")
+//            }else{
+//                print("false")
+//            }
+//        })
+//    }
     
     
 }

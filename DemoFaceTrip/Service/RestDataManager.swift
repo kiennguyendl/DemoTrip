@@ -43,6 +43,7 @@ class RestDataManager: NSObject {
         })
     }
     
+    //get list city from server
     func restDataForChooseCity<T: Mappable>(_ url: String, type: String, completionHandler: @escaping([T]?, NSError?) -> Void){
         let data = [
             "type": type
@@ -72,6 +73,7 @@ class RestDataManager: NSObject {
             })
     }
     
+    //search city
     func searchCityFollowText<T: Mappable>(_ url: String, action: String, keyword: String, completionHandler: @escaping([T]?, NSError?)-> Void) {
         
         let data = [
@@ -104,6 +106,7 @@ class RestDataManager: NSObject {
         })
     }
     
+    
     func restDataFollowCity<T: Mappable>(_ url: String, action: String, keyword: String, completionHandler: @escaping([T]?, NSError?)-> Void) {
         let data = [
             "action": action,
@@ -121,9 +124,10 @@ class RestDataManager: NSObject {
         })
     }
     
-    func restDataFollowTypeOfMenu<T: Mappable>(_ url: String, action: String, id: Int, idMenu: Int, type: String, complertionHandler: @escaping(T?, NSError?)->Void){
+    func restDataFollowTypeOfMenu<T: Mappable>(_ url: String, menu: String, action: String, id: Int, idMenu: Int, type: String, complertionHandler: @escaping(T?, NSError?)->Void){
         
         let data = [
+            "menu": menu,
             "action" : action,
             "id": id,
             "idMenu": idMenu,
@@ -134,9 +138,56 @@ class RestDataManager: NSObject {
             
             switch response.result{
             case .success(let data):
-                print(data)
+                var result: T?
+                if let data = data as? [String: AnyObject] {
+                    
+                        let itemMapper = Mapper<T>()
+                        if let item = itemMapper.map(JSONObject: data){
+                            result = item
+                        }
+                    
+                }
+                
+                if result != nil{
+                    complertionHandler(result, nil)
+                }else{
+                    complertionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
             case .failure(let error):
-                print(error)
+                complertionHandler(nil, error as NSError)
+            }
+        })
+    }
+    
+    
+    //get categories for header zero in the home screen
+    func restDataForHeaderZero<T: Mappable>(_ url: String, idCity: Int, type: String, completionHandler: @escaping([T]?, NSError?)->Void) {
+        let data = [
+            "idCity": idCity,
+            "type": type
+            ] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: {response in
+            
+            switch response.result{
+            case .success(let data):
+                var result = [T]()
+                if let data = data as?[AnyObject]{
+                    for index in data{
+                        let itemMapper = Mapper<T>()
+                        if let item = itemMapper.map(JSONObject: index){
+                            result.append(item)
+                        }
+                    }
+                }
+                
+                if result.count > 0{
+                    completionHandler(result, nil)
+                }else{
+                    completionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
+            case .failure(let error):
+                completionHandler(nil, error as NSError)
             }
         })
     }
