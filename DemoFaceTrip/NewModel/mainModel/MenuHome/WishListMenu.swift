@@ -13,7 +13,7 @@ class WishListMenu: NSObject, Mappable {
     var id: Int?
     var type: String?
     var listItem: [ItemMenu] = []
-    
+    var typeCategory: typeOfCategoryMenu = .None
     
     required convenience init?(map: Map) {
         self.init()
@@ -22,7 +22,7 @@ class WishListMenu: NSObject, Mappable {
     func mapping(map: Map) {
         id          <- map["id"]
         type        <- map["type"]
-        
+        typeCategory = .WishList
         var wishList: [AnyObject]?
         
         wishList         <- map["WishList"]

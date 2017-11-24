@@ -24,6 +24,7 @@ class City: NSObject, Mappable, NSCoding {
         id      <- map["id"]
         name    <- map["name"]
         image   <- map["image"]
+        
         listID  <- map["listMenuID"]
     }
     

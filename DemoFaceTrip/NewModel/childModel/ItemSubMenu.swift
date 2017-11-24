@@ -12,7 +12,7 @@ import ObjectMapper
 class ItemSubMenu: NSObject, Mappable {
     var id: Int?
     var type: String?
-    var avatar: String??
+    var avatar: String?
     
     required convenience init?(map: Map) {
         self.init()

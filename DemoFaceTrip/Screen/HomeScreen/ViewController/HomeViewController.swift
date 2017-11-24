@@ -26,13 +26,7 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var categoryMenuView: UIView!
     var tableViewCarousels: UITableView!
     var previousOffset: CGFloat = 0
-//    var catagory: [Catagory] = []
-//    var menuCatagory1 = ["For You"]
-//    var menuCatagory2: [String] = []
-//    var dataForMenu1: [Catagory] = []
-//    var dataForMenu2: [Catagory] = []
-//    var dataForHome: [AnyObject] = []
-//    var type: typeCatagoryForHome = .ForYou
+
     var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
     static var verticalContentOffset: CGFloat!
     
@@ -49,9 +43,11 @@ class HomeViewController: BaseViewController {
     var newPos: CGFloat!
     
     var listID: [ListInforMenu] = []
-    
+    //var data: AnyObject?
     var viewForHeaderZero: UIView!
     var city: City!
+    
+    var listCarousel = ["For Your", "Local Guide", "Hotels", "Travel Agency"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +55,9 @@ class HomeViewController: BaseViewController {
         setRedColorForStatusBar()
         collectionViewDetail.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
-//        initCollectionView()
+        initCollectionView()
         initTableView()
         viewForHeaderZero  = HeaderZeroView()
-//        restDataForHome()
         setColorForMenuView()
         //addSwipeForController()
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
@@ -112,8 +107,6 @@ class HomeViewController: BaseViewController {
             collectionViewCarousels.reloadData()
         }
         tableViewCarousels.isScrollEnabled = true
-        restDataForCategory()
-        //restDataForHome()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -272,37 +265,6 @@ class HomeViewController: BaseViewController {
             print(strongSelf)
         })
     }
-
-    
-    // rest data from api for home
-//    func restDataForHome() {
-//        //self.displayIndicator()
-//        RestDataManager.shareInstance.restDataForHome(urlForHome, completionHandler: {[weak self] (catagory: [Catagory]?, error: NSError?) in
-//            guard let strongSelf = self else{return}
-//            if error == nil{
-//                if let catagory = catagory{
-//                    strongSelf.catagory = catagory
-//                    for index in catagory{
-//                        if let type = index.type{
-//                            if type == "Local Guide" || type == "Travel Agency" || type == "Hotel" || type == "Experience"{
-//                                strongSelf.menuCatagory1.append(type)
-//                                strongSelf.dataForMenu1.append(index)
-//                            }else{
-//                                strongSelf.menuCatagory2.append(type)
-//                                strongSelf.dataForMenu2.append(index)
-//                            }
-//                        }
-//                    }
-//                    strongSelf.tableViewCarousels.reloadData()
-//                    strongSelf.collectionViewCarousels.reloadData()
-//                    //strongSelf.hideIndicator()
-//                }
-//                print("success")
-//            }else{
-//                print("false")
-//            }
-//        })
-//    }
     
     
 }

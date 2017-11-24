@@ -9,6 +9,7 @@
 import UIKit
 import CoreMedia
 import AlamofireImage
+import Cosmos
 
 protocol HomeCellDelegate {
     func didPressCell(currentSection: Int, index: Int, type: catagoryType)
@@ -18,12 +19,72 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionViewForCell: UICollectionView!
     var delegate: HomeCellDelegate?
     
-    var idCity: Int!
-    var idMenu: Int!
-    var type: String!
+    var typeOfMenu: typeOfCategoryMenu = .None
+    var numberOfRow: Int = 0
+    var category: AnyObject?{
+        didSet{
+            switch typeOfMenu {
+            case .Activities:
+                if let category = category{
+                    let data = category as! OutDoorActivities
+                    numberOfRow = data.listSubMenu.count
+                }
+                break
+            case .Attractions:
+                if let category = category{
+                    let data = category as! ShowAndAttrachtions
+                    numberOfRow = data.listSubMenu.count
+                }
+                break
+            case .BestSeller:
+                if let category = category{
+                    let data = category as! BestSellerMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .Daytrip:
+                if let category = category{
+                    let data = category as! DayTripAndExcursionsTourMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .Experiences:
+                if let category = category{
+                    let data = category as! CustomExperiences
+                    numberOfRow = data.listSubMenu.count
+                }
+                break
+            case .FTPickes:
+                if let category = category{
+                    let data = category as! FTPickesMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .MultiDayTrip:
+                if let category = category{
+                    let data = category as! MultiDayTripAndExcursionsTourMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .Recentlies:
+                if let category = category{
+                    let data = category as! RecentlyMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .WishList:
+                if let category = category{
+                    let data = category as! WishListMenu
+                    numberOfRow = data.listItem.count
+                }
+                break
+            case .None:
+                break
+            }
+            collectionViewForCell.reloadData()
+        }
+    }
     
-    var listMenu: [AnyObject] = []
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,7 +96,7 @@ class HomeTableViewCell: UITableViewCell {
         collectionViewForCell.register(UINib.init(nibName: "SubMenuItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubMenu")
         
         collectionViewForCell.showsHorizontalScrollIndicator = false
-        
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,343 +104,292 @@ class HomeTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    
 
 }
+
+
 
 extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 4
+        return numberOfRow
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func setDataForItemCell(cell: UICollectionViewCell, urlStr: String, typeOfTour: String, name: String, price: Double, rating: Float) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath) as! NewHomeCollectionViewCell
+        let cell = cell as! NewHomeCollectionViewCell
         
-//        if let items = self.catagoryItems{
-//            switch self.type{
-//            case .hotelType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numbooking")
-//                cell.img3.image = UIImage(named: "room")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? Hotel{
-//                        if let nameHotel = item.nameHotel, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(nameHotel)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//                            }
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let numbooking = item.numBook{
-//                            cell.lbl2.text = "\(numbooking) booked"
-//                        }
-//
-//                        if let room = item.numRoom{
-//                            cell.lbl3.text = "\(room) room"
-//                        }
-//                    }
-//                }
-//                break
-//            case .experienceType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numbooking")
-//                cell.img3.image = UIImage(named: "time")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? Experience{
-//                        if let nameExp = item.experience, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(nameExp)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//                            }
-//
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let review = item.numPersonReview{
-//                            cell.lbl2.text = "\(review) review"
-//                        }
-//
-//                        if let time = item.time{
-//                            cell.lbl3.text = time
-//                        }
-//                    }
-//                }
-//                break
-//            case .cityTourType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numbooking")
-//                cell.img3.image = UIImage(named: "numbooking")
-//
-//                for _ in 0..<4{
-//                    if let item = items[indexPath.row] as? CityTour{
-//                        if let nameTour = item.tour, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(nameTour)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.urlImg{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//                            }
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let numbooking = item.numbook{
-//                            cell.lbl2.text = "\(numbooking) booked"
-//                        }
-//
-//                        if let review = item.numPersonReview{
-//                            cell.lbl3.text = "\(review) review"
-//                        }
-//                    }
-//                }
-//                break
-//            case .foodTourType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numbooking")
-//                cell.img3.image = UIImage(named: "numbooking")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? FoodTour{
-//                        if let name = item.name, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(name)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//                            }
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let numbooking = item.numbook{
-//                            cell.lbl2.text = "\(numbooking) booked"
-//                        }
-//
-//                        if let review = item.numReview{
-//                            cell.lbl3.text = "\(review) review"
-//                        }
-//                    }
-//                }
-//                break
-//            case .localGuideType:
-//                cell.hidingView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numlike")
-//                cell.img3.image = UIImage(named: "language")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? LocalGuide{
-//                        if let nameGuide = item.nameGuide, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(nameGuide)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.avatar{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//
-//
-//                            }
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//
-//                        if let numLike = item.numLike{
-//                            cell.lbl2.text = "\(numLike)"
-//                        }
-//
-//                        if let language = item.language{
-//                            cell.lbl3.text = language
-//                        }
-//                    }
-//                }
-//                break
-//            case .attractionType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "opentime")
-//                cell.img3.image = UIImage(named: "numbooking")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? Attraction{
-//                        if let name = item.name, let country = item.country{
-//                            cell.name.text = ("\(country) - \(name)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//
-//
-//                            }
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let review = item.numReview{
-//                            cell.lbl2.text = "\(review) review"
-//                        }
-//
-//                        if let timeOpen = item.openTime{
-//                            cell.lbl3.text = timeOpen
-//                        }
-//                    }
-//                }
-//                break
-//            case .travelAgencyType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "numbooking")
-//                cell.img3.image = UIImage(named: "numbooking")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? TravelAgency{
-//                        if let name = item.name, let country = item.country{
-//                            cell.name.text = ("\(country) - \(name)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                let dafautImg = UIImage(named: "default")
-//                                cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-////                                cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                            }
-//                        }
-//
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let numbook = item.numbook{
-//                            cell.lbl2.text = ("\(numbook) booked")
-//                        }
-//                        if let review = item.numReview{
-//                            cell.lbl3.text = "\(review) review"
-//                        }
-//                    }
-//                }
-//                break
-//            case .themParkType:
-//                cell.displayView()
-//                cell.img1.image = UIImage(named: "place")
-//                cell.img2.image = UIImage(named: "opentime")
-//                cell.img3.image = UIImage(named: "numbooking")
-//                for _ in 0..<4 {
-//                    if let item = items[indexPath.row] as? ThemeParks{
-//                        if let name = item.name, let price = item.price{
-//                            cell.name.text = ("$\(price)USD - \(name)")
-//                            cell.name.sizeToFit()
-//                        }
-//
-//                        if let urlStr = item.image{
-//                            DispatchQueue.main.async {
-//                                let url = URL(string: urlStr)
-//                                cell.image.af_setImage(withURL: url!, completion: { response in
-//                                    guard let image = response.result.value else{return}
-//                                    let img = image.cropImage(image: image)
-//                                    cell.image.image = img
-////                                    cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
-//                                })
-//                            }
-//
-//
-//                        }
-//
-//                        if let place = item.place{
-//                            cell.lbl1.text = place
-//                        }
-//
-//                        if let opentime = item.openTime{
-//                            cell.lbl2.text = opentime
-//                        }
-//
-//                        if let review = item.numReview{
-//                            cell.lbl3.text = "\(review) review"
-//                        }
-//                    }
-//                }
-//                break
-//            default:
-//                break
-//            }
-//        }
+            let url = URL(string: urlStr)
+            cell.image.af_setImage(withURL: url!, completion: { response in
+                guard let image = response.result.value else{return}
+                let img = image.cropImage(image: image)
+                cell.image.image = img
+            })
+        
+        
+        cell.typeOfTour.text = typeOfTour.uppercased()
+        cell.typeOfTour.textColor = UIColor.red
+        
+        cell.nameOfTour.text = name
+        
+        cell.priceOfTour.text = "$\(price)"
+        
+        
+        if rating > 0{
+            cell.ratingView.rating = Double(rating)
+            cell.pointRating.text = "\(rating)"
+        }else{
+            cell.ratingView.rating = 0
+            cell.pointRating.text = "no rating"
+        }
+        
         return cell
     }
     
+    func setDataforSubMenu(cell: UICollectionViewCell, urlStr: String, nameSubMenu: String) -> UICollectionViewCell{
+        
+        let cell = cell as! SubMenuItemCollectionViewCell
+        let url = URL(string: urlStr)
+        cell.imageMenu.af_setImage(withURL: url!, completion: { response in
+            guard let image = response.result.value else{return}
+            let img = image.cropImage(image: image)
+            cell.imageMenu.image = img
+            //                        cell.imageMenu.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
+        })
+        
+        
+        
+        cell.nameSubMenu.text = nameSubMenu
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //var cell = UICollectionViewCell()
+        let currentItem = indexPath.row
+        switch typeOfMenu {
+        case .Activities:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubMenu", for: indexPath)
+            let data = category as! OutDoorActivities
+            
+            let urlStr = data.listSubMenu[currentItem].avatar
+            let nameSubmenu = data.listSubMenu[currentItem].type
+
+            return setDataforSubMenu(cell: cell, urlStr: urlStr!, nameSubMenu: nameSubmenu!)
+        case .Attractions:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubMenu", for: indexPath)
+            let data = category as! ShowAndAttrachtions
+            
+            let urlStr = data.listSubMenu[currentItem].avatar
+            let nameSubmenu = data.listSubMenu[currentItem].type
+            
+            return setDataforSubMenu(cell: cell, urlStr: urlStr!, nameSubMenu: nameSubmenu!)
+        case .BestSeller:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+ 
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? BestSellerMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .Daytrip:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+            
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? DayTripAndExcursionsTourMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+            
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .Experiences:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubMenu", for: indexPath)
+            let data = category as! CustomExperiences
+            
+            let urlStr = data.listSubMenu[currentItem].avatar
+            let nameSubmenu = data.listSubMenu[currentItem].type
+            
+            return setDataforSubMenu(cell: cell, urlStr: urlStr!, nameSubMenu: nameSubmenu!)
+        case .FTPickes:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+            
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? FTPickesMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+            
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .MultiDayTrip:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+            
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? MultiDayTripAndExcursionsTourMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+            
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .Recentlies:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+            
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? RecentlyMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+            
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .WishList:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
+            
+            var urlStr: String!
+            var typeOfTour: String!
+            var nameTour: String!
+            var priceTour: Double!
+            var ratingTour: Float!
+            
+            if let data = category as? WishListMenu{
+                if let urlImg = data.listItem[currentItem].imageURL{
+                    urlStr = urlImg
+                }
+                if let name = data.listItem[currentItem].name{
+                    nameTour = name
+                }
+                
+                if let price = data.listItem[currentItem].price{
+                    priceTour = Double(price)
+                }
+                typeOfTour = "workshop"
+                
+                if let rating = data.listItem[currentItem].rating{
+                    ratingTour = rating
+                }else{
+                    ratingTour = 0
+                }
+            }
+            
+            return setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+        case .None:
+            return UICollectionViewCell()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let witdh = collectionViewForCell.frame.width / 1.7
-        let height = self.frame.height
+        var witdh: CGFloat = 0
+        var height: CGFloat = 0
+        switch typeOfMenu {
+        case .Activities, .Experiences, .Attractions:
+            witdh = collectionViewForCell.frame.width / 2.7
+            height = self.frame.height
+        default:
+            witdh = collectionViewForCell.frame.width / 2.3
+            height = self.frame.height
+        }
+        
         return CGSize(width: witdh, height: height )
     }
     

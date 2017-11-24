@@ -19,38 +19,41 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //        }else{
 //            return dataForHome.count
 //        }
-        return 4
+        return listCarousel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if collectionView == self.collectionViewCarousels{
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath) as! CarouselsCollectionViewCell
-//            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-//            if Settings.isScaleMenuView!{
-//
-//                if self.indexPathSelected == indexPath{
-//                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-//                    cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-//                }else{
-//                    cell.viewColor.backgroundColor = UIColor.white
-//                    cell.nameCarousel.textColor = UIColor.gray
-//                }
-//                cell.backgroundColor = UIColor.white
-//            }else{
-//                if indexPath == indexPathSelected{
-//                    cell.viewColor.backgroundColor = UIColor.white
-//                    cell.nameCarousel.textColor = UIColor.white
-//                    //self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-//                }else{
-//                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-//                    cell.nameCarousel.textColor = color4
-//                }
-//                cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-//            }
-//
-//            cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
-//            return cell
-        
+        if collectionView == self.collectionViewCarousels{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCell", for: indexPath) as! CarouselsCollectionViewCell
+            cell.nameCarousel.text = listCarousel[indexPath.row].uppercased()
+            
+            cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+            if Settings.isScaleMenuView!{
+                
+                if self.indexPathSelected == indexPath{
+                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                }else{
+                    cell.viewColor.backgroundColor = UIColor.white
+                    cell.nameCarousel.textColor = UIColor.gray
+                }
+                cell.backgroundColor = UIColor.white
+            }else{
+                if indexPath == indexPathSelected{
+                    cell.viewColor.backgroundColor = UIColor.white
+                    cell.nameCarousel.textColor = UIColor.white
+                    //self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+                }else{
+                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    cell.nameCarousel.textColor = color4
+                }
+                cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+            }
+            
+            //cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
+            return cell
+        }
+        return UICollectionViewCell()
 //        }else{
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
 //            switch type{
@@ -202,21 +205,22 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == self.collectionViewCarousels{
-//            var width: CGFloat = 0.0
-//            var height: CGFloat = 0.0
-//            if menuCatagory1.count > 1 {
-//                let size: CGSize = menuCatagory1[indexPath.row].size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17.0)])
-//
-//                width = size.width
-//                height = collectionViewCarousels.frame.height
-//
-//            }else{
-//                width = collectionViewCarousels.frame.width
-//                height = collectionViewCarousels.frame.height
-//            }
-//
-//            return CGSize(width: width, height: height)
+        if collectionView == self.collectionViewCarousels{
+            var width: CGFloat = 0.0
+            var height: CGFloat = 0.0
+            if listCarousel.count > 1 {
+                let size: CGSize = listCarousel[indexPath.row].size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17.0)])
+
+                width = size.width
+                height = collectionViewCarousels.frame.height
+
+            }else{
+                width = collectionViewCarousels.frame.width
+                height = collectionViewCarousels.frame.height
+            }
+
+            return CGSize(width: width, height: height)
+        }
 //        }else{
 //            let width = collectionViewDetail.frame.width / 2 - 10
 //            return CGSize(width: width, height: width * 1.5)
@@ -229,10 +233,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if collectionView == self.collectionViewCarousels{
             
-            indexPathSelected = []
-            indexPathSelected = indexPath
-            tableViewCarousels.isHidden = true
-            collectionViewDetail.isHidden = false
+//            indexPathSelected = []
+//            indexPathSelected = indexPath
+//            tableViewCarousels.isHidden = true
+//            collectionViewDetail.isHidden = false
 //            if indexPath.row > 0{
 //                dataForHome.removeAll()
 //                if let data = dataForMenu1[indexPath.row - 1].catagoryItems{

@@ -33,3 +33,16 @@ enum typeCatagoryForHome{
     case TravelAgency
     case Attraction
 }
+
+enum typeOfCategoryMenu{
+    case Recentlies
+    case WishList
+    case BestSeller
+    case FTPickes
+    case Attractions
+    case Daytrip
+    case MultiDayTrip
+    case Activities
+    case Experiences
+    case None
+}

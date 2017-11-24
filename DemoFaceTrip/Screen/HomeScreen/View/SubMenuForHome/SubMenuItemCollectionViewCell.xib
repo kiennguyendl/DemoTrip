@@ -20,30 +20,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="245" height="232"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lWk-sM-npN">
-                        <rect key="frame" x="0.0" y="0.0" width="245" height="174"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rm-y0-yY6">
-                        <rect key="frame" x="0.0" y="174" width="245" height="58"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLt-8C-rPU">
+                        <rect key="frame" x="0.0" y="0.0" width="245" height="231"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="4CD-9W-GbT">
+                                <rect key="frame" x="0.0" y="0.0" width="245" height="154"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH1-wT-NQk">
+                                <rect key="frame" x="10" y="154" width="225" height="77"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4CD-9W-GbT" secondAttribute="trailing" id="3hf-BI-Yos"/>
+                            <constraint firstItem="4CD-9W-GbT" firstAttribute="leading" secondItem="LLt-8C-rPU" secondAttribute="leading" id="CpB-fo-KC0"/>
+                            <constraint firstAttribute="trailing" secondItem="NH1-wT-NQk" secondAttribute="trailing" constant="10" id="dCC-t1-7C9"/>
+                            <constraint firstItem="NH1-wT-NQk" firstAttribute="top" secondItem="4CD-9W-GbT" secondAttribute="bottom" id="eXJ-14-v9U"/>
+                            <constraint firstItem="4CD-9W-GbT" firstAttribute="top" secondItem="LLt-8C-rPU" secondAttribute="top" id="snq-Uu-iQp"/>
+                            <constraint firstAttribute="bottom" secondItem="NH1-wT-NQk" secondAttribute="bottom" id="uy8-6L-t5x"/>
+                            <constraint firstItem="NH1-wT-NQk" firstAttribute="leading" secondItem="LLt-8C-rPU" secondAttribute="leading" constant="10" id="vw2-jv-sm7"/>
+                            <constraint firstItem="4CD-9W-GbT" firstAttribute="height" secondItem="LLt-8C-rPU" secondAttribute="height" multiplier="2/3" id="zGU-No-uwA"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="lWk-sM-npN" secondAttribute="trailing" id="3jt-HX-CrN"/>
-                <constraint firstItem="lWk-sM-npN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="THb-pl-Tvo"/>
-                <constraint firstAttribute="bottom" secondItem="9rm-y0-yY6" secondAttribute="bottom" id="Z2x-81-BsM"/>
-                <constraint firstItem="lWk-sM-npN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aG5-DD-13j"/>
-                <constraint firstAttribute="trailing" secondItem="9rm-y0-yY6" secondAttribute="trailing" id="dJ3-Vd-e7n"/>
-                <constraint firstItem="9rm-y0-yY6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hkQ-vU-WM0"/>
-                <constraint firstItem="lWk-sM-npN" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="3/4" id="vF2-NR-HIf"/>
-                <constraint firstItem="9rm-y0-yY6" firstAttribute="top" secondItem="lWk-sM-npN" secondAttribute="bottom" id="wr6-ag-NNx"/>
+                <constraint firstItem="LLt-8C-rPU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="082-VP-5j6"/>
+                <constraint firstAttribute="bottom" secondItem="LLt-8C-rPU" secondAttribute="bottom" constant="1" id="F6j-NV-DeS"/>
+                <constraint firstItem="LLt-8C-rPU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gfa-6b-NTc"/>
+                <constraint firstAttribute="trailing" secondItem="LLt-8C-rPU" secondAttribute="trailing" id="sJb-A9-MUy"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="245" height="232"/>
+            <connections>
+                <outlet property="imageMenu" destination="4CD-9W-GbT" id="N5W-Ju-uOb"/>
+                <outlet property="nameSubMenu" destination="NH1-wT-NQk" id="T0U-07-gy2"/>
+                <outlet property="viewContents" destination="LLt-8C-rPU" id="dLA-gv-0Fk"/>
+            </connections>
             <point key="canvasLocation" x="60.5" y="64"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="default" width="250" height="250"/>
+    </resources>
 </document>

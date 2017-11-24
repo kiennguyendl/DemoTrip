@@ -14,6 +14,7 @@ class ShowAndAttrachtions: NSObject, Mappable{
     var type: String?
     
     var listSubMenu: [ItemSubMenu] = []
+    var typeCategory: typeOfCategoryMenu = .None
     
     required convenience init?(map: Map) {
         self.init()
@@ -22,7 +23,7 @@ class ShowAndAttrachtions: NSObject, Mappable{
     func mapping(map: Map) {
         id                          <- map["id"]
         type                        <- map["type"]
-        
+        typeCategory = .Attractions
         var showAndAttrachtions: [AnyObject]?
         
         showAndAttrachtions         <- map["ShowAndAttrachtions"]

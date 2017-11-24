@@ -13,7 +13,7 @@ class CustomExperiences: NSObject, Mappable{
     var id: Int?
     var type: String?
     var listSubMenu: [ItemSubMenu] = []
-    
+    var typeCategory: typeOfCategoryMenu = .None
     required convenience init?(map: Map) {
         self.init()
     }
@@ -21,6 +21,7 @@ class CustomExperiences: NSObject, Mappable{
     func mapping(map: Map) {
         id              <- map["id"]
         type            <- map["type"]
+        typeCategory = .Experiences
         var customExperiences: [AnyObject]?
         
         customExperiences         <- map["CustomExperiences"]

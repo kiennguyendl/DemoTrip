@@ -13,7 +13,7 @@ class RecentlyMenu: NSObject, Mappable {
     var id: Int?
     var type: String?
     var listItem: [ItemMenu] = []
-    
+    var typeCategory: typeOfCategoryMenu = .None
     
     required convenience init?(map: Map) {
         self.init()
@@ -23,7 +23,7 @@ class RecentlyMenu: NSObject, Mappable {
         id          <- map["id"]
         type        <- map["type"]
         
-        
+        typeCategory = .Recentlies
         var recentlies: [AnyObject]?
         
         recentlies         <- map["Recentlies"]

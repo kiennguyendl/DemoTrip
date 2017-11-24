@@ -13,7 +13,7 @@ class MultiDayTripAndExcursionsTourMenu: NSObject, Mappable {
     var id: Int?
     var type: String?
     var listItem: [ItemMenu] = []
-    
+    var typeCategory: typeOfCategoryMenu = .None
     
     required convenience init?(map: Map) {
         self.init()
@@ -22,7 +22,7 @@ class MultiDayTripAndExcursionsTourMenu: NSObject, Mappable {
     func mapping(map: Map) {
         id          <- map["id"]
         type        <- map["type"]
-        
+        typeCategory = .MultiDayTrip
         var multiDayTripAndExcursionsTour: [AnyObject]?
         
         multiDayTripAndExcursionsTour         <- map["MultiDayTripAndExcursionsTour"]
