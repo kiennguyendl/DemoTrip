@@ -12,15 +12,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="bottomContrailOfCarouselsView" destination="4uv-EJ-eu8" id="6SX-Sd-CTG"/>
                 <outlet property="bottomViewLineMenu" destination="Iae-9D-7aL" id="PGI-Ou-IPH"/>
+                <outlet property="carouselsView" destination="FwR-A3-RUq" id="cRI-MV-BzI"/>
                 <outlet property="childViewMenu" destination="hF7-rh-uFc" id="3mQ-v1-d5C"/>
-                <outlet property="collectionViewCarousels" destination="uXU-b7-ucc" id="aeM-Sg-nfP"/>
-                <outlet property="collectionViewDetail" destination="4fX-br-Q8S" id="wF8-Id-e7Z"/>
+                <outlet property="collectionViewCarousels" destination="WPt-n4-cEC" id="dOz-67-LLG"/>
+                <outlet property="collectionViewListing" destination="4fX-br-Q8S" id="Okq-Yi-kg6"/>
                 <outlet property="heightOfViewBottomLineMenu" destination="y0E-t2-rbH" id="yAM-lC-y4u"/>
                 <outlet property="heightOfViewMenu" destination="asD-Jo-FHK" id="S1E-lB-n0i"/>
                 <outlet property="inputTextSearchTf" destination="veh-ib-hMD" id="3ZE-me-MHH"/>
                 <outlet property="menuBtn" destination="9Pt-Q5-9nG" id="Ast-yd-cZf"/>
                 <outlet property="searchBtn" destination="o1Y-yi-uZd" id="cOy-LE-U6E"/>
+                <outlet property="topContrailOfCarouselsView" destination="Alr-wl-1DR" id="ZM0-4n-x3Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewMenu" destination="D9d-85-y9Q" id="A28-kT-6nO"/>
             </connections>
@@ -31,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4fX-br-Q8S">
-                    <rect key="frame" x="0.0" y="145" width="375" height="522"/>
+                    <rect key="frame" x="0.0" y="135" width="375" height="532"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbx-Jo-q9e">
@@ -42,10 +45,10 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9d-85-y9Q">
-                    <rect key="frame" x="0.0" y="20" width="375" height="125"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="80"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iae-9D-7aL">
-                            <rect key="frame" x="0.0" y="124" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="79" width="375" height="1"/>
                             <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="y0E-t2-rbH"/>
@@ -60,7 +63,10 @@
                                         <constraint firstAttribute="height" constant="25" id="Poq-2c-f3M"/>
                                         <constraint firstAttribute="width" constant="25" id="XcN-9v-Pmh"/>
                                     </constraints>
-                                    <state key="normal" image="menuicon"/>
+                                    <state key="normal" image="search"/>
+                                    <connections>
+                                        <action selector="pressMenuBtn:" destination="-1" eventType="touchUpInside" id="ttp-ri-zdE"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1Y-yi-uZd">
                                     <rect key="frame" x="290" y="13.5" width="25" height="25"/>
@@ -68,7 +74,6 @@
                                         <constraint firstAttribute="height" constant="25" id="Ir1-Le-APj"/>
                                         <constraint firstAttribute="width" constant="25" id="TcX-P7-Ufj"/>
                                     </constraints>
-                                    <state key="normal" image="search"/>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veh-ib-hMD">
                                     <rect key="frame" x="65" y="11" width="220" height="30"/>
@@ -92,9 +97,24 @@
                                 <constraint firstItem="o1Y-yi-uZd" firstAttribute="centerY" secondItem="hF7-rh-uFc" secondAttribute="centerY" id="uZZ-NC-opf"/>
                             </constraints>
                         </view>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-b7-ucc">
-                            <rect key="frame" x="20" y="92" width="335" height="32"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="25" id="2YA-CA-OEb">
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="hF7-rh-uFc" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="top" constant="20" id="2sC-6k-wNL"/>
+                        <constraint firstItem="hF7-rh-uFc" firstAttribute="leading" secondItem="D9d-85-y9Q" secondAttribute="leading" constant="20" id="8c6-RR-dH9"/>
+                        <constraint firstItem="Iae-9D-7aL" firstAttribute="leading" secondItem="D9d-85-y9Q" secondAttribute="leading" id="FiX-TB-SFq"/>
+                        <constraint firstAttribute="trailing" secondItem="Iae-9D-7aL" secondAttribute="trailing" id="Kxk-Ii-CMi"/>
+                        <constraint firstAttribute="trailing" secondItem="hF7-rh-uFc" secondAttribute="trailing" constant="20" id="UKh-CJ-Lgw"/>
+                        <constraint firstAttribute="bottom" secondItem="Iae-9D-7aL" secondAttribute="bottom" id="Wl4-Xy-5Nr"/>
+                        <constraint firstAttribute="height" constant="80" id="asD-Jo-FHK"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwR-A3-RUq">
+                    <rect key="frame" x="0.0" y="100" width="375" height="35"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WPt-n4-cEC">
+                            <rect key="frame" x="20" y="0.0" width="335" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gj5-5b-tUe">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -102,27 +122,25 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="hF7-rh-uFc" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="top" constant="20" id="2sC-6k-wNL"/>
-                        <constraint firstItem="hF7-rh-uFc" firstAttribute="leading" secondItem="D9d-85-y9Q" secondAttribute="leading" constant="20" id="8c6-RR-dH9"/>
-                        <constraint firstItem="Iae-9D-7aL" firstAttribute="leading" secondItem="D9d-85-y9Q" secondAttribute="leading" id="FiX-TB-SFq"/>
-                        <constraint firstAttribute="trailing" secondItem="uXU-b7-ucc" secondAttribute="trailing" constant="20" id="G6T-NQ-oNP"/>
-                        <constraint firstItem="Iae-9D-7aL" firstAttribute="top" secondItem="uXU-b7-ucc" secondAttribute="bottom" id="GmM-6W-KYz"/>
-                        <constraint firstAttribute="trailing" secondItem="Iae-9D-7aL" secondAttribute="trailing" id="Kxk-Ii-CMi"/>
-                        <constraint firstAttribute="trailing" secondItem="hF7-rh-uFc" secondAttribute="trailing" constant="20" id="UKh-CJ-Lgw"/>
-                        <constraint firstItem="uXU-b7-ucc" firstAttribute="top" secondItem="hF7-rh-uFc" secondAttribute="bottom" constant="20" id="V49-wF-SPD"/>
-                        <constraint firstAttribute="bottom" secondItem="Iae-9D-7aL" secondAttribute="bottom" id="Wl4-Xy-5Nr"/>
-                        <constraint firstAttribute="height" constant="125" id="asD-Jo-FHK"/>
-                        <constraint firstItem="uXU-b7-ucc" firstAttribute="leading" secondItem="D9d-85-y9Q" secondAttribute="leading" constant="20" id="wax-RK-Ahj"/>
+                        <constraint firstAttribute="height" constant="35" id="02T-8t-A8I"/>
+                        <constraint firstItem="WPt-n4-cEC" firstAttribute="leading" secondItem="FwR-A3-RUq" secondAttribute="leading" constant="20" id="0Le-f3-HaL"/>
+                        <constraint firstItem="WPt-n4-cEC" firstAttribute="top" secondItem="FwR-A3-RUq" secondAttribute="top" id="UBj-2Z-5Gm"/>
+                        <constraint firstAttribute="bottom" secondItem="WPt-n4-cEC" secondAttribute="bottom" id="rde-Nw-Eif"/>
+                        <constraint firstAttribute="trailing" secondItem="WPt-n4-cEC" secondAttribute="trailing" constant="20" id="sBZ-da-xHH"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4fX-br-Q8S" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="bottom" id="Kt9-VS-JJK"/>
-                <constraint firstItem="4fX-br-Q8S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RtN-xL-F72"/>
-                <constraint firstItem="4fX-br-Q8S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="a2i-tm-9wj"/>
-                <constraint firstItem="4fX-br-Q8S" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="bUK-JI-Nix"/>
+                <constraint firstItem="FwR-A3-RUq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1dq-Zp-v7Y"/>
+                <constraint firstItem="4fX-br-Q8S" firstAttribute="top" secondItem="FwR-A3-RUq" secondAttribute="bottom" id="4uv-EJ-eu8"/>
+                <constraint firstItem="FwR-A3-RUq" firstAttribute="top" secondItem="D9d-85-y9Q" secondAttribute="bottom" id="Alr-wl-1DR"/>
+                <constraint firstItem="4fX-br-Q8S" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="E53-xK-pyD"/>
+                <constraint firstItem="4fX-br-Q8S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tdp-CE-S0Y"/>
+                <constraint firstItem="4fX-br-Q8S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="g5o-TU-By1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FwR-A3-RUq" secondAttribute="trailing" id="hsz-aT-uPa"/>
                 <constraint firstItem="D9d-85-y9Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iRD-Fx-afa"/>
                 <constraint firstItem="D9d-85-y9Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nmV-l8-JlU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D9d-85-y9Q" secondAttribute="trailing" id="yxA-w9-dT4"/>
@@ -132,7 +150,6 @@
         </view>
     </objects>
     <resources>
-        <image name="menuicon" width="50" height="50"/>
         <image name="search" width="24" height="24"/>
     </resources>
 </document>

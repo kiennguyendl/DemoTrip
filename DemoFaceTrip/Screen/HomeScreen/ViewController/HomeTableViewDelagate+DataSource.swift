@@ -125,8 +125,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             if let typeMenu = listID[currentSection].type{
                 switch typeMenu{
                 case "Attractions", "Activities", "Experiences":
-                    print("+++++++++++++++++++++++++++++++++++++++++++")
-                    print("height of cell: \(tableViewCarousels.frame.size.height / 3.5)")
+                    //print("+++++++++++++++++++++++++++++++++++++++++++")
+                    //print("height of cell: \(tableViewCarousels.frame.size.height / 3.5)")
                     return self.view.frame.size.height / 4.5
                     
                 case "Recentlies", "WishList", "BestSeller", "FTPickes", "Day trip", "Multi Day Trip":
@@ -161,6 +161,16 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             }
         }
         @objc func showAllItem(sender: UIButton) {
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = false
+            menuBtn.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+            isBackBtn = true
+            isMenuBtn = false
+            if Settings.isScaleMenuView!{
+                moveDownCarouselsView()
+            }
+//            let vc = ListingViewController()
+//            navigationController?.pushViewController(vc, animated: true)
             //        let section = sender.tag
             //        switch catagory[section].typeCatagory {
             //
@@ -173,8 +183,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             //
             //                    self.collectionViewCarousels.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
             //                    self.collectionView(collectionViewCarousels, didSelectItemAt: IndexPath(row: index + 1, section: 0))
-            //                    self.collectionViewDetail.isHidden = false
-            //                    self.collectionViewDetail.reloadData()
+            //                    self.collectionViewListing.isHidden = false
+            //                    self.collectionViewListing.reloadData()
             //                }
             //            }
             //
@@ -198,6 +208,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 
                 //            view.dataForMenu2 = dataForMenu2
                 //            view.delegate = self
+                viewForHeaderZero.delegate = self
                 return viewForHeaderZero
             }else{
                 let view = HeaderView()
@@ -213,26 +224,26 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
             if Settings.isScaleMenuView!{
                 //print("test>>>>>>>>>>>>>>>>>>>>>> :) scaled")
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.0, animations: {
-                        if self.view.frame.origin.y >= 0{
-                            self.setWhiteColorForStatusBar()
-                            //move origin coordinates of main view to 0
-                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
-                            Settings.isScaleMenuView = true
-                            //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
-                            if self.tableViewCarousels.isHidden == false{
-                                if let contentOffset = HomeViewController.verticalContentOffset{
-                                    self.tableViewCarousels.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
-                                }
-                            }else if self.collectionViewDetail.isHidden == false{
-                                if let contentOffset = HomeViewController.verticalContentOffset{
-                                    self.collectionViewDetail.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
-                                }
-                            }
-                        }
-                    })
-                }
+//                DispatchQueue.main.async {
+//                    UIView.animate(withDuration: 0.0, animations: {
+//                        if self.view.frame.origin.y >= 0{
+//                            self.setWhiteColorForStatusBar()
+//                            //move origin coordinates of main view to 0
+//                            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
+//                            Settings.isScaleMenuView = true
+//                            //print("Settings.isScaleMenuView: \(Settings.isScaleMenuView)")
+//                            if self.tableViewCarousels.isHidden == false{
+//                                if let contentOffset = HomeViewController.verticalContentOffset{
+//                                    self.tableViewCarousels.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
+//                                }
+//                            }else if self.collectionViewListing.isHidden == false{
+//                                if let contentOffset = HomeViewController.verticalContentOffset{
+//                                    self.collectionViewListing.setContentOffset(CGPoint(x: 0,y:  contentOffset), animated: false)
+//                                }
+//                            }
+//                        }
+//                    })
+//                }
             }else{
                 //print("test>>>>>>>>>>>>>>>>>>>>>> :) not scale")
             }
@@ -243,66 +254,23 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             
             if scrollView.tag == 1 || scrollView.tag == 2{
-                
-                //handle when scroll up
+                //let heightOfCarouselsView = carouselsView.frame.height
                 if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0{
-                    //print("move down")
-                    
+//                    //print("move down")
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0.5, animations: {
-                            if self.view.frame.origin.y < 0{
-                                //                move origin coordinates of main view to up
-                                self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - self.newPos)
-                                
-                                
-                                
-                                Settings.isScaleMenuView = false
-                            }
-                            
+                            self.moveDownCarouselsView()
                         })
-                        self.setColorForMenuView()
-                        self.collectionViewCarousels.reloadData()
-                        
-                        self.setRedColorForStatusBar()
-                        self.showSubMenu()
-                        //change color when scroll up
-                        self.viewMenu.backgroundColor = UIColor(red: 253.0/255.0, green: 137.0/255.0, blue: 129.0/255.0, alpha: 1.0)
-                        self.collectionViewCarousels.backgroundColor = color3
-                        
                         
                     }
                     
+
                 }else if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0{
-                    //handle when scroll down
-                    //print("move up")
-                    
-                    
+//                    //print("move up")
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0.5, animations: {
-                            if self.view.frame.origin.y >= 0{
-                                self.setWhiteColorForStatusBar()
-                                //move origin coordinates of main view to 0
-                                self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
-                                Settings.isScaleMenuView = true
-                                
-                                
-                            }
+                            self.moveUpCarouselsView()
                         })
-                        self.collectionViewCarousels.reloadData()
-                        
-                        self.hidenSubMenu()
-                        //change color when scroll down
-                        self.viewMenu.backgroundColor = UIColor.white
-                        self.collectionViewCarousels.backgroundColor = UIColor.white
-                        
-                        
-                        if let view = self.viewMenu{
-                            for layer in view.layer.sublayers!{
-                                if layer == self.gradientLayer{
-                                    layer.removeFromSuperlayer()
-                                }
-                            }
-                        }
                         
                     }
                     

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol HeaderZeroProtocol {
-    func didPressOnCellHeaderZero(index: Int, type: catagoryType)
+    func didPressOnCellHeaderZero(id: Int, type: String)
 }
 
 class HeaderZeroView: BaseView {
@@ -103,7 +103,7 @@ extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        delegate?.didPressOnCellHeaderZero(id: menu[indexPath.row].id!, type: menu[indexPath.row].type!)
     }
     
     func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView){
@@ -135,7 +135,7 @@ extension HeaderZeroView: UICollectionViewDelegate, UICollectionViewDataSource, 
                 
             }
             HeaderZeroView.horizontalContentOffset = self.collectionViewFriends.contentOffset.x
-            print("contentOffset: \(self.collectionViewFriends.contentOffset.x)")
+            //print("contentOffset: \(self.collectionViewFriends.contentOffset.x)")
         }
     }
 }

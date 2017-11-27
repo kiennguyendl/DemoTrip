@@ -52,16 +52,66 @@ import UIKit
 //
 //}
 //
-//extension HomeViewController: HeaderZeroProtocol{
-//
-//    func didPressOnCellHeaderZero(index: Int, type: catagoryType) {
-//        let vc = ListDetailCatagoryViewController()
-//        vc.typeCatagory = type
-//        vc.listDetail = dataForMenu2[index].catagoryItems
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//
-//}
+extension HomeViewController: HeaderZeroProtocol{
+    
+    func didPressOnCellHeaderZero(id: Int, type: String) {
+        //let vc = ListingViewController()
+        //vc.typeCatagory = type
+        //vc.listDetail = dataForMenu2[index].catagoryItems
+        //navigationController?.pushViewController(vc, animated: true)
+        tableViewCarousels.isHidden = true
+        collectionViewListing.isHidden = false
+        menuBtn.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        isBackBtn = true
+        isMenuBtn = false
+        if Settings.isScaleMenuView!{
+            moveDownCarouselsView()
+        }
+        //for index in listID{
+            switch type {
+            case "Attractions":
+                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu( urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: ShowAndAttrachtions?, error: Error?) in
+                    if let category = category{
+                        print(category)
+                    }
+                })
+            case "Day trip":
+                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: DayTripAndExcursionsTourMenu?, error: Error?) in
+                    if let category = category{
+                        
+                        print(category)
+                    }
+                })
+            case "Multi Day Trip":
+                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
+                    if let category = category{
+                        
+                        print(category)
+                    }
+                })
+            case "Activities":
+                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: OutDoorActivities?, error: Error?) in
+                    if let category = category{
+                        
+                        print(category)
+                    }
+                })
+            case "Experiences":
+                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: CustomExperiences?, error: Error?) in
+                    if let category = category{
+                        
+                        print(category)
+                    }
+                })
+            default:
+                print("")
+            }
+            
+        //}
+        
+    }
+    
+}
 
 extension HomeViewController: ChooseCityProtocol{
     func loadDataForHome(city: City) {
@@ -72,9 +122,9 @@ extension HomeViewController: ChooseCityProtocol{
         self.listID = city.listID!
         tableViewCarousels.reloadData()
         
-//        self.restDataForHome()
+        //        self.restDataForHome()
     }
-
+    
 }
 
 extension HomeViewController: UITextFieldDelegate{

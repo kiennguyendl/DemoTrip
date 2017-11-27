@@ -22,7 +22,7 @@ class BaseViewController: UIViewController {
         statusBar  = UIApplication.shared.value(forKey: "statusBar") as! UIView
         
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
-        
+        self.initIndicator()
     }
     
     ///notification center

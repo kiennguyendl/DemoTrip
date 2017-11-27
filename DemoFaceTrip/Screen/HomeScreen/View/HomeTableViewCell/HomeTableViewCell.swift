@@ -395,5 +395,28 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //delegate?.didPressCell(currentSection: currentSection, index: indexPath.row, type: type)
+        switch typeOfMenu {
+        case .Activities:
+            break
+        case .Attractions:
+            break
+        case .BestSeller:
+            break
+        case .Daytrip:
+            break
+        case .Experiences:
+            break
+        case .FTPickes:
+            break
+        case .MultiDayTrip:
+            break
+        case .Recentlies:
+            break
+        case .WishList:
+            break
+        case .None:
+            print("")
+         
+        }
     }
 }

@@ -52,8 +52,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             //cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()
             return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath) as! NewHomeCollectionViewCell
+            return cell
         }
-        return UICollectionViewCell()
+        //return UICollectionViewCell()
 //        }else{
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionCell", for: indexPath) as! HomeCollectionViewCell
 //            switch type{

@@ -19,12 +19,17 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var bottomViewLineMenu: UIView!
     @IBOutlet weak var heightOfViewBottomLineMenu: NSLayoutConstraint! 
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
-    @IBOutlet weak var collectionViewDetail: UICollectionView!
+    @IBOutlet weak var collectionViewListing: UICollectionView!
     
+    @IBOutlet weak var carouselsView: UIView!
+    @IBOutlet weak var topContrailOfCarouselsView: NSLayoutConstraint!
+    @IBOutlet weak var bottomContrailOfCarouselsView: NSLayoutConstraint!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
+    var heightOfCarouselsView: CGFloat = 0
     
-    @IBOutlet weak var categoryMenuView: UIView!
+    //@IBOutlet weak var categoryMenuView: UIView!
     var tableViewCarousels: UITableView!
+    var viewForHeaderZero: HeaderZeroView!
     var previousOffset: CGFloat = 0
 
     var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
@@ -43,23 +48,26 @@ class HomeViewController: BaseViewController {
     var newPos: CGFloat!
     
     var listID: [ListInforMenu] = []
-    //var data: AnyObject?
-    var viewForHeaderZero: UIView!
     var city: City!
     
+    var isBackBtn = false
+    var isMenuBtn = true
     var listCarousel = ["For Your", "Local Guide", "Hotels", "Travel Agency"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setRedColorForStatusBar()
-        collectionViewDetail.isHidden = true
+        collectionViewListing.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
         initTableView()
+        carouselsView.backgroundColor = color3
         viewForHeaderZero  = HeaderZeroView()
         setColorForMenuView()
         //addSwipeForController()
+        heightOfCarouselsView = carouselsView.frame.height
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
         
         inputTextSearchTf.addTarget(self, action: #selector(presentChooseCityView(textField:)), for: .touchDown)
@@ -75,9 +83,7 @@ class HomeViewController: BaseViewController {
             tableViewCarousels.reloadData()
 //            restDataForHome()
         }
-//        self.initIndicator()
-//        self.view.bringSubview(toFront: activityIndicator)
-//        self.displayIndicator()
+        
     }
     
     @objc func presentChooseCityView(textField: UITextField) {
@@ -132,11 +138,11 @@ class HomeViewController: BaseViewController {
         collectionViewCarousels.backgroundColor = color3
         collectionViewCarousels.showsHorizontalScrollIndicator = false
 
-//        collectionViewDetail.delegate = self
-//        collectionViewDetail.dataSource = self
-//        collectionViewDetail.register(UINib.init(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionCell")
-//        collectionViewDetail.showsVerticalScrollIndicator = false
-//        collectionViewDetail.tag = 1
+        collectionViewListing.delegate = self
+        collectionViewListing.dataSource = self
+        collectionViewListing.register(UINib.init(nibName: "NewHomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewHomeCollectionCell")
+        collectionViewListing.showsVerticalScrollIndicator = false
+        collectionViewListing.tag = 1
     }
     
     func showSubMenu() {
@@ -180,7 +186,7 @@ class HomeViewController: BaseViewController {
         tableViewCarousels.showsVerticalScrollIndicator = false
         tableViewCarousels.isHidden = false
         tableViewCarousels.tag = 2
-        collectionViewDetail.superview?.bringSubview(toFront: tableViewCarousels)
+        collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
         tableViewCarousels.backgroundColor = UIColor.white
     }
 
@@ -191,7 +197,7 @@ class HomeViewController: BaseViewController {
         
         self.view.addSubview(tableViewCarousels)
         
-        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.viewMenu, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
         let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
@@ -228,8 +234,8 @@ class HomeViewController: BaseViewController {
 //                            self.collectionViewCarousels.selectItem(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .centeredHorizontally)
 //                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row + 1, section: 0))
                             self.tableViewCarousels.isHidden = true
-                            self.collectionViewDetail.isHidden = false
-                            self.collectionViewDetail.reloadData()
+                            self.collectionViewListing.isHidden = false
+                            self.collectionViewListing.reloadData()
                         })
                         
                     }
@@ -242,12 +248,12 @@ class HomeViewController: BaseViewController {
 //                            self.collectionView(self.collectionViewCarousels, didSelectItemAt: IndexPath(row: row - 1, section: 0))
                             if row == 1{
                                 self.tableViewCarousels.isHidden = false
-                                self.collectionViewDetail.isHidden = true
+                                self.collectionViewListing.isHidden = true
                                 self.tableViewCarousels.reloadData()
                             }else{
                                 self.tableViewCarousels.isHidden = true
-                                self.collectionViewDetail.isHidden = false
-                                self.collectionViewDetail.reloadData()
+                                self.collectionViewListing.isHidden = false
+                                self.collectionViewListing.reloadData()
                             }
                         })
                         
@@ -258,14 +264,39 @@ class HomeViewController: BaseViewController {
             }
         })
     }
-    
-    func restDataForCategory() {
-        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome,menu: "menu", action: "getlist", id: 01, idMenu: 1005, type: "Attractions", complertionHandler: {[weak self] (catagory: ShowAndAttrachtions?, error: NSError?) in
-            guard let strongSelf = self else{return}
-            print(strongSelf)
-        })
+    @IBAction func pressMenuBtn(_ sender: Any) {
+        if isMenuBtn{
+            
+        }
+        if isBackBtn{
+            tableViewCarousels.isHidden = false
+            collectionViewListing.isHidden = true
+            menuBtn.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+            isMenuBtn = true
+        }
     }
     
+    func moveUpCarouselsView() {
+        if self.carouselsView.frame.origin.y > self.viewMenu.frame.height{
+            self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y - self.heightOfCarouselsView
+            self.topContrailOfCarouselsView.constant = -self.heightOfCarouselsView
+            self.bottomContrailOfCarouselsView.constant = self.heightOfCarouselsView
+            self.view.bringSubview(toFront: self.viewMenu)
+            Settings.isScaleMenuView = true
+        }
+        
+    }
+    
+    func moveDownCarouselsView() {
+        if self.carouselsView.frame.origin.y < self.viewMenu.frame.height{
+            self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y + self.heightOfCarouselsView
+            self.topContrailOfCarouselsView.constant = 0
+            self.bottomContrailOfCarouselsView.constant = 0
+            self.view.bringSubview(toFront: self.viewMenu)
+            Settings.isScaleMenuView = true
+        }
+        
+    }
     
 }
 

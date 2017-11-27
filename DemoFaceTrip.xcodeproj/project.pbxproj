@@ -11,6 +11,8 @@
 		FB0036BD1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0036BC1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift */; };
 		FB0036C11FAC5C4900D9C38A /* BookingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0036BF1FAC5C4900D9C38A /* BookingCollectionViewCell.swift */; };
 		FB0036C21FAC5C4900D9C38A /* BookingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB0036C01FAC5C4900D9C38A /* BookingCollectionViewCell.xib */; };
+		FB00D4F21FC92C3600FC84CE /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00D4F01FC92C3600FC84CE /* ListingViewController.swift */; };
+		FB00D4F31FC92C3600FC84CE /* ListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB00D4F11FC92C3600FC84CE /* ListingViewController.xib */; };
 		FB034AFE1FC27143003448AC /* FTPickesMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB034AFD1FC27143003448AC /* FTPickesMenu.swift */; };
 		FB034B001FC273E1003448AC /* BestSellerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB034AFF1FC273E1003448AC /* BestSellerMenu.swift */; };
 		FB034B021FC274C7003448AC /* WishListMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB034B011FC274C7003448AC /* WishListMenu.swift */; };
@@ -155,6 +157,8 @@
 		FB0036BC1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingTourViewControllerDelegate+DataSource.swift"; sourceTree = "<group>"; };
 		FB0036BF1FAC5C4900D9C38A /* BookingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB0036C01FAC5C4900D9C38A /* BookingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB00D4F01FC92C3600FC84CE /* ListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
+		FB00D4F11FC92C3600FC84CE /* ListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListingViewController.xib; sourceTree = "<group>"; };
 		FB034AFD1FC27143003448AC /* FTPickesMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPickesMenu.swift; sourceTree = "<group>"; };
 		FB034AFF1FC273E1003448AC /* BestSellerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerMenu.swift; sourceTree = "<group>"; };
 		FB034B011FC274C7003448AC /* WishListMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListMenu.swift; sourceTree = "<group>"; };
@@ -352,6 +356,15 @@
 			path = BookingTourCell;
 			sourceTree = "<group>";
 		};
+		FB00D4EF1FC92B4A00FC84CE /* ListingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB00D4F01FC92C3600FC84CE /* ListingViewController.swift */,
+				FB00D4F11FC92C3600FC84CE /* ListingViewController.xib */,
+			);
+			path = ListingViewController;
+			sourceTree = "<group>";
+		};
 		FB034AFC1FC26DE8003448AC /* City */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +425,7 @@
 		FB03C66E1F84BFC7005FC7A2 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				FB00D4EF1FC92B4A00FC84CE /* ListingViewController */,
 				FBCDD21E1FB5817F00BB0F00 /* ChooseCityViewController */,
 				FBB3F6A01FB1AF47003BC910 /* MapViewController */,
 				FBA6447A1F8EFE9C007E968C /* Base */,
@@ -1106,6 +1120,7 @@
 				FB9FB3EB1F8C86BD006CA1AE /* LikeViewController.xib in Resources */,
 				FBCDD2221FB581A600BB0F00 /* ChooseCityViewController.xib in Resources */,
 				FBC7BC761FA449CD00D31BC6 /* HeaderCollectionViewCell.xib in Resources */,
+				FB00D4F31FC92C3600FC84CE /* ListingViewController.xib in Resources */,
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
 				FBC555201FB3FDAE00AC510D /* RatingTableViewCell.xib in Resources */,
 				FBBD8C871FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib in Resources */,
@@ -1221,6 +1236,7 @@
 				FB8D2A641FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift in Sources */,
 				FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */,
 				FB03C68C1F84DC93005FC7A2 /* LoginViewController.swift in Sources */,
+				FB00D4F21FC92C3600FC84CE /* ListingViewController.swift in Sources */,
 				FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */,
 				FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */,
 				FB03C6841F84D724005FC7A2 /* TabbarBaseController.swift in Sources */,

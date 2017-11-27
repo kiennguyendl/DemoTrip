@@ -124,6 +124,7 @@ class RestDataManager: NSObject {
         })
     }
     
+    //get data for tableview cell at home screen
     func restDataFollowTypeOfMenu<T: Mappable>(_ url: String, menu: String, action: String, id: Int, idMenu: Int, type: String, complertionHandler: @escaping(T?, NSError?)->Void){
         
         let data = [
@@ -159,6 +160,41 @@ class RestDataManager: NSObject {
         })
     }
     
+    //get data for listing screen
+    func restDataForListingScrenFollowTypeOfMenu<T: Mappable>(_ url: String, menu: String, action: String, idCity: Int, type: String, typeSubMenu: String, complertionHandler: @escaping(T?, NSError?)->Void){
+        
+        let data = [
+            "menu": menu,
+            "action" : action,
+            "idCity": idCity,
+            "typeMenu": type,
+            "typeSubMenu": typeSubMenu
+            ] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: {response in
+            
+            switch response.result{
+            case .success(let data):
+                var result: T?
+                if let data = data as? [String: AnyObject] {
+                    
+                    let itemMapper = Mapper<T>()
+                    if let item = itemMapper.map(JSONObject: data){
+                        result = item
+                    }
+                    
+                }
+                
+                if result != nil{
+                    complertionHandler(result, nil)
+                }else{
+                    complertionHandler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
+            case .failure(let error):
+                complertionHandler(nil, error as NSError)
+            }
+        })
+    }
     
     //get categories for header zero in the home screen
     func restDataForHeaderZero<T: Mappable>(_ url: String, idCity: Int, type: String, completionHandler: @escaping([T]?, NSError?)->Void) {
