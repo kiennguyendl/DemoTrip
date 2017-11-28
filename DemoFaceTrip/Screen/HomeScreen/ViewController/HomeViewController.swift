@@ -29,6 +29,7 @@ class HomeViewController: BaseViewController {
     
     //@IBOutlet weak var categoryMenuView: UIView!
     var tableViewCarousels: UITableView!
+    var tableViewSubMenu: UITableView!
     var viewForHeaderZero: HeaderZeroView!
     var previousOffset: CGFloat = 0
 
@@ -47,13 +48,23 @@ class HomeViewController: BaseViewController {
     
     var newPos: CGFloat!
     
+    //the value for home screen
     var listID: [ListInforMenu] = []
     var city: City!
     
+    //check is menu button or back button
     var isBackBtn = false
     var isMenuBtn = true
+    
+    //fake the data for carousels collection view
     var listCarousel = ["For Your", "Local Guide", "Hotels", "Travel Agency"]
     
+    //the value for listing collection view
+    var listItemOfEachTypeMenu: AnyObject!
+    var typeOfMenu: typeOfCategoryMenu = .None
+    var listItem = 0
+    var listNumSubMenu = 0
+    //var listSubMenu: AnyObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,6 +190,7 @@ class HomeViewController: BaseViewController {
     //init and register cell for tableview
     func initTableView() {
         addContrailForTableView()
+        
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
         tableViewCarousels.register(UINib.init(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
@@ -188,14 +200,26 @@ class HomeViewController: BaseViewController {
         tableViewCarousels.tag = 2
         collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
         tableViewCarousels.backgroundColor = UIColor.white
+        
+        tableViewSubMenu.delegate = self
+        tableViewSubMenu.dataSource = self
+        tableViewSubMenu.register(UINib.init(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuCell")
+        tableViewSubMenu.showsHorizontalScrollIndicator = false
+        tableViewSubMenu.showsVerticalScrollIndicator = false
+        tableViewSubMenu.isHidden = false
+        tableViewSubMenu.tag = 2
+        //collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
+        tableViewSubMenu.backgroundColor = UIColor.white
     }
 
     func addContrailForTableView() {
         
         let frame = self.view.frame
         tableViewCarousels = UITableView(frame: frame, style: .grouped)
+        tableViewSubMenu = UITableView(frame: frame, style: .grouped)
         
         self.view.addSubview(tableViewCarousels)
+        self.view.addSubview(tableViewSubMenu)
         
         let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
         let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
@@ -204,11 +228,22 @@ class HomeViewController: BaseViewController {
         NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
         
         
+        let topSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        let leadingSubContraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+        let trailingSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+        let bottomSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+        NSLayoutConstraint.activate([topSubConstraint, leadingSubContraint, trailingSubConstraint, bottomSubConstraint])
+        
         
         tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
         tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableViewCarousels.separatorStyle = .none
         tableViewCarousels.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
+        tableViewSubMenu.translatesAutoresizingMaskIntoConstraints = false
+        tableViewSubMenu.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableViewSubMenu.separatorStyle = .none
+        tableViewSubMenu.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     // add swipe
@@ -271,8 +306,13 @@ class HomeViewController: BaseViewController {
         if isBackBtn{
             tableViewCarousels.isHidden = false
             collectionViewListing.isHidden = true
+            tableViewSubMenu.isHidden = true
+    
             menuBtn.setImage(#imageLiteral(resourceName: "search"), for: .normal)
             isMenuBtn = true
+            listItem = 0
+            collectionViewListing.reloadData()
+            tableViewSubMenu.reloadData()
         }
     }
     

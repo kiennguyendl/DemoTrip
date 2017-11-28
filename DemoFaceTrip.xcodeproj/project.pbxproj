@@ -33,6 +33,8 @@
 		FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */; };
 		FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */; };
 		FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */; };
+		FB09B6A31FCD552500F1BB3A /* SubMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB09B6A11FCD552500F1BB3A /* SubMenuTableViewCell.swift */; };
+		FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */; };
 		FB11F4011FA70B98008DD080 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB11F3FF1FA70B98008DD080 /* DateCollectionViewCell.swift */; };
 		FB11F4021FA70B98008DD080 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB11F4001FA70B98008DD080 /* DateCollectionViewCell.xib */; };
 		FB11F40C1FA723AE008DD080 /* CalendarTableViewCell+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB11F40B1FA723AE008DD080 /* CalendarTableViewCell+Delegate+DataSource.swift */; };
@@ -102,6 +104,7 @@
 		FBCDD2271FB592AE00BB0F00 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCDD2251FB592AE00BB0F00 /* CityTableViewCell.swift */; };
 		FBCDD2281FB592AE00BB0F00 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBCDD2261FB592AE00BB0F00 /* CityTableViewCell.xib */; };
 		FBCF70AB1FC3D09400463256 /* CategoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCF70AA1FC3D09400463256 /* CategoryMenu.swift */; };
+		FBD4BB551FCD0E5000780BC1 /* extensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD4BB541FCD0E5000780BC1 /* extensionCollectionView.swift */; };
 		FBDD2E051FBC45C400F94EE1 /* Coordination.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E041FBC45C400F94EE1 /* Coordination.swift */; };
 		FBDD2E071FBC464D00F94EE1 /* RateStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E061FBC464D00F94EE1 /* RateStar.swift */; };
 		FBDD2E091FBC485B00F94EE1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E081FBC485B00F94EE1 /* Comment.swift */; };
@@ -181,6 +184,8 @@
 		FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselsCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB09B6A11FCD552500F1BB3A /* SubMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubMenuTableViewCell.swift; sourceTree = "<group>"; };
+		FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubMenuTableViewCell.xib; sourceTree = "<group>"; };
 		FB11F3FF1FA70B98008DD080 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB11F4001FA70B98008DD080 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB11F40B1FA723AE008DD080 /* CalendarTableViewCell+Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarTableViewCell+Delegate+DataSource.swift"; sourceTree = "<group>"; };
@@ -251,6 +256,7 @@
 		FBCDD2251FB592AE00BB0F00 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		FBCDD2261FB592AE00BB0F00 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		FBCF70AA1FC3D09400463256 /* CategoryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryMenu.swift; sourceTree = "<group>"; };
+		FBD4BB541FCD0E5000780BC1 /* extensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionCollectionView.swift; sourceTree = "<group>"; };
 		FBDD2E041FBC45C400F94EE1 /* Coordination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordination.swift; sourceTree = "<group>"; };
 		FBDD2E061FBC464D00F94EE1 /* RateStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateStar.swift; sourceTree = "<group>"; };
 		FBDD2E081FBC485B00F94EE1 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -502,6 +508,15 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
+		FB09B6A01FCD54FB00F1BB3A /* SubMenuTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB09B6A11FCD552500F1BB3A /* SubMenuTableViewCell.swift */,
+				FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */,
+			);
+			path = SubMenuTableViewCell;
+			sourceTree = "<group>";
+		};
 		FB11F3FE1FA70B73008DD080 /* DayCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,6 +629,7 @@
 		FBA644791F8EFE64007E968C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB09B6A01FCD54FB00F1BB3A /* SubMenuTableViewCell */,
 				FBE0993D1FC55A5000F756B0 /* SubMenuForHome */,
 				FBFB8AC11F9ADF6C0087D0DD /* HeaderZeroForTableViewCell */,
 				FBFE36A11F85EAF10020F295 /* HeaderForTableViewCell */,
@@ -872,6 +888,7 @@
 			children = (
 				FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */,
 				FB54946B1FA6FF9C003645E3 /* CalendarExtension.swift */,
+				FBD4BB541FCD0E5000780BC1 /* extensionCollectionView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1127,6 +1144,7 @@
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
+				FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */,
 				FBFDFAE41FB45D4400F88C90 /* MenuTableViewCell.xib in Resources */,
 				FB8051A21FAAD01500AD635E /* BookingTourViewController.xib in Resources */,
 				FB03C6671F84BF2A005FC7A2 /* LaunchScreen.storyboard in Resources */,
@@ -1230,6 +1248,7 @@
 				FB034B061FC276D2003448AC /* MultiDayTripAndExcursionsTourMenu.swift in Sources */,
 				FB3872F21FA81390005FFBCD /* CalendarProtocols.swift in Sources */,
 				FBCDD2271FB592AE00BB0F00 /* CityTableViewCell.swift in Sources */,
+				FB09B6A31FCD552500F1BB3A /* SubMenuTableViewCell.swift in Sources */,
 				FBFB7F451FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift in Sources */,
 				FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */,
 				FBB1753B1FBD47B2004E0EE7 /* OutDoorActivities.swift in Sources */,
@@ -1287,6 +1306,7 @@
 				FB80519D1FAACFA400AD635E /* CalendarTableViewCell.swift in Sources */,
 				FB034AFE1FC27143003448AC /* FTPickesMenu.swift in Sources */,
 				FB8D2A571FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.swift in Sources */,
+				FBD4BB551FCD0E5000780BC1 /* extensionCollectionView.swift in Sources */,
 				FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */,
 				FBA644831F8F0BBB007E968C /* ListDetailCatagoryViewController.swift in Sources */,
 				FBC37CB71FA1CBCC00E2E3A3 /* Setting.swift in Sources */,

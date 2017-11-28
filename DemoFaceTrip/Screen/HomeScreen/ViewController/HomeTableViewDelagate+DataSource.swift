@@ -11,108 +11,148 @@ import UIKit
 //// TableView
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        //        return catagory.count + 1
-        if listID.count > 0{
-            return listID.count + 1
+        if tableView == tableViewCarousels{
+            if listID.count > 0{
+                return listID.count + 1
+            }
+            return 0
+        }else if tableView == tableViewSubMenu{
+            return listNumSubMenu
         }
+        
         return 0
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0{
-            return 0
+        if tableView == tableViewCarousels{
+            if section == 0{
+                return 0
+            }
+            return 1
+        }else if tableView == tableViewSubMenu{
+            return 1
         }
-        return 1
+        
+        return 0
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section != 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
-            let currentSection = indexPath.section - 1
-            
-            if let typeMenu = listID[currentSection].type{
-                switch typeMenu{
-                case "Recentlies":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: RecentlyMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "WishList":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: WishListMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "BestSeller":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: BestSellerMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "FTPickes":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: FTPickesMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "Attractions":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: ShowAndAttrachtions?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "Day trip":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: DayTripAndExcursionsTourMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "Multi Day Trip":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "Activities":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: OutDoorActivities?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                case "Experiences":
-                    RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: CustomExperiences?, error: Error?) in
-                        if let category = category{
-                            cell.typeOfMenu = category.typeCategory
-                            cell.category = category
-                        }
-                    })
-                    return cell
-                default:
-                    print("")
+        if tableView == tableViewCarousels{
+            if indexPath.section != 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
+                let currentSection = indexPath.section - 1
+                
+                if let typeMenu = listID[currentSection].type{
+                    switch typeMenu{
+                    case "Recentlies":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: RecentlyMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "WishList":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: WishListMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "BestSeller":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: BestSellerMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "FTPickes":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: FTPickesMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "Attractions":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: ShowAndAttrachtions?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "Day trip":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: DayTripAndExcursionsTourMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "Multi Day Trip":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "Activities":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: OutDoorActivities?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    case "Experiences":
+                        RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: CustomExperiences?, error: Error?) in
+                            if let category = category{
+                                cell.typeOfMenu = category.typeCategory
+                                cell.category = category
+                            }
+                        })
+                        return cell
+                    default:
+                        print("")
+                    }
                 }
+                
             }
-            
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SubMenuCell", for: indexPath) as! SubMenuTableViewCell
+            //let currentSection = indexPath.section
+            switch typeOfMenu{
+            case .Activities:
+                let data = listItemOfEachTypeMenu as! OutDoorActivities
+                print(data)
+            case .Attractions:
+                let data = listItemOfEachTypeMenu as! ShowAndAttrachtions
+                print(data)
+            case .BestSeller:
+                print("")
+            case .Daytrip:
+                print("")
+            case .MultiDayTrip:
+                print("")
+            case .Experiences:
+                let data = listItemOfEachTypeMenu as! CustomExperiences
+                print(data)
+            case .FTPickes:
+                print("")
+            case .WishList:
+                print("")
+            case .Recentlies:
+                print("")
+            case .None:
+                print("")
+            }
+            return cell
         }
-        
         return UITableViewCell()
     }
     
@@ -154,8 +194,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         }
         
         func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            if section == 0{
-                return 140
+            if tableView == tableViewCarousels{
+                if section == 0{
+                    return 140
+                }else{
+                    return 50
+                }
+                
             }else{
                 return 50
             }
@@ -204,16 +249,54 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         }
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             //add custome view for header
-            if section == 0{
-                
-                //            view.dataForMenu2 = dataForMenu2
-                //            view.delegate = self
-                viewForHeaderZero.delegate = self
-                return viewForHeaderZero
+            if tableView == tableViewCarousels{
+                if section == 0{
+                    
+                    //            view.dataForMenu2 = dataForMenu2
+                    //            view.delegate = self
+                    viewForHeaderZero.delegate = self
+                    return viewForHeaderZero
+                }else{
+                    let view = HeaderView()
+                    view.backgroundColor = UIColor.clear
+                    view.nameOfCarousel.text = listID[section - 1].type
+                    view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+                    view.seeAllBtn.tag = section
+                    view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
+                    return view
+                }
             }else{
                 let view = HeaderView()
                 view.backgroundColor = UIColor.clear
-                view.nameOfCarousel.text = listID[section - 1].type
+                switch typeOfMenu{
+                case .Activities:
+                    let data = listItemOfEachTypeMenu as! OutDoorActivities
+                    view.nameOfCarousel.text = data.listSubMenu[section].type
+                    print(data)
+                case .Attractions:
+                    let data = listItemOfEachTypeMenu as! ShowAndAttrachtions
+                    view.nameOfCarousel.text = data.listSubMenu[section].type
+                    print(data)
+                case .BestSeller:
+                    print("")
+                case .Daytrip:
+                    print("")
+                case .MultiDayTrip:
+                    print("")
+                case .Experiences:
+                    let data = listItemOfEachTypeMenu as! CustomExperiences
+                    view.nameOfCarousel.text = data.listSubMenu[section].type
+                    print(data)
+                case .FTPickes:
+                    print("")
+                case .WishList:
+                    print("")
+                case .Recentlies:
+                    print("")
+                case .None:
+                    print("")
+                }
+                //view.nameOfCarousel.text = listID[section].type
                 view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
                 view.seeAllBtn.tag = section
                 view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)

@@ -54,13 +54,12 @@ import UIKit
 //
 extension HomeViewController: HeaderZeroProtocol{
     
-    func didPressOnCellHeaderZero(id: Int, type: String) {
+    func didPressOnCellHeaderZero(menu: CategoryMenu) {
         //let vc = ListingViewController()
         //vc.typeCatagory = type
         //vc.listDetail = dataForMenu2[index].catagoryItems
         //navigationController?.pushViewController(vc, animated: true)
-        tableViewCarousels.isHidden = true
-        collectionViewListing.isHidden = false
+        
         menuBtn.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         isBackBtn = true
         isMenuBtn = false
@@ -68,46 +67,90 @@ extension HomeViewController: HeaderZeroProtocol{
             moveDownCarouselsView()
         }
         //for index in listID{
-            switch type {
-            case "Attractions":
-                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu( urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: ShowAndAttrachtions?, error: Error?) in
-                    if let category = category{
-                        print(category)
-                    }
-                })
-            case "Day trip":
-                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: DayTripAndExcursionsTourMenu?, error: Error?) in
-                    if let category = category{
-                        
-                        print(category)
-                    }
-                })
-            case "Multi Day Trip":
-                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
-                    if let category = category{
-                        
-                        print(category)
-                    }
-                })
-            case "Activities":
-                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: OutDoorActivities?, error: Error?) in
-                    if let category = category{
-                        
-                        print(category)
-                    }
-                })
-            case "Experiences":
-                RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: type, typeSubMenu: "", complertionHandler: {(category: CustomExperiences?, error: Error?) in
-                    if let category = category{
-                        
-                        print(category)
-                    }
-                })
-            default:
-                print("")
-            }
+        let type = menu.typeOfMenu
+        if let typeStr = menu.type{
+        switch type {
+        case .Attractions:
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = true
+            tableViewSubMenu.isHidden = false
             
-        //}
+            RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu( urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: ShowAndAttrachtions?, error: Error?) in
+                guard let strongSelf = self else {return}
+                if let category = category{
+                    strongSelf.listItemOfEachTypeMenu = category
+                    strongSelf.typeOfMenu = type
+                    strongSelf.listNumSubMenu = category.listSubMenu.count
+                    strongSelf.tableViewSubMenu.reloadData()
+                }
+            })
+        case .Daytrip:
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = false
+            tableViewSubMenu.isHidden = true
+            RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: DayTripAndExcursionsTourMenu?, error: Error?) in
+                
+                guard let strongSelf = self else {return}
+                if let category = category{
+                    strongSelf.listItemOfEachTypeMenu = category
+                    strongSelf.typeOfMenu = type
+                    strongSelf.listItem = category.listItem.count
+                    strongSelf.collectionViewListing.reloadData()
+                }
+                
+            })
+        case .MultiDayTrip:
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = false
+            tableViewSubMenu.isHidden = true
+            RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
+                
+                guard let strongSelf = self else {return}
+                if let category = category{
+                    strongSelf.listItemOfEachTypeMenu = category
+                    strongSelf.typeOfMenu = type
+                    strongSelf.listItem = category.listItem.count
+                    strongSelf.collectionViewListing.reloadData()
+                }
+                
+            })
+        case .Activities:
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = true
+            tableViewSubMenu.isHidden = false
+            
+            RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: OutDoorActivities?, error: Error?) in
+                
+                guard let strongSelf = self else {return}
+                if let category = category{
+                    strongSelf.listItemOfEachTypeMenu = category
+                    strongSelf.typeOfMenu = type
+                    strongSelf.listNumSubMenu = category.listSubMenu.count
+                    strongSelf.tableViewSubMenu.reloadData()
+                }
+                
+            })
+        case .Experiences:
+            tableViewCarousels.isHidden = true
+            collectionViewListing.isHidden = true
+            tableViewSubMenu.isHidden = false
+            
+            RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: CustomExperiences?, error: Error?) in
+                
+                guard let strongSelf = self else {return}
+                if let category = category{
+                    strongSelf.listItemOfEachTypeMenu = category
+                    strongSelf.typeOfMenu = type
+                    strongSelf.listNumSubMenu = category.listSubMenu.count
+                    strongSelf.tableViewSubMenu.reloadData()
+                }
+                
+            })
+        default:
+            print("")
+        }
+        
+        }
         
     }
     
