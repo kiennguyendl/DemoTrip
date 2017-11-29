@@ -55,13 +55,16 @@ class HomeViewController: BaseViewController {
     //check is menu button or back button
     var isBackBtn = false
     var isMenuBtn = true
-    
+    var isListSubMenuDisplay = false
     //fake the data for carousels collection view
     var listCarousel = ["For Your", "Local Guide", "Hotels", "Travel Agency"]
     
     //the value for listing collection view
     var listItemOfEachTypeMenu: AnyObject!
+    var listItemOfEachSubMenu: AnyObject!
     var typeOfMenu: typeOfCategoryMenu = .None
+    var typeOfSubMenu = ""
+    var typeMenu = ""
     var listItem = 0
     var listNumSubMenu = 0
     //var listSubMenu: AnyObject!
@@ -304,15 +307,31 @@ class HomeViewController: BaseViewController {
             
         }
         if isBackBtn{
-            tableViewCarousels.isHidden = false
-            collectionViewListing.isHidden = true
-            tableViewSubMenu.isHidden = true
-    
-            menuBtn.setImage(#imageLiteral(resourceName: "search"), for: .normal)
-            isMenuBtn = true
-            listItem = 0
-            collectionViewListing.reloadData()
-            tableViewSubMenu.reloadData()
+            if isListSubMenuDisplay{
+                tableViewCarousels.isHidden = true
+                collectionViewListing.isHidden = true
+                tableViewSubMenu.isHidden = false
+                isListSubMenuDisplay = false
+                listItem = 0
+                inputTextSearchTf.text = Settings.cityPicked! + " - " + typeMenu
+                collectionViewListing.reloadData()
+            }else{
+                tableViewCarousels.isHidden = false
+                collectionViewListing.isHidden = true
+                tableViewSubMenu.isHidden = true
+                
+                inputTextSearchTf.text = Settings.cityPicked!
+                menuBtn.setImage(#imageLiteral(resourceName: "search"), for: .normal)
+                isMenuBtn = true
+                listItem = 0
+                listNumSubMenu = 0
+                typeOfSubMenu = ""
+                typeOfMenu = .None
+                listItemOfEachTypeMenu = nil
+                collectionViewListing.reloadData()
+                tableViewSubMenu.reloadData()
+                //tableViewCarousels.reloadData()
+            }
         }
     }
     

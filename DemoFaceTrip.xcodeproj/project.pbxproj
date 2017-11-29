@@ -115,6 +115,17 @@
 		FBE099461FC581F000F756B0 /* ItemSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE099451FC581F000F756B0 /* ItemSubMenu.swift */; };
 		FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE241161F9EF29E00833E8A /* HeaderZeroForDetail.xib */; };
 		FBE241191F9EF2A700833E8A /* HeaderZeroForDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE241181F9EF2A700833E8A /* HeaderZeroForDetail.swift */; };
+		FBE7362B1FCE494100018517 /* ShowAndConcertsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362A1FCE494100018517 /* ShowAndConcertsSubMenu.swift */; };
+		FBE7362D1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362C1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift */; };
+		FBE7362F1FCE4B0B00018517 /* EventsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362E1FCE4B0B00018517 /* EventsSubMenu.swift */; };
+		FBE736311FCE4CBA00018517 /* PassesSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736301FCE4CBA00018517 /* PassesSubMenu.swift */; };
+		FBE736331FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736321FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift */; };
+		FBE736351FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736341FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift */; };
+		FBE736391FCE501D00018517 /* ClimbingAndTrekkingTourSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736381FCE501D00018517 /* ClimbingAndTrekkingTourSubMenu.swift */; };
+		FBE7363B1FCE507400018517 /* NightlifeSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7363A1FCE507400018517 /* NightlifeSubMenu.swift */; };
+		FBE7363D1FCE50AD00018517 /* FoodSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7363C1FCE50AD00018517 /* FoodSubMenu.swift */; };
+		FBE7363F1FCE50E200018517 /* ShoppingSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7363E1FCE50E200018517 /* ShoppingSubMenu.swift */; };
+		FBE736411FCE51CA00018517 /* LocalLifeSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736401FCE51CA00018517 /* LocalLifeSubMenu.swift */; };
 		FBEB182F1FB01C8700E52E59 /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB182B1FB01C8600E52E59 /* MonthCollectionViewCell.swift */; };
 		FBEB18301FB01C8700E52E59 /* NewBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB182C1FB01C8600E52E59 /* NewBookingViewController.swift */; };
 		FBEB18311FB01C8700E52E59 /* NewBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEB182D1FB01C8600E52E59 /* NewBookingViewController.xib */; };
@@ -268,6 +279,17 @@
 		FBE099451FC581F000F756B0 /* ItemSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSubMenu.swift; sourceTree = "<group>"; };
 		FBE241161F9EF29E00833E8A /* HeaderZeroForDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderZeroForDetail.xib; sourceTree = "<group>"; };
 		FBE241181F9EF2A700833E8A /* HeaderZeroForDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderZeroForDetail.swift; sourceTree = "<group>"; };
+		FBE7362A1FCE494100018517 /* ShowAndConcertsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAndConcertsSubMenu.swift; sourceTree = "<group>"; };
+		FBE7362C1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightseeingTicketsSubMenu.swift; sourceTree = "<group>"; };
+		FBE7362E1FCE4B0B00018517 /* EventsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSubMenu.swift; sourceTree = "<group>"; };
+		FBE736301FCE4CBA00018517 /* PassesSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassesSubMenu.swift; sourceTree = "<group>"; };
+		FBE736321FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruisesSaiLingAndWaterTourSubMenu.swift; sourceTree = "<group>"; };
+		FBE736341FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingBikingTourSubMenu.swift; sourceTree = "<group>"; };
+		FBE736381FCE501D00018517 /* ClimbingAndTrekkingTourSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingAndTrekkingTourSubMenu.swift; sourceTree = "<group>"; };
+		FBE7363A1FCE507400018517 /* NightlifeSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightlifeSubMenu.swift; sourceTree = "<group>"; };
+		FBE7363C1FCE50AD00018517 /* FoodSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubMenu.swift; sourceTree = "<group>"; };
+		FBE7363E1FCE50E200018517 /* ShoppingSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingSubMenu.swift; sourceTree = "<group>"; };
+		FBE736401FCE51CA00018517 /* LocalLifeSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLifeSubMenu.swift; sourceTree = "<group>"; };
 		FBEB182B1FB01C8600E52E59 /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBEB182C1FB01C8600E52E59 /* NewBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBookingViewController.swift; sourceTree = "<group>"; };
 		FBEB182D1FB01C8600E52E59 /* NewBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBookingViewController.xib; sourceTree = "<group>"; };
@@ -515,6 +537,24 @@
 				FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */,
 			);
 			path = SubMenuTableViewCell;
+			sourceTree = "<group>";
+		};
+		FB09B6A51FCD71A500F1BB3A /* SubMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FBE7362A1FCE494100018517 /* ShowAndConcertsSubMenu.swift */,
+				FBE7362C1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift */,
+				FBE7362E1FCE4B0B00018517 /* EventsSubMenu.swift */,
+				FBE736301FCE4CBA00018517 /* PassesSubMenu.swift */,
+				FBE736321FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift */,
+				FBE736341FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift */,
+				FBE736381FCE501D00018517 /* ClimbingAndTrekkingTourSubMenu.swift */,
+				FBE7363A1FCE507400018517 /* NightlifeSubMenu.swift */,
+				FBE7363C1FCE50AD00018517 /* FoodSubMenu.swift */,
+				FBE7363E1FCE50E200018517 /* ShoppingSubMenu.swift */,
+				FBE736401FCE51CA00018517 /* LocalLifeSubMenu.swift */,
+			);
+			path = SubMenu;
 			sourceTree = "<group>";
 		};
 		FB11F3FE1FA70B73008DD080 /* DayCell */ = {
@@ -863,6 +903,7 @@
 		FBDD2E151FBC4EE400F94EE1 /* mainModel */ = {
 			isa = PBXGroup;
 			children = (
+				FB09B6A51FCD71A500F1BB3A /* SubMenu */,
 				FBE099471FC58B1500F756B0 /* MenuHome */,
 				FBCF70A91FC3D05300463256 /* CategoryMenu */,
 				FB034AFC1FC26DE8003448AC /* City */,
@@ -1251,6 +1292,8 @@
 				FB09B6A31FCD552500F1BB3A /* SubMenuTableViewCell.swift in Sources */,
 				FBFB7F451FB30E02006DDE2A /* NewBookingViewDelegate+DataSource.swift in Sources */,
 				FBB066081F8DEFB8002BF21C /* TravelAgency.swift in Sources */,
+				FBE736391FCE501D00018517 /* ClimbingAndTrekkingTourSubMenu.swift in Sources */,
+				FBE7363F1FCE50E200018517 /* ShoppingSubMenu.swift in Sources */,
 				FBB1753B1FBD47B2004E0EE7 /* OutDoorActivities.swift in Sources */,
 				FB8D2A641FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift in Sources */,
 				FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */,
@@ -1272,6 +1315,8 @@
 				FBC8892E1F9DD9070017241E /* NewHomeCollectionViewCell.swift in Sources */,
 				FB0036BD1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift in Sources */,
 				FBFE36A71F85EB480020F295 /* BaseView.swift in Sources */,
+				FBE736331FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift in Sources */,
+				FBE7362F1FCE4B0B00018517 /* EventsSubMenu.swift in Sources */,
 				FB452A981F99B64A00D0709D /* ListEnum.swift in Sources */,
 				FB034B021FC274C7003448AC /* WishListMenu.swift in Sources */,
 				FBC5551F1FB3FDAE00AC510D /* RatingTableViewCell.swift in Sources */,
@@ -1284,6 +1329,7 @@
 				FBFA2DB91FBFDEC6004AC35B /* ListInforMenu.swift in Sources */,
 				FBC7BC751FA449CD00D31BC6 /* HeaderCollectionViewCell.swift in Sources */,
 				FB0036C11FAC5C4900D9C38A /* BookingCollectionViewCell.swift in Sources */,
+				FBE7363B1FCE507400018517 /* NightlifeSubMenu.swift in Sources */,
 				FBDD2E051FBC45C400F94EE1 /* Coordination.swift in Sources */,
 				FBB0660E1F8DF6F2002BF21C /* FoodTour.swift in Sources */,
 				FBFBBD101F85DA610062C6DC /* HomeCollectionViewCell.swift in Sources */,
@@ -1304,6 +1350,7 @@
 				FBFDFADF1FB447E200F88C90 /* MenuDetailViewController.swift in Sources */,
 				FB9FB3EE1F8C86CC006CA1AE /* InboxViewController.swift in Sources */,
 				FB80519D1FAACFA400AD635E /* CalendarTableViewCell.swift in Sources */,
+				FBE736311FCE4CBA00018517 /* PassesSubMenu.swift in Sources */,
 				FB034AFE1FC27143003448AC /* FTPickesMenu.swift in Sources */,
 				FB8D2A571FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.swift in Sources */,
 				FBD4BB551FCD0E5000780BC1 /* extensionCollectionView.swift in Sources */,
@@ -1319,13 +1366,18 @@
 				FB034B001FC273E1003448AC /* BestSellerMenu.swift in Sources */,
 				FBB3F6981FB14980003BC910 /* MeetingPointTableViewCell.swift in Sources */,
 				FBE099401FC55ADB00F756B0 /* SubMenuItemCollectionViewCell.swift in Sources */,
+				FBE736351FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift in Sources */,
 				FBEB182F1FB01C8700E52E59 /* MonthCollectionViewCell.swift in Sources */,
+				FBE736411FCE51CA00018517 /* LocalLifeSubMenu.swift in Sources */,
 				FBC7BC5E1FA4250F00D31BC6 /* TableViewDetail+Delegate+DataSource.swift in Sources */,
 				FBC7BC5A1FA4243C00D31BC6 /* HomeCollectionViewDelegate+DataSource.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,
 				FB03C6751F84C004005FC7A2 /* HomeViewController.swift in Sources */,
+				FBE7363D1FCE50AD00018517 /* FoodSubMenu.swift in Sources */,
+				FBE7362B1FCE494100018517 /* ShowAndConcertsSubMenu.swift in Sources */,
 				FBB0660A1F8DF53F002BF21C /* Attraction.swift in Sources */,
 				FB54946C1FA6FF9C003645E3 /* CalendarExtension.swift in Sources */,
+				FBE7362D1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift in Sources */,
 				FBBD8C891FA04AFB00BCD169 /* CustomNavigationbarForDetailViewController.swift in Sources */,
 				FBC5551A1FB3EC8800AC510D /* ReviewsTableViewCell.swift in Sources */,
 				FB03C67B1F84C21F005FC7A2 /* BaseViewController.swift in Sources */,

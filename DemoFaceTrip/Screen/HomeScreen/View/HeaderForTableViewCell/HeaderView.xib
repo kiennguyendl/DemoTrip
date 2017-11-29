@@ -50,7 +50,7 @@
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrC-we-n50">
                     <rect key="frame" x="0.0" y="19.5" width="7" height="19.5"/>
                     <color key="backgroundColor" red="0.16862745098039217" green="0.98431372549019602" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>

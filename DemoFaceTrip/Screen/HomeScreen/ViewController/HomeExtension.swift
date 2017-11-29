@@ -69,12 +69,13 @@ extension HomeViewController: HeaderZeroProtocol{
         //for index in listID{
         let type = menu.typeOfMenu
         if let typeStr = menu.type{
+            typeMenu = typeStr
         switch type {
         case .Attractions:
             tableViewCarousels.isHidden = true
             collectionViewListing.isHidden = true
             tableViewSubMenu.isHidden = false
-            
+            inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
             RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu( urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: ShowAndAttrachtions?, error: Error?) in
                 guard let strongSelf = self else {return}
                 if let category = category{
@@ -88,6 +89,8 @@ extension HomeViewController: HeaderZeroProtocol{
             tableViewCarousels.isHidden = true
             collectionViewListing.isHidden = false
             tableViewSubMenu.isHidden = true
+            inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
+            
             RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: DayTripAndExcursionsTourMenu?, error: Error?) in
                 
                 guard let strongSelf = self else {return}
@@ -103,6 +106,8 @@ extension HomeViewController: HeaderZeroProtocol{
             tableViewCarousels.isHidden = true
             collectionViewListing.isHidden = false
             tableViewSubMenu.isHidden = true
+            inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
+            
             RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
                 
                 guard let strongSelf = self else {return}
@@ -118,6 +123,7 @@ extension HomeViewController: HeaderZeroProtocol{
             tableViewCarousels.isHidden = true
             collectionViewListing.isHidden = true
             tableViewSubMenu.isHidden = false
+            inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
             
             RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: OutDoorActivities?, error: Error?) in
                 
@@ -134,6 +140,7 @@ extension HomeViewController: HeaderZeroProtocol{
             tableViewCarousels.isHidden = true
             collectionViewListing.isHidden = true
             tableViewSubMenu.isHidden = false
+            inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
             
             RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: CustomExperiences?, error: Error?) in
                 

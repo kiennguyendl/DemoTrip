@@ -56,14 +56,258 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let currentRow = indexPath.item
             switch typeOfMenu{
             case .Activities:
-                let data = listItemOfEachTypeMenu as! OutDoorActivities
+                tableViewCarousels.isHidden = true
+                tableViewSubMenu.isHidden = true
+                collectionViewListing.isHidden = false
+                isListSubMenuDisplay = true
+                
+                switch typeOfSubMenu{
+                case "Cruises,SaiLing And Water Tour":
+                    print("Cruises,SaiLing And Water Tour")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? CruisesSaiLingAndWaterTourSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Walking And Biking Tour":
+                    print("Walking And Biking Tour")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? WalkingBikingTourSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Climbing And Trekking Tour":
+                    print("Climbing And Trekking Tour")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? ClimbingAndTrekkingTourSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                default:
+                    print("")
+                }
                 print("")
             case .Attractions:
-                let data = listItemOfEachTypeMenu as! ShowAndAttrachtions
+                tableViewCarousels.isHidden = true
+                tableViewSubMenu.isHidden = true
+                collectionViewListing.isHidden = false
+                isListSubMenuDisplay = true
+                
+                switch typeOfSubMenu{
+                case "Show And Concerts":
+                    print("Show And Concerts")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? ShowAndConcertsSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Sightseeing Tickets":
+                    print("Sightseeing Tickets")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? SightseeingTicketsSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Events":
+                    print("Events")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? EventsSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Passes":
+                    print("Passes")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? PassesSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                default:
+                    print("")
+                }
                 print("")
             case .BestSeller:
-                let data = listItemOfEachTypeMenu as! BestSellerMenu
-                print("")
+                var urlStr: String!
+                var typeOfTour: String!
+                var nameTour: String!
+                var priceTour: Double!
+                var ratingTour: Float!
+                
+                if let data = listItemOfEachTypeMenu as? BestSellerMenu{
+                    if let urlImg = data.listItem[currentRow].imageURL{
+                        urlStr = urlImg
+                    }
+                    if let name = data.listItem[currentRow].name{
+                        nameTour = name
+                    }
+                    
+                    if let price = data.listItem[currentRow].price{
+                        priceTour = Double(price)
+                    }
+                    typeOfTour = "workshop"
+                    
+                    if let rating = data.listItem[currentRow].rating{
+                        ratingTour = rating
+                    }else{
+                        ratingTour = 0
+                    }
+                }
+                
+                return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .Daytrip:
                 
                 var urlStr: String!
@@ -94,11 +338,160 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .Experiences:
-                let data = listItemOfEachTypeMenu as! CustomExperiences
+                tableViewCarousels.isHidden = true
+                tableViewSubMenu.isHidden = true
+                collectionViewListing.isHidden = false
+                isListSubMenuDisplay = true
+                
+                switch typeOfSubMenu{
+                case "Nightlife":
+                    print("Nightlife")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? NightlifeSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Food":
+                    print("Food")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? FoodSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Shopping":
+                    print("Shopping")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? ShoppingSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                case "Local life":
+                    print("Local life")
+                    var urlStr: String!
+                    var typeOfTour: String!
+                    var nameTour: String!
+                    var priceTour: Double!
+                    var ratingTour: Float!
+                    
+                    if let data = listItemOfEachSubMenu as? LocalLifeSubMenu{
+                        if let urlImg = data.listItem[currentRow].imageURL{
+                            urlStr = urlImg
+                        }
+                        if let name = data.listItem[currentRow].name{
+                            nameTour = name
+                        }
+                        
+                        if let price = data.listItem[currentRow].price{
+                            priceTour = Double(price)
+                        }
+                        typeOfTour = "workshop"
+                        
+                        if let rating = data.listItem[currentRow].rating{
+                            ratingTour = rating
+                        }else{
+                            ratingTour = 0
+                        }
+                    }
+                    
+                    return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
+                default:
+                    print("")
+                }
                 print("")
             case .FTPickes:
-                let data = listItemOfEachTypeMenu as! FTPickesMenu
-                print("")
+                var urlStr: String!
+                var typeOfTour: String!
+                var nameTour: String!
+                var priceTour: Double!
+                var ratingTour: Float!
+                
+                if let data = listItemOfEachTypeMenu as? FTPickesMenu{
+                    if let urlImg = data.listItem[currentRow].imageURL{
+                        urlStr = urlImg
+                    }
+                    if let name = data.listItem[currentRow].name{
+                        nameTour = name
+                    }
+                    
+                    if let price = data.listItem[currentRow].price{
+                        priceTour = Double(price)
+                    }
+                    typeOfTour = "workshop"
+                    
+                    if let rating = data.listItem[currentRow].rating{
+                        ratingTour = rating
+                    }else{
+                        ratingTour = 0
+                    }
+                }
+                
+                return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .MultiDayTrip:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
                 var urlStr: String!
@@ -129,11 +522,61 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
                 return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .WishList:
-                let data = listItemOfEachTypeMenu as! WishListMenu
-                print("")
+                var urlStr: String!
+                var typeOfTour: String!
+                var nameTour: String!
+                var priceTour: Double!
+                var ratingTour: Float!
+                
+                if let data = listItemOfEachTypeMenu as? WishListMenu{
+                    if let urlImg = data.listItem[currentRow].imageURL{
+                        urlStr = urlImg
+                    }
+                    if let name = data.listItem[currentRow].name{
+                        nameTour = name
+                    }
+                    
+                    if let price = data.listItem[currentRow].price{
+                        priceTour = Double(price)
+                    }
+                    typeOfTour = "workshop"
+                    
+                    if let rating = data.listItem[currentRow].rating{
+                        ratingTour = rating
+                    }else{
+                        ratingTour = 0
+                    }
+                }
+                
+                return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .Recentlies:
-                let data = listItemOfEachTypeMenu as! RecentlyMenu
-                print("")
+                var urlStr: String!
+                var typeOfTour: String!
+                var nameTour: String!
+                var priceTour: Double!
+                var ratingTour: Float!
+                
+                if let data = listItemOfEachTypeMenu as? RecentlyMenu{
+                    if let urlImg = data.listItem[currentRow].imageURL{
+                        urlStr = urlImg
+                    }
+                    if let name = data.listItem[currentRow].name{
+                        nameTour = name
+                    }
+                    
+                    if let price = data.listItem[currentRow].price{
+                        priceTour = Double(price)
+                    }
+                    typeOfTour = "workshop"
+                    
+                    if let rating = data.listItem[currentRow].rating{
+                        ratingTour = rating
+                    }else{
+                        ratingTour = 0
+                    }
+                }
+                
+                return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
             case .None:
                 print("")
                 
