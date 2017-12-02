@@ -39,6 +39,7 @@ class ChooseCityViewController: UIViewController {
         restDataCity()
         
         citySearch.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        
     }
 
     @objc func textFieldDidChange(textField: UITextField) {

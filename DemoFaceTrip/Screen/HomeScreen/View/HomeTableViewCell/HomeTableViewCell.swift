@@ -12,15 +12,19 @@ import AlamofireImage
 import Cosmos
 
 protocol HomeCellDelegate {
-    func didPressCell(currentSection: Int, index: Int, type: catagoryType)
+    func didPressCellItem(typeMenu: typeOfCategoryMenu)
+//    func pressentView(vc: UIViewController, point: CGPoint)
+    func didPressCellSubMenu(typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String)
 }
 
 class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionViewForCell: UICollectionView!
     var delegate: HomeCellDelegate?
     
+    //let transitionDelegate: TransitioningDelegate = TransitioningDelegate()
     var typeOfMenu: typeOfCategoryMenu = .None
     var numberOfRow: Int = 0
+    var idMenu: Int!
     var category: AnyObject?{
         didSet{
             switch typeOfMenu {
@@ -28,54 +32,63 @@ class HomeTableViewCell: UITableViewCell {
                 if let category = category{
                     let data = category as! OutDoorActivities
                     numberOfRow = data.listSubMenu.count
+                    idMenu = data.id
                 }
                 break
             case .Attractions:
                 if let category = category{
                     let data = category as! ShowAndAttrachtions
                     numberOfRow = data.listSubMenu.count
+                    idMenu = data.id
                 }
                 break
             case .BestSeller:
                 if let category = category{
                     let data = category as! BestSellerMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .Daytrip:
                 if let category = category{
                     let data = category as! DayTripAndExcursionsTourMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .Experiences:
                 if let category = category{
                     let data = category as! CustomExperiences
                     numberOfRow = data.listSubMenu.count
+                    idMenu = data.id
                 }
                 break
             case .FTPickes:
                 if let category = category{
                     let data = category as! FTPickesMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .MultiDayTrip:
                 if let category = category{
                     let data = category as! MultiDayTripAndExcursionsTourMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .Recentlies:
                 if let category = category{
                     let data = category as! RecentlyMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .WishList:
                 if let category = category{
                     let data = category as! WishListMenu
                     numberOfRow = data.listItem.count
+                    idMenu = data.id
                 }
                 break
             case .None:
@@ -120,6 +133,12 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //var cell = UICollectionViewCell()
         let currentItem = indexPath.row
+        var urlStr: String!
+        var typeOfTour: String!
+        var nameTour: String!
+        var priceTour: Double!
+        var ratingTour: Float!
+        
         switch typeOfMenu {
         case .Activities:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubMenu", for: indexPath)
@@ -140,12 +159,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         case .BestSeller:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
  
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
-            
             if let data = category as? BestSellerMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
                     urlStr = urlImg
@@ -169,12 +182,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case .Daytrip:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
-            
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let data = category as? DayTripAndExcursionsTourMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
@@ -208,12 +215,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         case .FTPickes:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
             
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
-            
             if let data = category as? FTPickesMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
                     urlStr = urlImg
@@ -237,12 +238,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case .MultiDayTrip:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
-            
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let data = category as? MultiDayTripAndExcursionsTourMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
@@ -268,12 +263,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         case .Recentlies:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
             
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
-            
             if let data = category as? RecentlyMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
                     urlStr = urlImg
@@ -297,12 +286,6 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case .WishList:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath)
-            
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let data = category as? WishListMenu{
                 if let urlImg = data.listItem[currentItem].imageURL{
@@ -346,29 +329,86 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //delegate?.didPressCell(currentSection: currentSection, index: indexPath.row, type: type)
+//         let cell: NewHomeCollectionViewCell = collectionView.cellForItem(at: indexPath as IndexPath) as! NewHomeCollectionViewCell
+
+        
+//        let attribute = collectionView.layoutAttributesForItem(at: indexPath)
+//        let cellRect = attribute?.frame
+//        let cellFrameInSuperview = collectionView.convert(cellRect!, to: superview)
+//        print("cellFrameInSuperview: \(cellFrameInSuperview)")
+//
+//        let widthOfPartImage = cell.image.frame.width / 2
+//        let heightOfPartImage = cell.image.frame.height / 2
+//
+//        let point = CGPoint(x: cellFrameInSuperview.origin.x + widthOfPartImage, y: cellFrameInSuperview.origin.y + heightOfPartImage)
+//
+//        let detailViewController = DetailViewController()
+//
+//        print("screen size: \(UIScreen.main.bounds)")
+//        print("point: \(point)")
+//        delegate?.pressentView(vc: detailViewController, point: point)
+        
         switch typeOfMenu {
         case .Activities:
+            let data = category as! OutDoorActivities
+            let typeMenuStr = data.type
+            let typeSubMenu = data.listSubMenu[indexPath.row].type
+            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .Attractions:
+            let data = category as! ShowAndAttrachtions
+            let typeMenuStr = data.type
+            let typeSubMenu = data.listSubMenu[indexPath.row].type
+            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .BestSeller:
+            let data = category as! BestSellerMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .Daytrip:
+            let data = category as! DayTripAndExcursionsTourMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .Experiences:
+            let data = category as! CustomExperiences
+            let typeMenuStr = data.type
+            let typeSubMenu = data.listSubMenu[indexPath.row].type
+            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .FTPickes:
+            let data = category as! FTPickesMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .MultiDayTrip:
+            let data = category as! MultiDayTripAndExcursionsTourMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .Recentlies:
+            let data = category as! RecentlyMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .WishList:
+            let data = category as! WishListMenu
+            let typeMenu = data.typeCategory
+            delegate?.didPressCellItem(typeMenu: typeMenu)
             break
         case .None:
             print("")
-         
+
         }
     }
+    
 }
+
+
+//MARK: UINavigationControllerDelegate
+
+
+//MARK: CollectionPushAndPoppable
+
+

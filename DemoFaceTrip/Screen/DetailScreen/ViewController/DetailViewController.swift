@@ -35,7 +35,8 @@ class DetailViewController: BaseViewController {
     
     @IBOutlet weak var hiddenView: UIView!
     
-
+    @IBOutlet weak var backButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +46,7 @@ class DetailViewController: BaseViewController {
         initTableView()
         
         // init custom navigation bar
-        initCustomNavigationBar()
+//        initCustomNavigationBar()
         
         //set content for bottom view
         setContentForBootView()
@@ -62,6 +63,7 @@ class DetailViewController: BaseViewController {
 //        viewMenu.frame.origin.y = self.view.frame.height
 //        contraintBottomMenuView.constant = self.view.frame.height + viewMenu.frame.height
         hiddenView.isHidden = true
+        self.view.bringSubview(toFront: backButton)
     }
     
     
@@ -75,7 +77,7 @@ class DetailViewController: BaseViewController {
         //set shadow for booking button
         // init custom navigation bar
         DispatchQueue.main.async {
-            self.initCustomNavigationBar()
+//            self.initCustomNavigationBar()
             self.setContentForBootView()
         }
         
@@ -97,11 +99,14 @@ class DetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeCustomBar()
+//        removeCustomBar()
     }
     
     
    
+    @IBAction func backBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func initTableView() {
         addContrailForTableView()

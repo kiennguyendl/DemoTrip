@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="Ab4-NO-LKb" id="Ele-OO-Nnb"/>
                 <outlet property="bookingBtn" destination="Bsn-0W-lBg" id="7v6-oN-b6O"/>
                 <outlet property="bottomView" destination="wA5-Y4-cUj" id="mWr-RX-dKT"/>
                 <outlet property="buttonMenu" destination="sil-XB-8Xg" id="riO-So-SH9"/>
@@ -30,6 +31,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-NO-LKb">
+                    <rect key="frame" x="20" y="40" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="Xcb-lH-EbF"/>
+                        <constraint firstAttribute="height" constant="30" id="vtk-Ks-hIM"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="back"/>
+                    <connections>
+                        <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="5KM-TI-fH0"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wA5-Y4-cUj">
                     <rect key="frame" x="0.0" y="666" width="414" height="70"/>
                     <subviews>
@@ -174,17 +186,20 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="W27-tg-By6" secondAttribute="trailing" id="IXj-Eb-M9j"/>
                 <constraint firstItem="wA5-Y4-cUj" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="UA1-YQ-1f0"/>
                 <constraint firstItem="wA5-Y4-cUj" firstAttribute="top" secondItem="W27-tg-By6" secondAttribute="bottom" id="UHe-5h-mds"/>
+                <constraint firstItem="Ab4-NO-LKb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="UxF-kh-x4Y"/>
                 <constraint firstItem="Ya3-70-IMi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="c2m-RN-ndS"/>
                 <constraint firstItem="W27-tg-By6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="e3E-8X-ot4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="p9h-9s-7YB" secondAttribute="trailing" constant="20" id="fQl-3Q-guv"/>
                 <constraint firstItem="Ya3-70-IMi" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="geT-rv-pIx"/>
                 <constraint firstItem="wA5-Y4-cUj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oH6-nB-Xhk"/>
+                <constraint firstItem="Ab4-NO-LKb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="svx-tb-sdI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="-102" y="48"/>
         </view>
     </objects>
     <resources>
+        <image name="back" width="50" height="50"/>
         <image name="menuDetail" width="100" height="100"/>
     </resources>
 </document>

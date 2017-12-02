@@ -19,10 +19,10 @@ class NewMeetingPointTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.startUpdatingLocation()
 
 //        let location = CLLocationCoordinate2D(latitude: 10.757300, longitude: 106.659722)
 //        let camera = GMSCameraPosition.camera(withLatitude: 10.757300, longitude: 106.659722, zoom: 15)

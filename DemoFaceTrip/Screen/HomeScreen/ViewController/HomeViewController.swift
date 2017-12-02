@@ -69,6 +69,9 @@ class HomeViewController: BaseViewController {
     var listNumSubMenu = 0
     //var listSubMenu: AnyObject!
     
+    //let transitionDelegate: TransitioningDelegate = TransitioningDelegate()
+    let transition = CircularTransition()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,7 +100,7 @@ class HomeViewController: BaseViewController {
             tableViewCarousels.reloadData()
 //            restDataForHome()
         }
-        
+//        self.navigationController?.delegate = self
     }
     
     @objc func presentChooseCityView(textField: UITextField) {

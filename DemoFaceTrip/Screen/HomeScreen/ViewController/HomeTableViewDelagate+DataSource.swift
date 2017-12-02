@@ -44,7 +44,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             if indexPath.section != 0{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
                 let currentSection = indexPath.section - 1
-                
+                cell.delegate = self
                 if let typeMenu = listID[currentSection].type{
                     switch typeMenu{
                     case "Recentlies":
@@ -127,6 +127,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             }
         }else if tableView == tableViewSubMenu{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubMenuCell", for: indexPath) as! SubMenuTableViewCell
+            cell.delegate = self
             //let currentSection = indexPath.section
                         switch typeOfMenu{
                         case .Activities:
@@ -496,6 +497,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     @objc func showAllItemOfSubMenu(sender: UIButton) {
         let section = sender.tag
+        
+        tableViewCarousels.isHidden = true
+        tableViewSubMenu.isHidden = true
+        collectionViewListing.isHidden = false
+        isListSubMenuDisplay = true
+        
         switch typeOfMenu {
         case .Attractions:
             let data = listItemOfEachTypeMenu as! ShowAndAttrachtions
@@ -735,6 +742,10 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             view.seeAllBtn.addTarget(self, action: #selector(showAllItemOfSubMenu(sender:)), for: .touchUpInside)
             return view
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tableview cell pressed")
     }
     
     func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {

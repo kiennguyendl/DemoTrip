@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol SubMenuProtocol {
+    func didPressCellOnSubMenu()
+}
+
 class SubMenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionViewSubMenu: UICollectionView!
     var typeOfSubMenu = ""
     var numberOfRow = 0
+    var delegate: SubMenuProtocol?
     var categorySubMenu: AnyObject?{
         didSet{
             switch typeOfSubMenu {
@@ -127,13 +132,16 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewHomeCollectionCell", for: indexPath) as! NewHomeCollectionViewCell
         let currentItem = indexPath.row
+        
+        var urlStr: String!
+        var typeOfTour: String!
+        var nameTour: String!
+        var priceTour: Double!
+        var ratingTour: Float!
+        
         switch typeOfSubMenu {
         case "Show And Concerts":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
+            
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! ShowAndConcertsSubMenu
@@ -157,11 +165,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Sightseeing Tickets":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! SightseeingTicketsSubMenu
@@ -185,11 +188,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Events":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! EventsSubMenu
@@ -213,11 +211,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Passes":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! PassesSubMenu
@@ -241,11 +234,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Cruises,SaiLing And Water Tour":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! CruisesSaiLingAndWaterTourSubMenu
@@ -269,11 +257,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Walking And Biking Tour":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! WalkingBikingTourSubMenu
@@ -297,11 +280,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Climbing And Trekking Tour":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! ClimbingAndTrekkingTourSubMenu
@@ -325,11 +303,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Nightlife":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! NightlifeSubMenu
@@ -353,11 +326,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Food":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! FoodSubMenu
@@ -382,11 +350,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             print("")
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Shopping":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! ShoppingSubMenu
@@ -410,11 +373,6 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return collectionView.setDataForItemCell(cell: cell, urlStr: urlStr!, typeOfTour: typeOfTour, name: nameTour!, price: priceTour, rating: ratingTour)
         case "Local life":
-            var urlStr: String!
-            var typeOfTour: String!
-            var nameTour: String!
-            var priceTour: Double!
-            var ratingTour: Float!
             
             if let categorySubMenu = categorySubMenu{
                 let data = categorySubMenu as! LocalLifeSubMenu
@@ -450,5 +408,10 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         witdh = collectionView.frame.width / 2.3
         height = self.frame.height
         return CGSize(width: witdh, height: height )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        delegate?.didPressCellOnSubMenu()
     }
 }
