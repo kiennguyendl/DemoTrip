@@ -36,6 +36,7 @@ class HomeViewController: BaseViewController {
     var indexPathSelected: IndexPath = IndexPath(item: 0, section: 0)
     static var verticalContentOffset: CGFloat!
     
+    //set color for menu view
     let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.colors = [
@@ -57,7 +58,7 @@ class HomeViewController: BaseViewController {
     var isMenuBtn = true
     var isListSubMenuDisplay = false
     //fake the data for carousels collection view
-    var listCarousel = ["For Your", "Local Guide", "Hotels", "Travel Agency"]
+    var listCarousel = ["For Your", "Experiences", "At a Glance", "Trip Daiary"]
     
     //the value for listing collection view
     var listItemOfEachTypeMenu: AnyObject!
@@ -67,10 +68,12 @@ class HomeViewController: BaseViewController {
     var typeMenu = ""
     var listItem = 0
     var listNumSubMenu = 0
-    //var listSubMenu: AnyObject!
+    //
     
-    //let transitionDelegate: TransitioningDelegate = TransitioningDelegate()
-    let transition = CircularTransition()
+    // using for animation
+    let imageExpandAnimationController = ImageExpandAnimationController()
+    let imageShrinkAnimationController = ImageShrinkAnimationController()
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,8 +90,10 @@ class HomeViewController: BaseViewController {
         heightOfCarouselsView = carouselsView.frame.height
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
         
+        //add target for textfield when user touch up
         inputTextSearchTf.addTarget(self, action: #selector(presentChooseCityView(textField:)), for: .touchDown)
         
+        //check city is existing or not
         if Settings.city == nil{
             let vc = ChooseCityViewController()
             vc.delegate = self
@@ -98,11 +103,10 @@ class HomeViewController: BaseViewController {
             city = NSKeyedUnarchiver.unarchiveObject(with: Settings.city!) as! City
             listID = city.listID!
             tableViewCarousels.reloadData()
-//            restDataForHome()
         }
-//        self.navigationController?.delegate = self
     }
     
+    //present view for user choose city
     @objc func presentChooseCityView(textField: UITextField) {
         let vc = ChooseCityViewController()
         self.view.endEditing(true)
@@ -114,32 +118,19 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableViewCarousels.contentOffset = CGPoint(x: 0, y: 0)
+        //set hide navigationbar
         navigationController?.isNavigationBarHidden = true
+        //show tabbar controller
         tabBarController?.tabBar.isHidden = false
         
-        
-        if Settings.isScaleMenuView!{
-            
-            setWhiteColorForStatusBar()
-            self.viewMenu.frame.origin.y = self.viewMenu.frame.origin.y - newPos
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -self.newPos, width: self.view.frame.size.width, height: self.view.frame.size.height + self.newPos)
-        }else{
-            showSubMenu()
-            collectionViewCarousels.backgroundColor = color3
-            collectionViewCarousels.reloadData()
-        }
-        tableViewCarousels.isScrollEnabled = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setWhiteColorForStatusBar()
-        navigationController?.isNavigationBarHidden = false
+        //setWhiteColorForStatusBar()
+        //navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = false
-
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -183,14 +174,14 @@ class HomeViewController: BaseViewController {
     }
     
     func setColorForMenuView() {
-        if Settings.isScaleMenuView!{
-            print("abc")
-        }else{
+//        if Settings.isScaleMenuView!{
+//            print("abc")
+//        }else{
             self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
             gradientLayer.frame = self.viewMenu.bounds
             self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
             self.childViewMenu.layer.cornerRadius = self.childViewMenu.frame.width / 97
-        }
+//        }
     }
     
     //init and register cell for tableview
@@ -212,7 +203,7 @@ class HomeViewController: BaseViewController {
         tableViewSubMenu.register(UINib.init(nibName: "SubMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SubMenuCell")
         tableViewSubMenu.showsHorizontalScrollIndicator = false
         tableViewSubMenu.showsVerticalScrollIndicator = false
-        tableViewSubMenu.isHidden = false
+        tableViewSubMenu.isHidden = true
         tableViewSubMenu.tag = 2
         //collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
         tableViewSubMenu.backgroundColor = UIColor.white
@@ -333,11 +324,11 @@ class HomeViewController: BaseViewController {
                 listItemOfEachTypeMenu = nil
                 collectionViewListing.reloadData()
                 tableViewSubMenu.reloadData()
-                //tableViewCarousels.reloadData()
             }
         }
     }
     
+    // action when scroll up tableview or collectionview
     func moveUpCarouselsView() {
         if self.carouselsView.frame.origin.y > self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y - self.heightOfCarouselsView
@@ -349,6 +340,7 @@ class HomeViewController: BaseViewController {
         
     }
     
+    // action when scroll down tableview or collectionview
     func moveDownCarouselsView() {
         if self.carouselsView.frame.origin.y < self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y + self.heightOfCarouselsView
@@ -360,6 +352,27 @@ class HomeViewController: BaseViewController {
         
     }
     
+    // above funtionalies using when present detail viewcontroller from home csreen
+    func changeColorMenuViewWhenPresent() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.gradientLayer.removeFromSuperlayer()
+                
+                self.collectionViewCarousels.isHidden = true
+                self.childViewMenu.isHidden = true
+               
+            })
+            self.carouselsView.backgroundColor = UIColor.white
+        }
+        
+    }
+    
+    func setColorMenuViewWhenDismiss() {
+        self.setColorForMenuView()
+        self.collectionViewCarousels.isHidden = false
+        self.carouselsView.backgroundColor = color3
+        self.childViewMenu.isHidden = false
+    }
 }
 
 

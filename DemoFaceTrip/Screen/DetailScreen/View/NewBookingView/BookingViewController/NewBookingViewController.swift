@@ -19,11 +19,38 @@ class NewBookingViewController: BaseViewController {
     @IBOutlet weak var viewBottomBooking: UIView!
     @IBOutlet weak var bottomContraintView: NSLayoutConstraint!
     
+    @IBOutlet weak var daySelectedInfo: UILabel!
+    var nameCity: String!
+    var nameTour: String!
+    var statusTour: String!
+    
     lazy var calendar : Calendar = {
         var gregorian = Calendar(identifier: .gregorian)
         gregorian.timeZone = TimeZone(abbreviation: "UTC")!
         return gregorian
     }()
+    
+    var bookingDay: [CalendarBooking]?{
+        didSet{
+            let today = Date()
+            let month = self.calendar.component(.month, from: today)
+            let year = self.calendar.component(.year, from: today)
+            
+            if var bookingDays = bookingDay{
+                var listBooking:[CalendarBooking] = []
+                for i in 0..<bookingDays.count{
+                    if bookingDays[i].month! < month && bookingDays[i].year! == year{
+                        
+                    }else{
+                        listBooking.append(bookingDays[i])
+                    }
+                }
+                bookingDay = listBooking
+            }
+        }
+        
+    }
+    var section: Int = 0
     
     internal var startDateCache     = Date()
     internal var endDateCache       = Date()
@@ -33,21 +60,24 @@ class NewBookingViewController: BaseViewController {
     public var displayDate: Date?
     
     internal(set) var selectedIndexPath: IndexPath?
+    internal(set) var daySelected: String!
     var oldSelectedIndexPath: IndexPath?
     internal(set) var selectedDates         = [Date]()
     
     var monthInfoForSection = [Int:(firstDay:Int, daysTotal:Int)]()
+    
     var isShowBottomView = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initBackButton()
+//        self.title = "When do you want to go?"
         chooseBtn.layer.cornerRadius = chooseBtn.frame.width / 15
         
-        DispatchQueue.main.async {
-            self.initCustomNavigationBar()
-            self.setTitleForNavigationBar(title: "When do you want to go?")
-            self.customNavigationBar.rightView.isHidden = true
-        }
+//        DispatchQueue.main.async {
+//            self.initCustomNavigationBar()
+//            self.setTitleForNavigationBar(title: "When do you want to go?")
+//            self.customNavigationBar.rightView.isHidden = true
+//        }
         // Do any additional setup after loading the view.
         notificationCenter.addObserver(self, selector: #selector(getIndexPathSelected(notification:)), name: indexPathNotification, object: nil)
         
@@ -58,6 +88,7 @@ class NewBookingViewController: BaseViewController {
     @objc func getIndexPathSelected(notification: NSNotification) {
         let indexPath = notification.userInfo!["indexPath"] as! IndexPath
         let canSelect = notification.userInfo!["canSelect"] as! Bool
+        let daySelected = notification.userInfo!["daySelected"] as! String
         isShowBottomView = notification.userInfo!["isSHow"] as! Bool
         if let selectedIndexPath = selectedIndexPath{
             oldSelectedIndexPath = selectedIndexPath
@@ -65,8 +96,8 @@ class NewBookingViewController: BaseViewController {
             notificationCenter.post(name: oldIndexPathForCellSelected, object: nil, userInfo: info)
         }
         
-        selectedIndexPath = indexPath
-        
+        self.selectedIndexPath = indexPath
+        self.daySelected = daySelected
         if canSelect{
             if selectedIndexPath == oldSelectedIndexPath{
                 if isShowBottomView{
@@ -96,11 +127,13 @@ class NewBookingViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.initCustomNavigationBar()
-            self.setTitleForNavigationBar(title: "When do you want to go?")
-            self.customNavigationBar.rightView.isHidden = true
-        }
+        self.title = "When do you want to go?"
+        setWhiteColorForStatusBar()
+//        DispatchQueue.main.async {
+//            self.initCustomNavigationBar()
+//            self.setTitleForNavigationBar(title: "When do you want to go?")
+//            self.customNavigationBar.rightView.isHidden = true
+//        }
         
         monthCollectionView.delegate = self
         monthCollectionView.dataSource = self
@@ -110,8 +143,9 @@ class NewBookingViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        removeCustomBar()
+        super.viewWillDisappear(animated)
+//        removeCustomBar()
+        self.title = ""
     }
     
     func startDate() -> Date {
@@ -121,9 +155,9 @@ class NewBookingViewController: BaseViewController {
         
         let today = Date()
         
-        let threeMonthsAgo = self.calendar.date(byAdding: dateComponents, to: today)!
+        let numMonthsAgo = self.calendar.date(byAdding: dateComponents, to: today)!
         
-        return threeMonthsAgo
+        return numMonthsAgo
     }
     
     
@@ -132,12 +166,17 @@ class NewBookingViewController: BaseViewController {
         
         var dateComponents = DateComponents()
         
-        dateComponents.month = 6
+        if let bookingDay = bookingDay{
+            dateComponents.month = bookingDay.count - 1
+        }else{
+            dateComponents.month = 0
+        }
+        
         let today = Date()
         
-        let sixMonthFromNow = self.calendar.date(byAdding: dateComponents, to: today)!
+        let numMonthFromNow = self.calendar.date(byAdding: dateComponents, to: today)!
         
-        return sixMonthFromNow
+        return numMonthFromNow
         
     }
     
@@ -146,6 +185,27 @@ class NewBookingViewController: BaseViewController {
             DispatchQueue.main.async {
                 self.viewBottomBooking.frame.origin.y = self.view.frame.height - self.viewBottomBooking.frame.height
                 self.bottomContraintView.constant = self.view.frame.height
+                
+                
+                
+                let today = Date()
+                let month = self.calendar.component(.month, from: today)
+                var year = self.calendar.component(.year, from: today)
+                
+                if let indexPath = self.selectedIndexPath{
+                    var currentMonth = month + indexPath.section
+                    if currentMonth > 12{
+                        currentMonth -= 12
+                        year += 1
+                        let monthName = DateFormatter().monthSymbols[currentMonth]
+                        
+                    }else{
+                        let monthName = DateFormatter().monthSymbols[currentMonth]
+                        
+                    }
+                }
+                
+                
             }
             
         })
@@ -161,6 +221,12 @@ class NewBookingViewController: BaseViewController {
         })
         
     }
+    
+    @IBAction func chooseBookingTourBtn(_ sender: Any) {
+        let vc = BookingOptionsViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 

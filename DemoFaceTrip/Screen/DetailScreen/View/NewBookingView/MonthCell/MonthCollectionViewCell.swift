@@ -22,6 +22,12 @@ class MonthCollectionViewCell: UICollectionViewCell {
     var year: Int!
     var isShow = false
     
+    //var listBookingDay:[TimeBooking] = []
+    var listBookingDayOfMonth: [TimeBooking]?{
+        didSet{
+            monthCollectionView.reloadData()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -59,8 +65,8 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookingTourCell", for: indexPath) as! BookingCollectionViewCell
 
 
-        guard let (firstDayIndex, numberOfDaysTotal) = monthInfoForSection[self.index] else { return cell }
-        
+        let firstDayIndex = monthInfo.firstDay
+        let numberOfDaysTotal = monthInfo.daysTotal
         
         let fromStartOfMonthIndexPath = IndexPath(item: indexPath.item - firstDayIndex, section: indexPath.section)
         let lastDayIndex = firstDayIndex + numberOfDaysTotal
@@ -70,9 +76,9 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
         let month = calendar.component(.month, from: today)
         let year = calendar.component(.year, from: today)
         
-        var monthForSection = month + self.index
+        var monthForSection = month + self.index - 1
         var yearForSection = year
-        if monthForSection > 11{
+        if monthForSection > 12{
             monthForSection -= 12
             yearForSection += 1
         }
@@ -95,12 +101,12 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
                  render day booking
                  */
                 
-                for daybooking in listBookingDay{
+                for daybooking in self.listBookingDayOfMonth!{
                     let dayBook = daybooking.day
                     let monthBook = daybooking.month
                     let yearBook = daybooking.year
                     
-                    if dayBook! == (fromStartOfMonthIndexPath.item + 1) && (monthBook! - 1) == monthForSection && yearBook == yearForSection{
+                    if dayBook! == (fromStartOfMonthIndexPath.item + 1){
                         
                         DispatchQueue.main.async {
                             cell.borderView.layer.cornerRadius = cell.borderView.frame.width / 2
@@ -176,7 +182,13 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
             
             indexPathSelected = IndexPath(item: indexPath.item, section: self.index)
             cell.indexPathSelected = indexPathSelected
-            let info:[String: Any] = ["indexPath": indexPathSelected!, "canSelect": cell.canSelect, "isSHow": isShow]
+            let daySelected = cell.dateLbl.text
+            let info:[String: Any] = [
+                "indexPath": indexPathSelected!,
+                "canSelect": cell.canSelect,
+                "isSHow": isShow,
+                "daySelected": daySelected
+            ]
             notificationCenter.post(name: indexPathNotification, object: nil, userInfo: info)
             
         }else{

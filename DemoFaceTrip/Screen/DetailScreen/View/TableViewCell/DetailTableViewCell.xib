@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="4iR-6w-XLc" customClass="ReadMoreTextView" customModule="ReadMoreTextView">
-                        <rect key="frame" x="40" y="0.0" width="317" height="104.5"/>
+                        <rect key="frame" x="20" y="0.0" width="337" height="104.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.48546557740000001" green="0.48546557740000001" blue="0.48546557740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
@@ -46,7 +46,7 @@
                     <constraint firstAttribute="trailing" secondItem="kat-8V-dAl" secondAttribute="trailing" id="0og-v2-BJK"/>
                     <constraint firstAttribute="bottom" secondItem="kat-8V-dAl" secondAttribute="bottom" id="3Jd-qT-rOl"/>
                     <constraint firstItem="4iR-6w-XLc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="THA-Hk-ED9"/>
-                    <constraint firstItem="4iR-6w-XLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="UbY-lf-tFe"/>
+                    <constraint firstItem="4iR-6w-XLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UbY-lf-tFe"/>
                     <constraint firstItem="kat-8V-dAl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="WN0-6w-qDe"/>
                     <constraint firstAttribute="trailing" secondItem="4iR-6w-XLc" secondAttribute="trailing" constant="20" id="mhq-Rc-ljf"/>
                     <constraint firstAttribute="bottom" secondItem="4iR-6w-XLc" secondAttribute="bottom" constant="20" id="opu-C2-J96"/>

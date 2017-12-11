@@ -24,7 +24,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     var year: Int!
     
     //var delegar: calendarProtocol?
-    
+    var listBookingDayOfMonth: [TimeBooking]?{
+        didSet{
+            monthCollectionView.reloadData()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         monthCollectionView.delegate = self
@@ -64,7 +68,8 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as! DateCollectionViewCell
         
-        guard let (firstDayIndex, numberOfDaysTotal) = monthInfoForSection[self.index] else { return cell }
+        let firstDayIndex = monthInfo.firstDay
+        let numberOfDaysTotal = monthInfo.daysTotal
         
         
         let fromStartOfMonthIndexPath = IndexPath(item: indexPath.item - firstDayIndex, section: indexPath.section)
@@ -91,7 +96,7 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
                  render day booking
                  */
                 
-                for daybooking in listBookingDay{
+                for daybooking in self.listBookingDayOfMonth!{
                     let dayBook = daybooking.day
                     let monthBook = daybooking.month
                     let yearBook = daybooking.year
@@ -133,7 +138,11 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let vc = BookingTourViewController()
 //        delegar?.pushToBookingView(vc: vc)
-        NotificationCenter.default.post(name: calendarPushtoBookingNotification, object: nil)
+        let data = [
+            "section": index,
+            "data": listBookingDayOfMonth
+            ] as [String : Any]
+        NotificationCenter.default.post(name: calendarPushtoBookingNotification, object: data)
     }
     
 }

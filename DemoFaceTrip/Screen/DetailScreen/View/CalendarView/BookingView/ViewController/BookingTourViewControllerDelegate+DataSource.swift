@@ -105,7 +105,7 @@ extension BookingTourViewController: UICollectionViewDelegate, UICollectionViewD
                 /*
                  render day booking
                  */
-                for daybooking in listBookingDay{
+                for daybooking in self.listBookingDay{
                     let dayBook = daybooking.day
                     let monthBook = daybooking.month
                     let yearBook = daybooking.year

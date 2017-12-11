@@ -58,10 +58,19 @@ extension NewBookingViewController: UICollectionViewDelegate, UICollectionViewDa
         let monthNow = self.calendar.component(.month, from: today)
         var year = self.calendar.component(.year, from: today)
         
-        var month = monthNow + indexPath.section - 1
-        if month > 11{
+        var month = monthNow + indexPath.section
+        if month > 12{
             month -= 12
             year += 1
+        }
+        
+        var listBookingDayOfMonth: [TimeBooking] = []
+        let index = bookingDay![indexPath.section]
+        if let dayBookings = index.dayBookings{
+            for day in dayBookings{
+                let timeBooking = TimeBooking(day: day, month: index.month!, year: index.year!)
+                listBookingDayOfMonth.append(timeBooking)
+            }
         }
         
         cell.month = month
@@ -69,7 +78,7 @@ extension NewBookingViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.monthInfo = monthInfoForSection[indexPath.section]
         cell.index = indexPath.section
         cell.todayIndex = todayIndexPath
-        cell.monthCollectionView.reloadData()
+        cell.listBookingDayOfMonth = listBookingDayOfMonth
         return cell
     }
     
@@ -98,7 +107,7 @@ extension NewBookingViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //collectionView.scrollToItem(at: selectedIndexPath!, at: .centeredHorizontally, animated: true)
-        
+        print(indexPath)
     }
     
     

@@ -36,7 +36,7 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
             let distanceFromTodayComponents = self.calendar.dateComponents([.month, .day], from: self.startOfMonthCache, to: today)
             
             self.todayIndexPath = IndexPath(item: distanceFromTodayComponents.day!, section: distanceFromTodayComponents.month!)
-            print("today: \(today) + today index: \(todayIndexPath!) + distanceFromTodayComponents.day: \(distanceFromTodayComponents.day!)")
+            //print("today: \(today) + today index: \(todayIndexPath!) + distanceFromTodayComponents.day: \(distanceFromTodayComponents.day!)")
         }
         
         
@@ -93,12 +93,23 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
                 year += 1
             }
             
+            var listBookingDayOfMonth: [TimeBooking] = []
+            let index = bookingDay![indexPath.section]
+            if let dayBookings = index.dayBookings{
+                for day in dayBookings{
+                    let timeBooking = TimeBooking(day: day, month: index.month!, year: index.year!)
+                    listBookingDayOfMonth.append(timeBooking)
+                }
+            }
+            
+            
             cell.month = month
             cell.year = year
             cell.monthInfo = monthInfoForSection[indexPath.section]
             cell.index = indexPath.section
             cell.todayIndex = todayIndexPath
-            cell.monthCollectionView.reloadData()
+            cell.listBookingDayOfMonth = listBookingDayOfMonth
+            //cell.monthCollectionView.reloadData()
             return cell
         }
         return UICollectionViewCell()

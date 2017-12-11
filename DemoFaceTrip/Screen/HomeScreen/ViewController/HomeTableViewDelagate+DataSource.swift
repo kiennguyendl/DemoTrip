@@ -45,7 +45,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
                 let currentSection = indexPath.section - 1
                 cell.delegate = self
+                cell.indexPathTableViewCell = indexPath
                 if let typeMenu = listID[currentSection].type{
+                    //self.typeMenu = typeMenu
                     switch typeMenu{
                     case "Recentlies":
                         RestDataManager.shareInstance.restDataFollowTypeOfMenu(urlForHome, menu: "menu", action: "getlist", id: city.id!, idMenu: listID[currentSection].id!, type: "\(listID[currentSection].type!)", complertionHandler: {(category: RecentlyMenu?, error: Error?) in
@@ -128,6 +130,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         }else if tableView == tableViewSubMenu{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubMenuCell", for: indexPath) as! SubMenuTableViewCell
             cell.delegate = self
+            cell.indexPathTableViewCell = indexPath
             //let currentSection = indexPath.section
                         switch typeOfMenu{
                         case .Activities:
@@ -137,6 +140,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Cruises,SaiLing And Water Tour":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: CruisesSaiLingAndWaterTourSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -146,6 +152,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Walking And Biking Tour":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: WalkingBikingTourSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -155,6 +164,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Climbing And Trekking Tour":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: ClimbingAndTrekkingTourSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -174,6 +186,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Show And Concerts":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: ShowAndConcertsSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -183,6 +198,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Sightseeing Tickets":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: SightseeingTicketsSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -192,6 +210,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Events":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: EventsSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -201,6 +222,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Passes":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: PassesSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -220,6 +244,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Nightlife":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: NightlifeSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -229,6 +256,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Food":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: FoodSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -238,6 +268,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Shopping":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: ShoppingSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }
@@ -247,6 +280,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                                 case "Local life":
                                     RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: data.type!, typeSubMenu: typeSubMenu, complertionHandler: {(category: LocalLifeSubMenu?, error: Error?) in
                                         if let category = category{
+                                            cell.typeOfMenu = self.typeOfMenu
+                                            cell.idMenu = data.id!
+                                            cell.typeMenu = data.type!
                                             cell.typeOfSubMenu = category.type!
                                             cell.categorySubMenu = category
                                         }

@@ -12,12 +12,16 @@ import AlamofireImage
 import Cosmos
 
 protocol HomeCellDelegate {
-    func didPressCellItem(typeMenu: typeOfCategoryMenu)
+    //func didPressCellItem(typeMenu: typeOfCategoryMenu)
+    func didPressCellItem(_ tableCell: HomeTableViewCell,collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, idItem: Int, imageURL: String)
 //    func pressentView(vc: UIViewController, point: CGPoint)
-    func didPressCellSubMenu(typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String)
+    func didPressCellSubMenu(_ tableCell: HomeTableViewCell,collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String)
 }
 
 class HomeTableViewCell: UITableViewCell {
+    
+    var indexPathTableViewCell: IndexPath?
+    
     @IBOutlet weak var collectionViewForCell: UICollectionView!
     var delegate: HomeCellDelegate?
     
@@ -353,49 +357,67 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
             let data = category as! OutDoorActivities
             let typeMenuStr = data.type
             let typeSubMenu = data.listSubMenu[indexPath.row].type
-            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
+            delegate?.didPressCellSubMenu(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .Attractions:
             let data = category as! ShowAndAttrachtions
             let typeMenuStr = data.type
             let typeSubMenu = data.listSubMenu[indexPath.row].type
-            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
+            delegate?.didPressCellSubMenu(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .BestSeller:
             let data = category as! BestSellerMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .Daytrip:
             let data = category as! DayTripAndExcursionsTourMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .Experiences:
             let data = category as! CustomExperiences
             let typeMenuStr = data.type
             let typeSubMenu = data.listSubMenu[indexPath.row].type
-            delegate?.didPressCellSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
+            delegate?.didPressCellSubMenu(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenuStr!, typeSubMenu: typeSubMenu!)
             break
         case .FTPickes:
             let data = category as! FTPickesMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .MultiDayTrip:
             let data = category as! MultiDayTripAndExcursionsTourMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .Recentlies:
             let data = category as! RecentlyMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .WishList:
             let data = category as! WishListMenu
             let typeMenu = data.typeCategory
-            delegate?.didPressCellItem(typeMenu: typeMenu)
+            let typeMenuStr = data.type
+            let id = data.listItem[indexPath.row].id
+            let imageUrl = data.listItem[indexPath.row].imageURL
+            delegate?.didPressCellItem(self, collectionView: collectionViewForCell, didSelectItemAt: indexPath, typeMenu: typeMenu, typeMenuStr: typeMenuStr!, idItem: id!, imageURL: imageUrl!)
             break
         case .None:
             print("")

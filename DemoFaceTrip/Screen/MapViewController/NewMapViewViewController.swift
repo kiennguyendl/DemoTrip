@@ -17,6 +17,24 @@ class NewMapViewViewController: BaseViewController {
     var googleMapsView:GMSMapView!
     var locationManager = CLLocationManager()
     
+    var meetingPoint: String?
+    var coordination: Coordination?{
+        didSet{
+            if let coordination = coordination{
+                if let lat = coordination.latitude{
+                    latitue = lat
+                }
+                
+                if let long = coordination.longtitue{
+                    longtitue = long
+                }
+                
+            }
+        }
+    }
+    var latitue: Double!
+    var longtitue: Double!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,8 +43,8 @@ class NewMapViewViewController: BaseViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
-        let location = CLLocationCoordinate2D(latitude: 10.757300, longitude: 106.659722)
-        let camera = GMSCameraPosition.camera(withLatitude: 10.757300, longitude: 106.659722, zoom: 15)
+        let location = CLLocationCoordinate2D(latitude: self.latitue, longitude: self.longtitue)
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitue, longitude: self.longtitue, zoom: 15)
         self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), camera: camera)
         self.googleMapsView.camera = camera
         self.googleMapsView.isMyLocationEnabled = true
@@ -37,7 +55,9 @@ class NewMapViewViewController: BaseViewController {
         let marker =  GMSMarker(position: location)
         marker.groundAnchor = CGPoint(x: 0.5, y: 0.3)
         marker.title = "When we'll meet"
-        marker.snippet = "Cho Ray Hopital, Distric 5, HCM City"
+        if let meetingPoint = meetingPoint{
+            marker.snippet = meetingPoint
+        }
         marker.icon = self.imageWithImage(image: UIImage(named: "marker")!, scaledToSize: CGSize(width: 40.0, height: 40.0))
         marker.map = self.googleMapsView
         self.googleMapsView.selectedMarker = marker

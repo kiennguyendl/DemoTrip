@@ -9,12 +9,17 @@
 import UIKit
 
 protocol SubMenuProtocol {
-    func didPressCellOnSubMenu()
+    func didPressCellOnSubMenu(_ tableCell: SubMenuTableViewCell, collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String, idItem: Int, idSubMenu: Int, imageUrl: String)
 }
 
 class SubMenuTableViewCell: UITableViewCell {
     
+    var indexPathTableViewCell: IndexPath?
+    
     @IBOutlet weak var collectionViewSubMenu: UICollectionView!
+    var typeOfMenu: typeOfCategoryMenu = .None
+    var typeMenu = ""
+    var idMenu: Int = 0
     var typeOfSubMenu = ""
     var numberOfRow = 0
     var delegate: SubMenuProtocol?
@@ -411,7 +416,147 @@ extension SubMenuTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var typeMenuStr = ""
+//        switch typeOfMenu {
+//        case .Activities:
+//            typeMenuStr = "Activities"
+//            if let catagory = categorySubMenu{
+//                let data = catagory as! OutDoorActivities
+//                let idSubMenu = data.listSubMenu[indexPath.row].id
+//                delegate?.didPressCellOnSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr, typeSubMenu: typeOfSubMenu, idItem: idMenu, idSubMenu: idSubMenu!)
+//            }
+//
+//        case .Attractions:
+//            typeMenuStr = "Attractions"
+//            if let catagory = categorySubMenu{
+//                let data = catagory as! OutDoorActivities
+//                let idSubMenu = data.listSubMenu[indexPath.row].id
+//                delegate?.didPressCellOnSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr, typeSubMenu: typeOfSubMenu, idItem: idMenu, idSubMenu: idSubMenu!)
+//            }
+//        case .Experiences:
+//            typeMenuStr = "Experiences"
+//            if let catagory = categorySubMenu{
+//                let data = catagory as! CustomExperiences
+//                let idSubMenu = data.listSubMenu[indexPath.row].id
+//                delegate?.didPressCellOnSubMenu(typeMenu: typeOfMenu, typeMenuStr: typeMenuStr, typeSubMenu: typeOfSubMenu, idItem: idMenu, idSubMenu: idSubMenu!)
+//            }
+//        default:
+//            print("")
+//        }
         
-        delegate?.didPressCellOnSubMenu()
+        switch typeOfSubMenu {
+        case "Show And Concerts":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! ShowAndConcertsSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Sightseeing Tickets":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! SightseeingTicketsSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Events":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! EventsSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Passes":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! PassesSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Cruises,SaiLing And Water Tour":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! CruisesSaiLingAndWaterTourSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Walking And Biking Tour":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! WalkingBikingTourSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Climbing And Trekking Tour":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! ClimbingAndTrekkingTourSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Nightlife":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! NightlifeSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Food":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! FoodSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Shopping":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! ShoppingSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        case "Local life":
+            if let categorySubMenu = categorySubMenu{
+                let data = categorySubMenu as! LocalLifeSubMenu
+                let idOfMenu = data.id!
+                let idSubMenu = data.listItem[indexPath.row].id
+                let imageUrl = data.listItem[indexPath.row].imageURL
+                delegate?.didPressCellOnSubMenu(self, collectionView: collectionViewSubMenu, didSelectItemAt: indexPath, typeMenu: typeOfMenu, typeMenuStr: typeMenu, typeSubMenu: typeOfSubMenu, idItem: idOfMenu, idSubMenu: idSubMenu!, imageUrl: imageUrl!)
+            }
+            print("")
+            break
+        default:
+            print("")
+        }
     }
 }

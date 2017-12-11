@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderZeroForDetail" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="33E-Ue-oeh" id="oZU-Cw-5mf"/>
+                <outlet property="imageBackgroud" destination="ddP-k4-wWJ" id="Ray-HV-1P9"/>
                 <outlet property="likeImage" destination="ac4-2x-72f" id="2rk-2Z-aCT"/>
+                <outlet property="listImageCollectionview" destination="Qvr-hO-wT6" id="XmG-yi-v8c"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,9 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="33E-Ue-oeh">
-                    <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="ac4-2x-72f">
                     <rect key="frame" x="353" y="20" width="25" height="25"/>
                     <constraints>
@@ -31,15 +29,32 @@
                         <constraint firstAttribute="height" constant="25" id="wHa-NI-Ve2"/>
                     </constraints>
                 </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Qvr-hO-wT6">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JiJ-Oa-ZEk">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-k4-wWJ">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="33E-Ue-oeh" secondAttribute="bottom" id="2U0-Vw-rYf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="33E-Ue-oeh" secondAttribute="trailing" id="6bz-1n-aEv"/>
-                <constraint firstItem="33E-Ue-oeh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Oua-n9-eZu"/>
-                <constraint firstItem="33E-Ue-oeh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QfK-IX-7Zu"/>
+                <constraint firstItem="ddP-k4-wWJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5rp-3L-2Ou"/>
+                <constraint firstItem="Qvr-hO-wT6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AeX-cH-na4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qvr-hO-wT6" secondAttribute="trailing" id="HGi-3m-Bpc"/>
+                <constraint firstItem="ddP-k4-wWJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="OeZ-Q6-6YS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Qvr-hO-wT6" secondAttribute="bottom" id="QIb-B2-5cw"/>
                 <constraint firstItem="ac4-2x-72f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="YO3-Fh-Yga"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ddP-k4-wWJ" secondAttribute="trailing" id="aZu-QF-q4q"/>
+                <constraint firstItem="Qvr-hO-wT6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dqT-59-pb8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ac4-2x-72f" secondAttribute="trailing" constant="20" id="g2v-rd-aCA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ddP-k4-wWJ" secondAttribute="bottom" id="pGn-aE-bwP"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -49,6 +64,5 @@
     </objects>
     <resources>
         <image name="Like" width="452" height="405"/>
-        <image name="default" width="250" height="250"/>
     </resources>
 </document>

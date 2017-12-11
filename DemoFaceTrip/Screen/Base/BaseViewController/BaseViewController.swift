@@ -16,6 +16,7 @@ class BaseViewController: UIViewController {
     var customNavigationBar: CustomNavigationbarForDetailViewController!
     
     var backBtn: UIButton!
+    var sharingBtn: UIButton!
     var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,7 @@ class BaseViewController: UIViewController {
     }
     
     ///notification center
-    func addNotificationForDetail() {
-        notificationCenter.addObserver(self, selector: #selector(pushToBookingDay), name: calendarPushtoBookingNotification, object: nil)
-    }
+    
     
     func postNotificaion() {
         notificationCenter.post(name: calendarPushtoBookingNotification, object: nil)
@@ -39,10 +38,7 @@ class BaseViewController: UIViewController {
     }
     
     
-    @objc func pushToBookingDay() {
-        let vc = NewBookingViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
+    
     
     //////////////
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +87,6 @@ class BaseViewController: UIViewController {
     
     /////////////////////
     
-    
     func initBackButton() {
         //navigationController?.navigationBar.barTintColor = color3
         
@@ -111,11 +106,11 @@ class BaseViewController: UIViewController {
     }
     
     func addShareButton() {
-        let shareBtn = UIButton.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        shareBtn.setImage(UIImage(named: "share")?.af_imageAspectScaled(toFit: CGSize(width: 15, height: 15)).withRenderingMode(.alwaysOriginal), for: UIControlState())
-        shareBtn.imageView?.contentMode = .scaleAspectFit
-        shareBtn.addTarget(self, action: #selector(backToHome(sender:)), for: .touchUpInside)
-        let rightNavBarButton = UIBarButtonItem.init(customView: shareBtn)
+        sharingBtn = UIButton.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        sharingBtn.setImage(UIImage(named: "share")?.af_imageAspectScaled(toFit: CGSize(width: 15, height: 15)).withRenderingMode(.alwaysOriginal), for: UIControlState())
+        sharingBtn.imageView?.contentMode = .scaleAspectFit
+        sharingBtn.addTarget(self, action: #selector(backToHome(sender:)), for: .touchUpInside)
+        let rightNavBarButton = UIBarButtonItem.init(customView: sharingBtn)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
     }
     

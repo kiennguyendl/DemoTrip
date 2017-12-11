@@ -32,6 +32,64 @@ class RatingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numRatingOneStars: UILabel!
     
+    var rateStar: RateStar?{
+        didSet{
+            var fiveStar = 0
+            var fourStar = 0
+            var threeStar = 0
+            var twoStar = 0
+            var oneStar = 0
+            var totalStar = 0
+            
+            if let rateStar = rateStar{
+                if let five = rateStar.fiveStar{
+                   fiveStar  = five
+                    numRatinfFiveStars.text = "\(fiveStar)"
+                }
+                
+                if let four = rateStar.fourStar{
+                    fourStar = four
+                    numRatingFourStars.text = "\(fourStar)"
+                }
+                
+                if let three = rateStar.threeStar{
+                    threeStar = three
+                    numRatingThreeStars.text = "\(threeStar)"
+                }
+                
+                if let two = rateStar.twoStar{
+                    twoStar = two
+                    numRatingTwoStars.text = "\(twoStar)"
+                }
+                
+                if let one = rateStar.oneStar{
+                    oneStar = one
+                    numRatingOneStars.text = "\(oneStar)"
+                }
+            }
+            
+            totalStar = fiveStar + fourStar + threeStar + twoStar + oneStar
+            widthOfFiveStar.constant = (viewStatusRating.frame.width * CGFloat(fiveStar)) / CGFloat(totalStar)
+            widthOfFourStar.constant = (viewStatusRating.frame.width * CGFloat(fourStar)) / CGFloat(totalStar)
+            widthOfThreeStar.constant = (viewStatusRating.frame.width * CGFloat(threeStar)) / CGFloat(totalStar)
+            widthOfTwoStar.constant = (viewStatusRating.frame.width * CGFloat(twoStar)) / CGFloat(totalStar)
+            widthOfOneStar.constant = (viewStatusRating.frame.width * CGFloat(oneStar)) / CGFloat(totalStar)
+            
+            
+        }
+    }
+    @IBOutlet weak var viewStatusRating: UIView!
+
+    @IBOutlet weak var widthOfFiveStar: NSLayoutConstraint!
+    
+    @IBOutlet weak var widthOfFourStar: NSLayoutConstraint!
+    
+    @IBOutlet weak var widthOfThreeStar: NSLayoutConstraint!
+    
+    @IBOutlet weak var widthOfOneStar: NSLayoutConstraint!
+    
+    @IBOutlet weak var widthOfTwoStar: NSLayoutConstraint!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

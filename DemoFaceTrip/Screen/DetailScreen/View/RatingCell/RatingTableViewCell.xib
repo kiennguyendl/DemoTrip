@@ -262,6 +262,12 @@
                 <outlet property="numRatingOneStars" destination="E9e-4e-G3p" id="rUF-Ru-aQ1"/>
                 <outlet property="numRatingThreeStars" destination="8d7-kO-06z" id="Vw7-gZ-Py3"/>
                 <outlet property="numRatingTwoStars" destination="EkV-E8-aTo" id="Va6-U0-swk"/>
+                <outlet property="viewStatusRating" destination="fgR-Ar-oqw" id="ydC-SX-4DL"/>
+                <outlet property="widthOfFiveStar" destination="p2n-ab-Uil" id="O44-zT-ohg"/>
+                <outlet property="widthOfFourStar" destination="8Vp-Hz-1GE" id="icn-CH-tRQ"/>
+                <outlet property="widthOfOneStar" destination="P0d-FL-l9P" id="fqQ-7q-Gf4"/>
+                <outlet property="widthOfThreeStar" destination="ZKH-gI-EGE" id="QbX-yn-3Tf"/>
+                <outlet property="widthOfTwoStar" destination="G7Q-Bi-9KK" id="OPE-3J-k4y"/>
             </connections>
             <point key="canvasLocation" x="43.5" y="16.5"/>
         </tableViewCell>

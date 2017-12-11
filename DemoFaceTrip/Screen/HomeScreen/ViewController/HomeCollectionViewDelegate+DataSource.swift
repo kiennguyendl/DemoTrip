@@ -582,6 +582,225 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //                cell.frame = self.view.bounds
 //            }, completion: nil)
             let vc = DetailViewController()
+            
+            vc.typeOfMenu = typeOfMenu
+            vc.typeSubMenu = typeOfSubMenu
+            
+            vc.cellIndexPathPathDetailView = indexPath
+            vc.delegate = self
+            
+            switch typeOfMenu{
+            case .Activities:
+                vc.typeMenu = "Activities"
+                switch typeOfSubMenu{
+                case "Cruises,SaiLing And Water Tour":
+                    
+                    if let data = listItemOfEachSubMenu as? CruisesSaiLingAndWaterTourSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+
+                case "Walking And Biking Tour":
+                    if let data = listItemOfEachSubMenu as? WalkingBikingTourSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                case "Climbing And Trekking Tour":
+                    if let data = listItemOfEachSubMenu as? ClimbingAndTrekkingTourSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                default:
+                    print("")
+                }
+                print("")
+            case .Attractions:
+                vc.typeMenu = "Attractions"
+                switch typeOfSubMenu{
+                case "Show And Concerts":
+                    if let data = listItemOfEachSubMenu as? ShowAndConcertsSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                case "Sightseeing Tickets":
+                    
+                    if let data = listItemOfEachSubMenu as? SightseeingTicketsSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                case "Events":
+                    
+                    if let data = listItemOfEachSubMenu as? EventsSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                case "Passes":
+                    
+                    if let data = listItemOfEachSubMenu as? PassesSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                default:
+                    print("")
+                }
+                print("")
+            case .BestSeller:
+                vc.typeMenu = "BestSeller"
+                if let data = listItemOfEachTypeMenu as? BestSellerMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                    
+                }
+                
+                
+            case .Daytrip:
+                vc.typeMenu = "Day trip"
+                if let data = listItemOfEachTypeMenu as? DayTripAndExcursionsTourMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                }
+                
+                
+            case .Experiences:
+                vc.typeMenu = "Experiences"
+                switch typeOfSubMenu{
+                case "Nightlife":
+                    
+                    if let data = listItemOfEachSubMenu as? NightlifeSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                case "Food":
+                    
+                    if let data = listItemOfEachSubMenu as? FoodSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                case "Shopping":
+                    
+                    if let data = listItemOfEachSubMenu as? ShoppingSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                    
+                case "Local life":
+                    
+                    if let data = listItemOfEachSubMenu as? LocalLifeSubMenu{
+                        let idMenu = data.id!
+                        let idSubMenu = data.listItem[indexPath.row].id!
+                        let imageUrl = data.listItem[indexPath.row].imageURL
+                        vc.idItem = idMenu
+                        vc.idSubItem = idSubMenu
+                        vc.imageUrl = imageUrl!
+                    }
+                    
+                default:
+                    print("")
+                }
+            case .FTPickes:
+                vc.typeMenu = "FTPickes"
+                if let data = listItemOfEachTypeMenu as? FTPickesMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                }
+                
+                
+            case .MultiDayTrip:
+                vc.typeMenu = "Multi Day Trip"
+                if let data = listItemOfEachTypeMenu as? MultiDayTripAndExcursionsTourMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                }
+                
+            case .WishList:
+                vc.typeMenu = "WishList"
+                if let data = listItemOfEachTypeMenu as? WishListMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                }
+                
+                
+            case .Recentlies:
+                vc.typeMenu = "Recentlies"
+                if let data = listItemOfEachTypeMenu as? RecentlyMenu{
+                    let id = data.listItem[indexPath.row].id!
+                    let imageUrl = data.listItem[indexPath.row].imageURL
+                    vc.idItem = id
+                    vc.imageUrl = imageUrl!
+                }
+                
+                
+            case .None:
+                print("")
+                
+            }
+            //vc.transitioningDelegate = self
+            //present(vc, animated: true, completion: nil)
+            vc.cityName = city.name
             navigationController?.pushViewController(vc, animated: true)
         }
     }

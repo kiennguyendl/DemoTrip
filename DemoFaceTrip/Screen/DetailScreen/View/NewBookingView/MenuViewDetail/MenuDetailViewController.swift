@@ -51,7 +51,7 @@ extension MenuDetailViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.scrollToItemAtIndexPath(indexPath: IndexPath(row: 0, section: indexPath.row + 1))
+        delegate?.scrollToItemAtIndexPath(indexPath: IndexPath(row: 0, section: indexPath.row + 2))
         self.dismiss(animated: true, completion: nil)
     }
 }

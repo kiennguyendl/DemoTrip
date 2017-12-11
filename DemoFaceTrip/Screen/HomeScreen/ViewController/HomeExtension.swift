@@ -10,24 +10,33 @@ import UIKit
 
 var pointCell: CGPoint!
 extension HomeViewController: HomeCellDelegate{
-    
-//    func pressentView(vc: UIViewController, point: CGPoint) {
-//        //present(vc, animated: true, completion: nil)
-//        let vc = DetailViewController()
-//        vc.transitioningDelegate = self
-//        vc.modalPresentationStyle = .custom
-//        pointCell = point
-//        present(vc, animated: true, completion: nil)
-////        navigationController?.pushViewController(vc, animated: true)
-//    }
-    
-    func didPressCellItem(typeMenu: typeOfCategoryMenu) {
+
+    func didPressCellItem(_ tableCell: HomeTableViewCell, collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, idItem: Int, imageURL imagerURL: String) {
+
         let vc = DetailViewController()
+        vc.typeMenu = typeMenuStr
+        vc.idItem = idItem
+        
+        vc.tableIndexPathDetailView = tableCell.indexPathTableViewCell
+        vc.cellIndexPathPathDetailView = indexPath
+        vc.delegate = self
+        vc.imageUrl = imagerURL
+        vc.cityName = city.name
+        
+        /*save for animation
+         
+        let cell = collectionView.cellForItem(at: indexPath) as! NewHomeCollectionViewCell
+        let frame = cell.convert(cell.image.frame, to: view)
+        imageExpandAnimationController.originFrame = frame
+        vc.transitioningDelegate = self
+        changeColorMenuViewWhenPresent()
+        present(vc, animated: true, completion: nil)
+        */
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    func didPressCellSubMenu(typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String) {
+    func didPressCellSubMenu(_ tableCell: HomeTableViewCell, collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String) {
+        
         menuBtn.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         isBackBtn = true
         isMenuBtn = false
@@ -221,31 +230,41 @@ extension HomeViewController: HomeCellDelegate{
             print("")
         }
     }
-    //    func didPressCell() {
-    //        let vc = DetailViewController()
-    //
-    //        self.navigationController?.pushViewController(vc, animated: true)
-    //    }
-    
 }
 
 extension HomeViewController: SubMenuProtocol{
-    func didPressCellOnSubMenu() {
-        
-//        let vc = DetailViewController()
-//        navigationController?.pushViewController(vc, animated: true)
-    }
     
+    func didPressCellOnSubMenu(_ tableCell: SubMenuTableViewCell, collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, typeMenu: typeOfCategoryMenu, typeMenuStr: String, typeSubMenu: String, idItem: Int, idSubMenu: Int, imageUrl: String) {
+        
+        let vc = DetailViewController()
+        vc.typeOfMenu = typeMenu
+        vc.typeMenu = typeMenuStr
+        vc.typeSubMenu = typeSubMenu
+        vc.idItem = idItem
+        vc.idSubItem = idSubMenu
+        vc.imageUrl = imageUrl
+        
+        vc.tableIndexPathDetailView = tableCell.indexPathTableViewCell
+        vc.cellIndexPathPathDetailView = indexPath
+        vc.delegate = self
+        vc.cityName = city.name
+        /*
+        let cell = collectionView.cellForItem(at: indexPath) as! NewHomeCollectionViewCell
+        let frame = cell.convert(cell.image.frame, to: view)
+        imageExpandAnimationController.originFrame = frame
+        changeColorMenuViewWhenPresent()
+        vc.transitioningDelegate = self
+        present(vc, animated: true, completion: nil)
+        */
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
 //
 extension HomeViewController: HeaderZeroProtocol{
     
     func didPressOnCellHeaderZero(menu: CategoryMenu) {
-        //let vc = ListingViewController()
-        //vc.typeCatagory = type
-        //vc.listDetail = dataForMenu2[index].catagoryItems
-        //navigationController?.pushViewController(vc, animated: true)
         
         menuBtn.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         isBackBtn = true
@@ -358,8 +377,6 @@ extension HomeViewController: ChooseCityProtocol{
         self.city = city
         self.listID = city.listID!
         tableViewCarousels.reloadData()
-        
-        //        self.restDataForHome()
     }
     
 }
@@ -375,28 +392,56 @@ extension HomeViewController: UITextFieldDelegate{
 
 extension HomeViewController: UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .present
-        transition.startingPoint = pointCell
-        //transition.circleColor = menuButton.backgroundColor!
         
-        return transition
+        return imageExpandAnimationController
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .dismiss
-        transition.startingPoint = pointCell
-       // transition.circleColor = menuButton.backgroundColor!
+        guard let dismissed = dismissed as? DetailViewController else {
+                return nil
+        }
+        let presentingVC = self
         
-        return transition
+        if let cellIndexPath = dismissed.cellIndexPathPathDetailView {
+            
+            if let tableIndexPath = dismissed.tableIndexPathDetailView{
+                if self.tableViewCarousels.isHidden == false && self.tableViewSubMenu.isHidden == true && self.collectionViewListing.isHidden == true{
+                    let tableCell = presentingVC.tableViewCarousels.cellForRow(at: tableIndexPath) as! HomeTableViewCell
+                    let collectionCell = tableCell.collectionViewForCell.cellForItem(at: cellIndexPath) as! NewHomeCollectionViewCell
+                    let frame = collectionCell.convert(collectionCell.image.frame, to: view)
+                    imageShrinkAnimationController.destinationFrame = frame
+                }
+                
+                if self.tableViewCarousels.isHidden == true && self.tableViewSubMenu.isHidden == false && self.collectionViewListing.isHidden == true{
+                    let tableCell = presentingVC.tableViewSubMenu.cellForRow(at: tableIndexPath) as! SubMenuTableViewCell
+                    let collectionCell = tableCell.collectionViewSubMenu.cellForItem(at: cellIndexPath) as! NewHomeCollectionViewCell
+                    let frame = collectionCell.convert(collectionCell.image.frame, to: view)
+                    imageShrinkAnimationController.destinationFrame = frame
+                }
+            }else{
+                
+                if self.tableViewCarousels.isHidden == true && self.tableViewSubMenu.isHidden == true && self.collectionViewListing.isHidden == false{
+                    
+                    let collectionCell = self.collectionViewListing.cellForItem(at: cellIndexPath) as! NewHomeCollectionViewCell
+                    let frame = collectionCell.convert(collectionCell.image.frame, to: view)
+                    imageShrinkAnimationController.destinationFrame = frame
+                }
+            }
+        }
+        
+
+        return imageShrinkAnimationController
+    }
+    
+}
+
+extension HomeViewController: changeColorOfMenuViewHome{
+    func changeColor() {
+        DispatchQueue.main.async {
+//             self.setColorMenuViewWhenDismiss()
+        }
+       
+        
+        
     }
 }
-//
-//extension HomeViewController: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        // In this method belonging to the protocol UINavigationControllerDelegate you must
-//        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
-//        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
-//        return PopInAndOutAnimator(operation: operation)
-//    }
-//}
-

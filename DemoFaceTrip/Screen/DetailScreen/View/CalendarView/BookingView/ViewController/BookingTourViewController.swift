@@ -12,6 +12,7 @@ class BookingTourViewController: BaseViewController {
     
     @IBOutlet weak var bookingCollectionView: UICollectionView!
     
+    @IBOutlet weak var dayBookingInfo: UILabel!
     @IBOutlet weak var chooseBtn: UIButton!
     @IBOutlet weak var bottomPresentView: NSLayoutConstraint!
     @IBOutlet weak var presentView: UIView!
@@ -19,11 +20,18 @@ class BookingTourViewController: BaseViewController {
     @IBOutlet weak var monthView: UIView!
     
     @IBOutlet weak var bottomContraintOfMonthView: NSLayoutConstraint!
+    
+    var city: String!
+    var nameTour: String!
+    var statusTour: String!
+    
     lazy var calendar : Calendar = {
         var gregorian = Calendar(identifier: .gregorian)
         gregorian.timeZone = TimeZone(abbreviation: "UTC")!
         return gregorian
     }()
+    
+    var listBookingDay: [TimeBooking] = []
     
     internal var startDateCache     = Date()
     internal var endDateCache       = Date()
@@ -43,9 +51,11 @@ class BookingTourViewController: BaseViewController {
         super.viewDidLoad()
  
         DispatchQueue.main.async {
-            self.initCustomNavigationBar()
-            self.setTitleForNavigationBar(title: "When do you want to go?")
+            //self.initCustomNavigationBar()
+            //self.setTitleForNavigationBar(title: "When do you want to go?")
         }
+        initBackButton()
+        self.navigationController?.navigationItem.title = "When do you want to go?"
         
         chooseBtn.layer.cornerRadius = chooseBtn.frame.width / 15
         bookingCollectionView.delegate = self
@@ -66,17 +76,19 @@ class BookingTourViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = "When do you want to go?"
         DispatchQueue.main.async {
-            self.initCustomNavigationBar()
-            self.setTitleForNavigationBar(title: "When do you want to go?")
-            self.customNavigationBar.rightView.isHidden = true
+            //self.initCustomNavigationBar()
+            //self.setTitleForNavigationBar(title: "When do you want to go?")
+            //self.customNavigationBar.rightView.isHidden = true
         }
         //self.presentView.frame = CGRect(x: 0, y: self.view.frame.maxX, width: self.view.frame.width, height: self.presentView.frame.height)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        removeCustomBar()
+        super.viewWillDisappear(animated)
+        //removeCustomBar()
+        self.title = ""
     }
     
     

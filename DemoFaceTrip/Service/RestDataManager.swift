@@ -227,4 +227,38 @@ class RestDataManager: NSObject {
             }
         })
     }
+    
+    func restDetailTour<T: Mappable>(_ url: String, action: String, idCity: Int, typeMenu: String, typeSubMenu: String, idItem: Int, idSubItem: Int, completionHanler: @escaping(T?, NSError?)->Void){
+        let data = [
+            "action": action,
+            "idCity": idCity,
+            "typeMenu": typeMenu,
+            "typeSubMenu": typeSubMenu,
+            "idItem": idItem,
+            "idSubItem": idSubItem
+            ] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).validate().responseJSON(completionHandler: { response in
+            
+            switch response.result{
+            case .success(let data):
+                var result: T?
+                if let data = data as? AnyObject{
+                    let itemMapper = Mapper<T>()
+                    if let item = itemMapper.map(JSONObject: data){
+                        result = item
+                    }
+                }
+                if result != nil{
+                    completionHanler(result, nil)
+                }else{
+                    completionHanler(nil, NSError(domain: "abc", code: 123, userInfo: nil))
+                }
+            case .failure(let error):
+                completionHanler(nil, error as NSError)
+            }
+        })
+    }
 }
+
+
