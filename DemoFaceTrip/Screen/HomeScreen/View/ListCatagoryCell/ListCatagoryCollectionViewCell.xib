@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +21,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9F-51-4X6">
-                        <rect key="frame" x="76.5" y="41.5" width="60" height="60"/>
+                        <rect key="frame" x="0.0" y="44" width="55" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="1ht-wW-8bA"/>
-                            <constraint firstAttribute="width" constant="60" id="rqF-a1-4zT"/>
+                            <constraint firstAttribute="height" constant="55" id="1ht-wW-8bA"/>
+                            <constraint firstAttribute="width" constant="55" id="rqF-a1-4zT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fam-5G-i20">
-                        <rect key="frame" x="91.5" y="111.5" width="31.5" height="20"/>
+                        <rect key="frame" x="0.0" y="109" width="31.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="k2c-nM-fLd"/>
                         </constraints>
@@ -37,33 +37,35 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LO-hnP">
-                        <rect key="frame" x="76.5" y="41.5" width="60" height="60"/>
+                        <rect key="frame" x="0.0" y="44" width="55" height="55"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDM-9e-bgO">
+                                <rect key="frame" x="0.0" y="17.5" width="55" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Q7b-am-VL3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="X3B-lC-pnK"/>
-                            <constraint firstAttribute="height" constant="60" id="oAE-xX-VfZ"/>
+                            <constraint firstItem="fDM-9e-bgO" firstAttribute="centerY" secondItem="CRC-LO-hnP" secondAttribute="centerY" id="Dx0-pi-tSh"/>
+                            <constraint firstAttribute="width" constant="55" id="X3B-lC-pnK"/>
+                            <constraint firstAttribute="height" constant="55" id="oAE-xX-VfZ"/>
+                            <constraint firstItem="fDM-9e-bgO" firstAttribute="centerX" secondItem="CRC-LO-hnP" secondAttribute="centerX" id="x4R-Jr-2JY"/>
+                            <constraint firstItem="fDM-9e-bgO" firstAttribute="width" secondItem="CRC-LO-hnP" secondAttribute="width" id="zha-1Z-XHY"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDM-9e-bgO">
-                        <rect key="frame" x="76.5" y="61.5" width="60" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Q7b-am-VL3"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="CRC-LO-hnP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ChP-4k-w5g"/>
-                <constraint firstItem="Fam-5G-i20" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ENW-i2-vsP"/>
-                <constraint firstItem="fDM-9e-bgO" firstAttribute="centerX" secondItem="CRC-LO-hnP" secondAttribute="centerX" id="Fyg-aO-wgK"/>
-                <constraint firstItem="fDM-9e-bgO" firstAttribute="centerY" secondItem="CRC-LO-hnP" secondAttribute="centerY" id="Keo-Mh-ypo"/>
+                <constraint firstItem="J9F-51-4X6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CM9-dm-aRW"/>
                 <constraint firstItem="CRC-LO-hnP" firstAttribute="height" secondItem="J9F-51-4X6" secondAttribute="height" id="Kv3-MR-UT9"/>
-                <constraint firstItem="J9F-51-4X6" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Mf6-aR-WXr"/>
                 <constraint firstItem="CRC-LO-hnP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="6/7" id="OS1-jC-ica"/>
-                <constraint firstItem="fDM-9e-bgO" firstAttribute="width" secondItem="CRC-LO-hnP" secondAttribute="width" id="css-ud-ff7"/>
+                <constraint firstItem="Fam-5G-i20" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Qqd-83-PoH"/>
+                <constraint firstItem="CRC-LO-hnP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SBa-oF-Imb"/>
                 <constraint firstItem="CRC-LO-hnP" firstAttribute="width" secondItem="J9F-51-4X6" secondAttribute="width" id="fod-gY-ngC"/>
                 <constraint firstItem="Fam-5G-i20" firstAttribute="top" secondItem="J9F-51-4X6" secondAttribute="bottom" constant="10" id="ohh-m3-pEz"/>
                 <constraint firstItem="J9F-51-4X6" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="6/7" id="qfj-Lc-tgO"/>

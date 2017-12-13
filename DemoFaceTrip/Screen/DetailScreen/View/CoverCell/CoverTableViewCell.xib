@@ -21,23 +21,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zE3-gN-MNK">
-                        <rect key="frame" x="20" y="153" width="280" height="1"/>
+                        <rect key="frame" x="20" y="154" width="280" height="0.0"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="Dz8-1m-FKL"/>
+                            <constraint firstAttribute="height" id="Dz8-1m-FKL"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdY-uY-Ye3">
-                        <rect key="frame" x="36" y="11" width="248" height="132"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <rect key="frame" x="16" y="11" width="288" height="133"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tdY-uY-Ye3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="0XG-jX-N6T"/>
+                    <constraint firstItem="tdY-uY-Ye3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="0XG-jX-N6T"/>
                     <constraint firstAttribute="trailing" secondItem="zE3-gN-MNK" secondAttribute="trailing" constant="20" id="5zL-Gl-JJw"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="tdY-uY-Ye3" secondAttribute="trailing" constant="20" id="8AL-cM-8Tr"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="tdY-uY-Ye3" secondAttribute="trailing" id="8AL-cM-8Tr"/>
                     <constraint firstAttribute="bottom" secondItem="zE3-gN-MNK" secondAttribute="bottom" id="F9y-mW-xnB"/>
                     <constraint firstItem="tdY-uY-Ye3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Zf7-pW-Lvg"/>
                     <constraint firstItem="zE3-gN-MNK" firstAttribute="top" secondItem="tdY-uY-Ye3" secondAttribute="bottom" constant="10" id="koz-RT-CPI"/>

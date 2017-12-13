@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewMeetingPointCell" rowHeight="165" id="KGk-i7-Jjw" customClass="NewMeetingPointTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewMeetingPointCell" rowHeight="248" id="KGk-i7-Jjw" customClass="NewMeetingPointTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="248"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="164.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="247.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-Ng-eL2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="153.5"/>
+                        <rect key="frame" x="0.0" y="10" width="320" height="232.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSV-V5-Szb">
-                        <rect key="frame" x="20" y="163.5" width="280" height="1"/>
+                        <rect key="frame" x="0.0" y="242.5" width="320" height="5"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="mre-Hi-XGC"/>
+                            <constraint firstAttribute="height" constant="5" id="8HI-gH-1zD"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wSV-V5-Szb" firstAttribute="top" secondItem="P2A-Ng-eL2" secondAttribute="bottom" constant="10" id="3lK-Zd-IHt"/>
-                    <constraint firstAttribute="trailing" secondItem="wSV-V5-Szb" secondAttribute="trailing" constant="20" id="4Fs-RO-H0j"/>
-                    <constraint firstItem="P2A-Ng-eL2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5lS-P8-US8"/>
-                    <constraint firstAttribute="trailing" secondItem="P2A-Ng-eL2" secondAttribute="trailing" id="6Fo-d6-WgW"/>
-                    <constraint firstItem="wSV-V5-Szb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="a2a-Fm-5MD"/>
-                    <constraint firstAttribute="bottom" secondItem="wSV-V5-Szb" secondAttribute="bottom" id="j84-oc-Z5m"/>
-                    <constraint firstItem="P2A-Ng-eL2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="r6X-1x-XvR"/>
+                    <constraint firstItem="wSV-V5-Szb" firstAttribute="top" secondItem="P2A-Ng-eL2" secondAttribute="bottom" id="2Tt-b4-Zuo"/>
+                    <constraint firstItem="P2A-Ng-eL2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="CA1-Tn-dbJ"/>
+                    <constraint firstItem="P2A-Ng-eL2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="drU-U2-RUQ"/>
+                    <constraint firstAttribute="trailing" secondItem="P2A-Ng-eL2" secondAttribute="trailing" id="jpZ-uA-PqT"/>
+                    <constraint firstItem="wSV-V5-Szb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lpK-Y1-FQ5"/>
+                    <constraint firstAttribute="bottom" secondItem="wSV-V5-Szb" secondAttribute="bottom" id="sOA-BL-Rog"/>
+                    <constraint firstAttribute="trailing" secondItem="wSV-V5-Szb" secondAttribute="trailing" id="sbT-OG-EeZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="view" destination="P2A-Ng-eL2" id="l2s-wZ-mFs"/>
             </connections>
-            <point key="canvasLocation" x="25" y="112.5"/>
+            <point key="canvasLocation" x="25" y="154"/>
         </tableViewCell>
     </objects>
 </document>

@@ -748,7 +748,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 let view = HeaderView()
                 view.backgroundColor = UIColor.clear
                 view.nameOfCarousel.text = listID[section - 1].type
-                view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+                //view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
                 view.seeAllBtn.tag = section
                 view.seeAllBtn.addTarget(self, action: #selector(showAllItem(sender:)), for: .touchUpInside)
                 return view
@@ -773,7 +773,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 print("")
             }
             //view.nameOfCarousel.text = listID[section].type
-            view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+//            view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
             view.seeAllBtn.tag = section
             view.seeAllBtn.addTarget(self, action: #selector(showAllItemOfSubMenu(sender:)), for: .touchUpInside)
             return view

@@ -60,9 +60,10 @@ class DetailViewController: BaseViewController {
     
     var currentStatusBarStyle = UIStatusBarStyle.lightContent
     
+    var grayView: MenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initBackButton()
         addShareButton()
 //        setColorForStatusBarWhenScrollUp()
@@ -103,7 +104,7 @@ class DetailViewController: BaseViewController {
         super.viewWillAppear(animated)
 //        setWhiteColorForStatusBar()
         setNonColorForStatusBar()
-        
+        //hiddenView.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
         //            self.initCustomNavigationBar()
        
@@ -115,7 +116,7 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.cornerRadius = bookingBtn.frame.width / 30
         bookingBtn.layer.shadowColor = UIColor.gray.cgColor
         bookingBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
-        bookingBtn.layer.shadowOpacity = 0.7
+        bookingBtn.layer.shadowOpacity = 0.3
         bookingBtn.layer.shadowRadius = 1.0
         bookingBtn.layer.masksToBounds = false
         bookingBtn.layer.cornerRadius = 4.0
@@ -337,15 +338,52 @@ class DetailViewController: BaseViewController {
     
     @IBAction func showMenuDetail(_ sender: Any) {
         
-        let vc = MenuDetailViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.delegate = self
-        setDefaultColorForStatusBar()
-        self.present(vc, animated: true, completion: nil)
+//        let vc = MenuDetailViewController()
+//        vc.modalPresentationStyle = .overFullScreen
+//        vc.delegate = self
+//        setDefaultColorForStatusBar()
+//        self.present(vc, animated: true, completion: nil)
+        
+        
+//        if let applicationDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate? {
+//            if let window:UIWindow = applicationDelegate.window {
+//        if let window = UIApplication.shared.keyWindow {
+//            window.windowLevel = UIWindowLevelStatusBar + 1
+//        }
+        if grayView == nil{
+            grayView = MenuView()
+        }
+//        statusBar.backgroundColor = .black
+        
+//        statusBar.alpha = 0.1
+        grayView.delegate = self
+        grayView.frame = UIScreen.main.bounds
+//        grayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        navigationController?.view.addSubview(grayView)
+        
+//        let blueView:UIView = UIView(frame: UIScreen.main.bounds)
+//        blueView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//
+//        statusBar.addSubview(blueView)
+        
+        
+//        let blueView = MenuView()
+//        blueView.frame = UIScreen.main.bounds
+//        blueView.backgroundColor?.withAlphaComponent(0.5)
+//        blueView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//        navigationController?.view.addSubview(blueView)
+//        statusBar.addSubview(blueView)
+        
+//        let vc = MenuDetailViewController()
+//        vc.modalPresentationStyle = .overFullScreen
+//        vc.delegate = self
+//        setDefaultColorForStatusBar()
+//        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func hidenViewMenu(_ sender: Any) {
-        hiddenView.isHidden = true
+//        hiddenView.isHidden = true
     }
     
     func setNonColorForStatusBar(){
@@ -436,7 +474,16 @@ class DetailViewController: BaseViewController {
 //
 extension DetailViewController: MenuDetailProtocol{
     func scrollToItemAtIndexPath(indexPath: IndexPath) {
+        hiddenView.isHidden = true
         tableViewDetail.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+    
+    func dismissMenuView() {
+        statusBar.backgroundColor = .white
+        statusBar.alpha = 1
+        grayView.removeFromSuperview()
+        grayView = nil
+        hiddenView.isHidden = true
     }
 }
 

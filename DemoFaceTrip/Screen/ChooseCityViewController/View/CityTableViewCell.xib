@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,24 +20,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerCity" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-mG-xFR">
-                        <rect key="frame" x="28" y="20.5" width="20" height="20"/>
+                        <rect key="frame" x="20" y="20.5" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="Oyt-x3-fSu"/>
-                            <constraint firstAttribute="height" constant="20" id="tnh-uI-B3p"/>
+                            <constraint firstAttribute="width" constant="20" id="IjX-dw-5qz"/>
+                            <constraint firstAttribute="height" constant="20" id="T8x-N8-OJA"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwc-Gj-J1x">
-                        <rect key="frame" x="68" y="20" width="42" height="21"/>
+                        <rect key="frame" x="50" y="20" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Zot-mG-xFR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="4ED-7D-E9y"/>
-                    <constraint firstItem="Nwc-Gj-J1x" firstAttribute="leading" secondItem="Zot-mG-xFR" secondAttribute="trailing" constant="20" id="KNp-0q-meJ"/>
-                    <constraint firstItem="Zot-mG-xFR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZGP-jf-TmO"/>
-                    <constraint firstItem="Nwc-Gj-J1x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sc5-d6-M9l"/>
+                    <constraint firstItem="Zot-mG-xFR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="aN4-9G-MoN"/>
+                    <constraint firstItem="Nwc-Gj-J1x" firstAttribute="leading" secondItem="Zot-mG-xFR" secondAttribute="trailing" constant="10" id="nLJ-cG-jTQ"/>
+                    <constraint firstItem="Zot-mG-xFR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sGA-Ig-2Lo"/>
+                    <constraint firstItem="Nwc-Gj-J1x" firstAttribute="centerY" secondItem="Zot-mG-xFR" secondAttribute="centerY" id="svd-YC-dPo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

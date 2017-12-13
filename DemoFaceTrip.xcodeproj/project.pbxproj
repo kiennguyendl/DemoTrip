@@ -146,6 +146,8 @@
 		FBEB18321FB01C8700E52E59 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEB182E1FB01C8600E52E59 /* MonthCollectionViewCell.xib */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
 		FBF1E6491FA9680C0075BCFA /* CalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF1E6481FA9680C0075BCFA /* CalendarFlowLayout.swift */; };
+		FBF2B7C71FE0C71500DA5850 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF2B7C61FE0C71500DA5850 /* MenuView.swift */; };
+		FBF2B7C91FE0C72A00DA5850 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF2B7C81FE0C72A00DA5850 /* MenuView.xib */; };
 		FBF419D21F96ECD700EF4D01 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */; };
 		FBF41A161FD6A74000CD7D4B /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF41A141FD6A74000CD7D4B /* CoverTableViewCell.swift */; };
 		FBF41A171FD6A74000CD7D4B /* CoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF41A151FD6A74000CD7D4B /* CoverTableViewCell.xib */; };
@@ -327,6 +329,8 @@
 		FBEB182E1FB01C8600E52E59 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF1E6481FA9680C0075BCFA /* CalendarFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowLayout.swift; sourceTree = "<group>"; };
+		FBF2B7C61FE0C71500DA5850 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		FBF2B7C81FE0C72A00DA5850 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		FBF419D11F96ECD700EF4D01 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		FBF41A141FD6A74000CD7D4B /* CoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
 		FBF41A151FD6A74000CD7D4B /* CoverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoverTableViewCell.xib; sourceTree = "<group>"; };
@@ -1202,6 +1206,8 @@
 				FBFDFADE1FB447E200F88C90 /* MenuDetailViewController.xib */,
 				FBFDFAE11FB45D4400F88C90 /* MenuTableViewCell.swift */,
 				FBFDFAE21FB45D4400F88C90 /* MenuTableViewCell.xib */,
+				FBF2B7C61FE0C71500DA5850 /* MenuView.swift */,
+				FBF2B7C81FE0C72A00DA5850 /* MenuView.xib */,
 			);
 			path = MenuViewDetail;
 			sourceTree = "<group>";
@@ -1281,6 +1287,7 @@
 				FBC5551B1FB3EC8800AC510D /* ReviewsTableViewCell.xib in Resources */,
 				FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */,
 				FBB3F6A41FB1AF67003BC910 /* MapViewViewController.xib in Resources */,
+				FBF2B7C91FE0C72A00DA5850 /* MenuView.xib in Resources */,
 				FB80519E1FAACFA400AD635E /* CalendarTableViewCell.xib in Resources */,
 				FBFBBD0C1F85D77E0062C6DC /* HomeTableViewCell.xib in Resources */,
 				FB8D2A581FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib in Resources */,
@@ -1407,6 +1414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF2B7C71FE0C71500DA5850 /* MenuView.swift in Sources */,
 				FB034B061FC276D2003448AC /* MultiDayTripAndExcursionsTourMenu.swift in Sources */,
 				FB3872F21FA81390005FFBCD /* CalendarProtocols.swift in Sources */,
 				FBCDD2271FB592AE00BB0F00 /* CityTableViewCell.swift in Sources */,

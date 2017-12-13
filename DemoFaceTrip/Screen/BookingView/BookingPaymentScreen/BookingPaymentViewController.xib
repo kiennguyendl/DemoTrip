@@ -14,6 +14,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BookingPaymentViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
                 <outlet property="confirmPaymentBtn" destination="9ov-ES-Lbd" id="mWe-lr-GhF"/>
+                <outlet property="dayInfo" destination="02J-Lv-rKX" id="iRg-Mp-LGD"/>
+                <outlet property="infoOfNumPerson" destination="iHE-9p-XRj" id="QcQ-by-afd"/>
+                <outlet property="inforTour" destination="a12-re-iek" id="I5L-Wi-OYf"/>
+                <outlet property="statusOfTour" destination="CTO-Ro-hkW" id="x3j-dr-6BE"/>
                 <outlet property="view" destination="azc-ZY-nSs" id="z4X-p9-vI8"/>
             </connections>
         </placeholder>

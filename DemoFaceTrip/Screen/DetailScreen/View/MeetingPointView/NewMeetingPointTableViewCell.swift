@@ -91,6 +91,7 @@ extension NewMeetingPointTableViewCell: CLLocationManagerDelegate{
             self.googleMapsView.selectedMarker = marker
             self.googleMapsView.isUserInteractionEnabled = false
             self.locationManager.stopUpdatingLocation()
+//            self.layoutIfNeeded()
         }
        
     }

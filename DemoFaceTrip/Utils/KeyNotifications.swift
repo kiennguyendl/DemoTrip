@@ -16,3 +16,8 @@ let calendarPushtoBookingNotification   =       Notification.Name(rawValue:"cale
 let indexPathForCellSelected            =       Notification.Name(rawValue:"indexPathForCellSelected")
 let oldIndexPathForCellSelected         =       Notification.Name(rawValue:"oldIndexPathForCellSelected")
 let indexPathNotification               =       Notification.Name(rawValue:"indexPathFoMonth")
+
+let UIKeyboardWillShowNotification      =       Notification.Name(rawValue:"UIKeyboardWillShowNotification")
+let UIKeyboardWillHideNotification      =       Notification.Name(rawValue:"UIKeyboardWillHideNotification")
+
+

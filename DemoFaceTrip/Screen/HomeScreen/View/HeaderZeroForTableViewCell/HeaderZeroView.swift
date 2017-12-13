@@ -45,6 +45,8 @@ class HeaderZeroView: BaseView {
             self.collectionViewFriends.setContentOffset(CGPoint(x: 0,y:  HeaderZeroView.horizontalContentOffset), animated: false)
         }
         
+        
+        
     }
     
     
@@ -62,6 +64,14 @@ class HeaderZeroView: BaseView {
                 if let menu = menu{
                     strongSelf.menu = menu
                     strongSelf.collectionViewFriends.reloadData()
+                    
+                    //set width for indicator
+                    let totalCell = strongSelf.menu.count
+                    let withCollectionView = strongSelf.collectionViewFriends.frame.width
+                    let widthCell = withCollectionView / 4
+                    let numOutsideCell = totalCell - 4
+                    let widthOfIndicator = withCollectionView - (widthCell * CGFloat(numOutsideCell))
+                    strongSelf.indicatorView.frame = CGRect(x: 0, y: 0, width: widthOfIndicator, height: 1)
                     
                 }
             }else{

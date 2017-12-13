@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="weA-Ff-ZZR">
-                        <rect key="frame" x="20" y="0.0" width="280" height="39"/>
+                        <rect key="frame" x="20" y="0.0" width="280" height="35"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sfB-pJ-5nf">
                             <size key="itemSize" width="50" height="50"/>
@@ -31,14 +31,14 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il8-26-w5l">
-                        <rect key="frame" x="20" y="158.5" width="280" height="1"/>
+                        <rect key="frame" x="0.0" y="154.5" width="320" height="5"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="9Dg-S6-b9X"/>
+                            <constraint firstAttribute="height" constant="5" id="9Dg-S6-b9X"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d3P-Ds-qKE">
-                        <rect key="frame" x="20" y="39" width="280" height="119.5"/>
+                        <rect key="frame" x="20" y="35" width="280" height="119.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Wrb-Zd-wz6">
                             <size key="itemSize" width="50" height="50"/>
@@ -54,8 +54,8 @@
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JPa-Ov-gx5"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="top" secondItem="weA-Ff-ZZR" secondAttribute="bottom" id="KGR-vS-WGW"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3/4" id="Plw-Ha-m86"/>
-                    <constraint firstAttribute="trailing" secondItem="Il8-26-w5l" secondAttribute="trailing" constant="20" id="QNi-hC-87W"/>
-                    <constraint firstItem="Il8-26-w5l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="W0K-ad-w43"/>
+                    <constraint firstAttribute="trailing" secondItem="Il8-26-w5l" secondAttribute="trailing" id="QNi-hC-87W"/>
+                    <constraint firstItem="Il8-26-w5l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="W0K-ad-w43"/>
                     <constraint firstAttribute="trailing" secondItem="weA-Ff-ZZR" secondAttribute="trailing" constant="20" id="aDV-N9-OXF"/>
                     <constraint firstAttribute="trailing" secondItem="d3P-Ds-qKE" secondAttribute="trailing" constant="20" id="dCS-1b-8HP"/>
                     <constraint firstAttribute="bottom" secondItem="Il8-26-w5l" secondAttribute="bottom" id="dMx-L4-MOG"/>

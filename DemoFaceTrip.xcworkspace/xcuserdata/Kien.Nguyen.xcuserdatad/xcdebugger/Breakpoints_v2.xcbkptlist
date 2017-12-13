@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/DetailScreen/View/CalendarView/BookingView/ViewController/BookingTourViewController.swift"
-            timestampString = "534677836.195036"
+            timestampString = "534680886.38628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -201,40 +201,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewController.swift"
-            timestampString = "534677836.195152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "getIndexPathSelected(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewController.swift"
-            timestampString = "534677836.195606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "getIndexPathSelected(notification:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/Base/BaseViewController/BaseViewController.swift"
-            timestampString = "534667235.192311"
+            timestampString = "534824629.239101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -282,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeCollectionViewDelegate+DataSource.swift"
-            timestampString = "534677836.19604"
+            timestampString = "534841068.475194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "272"
@@ -298,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.380443"
+            timestampString = "534841068.475271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -314,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.380568"
+            timestampString = "534841068.475671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -330,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.380658"
+            timestampString = "534841068.475946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -506,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.381251"
+            timestampString = "534841068.47652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "452"
@@ -538,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeCollectionViewDelegate+DataSource.swift"
-            timestampString = "534677836.196511"
+            timestampString = "534841068.476837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
@@ -586,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeCollectionViewDelegate+DataSource.swift"
-            timestampString = "534677836.196576"
+            timestampString = "534841068.476897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -778,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
-            timestampString = "534422457.424268"
+            timestampString = "534841068.477312"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "handleSwipeAction(gesture:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,23 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
-            timestampString = "534422457.424331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "handleSwipeAction(gesture:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
-            timestampString = "534422457.424391"
+            timestampString = "534841068.477381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
@@ -825,8 +777,24 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
+            timestampString = "534841068.477447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "handleSwipeAction(gesture:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383141"
+            timestampString = "534841068.477513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "420"
@@ -842,23 +810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
-            landmarkName = "showAllItem(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383329"
+            timestampString = "534841068.477792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "471"
@@ -874,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383428"
+            timestampString = "534841068.478069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "488"
@@ -890,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383508"
+            timestampString = "534841068.478345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "521"
@@ -906,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383691"
+            timestampString = "534841068.478618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "573"
@@ -922,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383764"
+            timestampString = "534841068.478892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "587"
@@ -938,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383834"
+            timestampString = "534841068.479167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "601"
@@ -954,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383914"
+            timestampString = "534841068.47944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "626"
@@ -970,7 +922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.383985"
+            timestampString = "534841068.479714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "640"
@@ -986,7 +938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.384073"
+            timestampString = "534841068.479988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "654"
@@ -1002,7 +954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.384133"
+            timestampString = "534841068.480276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "680"
@@ -1018,7 +970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.384214"
+            timestampString = "534841068.480562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "694"
@@ -1034,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.384283"
+            timestampString = "534841068.480844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "708"
@@ -1050,7 +1002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-            timestampString = "534332336.384359"
+            timestampString = "534841068.481136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "722"
@@ -1081,24 +1033,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingTourCell/BookingCollectionViewCell.swift"
-            timestampString = "534677836.19741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "isSelected"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewDelegate+DataSource.swift"
-            timestampString = "534677836.197494"
+            timestampString = "534680886.388144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -1113,13 +1049,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewController.swift"
-            timestampString = "534677836.197561"
+            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/MenuViewDetail/MenuView.swift"
+            timestampString = "534841068.48149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "presentBottomView()"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
+            timestampString = "534841068.481557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
+            timestampString = "534841068.481839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "825"
+            endingLineNumber = "825"
+            landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1129,61 +1097,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewController.swift"
-            timestampString = "534677836.197877"
+            filePath = "DemoFaceTrip/Screen/HomeScreen/ViewController/HomeViewController.swift"
+            timestampString = "534841068.482115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "dismissBottomView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/MonthCell/MonthCollectionViewCell.swift"
-            timestampString = "534677836.198181"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/MonthCell/MonthCollectionViewCell.swift"
-            timestampString = "534677836.198247"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DemoFaceTrip/Screen/DetailScreen/View/NewBookingView/BookingViewController/NewBookingViewController.swift"
-            timestampString = "534677836.198311"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "getIndexPathSelected(notification:)"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
+            landmarkName = "changeColorMenuViewWhenPresent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

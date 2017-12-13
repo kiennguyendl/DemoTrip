@@ -78,7 +78,8 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setRedColorForStatusBar()
+        setNonColorForStatusBar()
+//        setRedColorForStatusBar()
         collectionViewListing.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
@@ -119,7 +120,9 @@ class HomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         //set hide navigationbar
+//        setRedColorForStatusBar()
         navigationController?.isNavigationBarHidden = true
+        setNonColorForStatusBar()
         //show tabbar controller
         tabBarController?.tabBar.isHidden = false
         
@@ -173,6 +176,21 @@ class HomeViewController: BaseViewController {
         
     }
     
+    func setNonColorForStatusBar(){
+        statusBar.backgroundColor = .clear
+        statusBar.tintColor = .white
+        
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = .clear
+//        self.navigationController?.navigationBar.barStyle = .black
+//        self.navigationController?.navigationBar.tintColor = .white
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     func setColorForMenuView() {
 //        if Settings.isScaleMenuView!{
 //            print("abc")
@@ -330,7 +348,7 @@ class HomeViewController: BaseViewController {
     
     // action when scroll up tableview or collectionview
     func moveUpCarouselsView() {
-        if self.carouselsView.frame.origin.y > self.viewMenu.frame.height{
+        if self.carouselsView.frame.origin.y >= self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y - self.heightOfCarouselsView
             self.topContrailOfCarouselsView.constant = -self.heightOfCarouselsView
             self.bottomContrailOfCarouselsView.constant = self.heightOfCarouselsView

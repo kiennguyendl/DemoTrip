@@ -39,6 +39,11 @@ class BookingOptionsViewController: BaseViewController {
     let moneySenior = 30
     var totalMoney = 0
     
+    var nameCity: String!
+    var nameTour: String!
+    var statusTour: String!
+    var daySelectedInfo: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +68,7 @@ class BookingOptionsViewController: BaseViewController {
         bookNowBtn.layer.cornerRadius = bookNowBtn.frame.width / 30
         bookNowBtn.layer.shadowColor = UIColor.gray.cgColor
         bookNowBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
-        bookNowBtn.layer.shadowOpacity = 0.7
+        bookNowBtn.layer.shadowOpacity = 0.3
         bookNowBtn.layer.shadowRadius = 1.0
         bookNowBtn.layer.masksToBounds = false
         bookNowBtn.layer.cornerRadius = 4.0
@@ -160,9 +165,27 @@ class BookingOptionsViewController: BaseViewController {
     
 
     @IBAction func bookNow(_ sender: Any) {
-        let vc = DetailBookingViewController()
+        let totalPerson = totalAdult + totalChild + totalSenior
+        if totalPerson > 0{
+            let vc = DetailBookingViewController()
+            vc.nameCity = nameCity
+            vc.nameTour = nameTour
+            vc.statusTour = statusTour
+            vc.daySelectedInfo = daySelectedInfo
+            vc.numAdult = totalAdult
+            vc.numChild = totalChild
+            vc.numInfant = totalSenior
+            navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let alert = UIAlertController(title: "Message", message: "Please select number person!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

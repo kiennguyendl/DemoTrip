@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tV1-Od-M7a" customClass="CosmosView" customModule="Cosmos">
-                        <rect key="frame" x="40" y="10" width="50" height="10"/>
+                        <rect key="frame" x="20" y="10" width="50" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="1Ec-wg-8ri"/>
                             <constraint firstAttribute="height" constant="10" id="laI-qJ-5GL"/>
@@ -58,19 +58,19 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evan - USA - 15 Oct 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-2R-L60">
-                        <rect key="frame" x="28" y="110.5" width="167.5" height="25"/>
+                        <rect key="frame" x="20" y="110.5" width="157" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="Q5c-5N-X11"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rbn-hl-gvG" customClass="ReadMoreTextView" customModule="ReadMoreTextView">
-                        <rect key="frame" x="28" y="20" width="355" height="90.5"/>
+                        <rect key="frame" x="20" y="20" width="371" height="90.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="maximumNumberOfLines">
@@ -85,11 +85,11 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="sja-av-44F" secondAttribute="bottom" id="DQp-NR-OLE"/>
                     <constraint firstItem="sja-av-44F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="G5b-of-XdX"/>
-                    <constraint firstItem="Rbn-hl-gvG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="H9q-nC-Orh"/>
+                    <constraint firstItem="Rbn-hl-gvG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H9q-nC-Orh"/>
                     <constraint firstItem="sja-av-44F" firstAttribute="top" secondItem="6zU-2R-L60" secondAttribute="bottom" constant="10" id="Jho-xH-4fh"/>
-                    <constraint firstItem="tV1-Od-M7a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="KF8-Tp-KwT"/>
-                    <constraint firstItem="6zU-2R-L60" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="N2X-fN-Wa3"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Rbn-hl-gvG" secondAttribute="trailing" constant="20" id="Vsp-W7-MAX"/>
+                    <constraint firstItem="tV1-Od-M7a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="KF8-Tp-KwT"/>
+                    <constraint firstItem="6zU-2R-L60" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="N2X-fN-Wa3"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Rbn-hl-gvG" secondAttribute="trailing" id="Vsp-W7-MAX"/>
                     <constraint firstItem="6zU-2R-L60" firstAttribute="top" secondItem="Rbn-hl-gvG" secondAttribute="bottom" id="W8S-0J-9Ny"/>
                     <constraint firstItem="tV1-Od-M7a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WsZ-A3-uD4"/>
                     <constraint firstItem="Rbn-hl-gvG" firstAttribute="top" secondItem="tV1-Od-M7a" secondAttribute="bottom" id="aZk-KW-lBu"/>

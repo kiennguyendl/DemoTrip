@@ -71,7 +71,14 @@ class NewBookingViewController: BaseViewController {
         super.viewDidLoad()
         initBackButton()
 //        self.title = "When do you want to go?"
-        chooseBtn.layer.cornerRadius = chooseBtn.frame.width / 15
+        chooseBtn.layer.cornerRadius = chooseBtn.frame.width / 30
+        chooseBtn.layer.shadowColor = UIColor.gray.cgColor
+        chooseBtn.layer.shadowOffset = CGSize(width: 0.0,height: 5.0)
+        chooseBtn.layer.shadowOpacity = 0.3
+        chooseBtn.layer.shadowRadius = 1.0
+        chooseBtn.layer.masksToBounds = false
+        chooseBtn.layer.cornerRadius = 4.0
+        tabBarController?.tabBar.isHidden = true
         
 //        DispatchQueue.main.async {
 //            self.initCustomNavigationBar()
@@ -88,7 +95,7 @@ class NewBookingViewController: BaseViewController {
     @objc func getIndexPathSelected(notification: NSNotification) {
         let indexPath = notification.userInfo!["indexPath"] as! IndexPath
         let canSelect = notification.userInfo!["canSelect"] as! Bool
-        let daySelected = notification.userInfo!["daySelected"] as! String
+        
         isShowBottomView = notification.userInfo!["isSHow"] as! Bool
         if let selectedIndexPath = selectedIndexPath{
             oldSelectedIndexPath = selectedIndexPath
@@ -97,8 +104,10 @@ class NewBookingViewController: BaseViewController {
         }
         
         self.selectedIndexPath = indexPath
-        self.daySelected = daySelected
+        
         if canSelect{
+            let daySelected = notification.userInfo!["daySelected"] as! String
+            self.daySelected = daySelected
             if selectedIndexPath == oldSelectedIndexPath{
                 if isShowBottomView{
                     
@@ -193,15 +202,20 @@ class NewBookingViewController: BaseViewController {
                 var year = self.calendar.component(.year, from: today)
                 
                 if let indexPath = self.selectedIndexPath{
-                    var currentMonth = month + indexPath.section
-                    if currentMonth > 12{
+                    var currentMonth = month + indexPath.section - 1
+                    if currentMonth > 11{
                         currentMonth -= 12
                         year += 1
                         let monthName = DateFormatter().monthSymbols[currentMonth]
+                        if let day = self.daySelected{
+                            self.daySelectedInfo.text = "\(monthName) \(day) \(year)"
+                        }
                         
                     }else{
                         let monthName = DateFormatter().monthSymbols[currentMonth]
-                        
+                        if let day = self.daySelected{
+                            self.daySelectedInfo.text = "\(monthName) \(day) \(year)"
+                        }
                     }
                 }
                 
@@ -224,6 +238,10 @@ class NewBookingViewController: BaseViewController {
     
     @IBAction func chooseBookingTourBtn(_ sender: Any) {
         let vc = BookingOptionsViewController()
+        vc.nameCity = nameCity
+        vc.nameTour = nameTour
+        vc.statusTour = statusTour
+        vc.daySelectedInfo = daySelectedInfo.text
         navigationController?.pushViewController(vc, animated: true)
     }
     

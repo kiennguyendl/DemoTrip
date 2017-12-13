@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuDetailViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="dismissBtn" destination="5MQ-S6-Ob1" id="Lr2-aw-9F8"/>
+                <outlet property="heightOfTableView" destination="cN3-vA-z4h" id="Nxf-eR-Ka3"/>
                 <outlet property="tableViewMenuDetail" destination="eLp-m1-2cf" id="uJJ-Op-FWf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBackgroud" destination="5MQ-S6-Ob1" id="MAG-kE-haK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,11 +25,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eLp-m1-2cf">
-                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                    <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="cN3-vA-z4h"/>
+                    </constraints>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MQ-S6-Ob1">
-                    <rect key="frame" x="0.0" y="20" width="375" height="313.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                     <connections>
                         <action selector="dismissMenuDetailView:" destination="-1" eventType="touchUpInside" id="DsF-xp-joi"/>
                     </connections>
@@ -35,13 +40,12 @@
             </subviews>
             <constraints>
                 <constraint firstItem="eLp-m1-2cf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0Gu-pd-Eka"/>
-                <constraint firstItem="eLp-m1-2cf" firstAttribute="top" secondItem="5MQ-S6-Ob1" secondAttribute="bottom" id="1Zh-U2-Oas"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5MQ-S6-Ob1" secondAttribute="trailing" id="8Is-dY-e4a"/>
-                <constraint firstItem="5MQ-S6-Ob1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8Kl-Ju-RRC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eLp-m1-2cf" secondAttribute="trailing" id="Lfi-9Z-EIN"/>
-                <constraint firstItem="5MQ-S6-Ob1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZQn-bP-wjY"/>
+                <constraint firstItem="eLp-m1-2cf" firstAttribute="top" secondItem="5MQ-S6-Ob1" secondAttribute="bottom" id="LiO-Ta-4KF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eLp-m1-2cf" secondAttribute="bottom" id="ety-hd-au0"/>
-                <constraint firstItem="eLp-m1-2cf" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/2" id="iq5-n4-wv7"/>
+                <constraint firstItem="5MQ-S6-Ob1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jyo-rc-BoR"/>
+                <constraint firstItem="5MQ-S6-Ob1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nyo-xT-cag"/>
+                <constraint firstItem="5MQ-S6-Ob1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vSh-tm-q54"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="32.5" y="64.5"/>

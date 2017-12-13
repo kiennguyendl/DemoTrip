@@ -57,12 +57,11 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewMeetingPointCell", for: indexPath) as! NewMeetingPointTableViewCell
-            cell.selectionStyle = .none
+            //cell.selectionStyle = .none
             if let meetingPoint = data.meetingPoint, let coordination = data.coordination{
                 cell.meetingPoint = meetingPoint
                 cell.coordination = coordination
             }
-            
             //cell.delegate = self
              return cell
         case 6:
@@ -120,7 +119,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                     self.expandedCells.insert(indexPath.section)
                 }
                 tableView.reloadData()
-                //tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+//                tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
             }
         }
         
@@ -163,8 +162,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             let view = HeaderView()
             if let data = self.detailTour{
             view.backgroundColor = UIColor.white
-            view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
-            view.heightOfTargetView.constant = 5
+            //view.targetView.layer.cornerRadius = view.targetView.frame.width / 6
+            //view.heightOfTargetView.constant = 5
             view.seeAllBtn.isHidden = true
             
             switch section{
@@ -185,13 +184,13 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             case 7:
                 if let fistComment = data.comments?[0]{
                     view.nameOfCarousel.text = fistComment.title
-                    view.targetView.isHidden = true
+//                    view.targetView.isHidden = true
                 }
             default:
                 print("")
             }
             view.nameOfCarousel.font = UIFont.boldSystemFont(ofSize: 16)
-            view.leadingViewOfHeaderView.constant = 0
+//            view.leadingViewOfHeaderView.constant = 0
             
             //view.backgroundColor = UIColor.gray
             }

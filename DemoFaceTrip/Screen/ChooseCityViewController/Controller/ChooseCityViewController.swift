@@ -14,7 +14,7 @@ protocol ChooseCityProtocol {
     func loadDataForHome(city: City)
 }
 
-class ChooseCityViewController: UIViewController {
+class ChooseCityViewController: BaseViewController {
     @IBOutlet weak var citySearch: UITextField!
     @IBOutlet weak var tableViewCities: UITableView!
     
@@ -40,6 +40,11 @@ class ChooseCityViewController: UIViewController {
         
         citySearch.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setWhiteColorForStatusBar()
     }
 
     @objc func textFieldDidChange(textField: UITextField) {
@@ -131,7 +136,7 @@ extension ChooseCityViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
