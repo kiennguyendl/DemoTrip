@@ -24,7 +24,7 @@ class NewBookingViewController: BaseViewController {
     var nameCity: String!
     var nameTour: String!
     var statusTour: String!
-    
+    var sectionScrolling = 0
     lazy var calendar : Calendar = {
         var gregorian = Calendar(identifier: .gregorian)
         gregorian.timeZone = TimeZone(abbreviation: "UTC")!
@@ -92,6 +92,12 @@ class NewBookingViewController: BaseViewController {
         
         self.viewBottomBooking.frame.origin.y = self.view.frame.height
         self.bottomContraintView.constant = self.view.frame.height + self.viewBottomBooking.frame.height
+        
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: 0, section: self.sectionScrolling)
+            self.monthCollectionView.scrollToItem(at: indexPath , at: .centeredVertically, animated: true)
+        }
+        
     }
     
     @objc func getIndexPathSelected(notification: NSNotification) {

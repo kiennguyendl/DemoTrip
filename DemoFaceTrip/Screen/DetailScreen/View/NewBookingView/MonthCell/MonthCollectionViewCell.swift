@@ -93,9 +93,10 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
              */
             let idx = self.todayIndex
             if (indexPath.item <= (idx?.item)! + firstDayIndex) && ((month - 1) == monthForSection){
-                cell.dateLbl.textColor = UIColor.gray
+                cell.dateLbl.textColor = UIColor.lightGray
                 cell.borderView.backgroundColor = UIColor.white
                 cell.canSelect = false
+                cell.slashImg.isHidden = false
             }else{
                 /*
                  render day booking
@@ -129,7 +130,7 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
                         }
                         
                     }else{
-                        cell.dateLbl.textColor = UIColor.gray
+                        cell.dateLbl.textColor = UIColor.lightGray
                         cell.borderView.backgroundColor = UIColor.white
                         cell.slashImg.isHidden = false
                         cell.canSelect = false
@@ -141,12 +142,13 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
             
         }else{
             cell.dateLbl.text = ""
+            //ko hien
             cell.slashImg.isHidden = true
             cell.canSelect = false
             cell.borderView.backgroundColor = UIColor.white
         }
         
-        cell.dateLbl.font = UIFont.boldSystemFont(ofSize: 15)
+        cell.dateLbl.font = UIFont.boldSystemFont(ofSize: 12)
         //cell.delegate = self
         
         return cell

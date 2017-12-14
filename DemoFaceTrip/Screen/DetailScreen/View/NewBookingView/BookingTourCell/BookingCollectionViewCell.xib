@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,24 +24,24 @@
                         <rect key="frame" x="5.5" y="4.5" width="95" height="85"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slash" translatesAutoresizingMaskIntoConstraints="NO" id="nCS-Sd-ZFj">
-                                <rect key="frame" x="24" y="21.5" width="47.5" height="42.5"/>
+                                <rect key="frame" x="32" y="28.5" width="31.5" height="28.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9J-1N-SWd">
                                 <rect key="frame" x="0.0" y="0.0" width="95" height="85"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="k9J-1N-SWd" firstAttribute="leading" secondItem="awT-KM-dAw" secondAttribute="leading" id="AaL-W4-ya3"/>
-                            <constraint firstItem="nCS-Sd-ZFj" firstAttribute="height" secondItem="awT-KM-dAw" secondAttribute="height" multiplier="1/2" id="D5Q-s4-ffV"/>
+                            <constraint firstItem="nCS-Sd-ZFj" firstAttribute="height" secondItem="awT-KM-dAw" secondAttribute="height" multiplier="1/3" id="D5Q-s4-ffV"/>
                             <constraint firstItem="nCS-Sd-ZFj" firstAttribute="centerX" secondItem="awT-KM-dAw" secondAttribute="centerX" id="J4W-nL-ngM"/>
                             <constraint firstItem="nCS-Sd-ZFj" firstAttribute="centerY" secondItem="awT-KM-dAw" secondAttribute="centerY" id="Y71-kp-lqE"/>
                             <constraint firstAttribute="trailing" secondItem="k9J-1N-SWd" secondAttribute="trailing" id="aY7-xf-7bS"/>
                             <constraint firstItem="k9J-1N-SWd" firstAttribute="top" secondItem="awT-KM-dAw" secondAttribute="top" id="dv4-FK-Kma"/>
                             <constraint firstAttribute="bottom" secondItem="k9J-1N-SWd" secondAttribute="bottom" id="kGx-Yt-fH9"/>
-                            <constraint firstItem="nCS-Sd-ZFj" firstAttribute="width" secondItem="awT-KM-dAw" secondAttribute="width" multiplier="1/2" id="sBI-nm-KES"/>
+                            <constraint firstItem="nCS-Sd-ZFj" firstAttribute="width" secondItem="awT-KM-dAw" secondAttribute="width" multiplier="1/3" id="sBI-nm-KES"/>
                         </constraints>
                     </view>
                 </subviews>

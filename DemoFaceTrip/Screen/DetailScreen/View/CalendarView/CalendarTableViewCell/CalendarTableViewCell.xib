@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="weA-Ff-ZZR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sfB-pJ-5nf">
                             <size key="itemSize" width="50" height="50"/>
@@ -31,14 +31,14 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il8-26-w5l">
-                        <rect key="frame" x="0.0" y="154.5" width="320" height="5"/>
+                        <rect key="frame" x="0.0" y="158.5" width="320" height="1"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="5" id="9Dg-S6-b9X"/>
+                            <constraint firstAttribute="height" constant="1" id="9Dg-S6-b9X"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d3P-Ds-qKE">
-                        <rect key="frame" x="0.0" y="35" width="320" height="119.5"/>
+                        <rect key="frame" x="0.0" y="39" width="320" height="119.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Wrb-Zd-wz6">
                             <size key="itemSize" width="50" height="50"/>

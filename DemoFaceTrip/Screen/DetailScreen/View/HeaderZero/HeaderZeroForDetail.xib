@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderZeroForDetail" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
-                <outlet property="imageBackgroud" destination="ddP-k4-wWJ" id="Ray-HV-1P9"/>
+                <outlet property="indicatorCollectionView" destination="hvV-mR-ebi" id="SBK-pF-Mxq"/>
                 <outlet property="likeImage" destination="ac4-2x-72f" id="2rk-2Z-aCT"/>
                 <outlet property="listImageCollectionview" destination="Qvr-hO-wT6" id="XmG-yi-v8c"/>
             </connections>
@@ -39,22 +39,31 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-k4-wWJ">
-                    <rect key="frame" x="0.0" y="0.0" width="398" height="315"/>
-                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hvV-mR-ebi">
+                    <rect key="frame" x="139" y="295" width="120" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="4ES-s3-Pbq"/>
+                        <constraint firstAttribute="height" constant="20" id="Eya-i9-TaX"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Vgd-9H-oZg">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ddP-k4-wWJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5rp-3L-2Ou"/>
                 <constraint firstItem="Qvr-hO-wT6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AeX-cH-na4"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Qvr-hO-wT6" secondAttribute="trailing" id="HGi-3m-Bpc"/>
-                <constraint firstItem="ddP-k4-wWJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="OeZ-Q6-6YS"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Qvr-hO-wT6" secondAttribute="bottom" id="QIb-B2-5cw"/>
+                <constraint firstItem="hvV-mR-ebi" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="UWy-xD-uwu"/>
                 <constraint firstItem="ac4-2x-72f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="YO3-Fh-Yga"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ddP-k4-wWJ" secondAttribute="trailing" id="aZu-QF-q4q"/>
                 <constraint firstItem="Qvr-hO-wT6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dqT-59-pb8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ac4-2x-72f" secondAttribute="trailing" constant="20" id="g2v-rd-aCA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ddP-k4-wWJ" secondAttribute="bottom" id="pGn-aE-bwP"/>
+                <constraint firstItem="hvV-mR-ebi" firstAttribute="centerX" secondItem="Qvr-hO-wT6" secondAttribute="centerX" id="ojo-ZR-S0m"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

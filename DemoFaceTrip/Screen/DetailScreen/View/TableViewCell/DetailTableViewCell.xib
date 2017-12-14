@@ -34,10 +34,10 @@
                         </userDefinedRuntimeAttributes>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kat-8V-dAl">
-                        <rect key="frame" x="0.0" y="148.5" width="377" height="5"/>
+                        <rect key="frame" x="0.0" y="152.5" width="377" height="1"/>
                         <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="5" id="vCG-pw-lqy"/>
+                            <constraint firstAttribute="height" constant="1" id="vCG-pw-lqy"/>
                         </constraints>
                     </view>
                 </subviews>

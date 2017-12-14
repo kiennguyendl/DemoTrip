@@ -71,6 +71,8 @@
 		FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA644821F8F0BBB007E968C /* ListDetailCatagoryViewController.xib */; };
 		FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBACA1081FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift */; };
 		FBACA10B1FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBACA1091FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib */; };
+		FBACA10E1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBACA10C1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift */; };
+		FBACA10F1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBACA10D1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.xib */; };
 		FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066001F8DACD8002BF21C /* DetailViewController.swift */; };
 		FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB066011F8DACD8002BF21C /* DetailViewController.xib */; };
 		FBB066051F8DEDE9002BF21C /* LocalGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB066041F8DEDE9002BF21C /* LocalGuide.swift */; };
@@ -254,6 +256,8 @@
 		FBA644821F8F0BBB007E968C /* ListDetailCatagoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDetailCatagoryViewController.xib; sourceTree = "<group>"; };
 		FBACA1081FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForListingCollectionReusableView.swift; sourceTree = "<group>"; };
 		FBACA1091FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderForListingCollectionReusableView.xib; sourceTree = "<group>"; };
+		FBACA10C1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBACA10D1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderIndicatorCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBB066001F8DACD8002BF21C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FBB066011F8DACD8002BF21C /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		FBB066041F8DEDE9002BF21C /* LocalGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGuide.swift; sourceTree = "<group>"; };
@@ -1088,6 +1092,8 @@
 				FBE241161F9EF29E00833E8A /* HeaderZeroForDetail.xib */,
 				FB90E31A1FD4F0A200B300B3 /* HeaderZeroCollectionViewCell.swift */,
 				FB90E31B1FD4F0A200B300B3 /* HeaderZeroCollectionViewCell.xib */,
+				FBACA10C1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift */,
+				FBACA10D1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.xib */,
 			);
 			path = HeaderZero;
 			sourceTree = "<group>";
@@ -1341,6 +1347,7 @@
 				FB11F4021FA70B98008DD080 /* DateCollectionViewCell.xib in Resources */,
 				FBEB18311FB01C8700E52E59 /* NewBookingViewController.xib in Resources */,
 				FBFBBD071F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.xib in Resources */,
+				FBACA10F1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.xib in Resources */,
 				FB037E941F8F582B0081D787 /* DetailTableViewCell.xib in Resources */,
 				FBE099411FC55ADB00F756B0 /* SubMenuItemCollectionViewCell.xib in Resources */,
 				FBDF050D1FDB7D36005DA113 /* BookingOptionsViewController.xib in Resources */,
@@ -1460,6 +1467,7 @@
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBC8892E1F9DD9070017241E /* NewHomeCollectionViewCell.swift in Sources */,
 				FB0036BD1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift in Sources */,
+				FBACA10E1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift in Sources */,
 				FBFE36A71F85EB480020F295 /* BaseView.swift in Sources */,
 				FBE736331FCE4D2700018517 /* CruisesSaiLingAndWaterTourSubMenu.swift in Sources */,
 				FBE7362F1FCE4B0B00018517 /* EventsSubMenu.swift in Sources */,

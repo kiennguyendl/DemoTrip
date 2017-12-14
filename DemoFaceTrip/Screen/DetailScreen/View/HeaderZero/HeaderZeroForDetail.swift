@@ -12,6 +12,8 @@ import UIKit
 class HeaderZeroForDetail: BaseView {
     
     @IBOutlet weak var listImageCollectionview: UICollectionView!
+    
+    @IBOutlet weak var indicatorCollectionView: UICollectionView!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var imageBackgroud: UIImageView!
     
@@ -24,6 +26,10 @@ class HeaderZeroForDetail: BaseView {
         listImageCollectionview.delegate = self
         listImageCollectionview.dataSource = self
         listImageCollectionview.register(UINib.init(nibName: "HeaderZeroCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderZeroDetail")
+        
+        indicatorCollectionView.delegate = self
+        indicatorCollectionView.dataSource = self
+        indicatorCollectionView.register(UINib.init(nibName: "HeaderIndicatorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HeaderIndicatorCollectionView")
         
         setTimer()
     }
@@ -49,8 +55,19 @@ class HeaderZeroForDetail: BaseView {
             
             if !endList{
                 if self.x < self.listImage.count {
-                    let indexPath = IndexPath(item: x, section: 0)
-                    self.listImageCollectionview.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                    if x > 0{
+                        let oldIndexPath = IndexPath(item: x - 1, section: 0)
+                        let oldCell = indicatorCollectionView.cellForItem(at: oldIndexPath) as! HeaderIndicatorCollectionViewCell
+                        oldCell.bigView.isHidden = true
+                        oldCell.smallView.isHidden = false
+                    }
+                    let newIndexPath = IndexPath(item: x, section: 0)
+                    let newCell = indicatorCollectionView.cellForItem(at: newIndexPath) as! HeaderIndicatorCollectionViewCell
+                    newCell.bigView.isHidden = false
+                    newCell.smallView.isHidden = true
+                    
+                    self.listImageCollectionview.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
+                    self.indicatorCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
                     self.x = self.x + 1
                     if self.x == self.listImage.count{
                         endList = true
@@ -59,8 +76,20 @@ class HeaderZeroForDetail: BaseView {
             }else{
                 
                 self.x = self.x - 1
-                let indexPath = IndexPath(item: x, section: 0)
-                    self.listImageCollectionview.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                if (x + 1) < listImage.count{
+                    let oldIndexPath = IndexPath(item: x + 1, section: 0)
+                    let oldCell = indicatorCollectionView.cellForItem(at: oldIndexPath) as! HeaderIndicatorCollectionViewCell
+                    oldCell.bigView.isHidden = true
+                    oldCell.smallView.isHidden = false
+                }
+                let newIndexPath = IndexPath(item: x, section: 0)
+                let newCell = indicatorCollectionView.cellForItem(at: newIndexPath) as! HeaderIndicatorCollectionViewCell
+                newCell.bigView.isHidden = false
+                newCell.smallView.isHidden = true
+                
+                //let indexPath = IndexPath(item: x, section: 0)
+                self.listImageCollectionview.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
+                self.indicatorCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
                 if self.x == 0{
                     endList = false
                 }
@@ -77,24 +106,26 @@ extension HeaderZeroForDetail: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderZeroDetail", for: indexPath) as! HeaderZeroCollectionViewCell
-        let urlStr = listImage[indexPath.row]
-        let url = URL(string: urlStr)
-        let dafautImg = UIImage(named: "default")
-        cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
-        cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
-//        var rowIndex = indexPath.row
-//        let numberOfRecords = self.listImage.count - 1
-//        if rowIndex < numberOfRecords{
-//            rowIndex = rowIndex + 1
-//        }else{
-//            rowIndex = 0
-//        }
-//        
-//        scrollingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(HeaderZeroForDetail.startTimer(timer: )), userInfo: rowIndex, repeats: true)
+        if collectionView == listImageCollectionview{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderZeroDetail", for: indexPath) as! HeaderZeroCollectionViewCell
+            let urlStr = listImage[indexPath.row]
+            let url = URL(string: urlStr)
+            let dafautImg = UIImage(named: "default")
+            cell.image.af_setImage(withURL: url!, placeholderImage: dafautImg)
+            cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.frame.width, height: cell.image.frame.height)).withRenderingMode(.alwaysOriginal)
+            return cell
+        }else if collectionView == indicatorCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderIndicatorCollectionView", for: indexPath) as! HeaderIndicatorCollectionViewCell
+            let currentItem = indexPath.row
+            
+            if currentItem == 0{
+                cell.bigView.isHidden = false
+                cell.smallView.isHidden = true
+            }
+            return cell
+        }
         
-        
-        return cell
+        return UICollectionViewCell()
     }
     
 //    @objc func startTimer(timer: Timer) {
@@ -104,6 +135,15 @@ extension HeaderZeroForDetail: UICollectionViewDelegate, UICollectionViewDataSou
 //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: listImageCollectionview.frame.width, height: listImageCollectionview.frame.height)
+        if collectionView == listImageCollectionview{
+            return CGSize(width: listImageCollectionview.frame.width, height: listImageCollectionview.frame.height)
+        }else if collectionView == indicatorCollectionView{
+            return CGSize(width: indicatorCollectionView.frame.height, height: indicatorCollectionView.frame.height)
+        }
+        return CGSize.zero
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
     }
 }

@@ -23,15 +23,15 @@ extension HomeViewController: HomeCellDelegate{
         vc.imageUrl = imagerURL
         vc.cityName = city.name
         
-        /*save for animation
-         
+        //save for animation
+        
         let cell = collectionView.cellForItem(at: indexPath) as! NewHomeCollectionViewCell
         let frame = cell.convert(cell.image.frame, to: view)
         imageExpandAnimationController.originFrame = frame
-        vc.transitioningDelegate = self
-        changeColorMenuViewWhenPresent()
-        present(vc, animated: true, completion: nil)
-        */
+//        vc.transitioningDelegate = self
+//        changeColorMenuViewWhenPresent()
+//        present(vc, animated: true, completion: nil)
+        //
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -251,14 +251,14 @@ extension HomeViewController: SubMenuProtocol{
         vc.cellIndexPathPathDetailView = indexPath
         vc.delegate = self
         vc.cityName = city.name
-        /*
+        
         let cell = collectionView.cellForItem(at: indexPath) as! NewHomeCollectionViewCell
         let frame = cell.convert(cell.image.frame, to: view)
         imageExpandAnimationController.originFrame = frame
-        changeColorMenuViewWhenPresent()
-        vc.transitioningDelegate = self
-        present(vc, animated: true, completion: nil)
-        */
+//        changeColorMenuViewWhenPresent()
+//        vc.transitioningDelegate = self
+//        present(vc, animated: true, completion: nil)
+        
         
         navigationController?.pushViewController(vc, animated: true)
     }

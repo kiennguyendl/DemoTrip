@@ -123,6 +123,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                     self.expandedCells.insert(indexPath.section)
                 }
                 tableView.reloadData()
+//                tableView.reloadRows(at: [indexPath], with: .bottom)
 //                tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
             }
         }
@@ -204,7 +205,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0{
-            return self.tableViewDetail.frame.height * 2 / 5 + 10
+            return self.tableViewDetail.frame.height * 2 / 5
         }else if section == 1{
             return 0
         }

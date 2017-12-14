@@ -40,7 +40,7 @@ class BookingCollectionViewCell: UICollectionViewCell {
                     
                     //self.delegate?.presentBottomView()
                     
-                }else{
+                }else if canSelect == false && isChangedColor == false{
                     DispatchQueue.main.async {
 //                        if self.indexPathSelected != nil{
 //                            self.borderView.backgroundColor = UIColor(red: 44.0/255.0, green: 120.0/255.0, blue: 104.0/255.0, alpha: 1)
@@ -50,12 +50,17 @@ class BookingCollectionViewCell: UICollectionViewCell {
 //                        }else{
                         print("BBBBBBBBBBBBB")
                         self.borderView.backgroundColor = UIColor.white
-                        self.dateLbl.textColor = UIColor(red: 44.0/255.0, green: 120.0/255.0, blue: 104.0/255.0, alpha: 1)
+                        self.dateLbl.textColor = UIColor.lightGray
                         self.isChangedColor = false
                         
                         //self.delegate?.dismissBottomView()
 //                        }
                     }
+                }else{
+                    print("BBBBBBBBBBBBB")
+                    self.borderView.backgroundColor = UIColor.white
+                    self.dateLbl.textColor = UIColor(red: 44.0/255.0, green: 120.0/255.0, blue: 104.0/255.0, alpha: 1)
+                    self.isChangedColor = false
                 }
             case false:
                 if canSelect == true && isChangedColor == true{
@@ -70,7 +75,7 @@ class BookingCollectionViewCell: UICollectionViewCell {
                 }else{
                     DispatchQueue.main.async {
                         print("EEEEEEEEEE")
-                        self.dateLbl.textColor = UIColor.gray
+                        self.dateLbl.textColor = UIColor.lightGray
                         self.borderView.backgroundColor = UIColor.white
                         //self.delegate?.dismissBottomView()
                     }

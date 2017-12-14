@@ -142,7 +142,7 @@ extension CalendarCollectionViewCell: UICollectionViewDelegate, UICollectionView
             "section": index,
             "data": listBookingDayOfMonth
             ] as [String : Any]
-        NotificationCenter.default.post(name: calendarPushtoBookingNotification, object: data)
+        NotificationCenter.default.post(name: calendarPushtoBookingNotification, object: nil, userInfo: data)
     }
     
 }

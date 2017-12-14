@@ -50,6 +50,7 @@ class DetailViewController: BaseViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var heightOfImageBackgroud: NSLayoutConstraint!
     var detailTour: DetailTour!
     var typeOfMenu: typeOfCategoryMenu = .None
     var typeMenu: String = ""
@@ -73,7 +74,7 @@ class DetailViewController: BaseViewController {
         
         // init custom navigation bar
 //        initCustomNavigationBar()
-        setWhiteColorForStatusBar()
+//        setWhiteColorForStatusBar()
         //set content for bottom view
         setContentForBootView()
     
@@ -90,10 +91,12 @@ class DetailViewController: BaseViewController {
 //        viewMenu.frame.origin.y = self.view.frame.height
 //        contraintBottomMenuView.constant = self.view.frame.height + viewMenu.frame.height
         hiddenView.isHidden = true
-        self.view.bringSubview(toFront: viewTabbar)
+//        self.view.bringSubview(toFront: viewTabbar)
+//        heightOfImageBackgroud.constant = self.tableViewDetail.frame.height * 2 / 5 + 8
 //        let url =  URL(string: imageUrl)
 //        imageBackgroud.af_setImage(withURL: url!)
 //        view.bringSubview(toFront: imageBackgroud)
+        
         restDetailTour()
         
         
@@ -103,7 +106,7 @@ class DetailViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        setWhiteColorForStatusBar()
+        setWhiteColorForStatusBar()
         setNonColorForStatusBar()
         //hiddenView.isHidden = true
         self.navigationController?.isNavigationBarHidden = false
@@ -133,7 +136,7 @@ class DetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        setRedColorForStatusBar()
+//        setRedColorForStatusBar()
 //        removeCustomBar()
         setDefaultColorForStatusBar()
     }
@@ -148,7 +151,7 @@ class DetailViewController: BaseViewController {
                 if let price = strongSelf.detailTour.price{
                     strongSelf.price1.text = ("$\(price)")
                     strongSelf.price.text = "per person"
-                    //strongSelf.imageBackgroud.isHidden = true
+//                    strongSelf.imageBackgroud.isHidden = true
                     strongSelf.tableViewDetail.reloadData()
                     
                 }
@@ -199,7 +202,7 @@ class DetailViewController: BaseViewController {
         
         let topConstraint = NSLayoutConstraint(item: self.tableViewDetail, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: -65)
         
-        let leadingContraint = NSLayoutConstraint(item: self.tableViewDetail, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 1)
+        let leadingContraint = NSLayoutConstraint(item: self.tableViewDetail, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         
         let trailingConstraint = NSLayoutConstraint(item: self.tableViewDetail, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
         
@@ -443,6 +446,7 @@ class DetailViewController: BaseViewController {
     }
     
     @objc func pushToBookingDay(notification: Notification) {
+        let section = notification.userInfo!["section"] as! Int
         let vc = NewBookingViewController()
         if let data = detailTour{
             if let calendarBooking = data.calendarTour{
@@ -455,6 +459,7 @@ class DetailViewController: BaseViewController {
                 vc.nameTour = nameTour
             }
             vc.statusTour = "Private tour, English"
+            vc.sectionScrolling = section
         }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -463,6 +468,9 @@ class DetailViewController: BaseViewController {
         notificationCenter.removeObserver(self, name: calendarPushtoBookingNotification, object: nil)
     }
     
+    @IBAction func dismissDetaitView(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+    }
 }
 
 
@@ -486,6 +494,8 @@ extension DetailViewController: MenuDetailProtocol{
         grayView = nil
         hiddenView.isHidden = true
     }
+    
+    
 }
 
 extension DetailViewController: ImageExpandAnimationControllerProtocol {
