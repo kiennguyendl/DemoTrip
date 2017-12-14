@@ -133,9 +133,9 @@ extension CalendarTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == headerSection{
-            return CGSize(width: headerSection.frame.width / 2 - 1, height: collectionView.frame.height)
+            return CGSize(width: headerSection.frame.width / 2.4 - 1, height: collectionView.frame.height)
         }else{
-            return CGSize(width: collectionViewCalendar.frame.width / 2 - 1, height: collectionView.frame.height)
+            return CGSize(width: collectionViewCalendar.frame.width / 2.4 - 1, height: collectionView.frame.height)
         }
     }
     

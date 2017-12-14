@@ -68,7 +68,7 @@ class DetailBookingViewController: BaseViewController {
         nextBtn.layer.shadowRadius = 1.0
         nextBtn.layer.masksToBounds = false
         nextBtn.layer.cornerRadius = 4.0
-        nextBtn.backgroundColor = color3
+        nextBtn.backgroundColor = colorBtn
         
         if let nameCity = nameCity, let nameTour = nameTour, let status = statusTour, let dayInfo = daySelectedInfo{
             self.inforTour.text = "\(nameCity): \(nameTour)"

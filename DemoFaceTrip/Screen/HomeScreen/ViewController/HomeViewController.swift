@@ -16,6 +16,9 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var inputTextSearchTf: UITextField!
+    
+    @IBOutlet weak var tableViewSubMenu: UITableView!
+    @IBOutlet weak var tableViewCarousels: UITableView!
     @IBOutlet weak var bottomViewLineMenu: UIView!
     @IBOutlet weak var heightOfViewBottomLineMenu: NSLayoutConstraint! 
     @IBOutlet weak var collectionViewCarousels: UICollectionView!
@@ -25,11 +28,18 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var topContrailOfCarouselsView: NSLayoutConstraint!
     @IBOutlet weak var bottomContrailOfCarouselsView: NSLayoutConstraint!
     @IBOutlet weak var heightOfViewMenu: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var allDatesBtn: UIButton!
+    @IBOutlet weak var numGuesBtn: UIButton!
+    @IBOutlet weak var filtersBtn: UIButton!
+    
     var heightOfCarouselsView: CGFloat = 0
     
     //@IBOutlet weak var categoryMenuView: UIView!
-    var tableViewCarousels: UITableView!
-    var tableViewSubMenu: UITableView!
+//    var tableViewCarousels: UITableView!
+//    var tableViewSubMenu: UITableView!
     var viewForHeaderZero: HeaderZeroView!
     var previousOffset: CGFloat = 0
 
@@ -78,8 +88,15 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLayer()
+        
+        
+        
+    }
+    
+    func setupLayer() {
         setNonColorForStatusBar()
-//        setRedColorForStatusBar()
+        //        setRedColorForStatusBar()
         collectionViewListing.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
@@ -87,13 +104,15 @@ class HomeViewController: BaseViewController {
         carouselsView.backgroundColor = color3
         viewForHeaderZero  = HeaderZeroView()
         setColorForMenuView()
+        filterView.isHidden = true
+        setupButtonOnFilterView()
         //addSwipeForController()
         heightOfCarouselsView = carouselsView.frame.height
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
         
         //add target for textfield when user touch up
         inputTextSearchTf.addTarget(self, action: #selector(presentChooseCityView(textField:)), for: .touchDown)
-        
+        inputTextSearchTf.delegate = self
         //check city is existing or not
         if Settings.city == nil{
             let vc = ChooseCityViewController()
@@ -129,7 +148,7 @@ class HomeViewController: BaseViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         //setWhiteColorForStatusBar()
         //navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = false
@@ -152,6 +171,7 @@ class HomeViewController: BaseViewController {
         collectionViewListing.delegate = self
         collectionViewListing.dataSource = self
         collectionViewListing.register(UINib.init(nibName: "NewHomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewHomeCollectionCell")
+        collectionViewListing.register(UINib.init(nibName: "HeaderForListingCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderViewForListing")
         collectionViewListing.showsVerticalScrollIndicator = false
         collectionViewListing.tag = 1
     }
@@ -230,24 +250,24 @@ class HomeViewController: BaseViewController {
     func addContrailForTableView() {
         
         let frame = self.view.frame
-        tableViewCarousels = UITableView(frame: frame, style: .grouped)
-        tableViewSubMenu = UITableView(frame: frame, style: .grouped)
+        //tableViewCarousels = UITableView(frame: frame, style: .grouped)
+//        tableViewSubMenu = UITableView(frame: frame, style: .grouped)
         
-        self.view.addSubview(tableViewCarousels)
-        self.view.addSubview(tableViewSubMenu)
+        //self.view.addSubview(tableViewCarousels)
+//        self.view.addSubview(tableViewSubMenu)
         
-        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
-        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
+//        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+//        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+//        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
         
         
-        let topSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        let leadingSubContraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
-        let trailingSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-        let bottomSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activate([topSubConstraint, leadingSubContraint, trailingSubConstraint, bottomSubConstraint])
+//        let topSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//        let leadingSubContraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
+//        let trailingSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
+//        let bottomSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
+//        NSLayoutConstraint.activate([topSubConstraint, leadingSubContraint, trailingSubConstraint, bottomSubConstraint])
         
         
         tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
@@ -323,14 +343,21 @@ class HomeViewController: BaseViewController {
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+                filterView.isHidden = true
+                collectionViewCarousels.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
                 isListSubMenuDisplay = false
                 listItem = 0
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeMenu
+                inputTextSearchTf.textAlignment = .left
                 collectionViewListing.reloadData()
             }else{
                 tableViewCarousels.isHidden = false
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = true
+                collectionViewCarousels.isHidden = false
                 
                 inputTextSearchTf.text = Settings.cityPicked!
                 menuBtn.setImage(#imageLiteral(resourceName: "search"), for: .normal)
@@ -351,7 +378,7 @@ class HomeViewController: BaseViewController {
         if self.carouselsView.frame.origin.y >= self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y - self.heightOfCarouselsView
             self.topContrailOfCarouselsView.constant = -self.heightOfCarouselsView
-            self.bottomContrailOfCarouselsView.constant = self.heightOfCarouselsView
+            //self.bottomContrailOfCarouselsView.constant = self.heightOfCarouselsView
             self.view.bringSubview(toFront: self.viewMenu)
             Settings.isScaleMenuView = true
         }
@@ -363,7 +390,7 @@ class HomeViewController: BaseViewController {
         if self.carouselsView.frame.origin.y < self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y + self.heightOfCarouselsView
             self.topContrailOfCarouselsView.constant = 0
-            self.bottomContrailOfCarouselsView.constant = 0
+            //self.bottomContrailOfCarouselsView.constant = 0
             self.view.bringSubview(toFront: self.viewMenu)
             Settings.isScaleMenuView = true
         }
@@ -390,6 +417,25 @@ class HomeViewController: BaseViewController {
         self.collectionViewCarousels.isHidden = false
         self.carouselsView.backgroundColor = color3
         self.childViewMenu.isHidden = false
+    }
+    
+    func setupButtonOnFilterView() {
+        allDatesBtn.layer.borderWidth = 0.5
+        allDatesBtn.layer.borderColor = UIColor.gray.cgColor
+        allDatesBtn.layer.cornerRadius = allDatesBtn.frame.width / 30
+        
+        numGuesBtn.layer.borderWidth = 0.5
+        numGuesBtn.layer.borderColor = UIColor.gray.cgColor
+        numGuesBtn.layer.cornerRadius = allDatesBtn.frame.width / 30
+        
+        filtersBtn.layer.borderWidth = 0.5
+        filtersBtn.layer.borderColor = UIColor.gray.cgColor
+        filtersBtn.layer.cornerRadius = allDatesBtn.frame.width / 30
+        
+//        self.viewContents.backgroundColor = UIColor.clear
+//        self.viewContents.layer.borderWidth = 0.20
+//        self.viewContents.layer.borderColor = UIColor.lightGray.cgColor
+//        self.viewContents.layer.cornerRadius = self.frame.width / 60
     }
 }
 

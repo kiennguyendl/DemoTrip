@@ -375,6 +375,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: RecentlyMenu?, error: Error?) in
                     
@@ -392,6 +394,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: WishListMenu?, error: Error?) in
                     
@@ -409,6 +413,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: BestSellerMenu?, error: Error?) in
                     
@@ -426,6 +432,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: FTPickesMenu?, error: Error?) in
                     
@@ -443,6 +451,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: ShowAndAttrachtions?, error: Error?) in
                     
@@ -460,6 +470,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: DayTripAndExcursionsTourMenu?, error: Error?) in
                     
@@ -477,6 +489,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
                     
@@ -494,6 +508,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: OutDoorActivities?, error: Error?) in
                     
@@ -511,6 +527,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeOfMenu, typeSubMenu: "", complertionHandler: {[weak self ](category: CustomExperiences?, error: Error?) in
                     
                     guard let strongSelf = self else {return}
@@ -538,6 +556,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         tableViewSubMenu.isHidden = true
         collectionViewListing.isHidden = false
         isListSubMenuDisplay = true
+        filterView.isHidden = false
+        collectionViewCarousels.isHidden = true
         
         switch typeOfMenu {
         case .Attractions:
@@ -545,7 +565,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             typeMenu = data.type!
             
             if let typeSubMenu = data.listSubMenu[section].type{
-                inputTextSearchTf.text = Settings.cityPicked! + " - " + typeMenu + " - " + typeSubMenu
+                inputTextSearchTf.text = typeMenu + " - " + typeSubMenu
                 switch typeSubMenu{
                 case "Show And Concerts":
                     print("Show And Concerts")
@@ -612,7 +632,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             let data = listItemOfEachTypeMenu as! OutDoorActivities
             typeMenu = data.type!
             if let typeSubMenu = data.listSubMenu[section].type{
-                inputTextSearchTf.text = Settings.cityPicked! + " - " + typeMenu + " - " + typeSubMenu
+                inputTextSearchTf.text =  typeMenu + " - " + typeSubMenu
                 switch typeSubMenu{
                 case "Cruises,SaiLing And Water Tour":
                     print("Cruises,SaiLing And Water Tour")
@@ -666,7 +686,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
             let data = listItemOfEachTypeMenu as! CustomExperiences
             typeMenu = data.type!
             if let typeSubMenu = data.listSubMenu[section].type{
-                inputTextSearchTf.text = Settings.cityPicked! + " - " + typeMenu + " - " + typeSubMenu
+                inputTextSearchTf.text = typeMenu + " - " + typeSubMenu
                 switch typeSubMenu{
                 case "Nightlife":
                     print("Nightlife")
@@ -733,6 +753,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         default:
             print("")
         }
+        //inputTextSearchTf.textAlignment = .right
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

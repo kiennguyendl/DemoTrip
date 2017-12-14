@@ -52,7 +52,7 @@ class BookingPaymentViewController: BaseViewController {
         confirmPaymentBtn.layer.shadowRadius = 1.0
         confirmPaymentBtn.layer.masksToBounds = false
         confirmPaymentBtn.layer.cornerRadius = 4.0
-        confirmPaymentBtn.backgroundColor = color3
+        confirmPaymentBtn.backgroundColor = colorBtn
         
         if let nameCity = nameCity, let nameTour = nameTour, let status = statusTour, let dayInfo = daySelectedInfo{
             self.inforTour.text = "\(nameCity): \(nameTour)"

@@ -46,6 +46,9 @@ extension HomeViewController: HomeCellDelegate{
         tableViewCarousels.isHidden = true
         tableViewSubMenu.isHidden = true
         collectionViewListing.isHidden = false
+        filterView.isHidden = false
+        collectionViewCarousels.isHidden = true
+        inputTextSearchTf.textAlignment = .right
         typeOfMenu = typeMenu
         switch typeMenu {
         case .Attractions:
@@ -281,6 +284,9 @@ extension HomeViewController: HeaderZeroProtocol{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
+                
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu( urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: ShowAndAttrachtions?, error: Error?) in
                     guard let strongSelf = self else {return}
@@ -295,6 +301,9 @@ extension HomeViewController: HeaderZeroProtocol{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
+                
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: DayTripAndExcursionsTourMenu?, error: Error?) in
@@ -312,6 +321,9 @@ extension HomeViewController: HeaderZeroProtocol{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = false
                 tableViewSubMenu.isHidden = true
+                filterView.isHidden = false
+                collectionViewCarousels.isHidden = true
+                
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: MultiDayTripAndExcursionsTourMenu?, error: Error?) in
@@ -329,6 +341,9 @@ extension HomeViewController: HeaderZeroProtocol{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
+                
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: OutDoorActivities?, error: Error?) in
@@ -346,6 +361,9 @@ extension HomeViewController: HeaderZeroProtocol{
                 tableViewCarousels.isHidden = true
                 collectionViewListing.isHidden = true
                 tableViewSubMenu.isHidden = false
+//                filterView.isHidden = false
+//                collectionViewCarousels.isHidden = true
+                
                 inputTextSearchTf.text = Settings.cityPicked! + " - " + typeStr
                 
                 RestDataManager.shareInstance.restDataForListingScrenFollowTypeOfMenu(urlForHome, menu: "listing", action: "getlisting", idCity: city.id!, type: typeStr, typeSubMenu: "", complertionHandler: {[weak self ](category: CustomExperiences?, error: Error?) in
@@ -388,6 +406,11 @@ extension HomeViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("")
+    }
+    
 }
 
 extension HomeViewController: UIViewControllerTransitioningDelegate{
@@ -445,3 +468,4 @@ extension HomeViewController: changeColorOfMenuViewHome{
         
     }
 }
+

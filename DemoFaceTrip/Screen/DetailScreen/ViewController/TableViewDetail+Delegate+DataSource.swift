@@ -33,6 +33,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
                     cell.coverNameOfTour.text = name
                 }
             }
+            cell.selectionStyle = .none
             return cell
         case 2, 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
@@ -47,6 +48,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             readMoreTextView.shouldTrim = !expandedCells.contains(indexPath.section)
             readMoreTextView.setNeedsUpdateTrim()
             readMoreTextView.layoutIfNeeded()
+            cell.selectionStyle = .none
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath) as! CalendarTableViewCell
@@ -69,6 +71,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             if let rateStar = data.rateStar{
                 cell.rateStar = rateStar
             }
+            cell.selectionStyle = .none
             return cell
         case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsCell", for: indexPath) as! ReviewsTableViewCell
@@ -90,6 +93,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource{
             readMoreTextView.setNeedsUpdateTrim()
             readMoreTextView.layoutIfNeeded()
             cell.lineView.isHidden = true
+            cell.selectionStyle = .none
             return cell
         default:
             return UITableViewCell(style: .default, reuseIdentifier: "")

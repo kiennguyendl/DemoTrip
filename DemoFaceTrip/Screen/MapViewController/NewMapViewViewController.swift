@@ -62,8 +62,8 @@ class NewMapViewViewController: BaseViewController {
         marker.map = self.googleMapsView
         self.googleMapsView.selectedMarker = marker
         
-        let myLocation = locationManager.location?.coordinate
-        drawPath(startLocation: myLocation!, endLocation: location)
+        //let myLocation = locationManager.location?.coordinate
+        //drawPath(startLocation: myLocation!, endLocation: location)
     }
     
     func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{

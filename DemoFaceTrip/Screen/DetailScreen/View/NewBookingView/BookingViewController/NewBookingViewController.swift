@@ -19,6 +19,7 @@ class NewBookingViewController: BaseViewController {
     @IBOutlet weak var viewBottomBooking: UIView!
     @IBOutlet weak var bottomContraintView: NSLayoutConstraint!
     
+    @IBOutlet weak var bottomCalendarCollectionView: NSLayoutConstraint!
     @IBOutlet weak var daySelectedInfo: UILabel!
     var nameCity: String!
     var nameTour: String!
@@ -78,6 +79,7 @@ class NewBookingViewController: BaseViewController {
         chooseBtn.layer.shadowRadius = 1.0
         chooseBtn.layer.masksToBounds = false
         chooseBtn.layer.cornerRadius = 4.0
+        chooseBtn.backgroundColor = colorBtn
         tabBarController?.tabBar.isHidden = true
         
 //        DispatchQueue.main.async {
@@ -194,7 +196,7 @@ class NewBookingViewController: BaseViewController {
             DispatchQueue.main.async {
                 self.viewBottomBooking.frame.origin.y = self.view.frame.height - self.viewBottomBooking.frame.height
                 self.bottomContraintView.constant = self.view.frame.height
-                
+                self.bottomCalendarCollectionView.constant = self.viewBottomBooking.frame.height
                 
                 
                 let today = Date()
@@ -229,6 +231,7 @@ class NewBookingViewController: BaseViewController {
         
         UIView.animate(withDuration: 1, animations: {
             DispatchQueue.main.async {
+                self.bottomCalendarCollectionView.constant = 0
                 self.viewBottomBooking.frame.origin.y = self.view.frame.height
                 self.bottomContraintView.constant = self.view.frame.height + self.viewBottomBooking.frame.height
             }

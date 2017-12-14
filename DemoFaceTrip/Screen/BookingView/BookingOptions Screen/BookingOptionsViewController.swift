@@ -72,7 +72,7 @@ class BookingOptionsViewController: BaseViewController {
         bookNowBtn.layer.shadowRadius = 1.0
         bookNowBtn.layer.masksToBounds = false
         bookNowBtn.layer.cornerRadius = 4.0
-        bookNowBtn.backgroundColor = color3
+        bookNowBtn.backgroundColor = colorBtn
         
         decreaseAdultBtn.layer.cornerRadius = 2
         decreaseAdultBtn.layer.borderWidth = 0.5

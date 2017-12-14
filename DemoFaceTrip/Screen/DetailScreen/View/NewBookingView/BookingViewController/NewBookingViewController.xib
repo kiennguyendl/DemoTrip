@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewBookingViewController" customModule="DemoFaceTrip" customModuleProvider="target">
             <connections>
+                <outlet property="bottomCalendarCollectionView" destination="v3q-Vf-Ta0" id="Yfx-U7-piC"/>
                 <outlet property="bottomContraintView" destination="k5Y-JD-Eom" id="YaD-IR-FWS"/>
                 <outlet property="chooseBtn" destination="svb-oc-Vfh" id="4u9-zN-4b7"/>
                 <outlet property="daySelectedInfo" destination="14S-o0-rDj" id="WCs-W6-Wth"/>

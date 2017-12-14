@@ -101,7 +101,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsn-0W-lBg">
                             <rect key="frame" x="266.66666666666669" y="10" width="127.33333333333331" height="45"/>
-                            <color key="backgroundColor" red="0.90588235294117647" green="0.38431372549019605" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.97998422384262085" green="0.3142874538898468" blue="0.29526305198669434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <size key="titleShadowOffset" width="1" height="2"/>
                             <state key="normal" title="Book now">

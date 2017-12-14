@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="weA-Ff-ZZR">
-                        <rect key="frame" x="20" y="0.0" width="280" height="35"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sfB-pJ-5nf">
                             <size key="itemSize" width="50" height="50"/>
@@ -38,7 +38,7 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d3P-Ds-qKE">
-                        <rect key="frame" x="20" y="35" width="280" height="119.5"/>
+                        <rect key="frame" x="0.0" y="35" width="320" height="119.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Wrb-Zd-wz6">
                             <size key="itemSize" width="50" height="50"/>
@@ -50,14 +50,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Il8-26-w5l" firstAttribute="top" secondItem="d3P-Ds-qKE" secondAttribute="bottom" id="1l3-t7-uox"/>
-                    <constraint firstItem="weA-Ff-ZZR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Cc9-fg-eAe"/>
-                    <constraint firstItem="d3P-Ds-qKE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JPa-Ov-gx5"/>
+                    <constraint firstItem="weA-Ff-ZZR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Cc9-fg-eAe"/>
+                    <constraint firstItem="d3P-Ds-qKE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JPa-Ov-gx5"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="top" secondItem="weA-Ff-ZZR" secondAttribute="bottom" id="KGR-vS-WGW"/>
                     <constraint firstItem="d3P-Ds-qKE" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3/4" id="Plw-Ha-m86"/>
                     <constraint firstAttribute="trailing" secondItem="Il8-26-w5l" secondAttribute="trailing" id="QNi-hC-87W"/>
                     <constraint firstItem="Il8-26-w5l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="W0K-ad-w43"/>
-                    <constraint firstAttribute="trailing" secondItem="weA-Ff-ZZR" secondAttribute="trailing" constant="20" id="aDV-N9-OXF"/>
-                    <constraint firstAttribute="trailing" secondItem="d3P-Ds-qKE" secondAttribute="trailing" constant="20" id="dCS-1b-8HP"/>
+                    <constraint firstAttribute="trailing" secondItem="weA-Ff-ZZR" secondAttribute="trailing" id="aDV-N9-OXF"/>
+                    <constraint firstAttribute="trailing" secondItem="d3P-Ds-qKE" secondAttribute="trailing" id="dCS-1b-8HP"/>
                     <constraint firstAttribute="bottom" secondItem="Il8-26-w5l" secondAttribute="bottom" id="dMx-L4-MOG"/>
                     <constraint firstItem="weA-Ff-ZZR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hFn-dp-09Z"/>
                 </constraints>

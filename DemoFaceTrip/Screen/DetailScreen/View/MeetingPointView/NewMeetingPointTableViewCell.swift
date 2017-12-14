@@ -73,7 +73,7 @@ class NewMeetingPointTableViewCell: UITableViewCell {
 extension NewMeetingPointTableViewCell: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             let location = CLLocationCoordinate2D(latitude: self.latitue, longitude: self.longtitue)
             let camera = GMSCameraPosition.camera(withLatitude: self.latitue, longitude: self.longtitue, zoom: 15)
             self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), camera: camera)
@@ -92,7 +92,7 @@ extension NewMeetingPointTableViewCell: CLLocationManagerDelegate{
             self.googleMapsView.isUserInteractionEnabled = false
             self.locationManager.stopUpdatingLocation()
 //            self.layoutIfNeeded()
-        }
+        //}
        
     }
     

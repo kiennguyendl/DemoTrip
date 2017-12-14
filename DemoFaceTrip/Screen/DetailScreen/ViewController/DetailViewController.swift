@@ -86,6 +86,7 @@ class DetailViewController: BaseViewController {
         viewMenu.layer.shadowOffset = CGSize.zero
         viewMenu.layer.shadowRadius = 1
         viewMenu.isHidden = true
+        viewMenu.backgroundColor?.withAlphaComponent(0.5)
 //        viewMenu.frame.origin.y = self.view.frame.height
 //        contraintBottomMenuView.constant = self.view.frame.height + viewMenu.frame.height
         hiddenView.isHidden = true
@@ -121,7 +122,7 @@ class DetailViewController: BaseViewController {
         bookingBtn.layer.masksToBounds = false
         bookingBtn.layer.cornerRadius = 4.0
         tabBarController?.tabBar.isHidden = true
-        
+        bookingBtn.backgroundColor = colorBtn
 
     }
     

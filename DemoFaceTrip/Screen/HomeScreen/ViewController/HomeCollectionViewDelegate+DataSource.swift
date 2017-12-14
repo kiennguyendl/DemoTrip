@@ -522,6 +522,44 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if collectionView == collectionViewListing{
+            return CGSize(width: collectionView.frame.width, height: 50.0)
+        }
+        return CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if collectionView == collectionViewListing{
+            switch kind {
+            case UICollectionElementKindSectionHeader:
+                let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderViewForListing", for: indexPath) as! HeaderForListingCollectionReusableView
+                switch typeOfMenu{
+                case .Recentlies:
+                    reusableview.nameMenuType.text = "Recentlies"
+                case .WishList:
+                    reusableview.nameMenuType.text = "Wish List"
+                case .BestSeller:
+                    reusableview.nameMenuType.text = "Best Seller"
+                case .FTPickes:
+                    reusableview.nameMenuType.text = "FT Pickes"
+
+                case .Daytrip:
+                    reusableview.nameMenuType.text = "Day Trip"
+                case .MultiDayTrip:
+                    reusableview.nameMenuType.text = "Multi Day Trip"
+    
+                case .Attractions, .Activities, .Experiences:
+                    reusableview.nameMenuType.text = typeOfSubMenu
+                case .None:
+                    print("")
+                }
+                return reusableview
+            default:  fatalError("Unexpected element kind")
+            }
+        }
+        return UICollectionReusableView()
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
