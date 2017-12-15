@@ -30,23 +30,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             if Settings.isScaleMenuView!{
                 
                 if self.indexPathSelected == indexPath{
-                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                    cell.nameCarousel.textColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                    cell.viewColor.backgroundColor = .white
+                    cell.nameCarousel.textColor = .white
                 }else{
-                    cell.viewColor.backgroundColor = UIColor.white
-                    cell.nameCarousel.textColor = UIColor.gray
+                    cell.viewColor.backgroundColor = .white
+                    cell.nameCarousel.textColor = .white
                 }
                 cell.backgroundColor = UIColor.white
             }else{
                 if indexPath == indexPathSelected{
-                    cell.viewColor.backgroundColor = UIColor.white
-                    cell.nameCarousel.textColor = UIColor.white
+                    cell.viewColor.backgroundColor = .black
+                    cell.nameCarousel.textColor = .black
                     //self.collectionViewCarousels.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
                 }else{
-                    cell.viewColor.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-                    cell.nameCarousel.textColor = color4
+                    cell.viewColor.backgroundColor = .white
+                    cell.nameCarousel.textColor = .gray
                 }
-                cell.backgroundColor = UIColor(red: 235.0/255.0, green: 114.0/255.0, blue: 106.0/255.0, alpha: 1.0)
+                cell.backgroundColor = .white
             }
             
             //cell.nameCarousel.text = menuCatagory1[indexPath.row].uppercased()

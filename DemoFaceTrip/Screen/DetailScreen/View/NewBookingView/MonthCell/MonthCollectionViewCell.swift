@@ -172,7 +172,12 @@ extension MonthCollectionViewCell: UICollectionViewDelegate, UICollectionViewDat
             
             if cell.isSelected == true {
                 if cell.isChangedColor == false{
-                
+//                    if self.isShow == true{
+//                        self.isShow = false
+//                    }else{
+//                        self.isShow = true
+//                    }
+//                    
                     self.isShow = true
                 }else{
                     self.isShow = false

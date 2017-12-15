@@ -138,10 +138,10 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value="28 Reviews"/>
                                 <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                    <color key="value" red="0.84650618654822329" green="0.77774322514204586" blue="0.307702358979488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="value" red="0.12549019610000001" green="0.34606995559999998" blue="0.026024108510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                    <color key="value" red="0.84650618649999998" green="0.77774322510000005" blue="0.30770235899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="value" red="0.12549019610000001" green="0.34606995559999998" blue="0.026024108510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
                                     <color key="value" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -159,7 +159,7 @@
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                    <color key="value" red="0.84650618649999998" green="0.77774322510000005" blue="0.30770235899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="value" red="0.12549019610000001" green="0.34606995559999998" blue="0.026024108510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>

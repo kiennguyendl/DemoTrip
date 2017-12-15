@@ -63,6 +63,7 @@ class NewBookingViewController: BaseViewController {
     internal(set) var selectedIndexPath: IndexPath?
     internal(set) var daySelected: String!
     var oldSelectedIndexPath: IndexPath?
+    var isChangedColor = false
     internal(set) var selectedDates         = [Date]()
     
     var monthInfoForSection = [Int:(firstDay:Int, daysTotal:Int)]()
@@ -124,6 +125,7 @@ class NewBookingViewController: BaseViewController {
                         self.isShowBottomView = true
                     }
                     self.presentBottomView()
+                    self.isShowBottomView = true
                 }else{
                     
                     dismissBottomView()

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="261" height="180"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-pM-wn1">
-                        <rect key="frame" x="0.0" y="0.0" width="261" height="180"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tzx-pM-wn1">
+                        <rect key="frame" x="10" y="0.0" width="241" height="180"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TaR-NV-byV">
                             <size key="itemSize" width="50" height="50"/>
@@ -34,8 +34,8 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Tzx-pM-wn1" secondAttribute="bottom" id="1E8-E8-WMy"/>
                 <constraint firstItem="Tzx-pM-wn1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SUE-fH-mjK"/>
-                <constraint firstAttribute="trailing" secondItem="Tzx-pM-wn1" secondAttribute="trailing" id="WTa-yK-dfJ"/>
-                <constraint firstItem="Tzx-pM-wn1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lcZ-7Q-L9L"/>
+                <constraint firstAttribute="trailing" secondItem="Tzx-pM-wn1" secondAttribute="trailing" constant="10" id="WTa-yK-dfJ"/>
+                <constraint firstItem="Tzx-pM-wn1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="lcZ-7Q-L9L"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="261" height="180"/>

@@ -20,19 +20,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7k-D7-f6c">
-                        <rect key="frame" x="105.5" y="106.5" width="15" height="15"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="9LS-we-HNn"/>
-                            <constraint firstAttribute="height" constant="15" id="lVV-gr-Gxk"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xM3-QC-EPz">
                         <rect key="frame" x="108" y="109" width="10" height="10"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="10" id="baN-6T-bir"/>
-                            <constraint firstAttribute="height" constant="10" id="rHQ-kk-FXF"/>
+                            <constraint firstAttribute="width" constant="10" id="9LS-we-HNn"/>
+                            <constraint firstAttribute="height" constant="10" id="lVV-gr-Gxk"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xM3-QC-EPz">
+                        <rect key="frame" x="109.5" y="110.5" width="7" height="7"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="7" id="baN-6T-bir"/>
+                            <constraint firstAttribute="height" constant="7" id="rHQ-kk-FXF"/>
                         </constraints>
                     </view>
                 </subviews>

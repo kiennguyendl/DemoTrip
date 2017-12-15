@@ -20,7 +20,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jch-bU-gyQ">
-                        <rect key="frame" x="0.0" y="66.5" width="31.5" height="32.5"/>
+                        <rect key="frame" x="0.0" y="61.5" width="31.5" height="3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="a5L-Ko-5AN"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yk-or-dmG">
                         <rect key="frame" x="0.0" y="43" width="31.5" height="13.5"/>
@@ -31,11 +34,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Jch-bU-gyQ" firstAttribute="top" secondItem="4yk-or-dmG" secondAttribute="bottom" constant="10" id="15P-FN-qC4"/>
-                <constraint firstItem="Jch-bU-gyQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6sM-Z7-HUw"/>
-                <constraint firstAttribute="bottom" secondItem="Jch-bU-gyQ" secondAttribute="bottom" id="LLw-ry-PyV"/>
+                <constraint firstItem="Jch-bU-gyQ" firstAttribute="width" secondItem="4yk-or-dmG" secondAttribute="width" id="OMA-Ba-tvp"/>
+                <constraint firstItem="Jch-bU-gyQ" firstAttribute="top" secondItem="4yk-or-dmG" secondAttribute="bottom" constant="5" id="Y4G-7r-cYs"/>
                 <constraint firstItem="4yk-or-dmG" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="c8j-48-JAO"/>
-                <constraint firstItem="Jch-bU-gyQ" firstAttribute="width" secondItem="4yk-or-dmG" secondAttribute="width" id="je1-Na-kNw"/>
+                <constraint firstItem="Jch-bU-gyQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rid-CZ-zrF"/>
                 <constraint firstItem="4yk-or-dmG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vqv-Bo-jmb"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

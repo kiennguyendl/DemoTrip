@@ -95,18 +95,24 @@ class HomeViewController: BaseViewController {
     }
     
     func setupLayer() {
-        setNonColorForStatusBar()
+        //setNonColorForStatusBar()
         //        setRedColorForStatusBar()
         collectionViewListing.isHidden = true
         self.heightOfViewBottomLineMenu.constant = 0
         initCollectionView()
         initTableView()
-        carouselsView.backgroundColor = color3
+        //carouselsView.backgroundColor = color3
         viewForHeaderZero  = HeaderZeroView()
+        
+        //set color for menu view
         setColorForMenuView()
+        
         filterView.isHidden = true
+        
         setupButtonOnFilterView()
+        
         //addSwipeForController()
+        
         heightOfCarouselsView = carouselsView.frame.height
         newPos = self.viewMenu.frame.height - (collectionViewCarousels.frame.height + 15)
         
@@ -141,7 +147,7 @@ class HomeViewController: BaseViewController {
         //set hide navigationbar
 //        setRedColorForStatusBar()
         navigationController?.isNavigationBarHidden = true
-        setNonColorForStatusBar()
+        //setNonColorForStatusBar()
         //show tabbar controller
         tabBarController?.tabBar.isHidden = false
         
@@ -156,7 +162,9 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        gradientLayer.frame = self.viewMenu.bounds
+        
+        //set frame for gradient layer of menu view
+        //gradientLayer.frame = self.viewMenu.bounds
         
     }
     
@@ -165,7 +173,7 @@ class HomeViewController: BaseViewController {
         collectionViewCarousels.delegate = self
         collectionViewCarousels.dataSource = self
         collectionViewCarousels.register(UINib.init(nibName: "CarouselsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCell")
-        collectionViewCarousels.backgroundColor = color3
+        //collectionViewCarousels.backgroundColor = color3
         collectionViewCarousels.showsHorizontalScrollIndicator = false
 
         collectionViewListing.delegate = self
@@ -182,7 +190,7 @@ class HomeViewController: BaseViewController {
         searchBtn.isHidden = false
         inputTextSearchTf.isHidden = false
         setColorForMenuView()
-        self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+        self.childViewMenu.layer.shadowOpacity = 1
         self.heightOfViewBottomLineMenu.constant = 0
     }
     
@@ -191,7 +199,7 @@ class HomeViewController: BaseViewController {
         menuBtn.isHidden = true
         searchBtn.isHidden = true
         inputTextSearchTf.isHidden = true
-        self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+        self.childViewMenu.layer.shadowOpacity = 0
         self.heightOfViewBottomLineMenu.constant = 1
         
     }
@@ -199,32 +207,29 @@ class HomeViewController: BaseViewController {
     func setNonColorForStatusBar(){
         statusBar.backgroundColor = .clear
         statusBar.tintColor = .white
-        
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = .clear
-//        self.navigationController?.navigationBar.barStyle = .black
-//        self.navigationController?.navigationBar.tintColor = .white
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     func setColorForMenuView() {
 //        if Settings.isScaleMenuView!{
 //            print("abc")
 //        }else{
-            self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
-            gradientLayer.frame = self.viewMenu.bounds
-            self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+            //self.viewMenu.layer.insertSublayer(gradientLayer, below: self.childViewMenu.layer)
+            //gradientLayer.frame = self.viewMenu.bounds
+//            self.childViewMenu.dropShadow(color: UIColor(red: 152.0/255.0, green: 91.0/255.0, blue: 86.0/255.0, alpha: 1.0), opacity: 1, offSet: CGSize(width: -1, height: 1), radius: 5, scale: true)
+        
+        self.childViewMenu.layer.shadowColor = UIColor.black.cgColor
+        self.childViewMenu.layer.shadowOpacity = 0.5
+        self.childViewMenu.layer.shadowOffset = CGSize.zero
+        self.childViewMenu.layer.shadowRadius = 5
             self.childViewMenu.layer.cornerRadius = self.childViewMenu.frame.width / 97
 //        }
     }
     
     //init and register cell for tableview
     func initTableView() {
-        addContrailForTableView()
         
         tableViewCarousels.delegate = self
         tableViewCarousels.dataSource = self
@@ -235,6 +240,10 @@ class HomeViewController: BaseViewController {
         tableViewCarousels.tag = 2
         collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
         tableViewCarousels.backgroundColor = UIColor.white
+        tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
+        tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableViewCarousels.separatorStyle = .none
+        tableViewCarousels.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
         tableViewSubMenu.delegate = self
         tableViewSubMenu.dataSource = self
@@ -245,36 +254,6 @@ class HomeViewController: BaseViewController {
         tableViewSubMenu.tag = 2
         //collectionViewListing.superview?.bringSubview(toFront: tableViewCarousels)
         tableViewSubMenu.backgroundColor = UIColor.white
-    }
-
-    func addContrailForTableView() {
-        
-        let frame = self.view.frame
-        //tableViewCarousels = UITableView(frame: frame, style: .grouped)
-//        tableViewSubMenu = UITableView(frame: frame, style: .grouped)
-        
-        //self.view.addSubview(tableViewCarousels)
-//        self.view.addSubview(tableViewSubMenu)
-        
-//        let topConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-//        let leadingContraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
-//        let trailingConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-//        let bottomConstraint = NSLayoutConstraint(item: self.tableViewCarousels, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-//        NSLayoutConstraint.activate([topConstraint, leadingContraint, trailingConstraint, bottomConstraint])
-        
-        
-//        let topSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.carouselsView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-//        let leadingSubContraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
-//        let trailingSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
-//        let bottomSubConstraint = NSLayoutConstraint(item: self.tableViewSubMenu, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: 0)
-//        NSLayoutConstraint.activate([topSubConstraint, leadingSubContraint, trailingSubConstraint, bottomSubConstraint])
-        
-        
-        tableViewCarousels.translatesAutoresizingMaskIntoConstraints = false
-        tableViewCarousels.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableViewCarousels.separatorStyle = .none
-        tableViewCarousels.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        
         tableViewSubMenu.translatesAutoresizingMaskIntoConstraints = false
         tableViewSubMenu.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableViewSubMenu.separatorStyle = .none
@@ -375,10 +354,10 @@ class HomeViewController: BaseViewController {
     
     // action when scroll up tableview or collectionview
     func moveUpCarouselsView() {
-        if self.carouselsView.frame.origin.y >= self.viewMenu.frame.height{
-            self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y - self.heightOfCarouselsView
-            self.topContrailOfCarouselsView.constant = -self.heightOfCarouselsView
-            //self.bottomContrailOfCarouselsView.constant = self.heightOfCarouselsView
+        if self.carouselsView.frame.origin.y == self.viewMenu.frame.height{
+            //self.carouselsView.frame.origin.y -= self.heightOfCarouselsView
+            self.topContrailOfCarouselsView.constant = -(self.heightOfCarouselsView)
+            self.bottomContrailOfCarouselsView.constant -= self.heightOfCarouselsView
             self.view.bringSubview(toFront: self.viewMenu)
             Settings.isScaleMenuView = true
         }
@@ -390,9 +369,9 @@ class HomeViewController: BaseViewController {
         if self.carouselsView.frame.origin.y < self.viewMenu.frame.height{
             self.carouselsView.frame.origin.y = self.carouselsView.frame.origin.y + self.heightOfCarouselsView
             self.topContrailOfCarouselsView.constant = 0
-            //self.bottomContrailOfCarouselsView.constant = 0
+            self.bottomContrailOfCarouselsView.constant = 0
             self.view.bringSubview(toFront: self.viewMenu)
-            Settings.isScaleMenuView = true
+            Settings.isScaleMenuView = false
         }
         
     }
