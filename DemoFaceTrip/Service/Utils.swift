@@ -9,6 +9,7 @@
 import Foundation
 
 //let urlForHome = "http://localhost:9999/"
-let urlForHome = "http://192.168.1.14:9999/"
+let urlForHome = "http://192.168.1.160:9999/"
 let VND = 22.7
 
+let urlRedirectToPayment = "https://testsecureacceptance.cybersource.com/pay"

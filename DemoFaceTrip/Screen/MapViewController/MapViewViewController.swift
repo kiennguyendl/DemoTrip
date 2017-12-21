@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewViewController: UIViewController {
+class MapViewViewController: BaseViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     var delegate: MeetingPointTableViewCellProtocol?

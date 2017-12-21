@@ -225,6 +225,9 @@
                     <state key="normal" title="Confirm &amp; Pay">
                         <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="confirmPayment:" destination="-1" eventType="touchUpInside" id="ZYz-lh-MpG"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mastercard" translatesAutoresizingMaskIntoConstraints="NO" id="o0L-zo-b1V">
                     <rect key="frame" x="305" y="285" width="50" height="30"/>

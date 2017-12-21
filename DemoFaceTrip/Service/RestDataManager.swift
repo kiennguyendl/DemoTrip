@@ -259,6 +259,20 @@ class RestDataManager: NSObject {
             }
         })
     }
+    
+    func redirectToPaymentPage(_ url: String, action: String, dataForSigning: String, completionHanler: @escaping(String) -> Void) {
+        let data = [
+            "action": action,
+            "data": dataForSigning
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: data, headers: nil).responseString(completionHandler: { response in
+            if let data = response.data, let dataEncrypt = String(data: data, encoding: .utf8){
+                completionHanler(dataEncrypt)
+            }
+            //completionHanler("")
+        })
+    }
 }
 
 
