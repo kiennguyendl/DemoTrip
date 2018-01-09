@@ -88,35 +88,35 @@ class DetailBookingViewController: BaseViewController {
     }
     @IBAction func nextStepBtn(_ sender: Any) {
         
-        if tfFullName.text == ""{
-            lineViewFullName.backgroundColor = .red
-            lblWarningName.isHidden = false
-        }
+//        if tfFullName.text == ""{
+//            lineViewFullName.backgroundColor = .red
+//            lblWarningName.isHidden = false
+//        }
+//
+//        if tfPhoneNumber.text == ""{
+//            lineViewPhoneNumber.backgroundColor = .red
+//            lblWarningPhoneNumber.isHidden = false
+//        }
+//        if tfEmailAddress.text == ""{
+//            lineViewEmailAddress.backgroundColor = .red
+//            lblWarningEmail.isHidden = false
+//        }
+//        if tfPickUpLocation.text == ""{
+//            lineViewPickupLocation.backgroundColor = .red
+//            lblWarningPickupLocation.isHidden = false
+//        }
         
-        if tfPhoneNumber.text == ""{
-            lineViewPhoneNumber.backgroundColor = .red
-            lblWarningPhoneNumber.isHidden = false
-        }
-        if tfEmailAddress.text == ""{
-            lineViewEmailAddress.backgroundColor = .red
-            lblWarningEmail.isHidden = false
-        }
-        if tfPickUpLocation.text == ""{
-            lineViewPickupLocation.backgroundColor = .red
-            lblWarningPickupLocation.isHidden = false
-        }
-        
-        if tfFullName.text != "" && tfPhoneNumber.text != "" && tfEmailAddress.text != "" && tfPickUpLocation.text != ""{
+//        if tfFullName.text != "" && tfPhoneNumber.text != "" && tfEmailAddress.text != "" && tfPickUpLocation.text != ""{
             let vc = BookingPaymentViewController()
-            vc.nameCity = nameCity
-            vc.nameTour = nameTour
-            vc.statusTour = statusTour
-            vc.daySelectedInfo = daySelectedInfo
-            vc.numAdult = numAdult
-            vc.numChild = numChild
-            vc.numInfant = numInfant
+//            vc.nameCity = nameCity
+//            vc.nameTour = nameTour
+//            vc.statusTour = statusTour
+//            vc.daySelectedInfo = daySelectedInfo
+//            vc.numAdult = numAdult
+//            vc.numChild = numChild
+//            vc.numInfant = numInfant
             navigationController?.pushViewController(vc, animated: true)
-        }
+//        }
     }
 }
 

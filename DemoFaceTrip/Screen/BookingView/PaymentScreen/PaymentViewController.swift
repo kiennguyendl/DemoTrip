@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import WebKit
 
 class PaymentViewController: BaseViewController {
 
-    @IBOutlet weak var webViewPayment: UIWebView!
+    @IBOutlet weak var webViewPayment: WKWebView!
+//    @IBOutlet weak var webViewPayment: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,10 +55,23 @@ class PaymentViewController: BaseViewController {
         RestDataManager.shareInstance.redirectToPaymentPage(urlForHome, action: "encrypte", dataForSigning: dataSigned, completionHanler: {response in
             let postString = self.buildPostPrams(data: postParam) + "&signature=\(response)"
             print("postString:" + postString)
+            
+            if let cookies = HTTPCookieStorage.shared.cookies {
+                for cookie in cookies {
+                    NSLog("\(cookie)")
+                }
+            }
+            
+            let storage = HTTPCookieStorage.shared
+            for cookie in storage.cookies! {
+                storage.deleteCookie(cookie)
+            }
+            
             var request = URLRequest(url: URL(string: urlRedirectToPayment)!)
             request.httpMethod = "POST"
             request.httpBody = postString.data(using: .utf8)
-            self.webViewPayment.loadRequest(request)
+            request.timeoutInterval = 10000
+            self.webViewPayment.load(request)
         })
     }
     

@@ -67,7 +67,8 @@ class BookingPaymentViewController: BaseViewController {
     
     @IBAction func confirmPayment(_ sender: Any) {
         let vc = PaymentViewController()
-        present(vc, animated: true, completion: nil)
+//        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
