@@ -40,7 +40,7 @@ class LoginViewController: BaseViewController {
         let homeNavController = initNavHomeViewController()
         
         let profile = initNavigationControllerWithVC(ProfileViewController(nibName: "ProfileViewController", bundle: nil))
-        let like = initNavigationControllerWithVC(LikeViewController(nibName: "LikeViewController", bundle: nil))
+        let like = initNavigationControllerWithVC(FriendsViewController(nibName: "FriendsViewController", bundle: nil))
         let inbox = initNavigationControllerWithVC(InboxViewController(nibName: "InboxViewController", bundle: nil))
         let booking = initNavigationControllerWithVC(BookingViewController(nibName: "BookingViewController", bundle: nil))
         

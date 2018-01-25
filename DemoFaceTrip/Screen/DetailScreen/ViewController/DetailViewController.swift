@@ -85,7 +85,7 @@ class DetailViewController: BaseViewController {
         viewMenu.layer.shadowColor = UIColor.gray.cgColor
         viewMenu.layer.shadowOpacity = 1
         viewMenu.layer.shadowOffset = CGSize.zero
-        viewMenu.layer.shadowRadius = 1
+        viewMenu.layer.shadowRadius = 2
         viewMenu.isHidden = true
         viewMenu.backgroundColor?.withAlphaComponent(0.5)
 //        viewMenu.frame.origin.y = self.view.frame.height

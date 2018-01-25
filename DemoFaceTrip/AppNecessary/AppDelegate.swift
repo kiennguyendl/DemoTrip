@@ -68,16 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeNavController = initNavHomeViewController()
         
         let profile = initNavigationControllerWithVC(ProfileViewController(nibName: "ProfileViewController", bundle: nil))
-        let like = initNavigationControllerWithVC(LikeViewController(nibName: "LikeViewController", bundle: nil))
+        let friends = initNavigationControllerWithVC(FriendsViewController(nibName: "FriendsViewController", bundle: nil))
         let inbox = initNavigationControllerWithVC(InboxViewController(nibName: "InboxViewController", bundle: nil))
-        let booking = initNavigationControllerWithVC(BookingViewController(nibName: "BookingViewController", bundle: nil))
+        let tour = initNavigationControllerWithVC(HomeViewController(nibName: "HomeViewController", bundle: nil))
         
-        setTabbarItem(homeNavController, title: "HOME", image: UIImage(named: "home1")!, selectedImage: UIImage(named: "home2")!)
-        setTabbarItem(like, title: "LIKE", image: UIImage(named: "like1")!, selectedImage: UIImage(named: "like2")!)
-        setTabbarItem(inbox, title: "INBOX", image: UIImage(named: "inbox1")!, selectedImage: UIImage(named: "inbox2")!)
-        setTabbarItem(booking, title: "BOOKING", image: UIImage(named: "booking1")!, selectedImage: UIImage(named: "booking2")!)
-        setTabbarItem(profile, title: "PROFILE", image: UIImage(named: "profile1")!, selectedImage: UIImage(named: "profile2")!)
-        tabbarController.viewControllers = [homeNavController, like, inbox, booking, profile]
+        setTabbarItem(homeNavController, title: "FEEDS", image: UIImage(named: "home1")!, selectedImage: UIImage(named: "home2")!)
+        setTabbarItem(friends, title: "FRIENDS", image: UIImage(named: "like1")!, selectedImage: UIImage(named: "like2")!)
+        setTabbarItem(inbox, title: "MESSAGES", image: UIImage(named: "inbox1")!, selectedImage: UIImage(named: "inbox2")!)
+        setTabbarItem(tour, title: "TOURS", image: UIImage(named: "booking1")!, selectedImage: UIImage(named: "booking2")!)
+        setTabbarItem(profile, title: "ME", image: UIImage(named: "profile1")!, selectedImage: UIImage(named: "profile2")!)
+        tabbarController.viewControllers = [homeNavController, friends, inbox, tour, profile]
         return tabbarController
     }
     
@@ -92,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initNavHomeViewController() -> NavigationController{
-        let homeVC = HomeViewController()
-        return initNavigationControllerWithVC(homeVC)
+        let feedsVC = FeedsViewController()
+        return initNavigationControllerWithVC(feedsVC)
     }
     
     private func initNavigationControllerWithVC(_ controller: BaseViewController) -> NavigationController {
