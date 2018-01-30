@@ -53,7 +53,7 @@ class FeedsTableViewCell: UITableViewCell {
     func setUpButton() {
         followBtn.layer.cornerRadius = followBtn.frame.height / 2
         followBtn.layer.masksToBounds = true
-        followBtn.layer.borderWidth = 1.0
+        followBtn.layer.borderWidth = 2.0
         followBtn.layer.borderColor = UIColor.blue.cgColor
     }
     func setUpAvartar() {

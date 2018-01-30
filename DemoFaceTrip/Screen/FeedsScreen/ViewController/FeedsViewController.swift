@@ -53,7 +53,7 @@ extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
             return cell
         }else if currentCell == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "suggestionCell", for: indexPath) as! SuggestionTableViewCell
-            
+            cell.delegate = self
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "feedsCell", for: indexPath) as! FeedsTableViewCell
@@ -102,5 +102,12 @@ extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
             return 0
         }
         return 7
+    }
+}
+
+extension FeedsViewController: FeedProtocol{
+    func createPost() {
+        let vc = ProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

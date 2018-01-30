@@ -13,8 +13,12 @@ import CoreLocation
 import AddressBook
 import Contacts
 
+let keyPlaymusicNotification = "keyPlaymusicNotification"
+let keyProgressBarNotification = "keyProgressBarNotification"
+
 class SuggestionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var playPauseBtn: UIButton!
     @IBOutlet weak var suggestionBtn: UIButton!
     @IBOutlet weak var textView: ReadMoreTextView!
     
@@ -28,37 +32,73 @@ class SuggestionTableViewCell: UITableViewCell {
     @IBOutlet weak var createBtn: UIButton!
     @IBOutlet weak var heightOfImageCollectionView: NSLayoutConstraint!
     
+    @IBOutlet weak var sliderBar: UISlider!
     @IBOutlet weak var imageViewUser: UIImageView!
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var hiddenView: UIView!
     
+    @IBOutlet weak var timeViewPlay: UIView!
+//    @IBOutlet weak var progressTimeView: UIView!
+//    @IBOutlet weak var processTimeContraint: NSLayoutConstraint!
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    @IBOutlet weak var displayTimeLbl: UILabel!
     var dateFormater: DateFormatter?
     //var listImageHasLocation: [ImagesCreateByDate] = []
     var listImageCreateDate = [ImagesCreateByDate]()
     var listAsset = [AsssetInfor]()
     var assets: [PHAsset] = []
     var listAssetInfor: [AsssetInfor] = []
+    var listImage: [UIImage] = []
     
     var endList = false
     var scrollingTimer = Timer()
+    var displayTimer = Timer()
+    
+    let notificationCenter = NotificationCenter.default
+    var backgroundMusicPlayer: AVAudioPlayer!
+    var timeObserver: AnyObject!
+    var timePlay = 3
+    
+    var delegate: FeedProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        heightOfImageCollectionView.constant = imageCollectionView.frame.width / 3
+        
         dateFormater = DateFormatter()
         dateFormater?.dateFormat = "MM-dd-yyyy"
         setupLayout()
-        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "12-26-2017") as! NSDate, endDate: dateFormater?.date(from: "12-29-2017") as! NSDate)
+        addObserverForView()
+        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "12-10-2017") as! NSDate, endDate: dateFormater?.date(from: "12-29-2017") as! NSDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    override func layoutSubviews() {
+        heightOfImageCollectionView.constant = imageCollectionView.frame.width / 3 - 1
+    }
+    func addObserverForView() {
+        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic), name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil)
+        let data = ["isPlayMusic": true]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+        
+//        notificationCenter.addObserver(self, selector: #selector(runProgressBar), name: NSNotification.Name(rawValue: keyProgressBarNotification), object: nil)
+//        notificationCenter.post(name: NSNotification.Name(rawValue: keyProgressBarNotification), object: nil, userInfo: nil)
+//        sliderBar.addTarget(self, action: #selector(sliderValueChange), for: .valueChanged)
+        
+    }
+    
     func setupLayout() {
-        heightOfImageCollectionView.constant = imageCollectionView.bounds.width / 3
+        
+//        self.processTimeContraint.constant = 0
         setUpIcon()
+        setupButton()
+        setUpAvartar()
         setupCollectionView()
+        heightOfImageCollectionView.constant = imageCollectionView.frame.width / 3 - 1
+        progressView.progress = 0.0
         setTimer()
     }
     
@@ -70,6 +110,11 @@ class SuggestionTableViewCell: UITableViewCell {
         let imgPhoto = UIImage(named: "galleryIcon")?.withRenderingMode(.alwaysTemplate)
         imagePhoto.image = imgPhoto
         imagePhoto.tintColor = .white
+        
+        
+        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        playPauseBtn.setImage(image, for: .normal)
+        playPauseBtn.tintColor = UIColor.white
     }
     
     func setupCollectionView() {
@@ -80,7 +125,67 @@ class SuggestionTableViewCell: UITableViewCell {
         
         slideShowCollectionView.delegate = self
         slideShowCollectionView.dataSource = self
-        slideShowCollectionView.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageCell")
+        slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
+    }
+    
+    func setupButton() {
+        suggestionBtn.layer.cornerRadius = suggestionBtn.frame.height / 2
+        suggestionBtn.layer.masksToBounds = true
+        suggestionBtn.layer.borderWidth = 2.0
+        suggestionBtn.layer.borderColor = UIColor.init(red: 88/255, green: 207/255, blue: 144/255, alpha: 1).cgColor
+        
+        createBtn.layer.cornerRadius = createBtn.frame.height / 10
+        createBtn.layer.masksToBounds = true
+    }
+    func setUpAvartar() {
+        avatarView.clipsToBounds = false
+        
+        avatarView.layer.shadowColor = UIColor.black.cgColor
+        avatarView.layer.shadowOpacity = 0.5
+        avatarView.layer.shadowOffset = CGSize(width: 0.0,height: 1.0)
+        avatarView.layer.shadowRadius = 3
+        avatarView.layer.shadowPath = UIBezierPath(roundedRect: avatarView.bounds, cornerRadius: avatarView.frame.width / 2).cgPath
+        avatarView.backgroundColor = .clear
+        avatarImageView.clipsToBounds = true
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
+        
+    }
+    
+    @objc func sliderValueChange(slider: UISlider) {
+        print("value: \(sliderBar.value)")
+    }
+    
+    @objc func playBackgroundMusic(_ notification: NSNotification) {
+        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool{
+            
+            let audioUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "01 The Moment", ofType: "mp3")!)
+            
+            do{
+                if backgroundMusicPlayer == nil{
+                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl as URL)
+                }
+            }catch{
+                print("can not play file")
+            }
+            if backgroundMusicPlayer == nil {
+                print("Could not create audio player")
+                return
+            }
+            if isPlayMusic{
+                print("playing music")
+                backgroundMusicPlayer.play()
+            }else{
+                print("the end play music")
+                backgroundMusicPlayer.pause()
+                backgroundMusicPlayer = nil
+            }
+        }
+    }
+    
+    @objc func runProgressBar() {
+        UIView.animate(withDuration: TimeInterval(listAsset.count * 2), animations: {
+            self.progressView.setProgress(1.0, animated: true)
+        })
     }
     
     func fetchImageFromDateToDate(startDate: NSDate, endDate: NSDate) {
@@ -117,11 +222,14 @@ class SuggestionTableViewCell: UITableViewCell {
                             strongSelf.listAsset += listAssetInfor
                         }
                     }
-                    //                    print(strongSelf.listImageCreateDate)
+                    
                     DispatchQueue.main.async {
-//                        strongSelf.photosTableView.reloadData()
-                        strongSelf.slideShowCollectionView.reloadData()
-                        strongSelf.imageCollectionView.reloadData()
+                        
+                        if strongSelf.listAsset.count == fetchResult.count{
+                            strongSelf.slideShowCollectionView.reloadData()
+                            strongSelf.imageCollectionView.reloadData()
+                        }
+                        
                     }
                     
                 })
@@ -179,20 +287,12 @@ class SuggestionTableViewCell: UITableViewCell {
                         let address = data[0].postalAddress!
                         let city = address.city
                         var detailAddress = ""
-                        //                            if let subLocality = address.subLocality{
-                        //                                detailAddress += subLocality
-                        //                            }
-                        //
-                        //                            if let subAdministrativeArea = address.subAdministrativeArea{
-                        //                                detailAddress += subAdministrativeArea
-                        //                            }
                         if address.subLocality != ""{
                             detailAddress += address.subLocality
                         }
                         if address.subAdministrativeArea != ""{
                             detailAddress += " ," + address.subAdministrativeArea
                         }
-                        //                            let detailAddress = address.subLocality + ", " + address.subAdministrativeArea
                         var place = city
                         if detailAddress != ""{
                             place += ", " + detailAddress
@@ -239,44 +339,109 @@ class SuggestionTableViewCell: UITableViewCell {
     
     func setTimer() {
         scrollingTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.autoScroll), userInfo: nil, repeats: true)
+        
+        displayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displayTime), userInfo: nil, repeats: true)
+    }
+    var countdown: Float = 0.0
+    
+    @objc func displayTime() {
+        let maxTime = listAsset.count * 2
+        if listAsset.count > 0{
+            if Int(self.countdown) < maxTime{
+                countdown += 1.0
+            UIView.animate(withDuration: 1, animations: {
+                self.displayTimeLbl.text = String(format: "%02d:%02d", ((lround(Double(self.countdown)) / 60) % 60), lround(Double(self.countdown)) % 60)
+            })
+            
+            }
+        }
     }
     
-    var x = 1
+    var x = 0
     
     @objc func autoScroll() {
+        
+        
+        sliderBar.maximumValue = Float(listAsset.count) * 2
+        
         if listAsset.count > 0{
             
-            
                 if self.x < self.listAsset.count {
+                    //countdown += 1
+                    displayTimeLbl.text = "\(countdown)"
+                    
+                    print("scrollingTimer: \(scrollingTimer.timeInterval)")
+                    UIView.animate(withDuration: TimeInterval(listAsset.count * 2), animations: {
+                        self.progressView.setProgress(1.0, animated: true)
+                        self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
+                    })
+                    
                     let newIndexPath = IndexPath(item: x, section: 0)
+//
+                
+//                   print("new index path: \(newIndexPath.row)")
+//                    print("---------------------")
                     
                     self.slideShowCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
+                    
+//                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
+
+//                    UIView.animate(withDuration: 2, animations: {
+//                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+//                    }, completion: {fineshed in
+//                        cell.showImageView.transform = CGAffineTransform.identity
+//                    })
+                    
                     self.x = self.x + 1
+                    
                     if self.x == self.listAsset.count{
                         UIView.animate(withDuration: 2, animations: {
                             self.hiddenView.isHidden = false
                             self.hiddenView.alpha = 1
                             self.slideShowCollectionView.alpha = 0
-                            
-                            self.slideShowCollectionView.contentOffset = CGPoint.zero
-//                            self.x = 1
                         }, completion: { finished in
+                            self.slideShowCollectionView.reloadData()
+                            self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
                             UIView.animate(withDuration: 2, animations: {
                                 DispatchQueue.main.async {
+                                    let data = ["isPlayMusic": false]
+                                    self.notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
                                     self.hiddenView.isHidden = true
                                     self.hiddenView.alpha = 0
                                     self.slideShowCollectionView.alpha = 1
+                                    self.progressView.progress = 0.0
+                                    self.displayTimeLbl.text = "00.00"
+                                    let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+                                    self.playPauseBtn.setImage(image, for: .normal)
+                                    self.playPauseBtn.tintColor = UIColor.white
                                 }
-                                
-                                
+
                             })
-                            
+
                         })
                     }
                 }
             
         }
     }
+    
+    @IBAction func pauseOrPlayVideo(_ sender: Any) {
+        x = 0
+        progressView.progress = 0.0
+        let data = ["isPlayMusic": true]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        playPauseBtn.setImage(image, for: .normal)
+        playPauseBtn.tintColor = UIColor.white
+        countdown = 0.0
+    }
+    
+    
+    @IBAction func createPost(_ sender: Any) {
+        delegate?.createPost()
+    }
+    
+    
 }
 
 extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -294,12 +459,42 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == slideShowCollectionView{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
             let asset = listAsset[indexPath.row].asset
             
             PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
                 
-                cell.imageView.image = image
+                cell.imageBlurView.image = image
+                if Float((image?.size.width)!) <= Float((image?.size.height)!){
+                    cell.widthOfShowImageView.constant = cell.frame.width / 2
+                }else{
+                    cell.widthOfShowImageView.constant = cell.frame.width
+                }
+                cell.showImageView.image = image
+                print("index path 1: \(indexPath.row)")
+                
+                
+                if indexPath.row == 0 || indexPath.row == 1{
+                    UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        print("index path 2: \(indexPath.row)")
+                    }, completion: { finished in
+                        cell.showImageView.transform = CGAffineTransform.identity
+                    })
+                }else{
+                    UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
+                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        print("index path 2: \(indexPath.row)")
+                    }, completion: { finished in
+                        cell.showImageView.transform = CGAffineTransform.identity
+                    })
+                }
+//                UIView.animate(withDuration: 2, delay: 2, options: [.curveEaseOut], animations: {
+//                    cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+//                    print("index path 2: \(indexPath.row)")
+//                }, completion: { finished in
+//                    cell.showImageView.transform = CGAffineTransform.identity
+//                })
             })
             
             return cell
@@ -321,15 +516,21 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             }
             
             
+            
             return cell
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print("row willDisplay: \(indexPath.row)")
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == imageCollectionView{
         let width = imageCollectionView.frame.width / 3 - 1
-        let height = width
+        let height = imageCollectionView.frame.height - 5
         
         return CGSize(width: width, height: height)
         }else{
