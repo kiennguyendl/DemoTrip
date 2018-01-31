@@ -370,7 +370,7 @@ class SuggestionTableViewCell: UITableViewCell {
                     //countdown += 1
                     displayTimeLbl.text = "\(countdown)"
                     
-                    print("scrollingTimer: \(scrollingTimer.timeInterval)")
+//                    print("scrollingTimer: \(scrollingTimer.timeInterval)")
                     UIView.animate(withDuration: TimeInterval(listAsset.count * 2), animations: {
                         self.progressView.setProgress(1.0, animated: true)
                         self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
@@ -410,7 +410,7 @@ class SuggestionTableViewCell: UITableViewCell {
                                     self.hiddenView.alpha = 0
                                     self.slideShowCollectionView.alpha = 1
                                     self.progressView.progress = 0.0
-                                    self.displayTimeLbl.text = "00.00"
+                                    self.displayTimeLbl.text = "00:00"
                                     let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
                                     self.playPauseBtn.setImage(image, for: .normal)
                                     self.playPauseBtn.tintColor = UIColor.white
@@ -471,20 +471,20 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     cell.widthOfShowImageView.constant = cell.frame.width
                 }
                 cell.showImageView.image = image
-                print("index path 1: \(indexPath.row)")
+//                print("index path 1: \(indexPath.row)")
                 
                 
                 if indexPath.row == 0 || indexPath.row == 1{
                     UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
                         cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                        print("index path 2: \(indexPath.row)")
+//                        print("index path 2: \(indexPath.row)")
                     }, completion: { finished in
                         cell.showImageView.transform = CGAffineTransform.identity
                     })
                 }else{
                     UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
                         cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                        print("index path 2: \(indexPath.row)")
+//                        print("index path 2: \(indexPath.row)")
                     }, completion: { finished in
                         cell.showImageView.transform = CGAffineTransform.identity
                     })

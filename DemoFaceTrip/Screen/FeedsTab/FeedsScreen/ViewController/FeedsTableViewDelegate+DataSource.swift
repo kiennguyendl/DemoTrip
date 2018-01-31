@@ -1,40 +1,14 @@
 //
-//  FeedsViewController.swift
+//  FeedsTableViewDelegate+DataSource.swift
 //  DemoFaceTrip
 //
-//  Created by Kiên Nguyễn on 1/22/18.
+//  Created by Kiên Nguyễn on 1/30/18.
 //  Copyright © 2018 Kien Nguyen. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import ReadMoreTextView
-
-class FeedsViewController: BaseViewController {
-
-    @IBOutlet weak var feedsTableView: UITableView!
-    var expandedCells = Set<Int>()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    func setupTableView() {
-        feedsTableView.delegate = self
-        feedsTableView.dataSource = self
-        feedsTableView.register(UINib.init(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "friendsCell")
-        feedsTableView.register(UINib.init(nibName: "FeedsTableViewCell", bundle: nil), forCellReuseIdentifier: "feedsCell")
-        feedsTableView.register(UINib.init(nibName: "SuggestionTableViewCell", bundle: nil), forCellReuseIdentifier: "suggestionCell")
-        
-        feedsTableView.rowHeight = UITableViewAutomaticDimension
-        feedsTableView.estimatedRowHeight = 300
-    }
-
-}
 
 extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,7 +40,7 @@ extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
             cell.selectionStyle = .none
             return cell
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -74,7 +48,7 @@ extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
             let readMoreTextView: ReadMoreTextView!
             
             readMoreTextView = cell.contentView.viewWithTag(1) as! ReadMoreTextView
-
+            
             readMoreTextView.onSizeChange = { [unowned tableView, unowned self] r in
                 let point = tableView.convert(r.bounds.origin, from: r)
                 guard let indexPath = tableView.indexPathForRow(at: point) else { return }
@@ -102,12 +76,5 @@ extension FeedsViewController: UITableViewDelegate, UITableViewDataSource{
             return 0
         }
         return 7
-    }
-}
-
-extension FeedsViewController: FeedProtocol{
-    func createPost() {
-        let vc = ProfileViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
 }

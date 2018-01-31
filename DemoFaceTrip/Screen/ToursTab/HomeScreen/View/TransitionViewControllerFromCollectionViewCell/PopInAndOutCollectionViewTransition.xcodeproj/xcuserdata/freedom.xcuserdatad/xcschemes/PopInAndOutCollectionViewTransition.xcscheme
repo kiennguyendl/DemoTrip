@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00BA1178E5F6A89B4FA70F64C57FEF1E"
-               BuildableName = "Pods_DemoFaceTrip.framework"
-               BlueprintName = "Pods-DemoFaceTrip"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "1AD3A6C11C20A4460006D071"
+               BuildableName = "PopInAndOutCollectionViewTransition.framework"
+               BlueprintName = "PopInAndOutCollectionViewTransition"
+               ReferencedContainer = "container:PopInAndOutCollectionViewTransition.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "00BA1178E5F6A89B4FA70F64C57FEF1E"
-            BuildableName = "Pods_DemoFaceTrip.framework"
-            BlueprintName = "Pods-DemoFaceTrip"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "1AD3A6C11C20A4460006D071"
+            BuildableName = "PopInAndOutCollectionViewTransition.framework"
+            BlueprintName = "PopInAndOutCollectionViewTransition"
+            ReferencedContainer = "container:PopInAndOutCollectionViewTransition.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1AD3A6C11C20A4460006D071"
+            BuildableName = "PopInAndOutCollectionViewTransition.framework"
+            BlueprintName = "PopInAndOutCollectionViewTransition"
+            ReferencedContainer = "container:PopInAndOutCollectionViewTransition.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
