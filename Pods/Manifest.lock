@@ -14,7 +14,6 @@ PODS:
   - ReadMoreTextView (2.0.0)
   - Starscream (3.0.1)
   - SwiftyJSON (3.1.4)
-  - SZTextView (1.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -26,7 +25,6 @@ DEPENDENCIES:
   - ReadMoreTextView
   - Starscream
   - SwiftyJSON
-  - SZTextView
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -38,8 +36,7 @@ SPEC CHECKSUMS:
   ReadMoreTextView: aefb9ffe11922c87fd39a09a988d7cc74c8438ba
   Starscream: 6608f27f8f00f585ee69d18bfd3aa9353ff9fa6c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  SZTextView: 094dc6acc9beec537685c545d6e3e0d4975174e1
 
-PODFILE CHECKSUM: 577515f2f18733aac0ce50ed30f8632b62be8d68
+PODFILE CHECKSUM: cd9dde1fce377aee59b472ae380e5ff712e28332
 
 COCOAPODS: 1.3.1
