@@ -13,8 +13,7 @@ import CoreLocation
 import AddressBook
 import Contacts
 
-let keyPlaymusicNotification = "keyPlaymusicNotification"
-let keyProgressBarNotification = "keyProgressBarNotification"
+
 
 class SuggestionTableViewCell: UITableViewCell {
 
@@ -54,12 +53,14 @@ class SuggestionTableViewCell: UITableViewCell {
     var endList = false
     var scrollingTimer = Timer()
     var displayTimer = Timer()
+    var isPlayingSlideShow = true
+    var isEndSlideShow = false
     
     let notificationCenter = NotificationCenter.default
     var backgroundMusicPlayer: AVAudioPlayer!
     var timeObserver: AnyObject!
     var timePlay = 3
-    
+    var currentTimePlay: TimeInterval = 0.0
     var delegate: FeedProtocol?
     
     override func awakeFromNib() {
@@ -84,11 +85,8 @@ class SuggestionTableViewCell: UITableViewCell {
         let data = ["isPlayMusic": true]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
         
-//        notificationCenter.addObserver(self, selector: #selector(runProgressBar), name: NSNotification.Name(rawValue: keyProgressBarNotification), object: nil)
-//        notificationCenter.post(name: NSNotification.Name(rawValue: keyProgressBarNotification), object: nil, userInfo: nil)
-//        sliderBar.addTarget(self, action: #selector(sliderValueChange), for: .valueChanged)
-        
     }
+    
     
     func setupLayout() {
         
@@ -173,10 +171,10 @@ class SuggestionTableViewCell: UITableViewCell {
             }
             if isPlayMusic{
                 print("playing music")
-                backgroundMusicPlayer.play()
+                    backgroundMusicPlayer.play()
             }else{
                 print("the end play music")
-                backgroundMusicPlayer.pause()
+                backgroundMusicPlayer.stop()
                 backgroundMusicPlayer = nil
             }
         }
@@ -346,6 +344,7 @@ class SuggestionTableViewCell: UITableViewCell {
     
     @objc func displayTime() {
         let maxTime = listAsset.count * 2
+        if isPlayingSlideShow{
         if listAsset.count > 0{
             if Int(self.countdown) < maxTime{
                 countdown += 1.0
@@ -355,42 +354,42 @@ class SuggestionTableViewCell: UITableViewCell {
             
             }
         }
+        }
     }
     
     var x = 0
     
     @objc func autoScroll() {
-        
-        
+
         sliderBar.maximumValue = Float(listAsset.count) * 2
-        
-        if listAsset.count > 0{
-            
+        if isPlayingSlideShow{
+            if listAsset.count > 0{
+                
                 if self.x < self.listAsset.count {
-                    //countdown += 1
-                    displayTimeLbl.text = "\(countdown)"
                     
-//                    print("scrollingTimer: \(scrollingTimer.timeInterval)")
-                    UIView.animate(withDuration: TimeInterval(listAsset.count * 2), animations: {
-                        self.progressView.setProgress(1.0, animated: true)
-                        self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
+//                    UIView.animate(withDuration: TimeInterval(Float(self.listAsset.count * 2)), delay: 0,  animations: {
+//                        self.progressView.setProgress(1.0, animated: true)
+////                        self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
+//
+//                    })
+                    
+                    UIView.animate(withDuration: 2, animations: {
+                        let value1 = Float(self.x) / Float(self.listAsset.count - 1)
+                        self.progressView.setProgress(value1, animated: true)
                     })
                     
-                    let newIndexPath = IndexPath(item: x, section: 0)
-//
-                
-//                   print("new index path: \(newIndexPath.row)")
-//                    print("---------------------")
                     
+                    let newIndexPath = IndexPath(item: x, section: 0)
+
                     self.slideShowCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
                     
-//                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
-
-//                    UIView.animate(withDuration: 2, animations: {
-//                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                    }, completion: {fineshed in
-//                        cell.showImageView.transform = CGAffineTransform.identity
-//                    })
+                    //                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
+                    
+                    //                    UIView.animate(withDuration: 2, animations: {
+                    //                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                    //                    }, completion: {fineshed in
+                    //                        cell.showImageView.transform = CGAffineTransform.identity
+                    //                    })
                     
                     self.x = self.x + 1
                     
@@ -404,6 +403,10 @@ class SuggestionTableViewCell: UITableViewCell {
                             self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
                             UIView.animate(withDuration: 2, animations: {
                                 DispatchQueue.main.async {
+                                    self.isPlayingSlideShow = false
+                                    self.x = 0
+                                    self.countdown = 0.0
+                                    self.isEndSlideShow = true
                                     let data = ["isPlayMusic": false]
                                     self.notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
                                     self.hiddenView.isHidden = true
@@ -415,30 +418,67 @@ class SuggestionTableViewCell: UITableViewCell {
                                     self.playPauseBtn.setImage(image, for: .normal)
                                     self.playPauseBtn.tintColor = UIColor.white
                                 }
-
+                                
                             })
-
+                            
                         })
                     }
                 }
-            
+                
+            }
         }
+        
     }
     
     @IBAction func pauseOrPlayVideo(_ sender: Any) {
-        x = 0
-        progressView.progress = 0.0
-        let data = ["isPlayMusic": true]
-        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
-        playPauseBtn.setImage(image, for: .normal)
-        playPauseBtn.tintColor = UIColor.white
-        countdown = 0.0
+        if isPlayingSlideShow{
+            isPlayingSlideShow = false
+            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+            backgroundMusicPlayer.pause()
+        }else{
+            isPlayingSlideShow = true
+            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+            if isEndSlideShow{
+                let data = ["isPlayMusic": true]
+                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+            }else{
+                backgroundMusicPlayer.play()
+            }
+            
+            //x = 0
+            //progressView.progress = 0.0
+//            let data = ["isPlayMusic": true]
+//            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+//            let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+//            playPauseBtn.setImage(image, for: .normal)
+//            playPauseBtn.tintColor = UIColor.white
+//            countdown = 0.0
+        }
+        
     }
     
+    func changeImagePauseOrPlayBtn(isPlaying: Bool) {
+        if isPlaying{
+            let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+            self.playPauseBtn.setImage(image, for: .normal)
+            self.playPauseBtn.tintColor = UIColor.white
+        }else{
+            let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+            self.playPauseBtn.setImage(image, for: .normal)
+            self.playPauseBtn.tintColor = UIColor.white
+        }
+        
+    }
     
     @IBAction func createPost(_ sender: Any) {
-        delegate?.createPost()
+        if isPlayingSlideShow{
+            isPlayingSlideShow = false
+            backgroundMusicPlayer.pause()
+            currentTimePlay = backgroundMusicPlayer.currentTime
+            backgroundMusicPlayer = nil
+            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+        }
+        delegate?.createPost(listAsset: listAsset)
     }
     
     
@@ -473,22 +513,23 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                 cell.showImageView.image = image
 //                print("index path 1: \(indexPath.row)")
                 
-                
-                if indexPath.row == 0 || indexPath.row == 1{
-                    UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                        print("index path 2: \(indexPath.row)")
-                    }, completion: { finished in
-                        cell.showImageView.transform = CGAffineTransform.identity
-                    })
-                }else{
-                    UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                        print("index path 2: \(indexPath.row)")
-                    }, completion: { finished in
-                        cell.showImageView.transform = CGAffineTransform.identity
-                    })
+                if self.isPlayingSlideShow{
+                    if indexPath.row == 0 || indexPath.row == 1{
+                        UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        }, completion: { finished in
+                            cell.showImageView.transform = CGAffineTransform.identity
+                        })
+                    }else{
+                        UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
+                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                        }, completion: { finished in
+                            cell.showImageView.transform = CGAffineTransform.identity
+                        })
+                    }
                 }
+                
+                
 //                UIView.animate(withDuration: 2, delay: 2, options: [.curveEaseOut], animations: {
 //                    cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
 //                    print("index path 2: \(indexPath.row)")

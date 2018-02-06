@@ -41,6 +41,8 @@ class MapViewViewController: BaseViewController {
 }
 
 extension MapViewViewController: MKMapViewDelegate{
+    
+
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
     }
     

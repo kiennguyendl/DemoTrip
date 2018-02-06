@@ -9,5 +9,5 @@
 import Foundation
 
 protocol FeedProtocol {
-    func createPost()
+    func createPost(listAsset: [AsssetInfor])
 }

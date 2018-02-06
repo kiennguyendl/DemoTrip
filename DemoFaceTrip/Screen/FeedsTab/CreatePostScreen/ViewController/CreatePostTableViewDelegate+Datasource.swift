@@ -46,6 +46,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as! ContentTableViewCell
 //            cell.contentTextPost.sizeToFit()
             //cell.contentTextPost.text = "What's on your mind?"
+            cell.listAsset = listAsset
             cell.delgate = self
             return cell
         default:

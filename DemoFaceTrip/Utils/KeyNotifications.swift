@@ -20,4 +20,9 @@ let indexPathNotification               =       Notification.Name(rawValue:"inde
 let UIKeyboardWillShowNotification      =       Notification.Name(rawValue:"UIKeyboardWillShowNotification")
 let UIKeyboardWillHideNotification      =       Notification.Name(rawValue:"UIKeyboardWillHideNotification")
 
+// using for play music in slide show
+//using for sugges view
+let keyPlaymusicNotification = "keyPlaymusicNotification"
 
+//using for creating post screen
+let keyPlaymusicNotificationCreatePost = "keyPlaymusicNotificationCreatePost"
