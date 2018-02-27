@@ -84,6 +84,12 @@ class CreatePostViewController: UIViewController {
 }
 
 extension CreatePostViewController: HeightForTextView{
+    func editSlideShow(listAsset: [AsssetInfor]) {
+        let vc = EditSlideShowViewController()
+        vc.listAsset = listAsset
+        present(vc, animated: true, completion: nil)
+    }
+    
     func heightOfTextView(height: CGFloat) {
         self.contentPostTableView.beginUpdates()
         self.contentPostTableView.endUpdates()

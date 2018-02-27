@@ -13,7 +13,7 @@ import GooglePlaces
 
 protocol HeightForTextView {
     func heightOfTextView(height: CGFloat)
-    
+    func editSlideShow(listAsset: [AsssetInfor])
 }
 class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 
@@ -222,7 +222,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @IBAction func editContentSlideShow(_ sender: Any) {
-        
+        delgate?.editSlideShow(listAsset: listAsset!)
     }
     
     

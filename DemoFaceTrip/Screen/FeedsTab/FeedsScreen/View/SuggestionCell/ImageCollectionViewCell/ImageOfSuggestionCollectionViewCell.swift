@@ -8,11 +8,14 @@
 
 import UIKit
 
+
 class ImageOfSuggestionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var viewAllImgBtn: UIButton!
     @IBOutlet weak var buttonView: UIView!
     var blurEffectView: UIVisualEffectView!
+    var listAsset: [AsssetInfor] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,4 +36,10 @@ class ImageOfSuggestionCollectionViewCell: UICollectionViewCell {
         viewAllImgBtn.tintColor = .white
     }
 
+    @IBAction func showListImage(_ sender: Any) {
+        print("kaka")
+        let data = ["listAsset": listAsset]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyShowListImageScreen), object: nil, userInfo: data)
+    }
+    
 }

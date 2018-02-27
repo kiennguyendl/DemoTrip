@@ -16,12 +16,26 @@ class FeedsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        addNotificationCenter()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    func addNotificationCenter() {
+        notificationCenter.addObserver(self, selector: #selector(showListImage), name: NSNotification.Name(rawValue: keyShowListImageScreen), object: nil)
+    }
+    
+    @objc func showListImage(_ notification: Notification) {
+        if let listAsset = notification.userInfo!["listAsset"] as? [AsssetInfor]{
+            let vc = ListImageViewController()
+            vc.listAsset = listAsset
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     func setupTableView() {
@@ -44,3 +58,4 @@ extension FeedsViewController: FeedProtocol{
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+

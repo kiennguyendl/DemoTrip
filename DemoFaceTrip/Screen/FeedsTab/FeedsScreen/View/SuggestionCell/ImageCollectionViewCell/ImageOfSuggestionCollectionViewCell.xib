@@ -30,6 +30,9 @@
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showListImage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iK3-1T-MCt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

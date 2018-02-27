@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pickerImageCell" id="gTV-IL-0wX" customClass="ImagePickerCollectionViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="134" height="111"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="134" height="111"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-vZ-YY7">
+                        <rect key="frame" x="0.0" y="0.0" width="134" height="111"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-OX-oZN">
+                        <rect key="frame" x="99" y="10" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="AHg-z7-yVW"/>
+                            <constraint firstAttribute="width" constant="25" id="fj4-wW-vW3"/>
+                        </constraints>
+                        <state key="normal" image="check"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dCR-OX-oZN" secondAttribute="trailing" constant="10" id="1ii-6l-HJM"/>
+                <constraint firstItem="WeC-vZ-YY7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5i0-Co-VWa"/>
+                <constraint firstAttribute="bottom" secondItem="WeC-vZ-YY7" secondAttribute="bottom" id="HV8-iA-1f6"/>
+                <constraint firstItem="WeC-vZ-YY7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VIh-kU-4NA"/>
+                <constraint firstItem="dCR-OX-oZN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YyU-jT-XMb"/>
+                <constraint firstAttribute="trailing" secondItem="WeC-vZ-YY7" secondAttribute="trailing" id="aGr-Vx-YjO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="134" height="111"/>
+            <connections>
+                <outlet property="imageView" destination="WeC-vZ-YY7" id="A3M-Y2-xgb"/>
+                <outlet property="pickerBtn" destination="dCR-OX-oZN" id="fSq-8X-tgg"/>
+            </connections>
+            <point key="canvasLocation" x="32" y="82.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="check" width="40" height="40"/>
+    </resources>
+</document>
