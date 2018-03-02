@@ -28,12 +28,12 @@ class SuggestionTableViewCell: UITableViewCell {
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var slideShowCollectionView: UICollectionView!
     
+    @IBOutlet weak var pauseOrPlayBtn: UIButton!
     @IBOutlet weak var expandBtn: UIButton!
     @IBOutlet weak var speakerBtn: UIButton!
     @IBOutlet weak var createBtn: UIButton!
     @IBOutlet weak var heightOfImageCollectionView: NSLayoutConstraint!
     
-    @IBOutlet weak var sliderBar: UISlider!
     @IBOutlet weak var imageViewUser: UIImageView!
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var hiddenView: UIView!
@@ -51,6 +51,7 @@ class SuggestionTableViewCell: UITableViewCell {
     var assets: [PHAsset] = []
     var listAssetInfor: [AsssetInfor] = []
     var listImage: [UIImage] = []
+    var listURLVideo: [URL] = []
     
     var endList = false
     var scrollingTimer: Timer? = nil
@@ -65,8 +66,8 @@ class SuggestionTableViewCell: UITableViewCell {
     var currentTimePlay: TimeInterval = 0.0
     var delegate: FeedProtocol?
     
-    let videoUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Viet-Nam-Da-LAB", ofType: "mp4")!)
-    var outputURL: URL?
+//    let videoUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Viet-Nam-Da-LAB", ofType: "mp4")!)
+//    var outputURL: URL?
     var player: AVPlayer?
     var playerLayer:AVPlayerLayer?
     
@@ -76,13 +77,13 @@ class SuggestionTableViewCell: UITableViewCell {
         dateFormater = DateFormatter()
         dateFormater?.dateFormat = "MM-dd-yyyy"
         setupLayout()
-        addObserverForView()
+//        addObserverForView()
         
         //test ip 8+ and real device
 //        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-10-2017") as! NSDate, endDate: dateFormater?.date(from: "02-29-2017") as! NSDate)
         
         // test ip 6+
-        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-14-2018") as! NSDate, endDate: dateFormater?.date(from: "02-25-2018") as! NSDate)
+        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "12-26-2017") as! NSDate, endDate: dateFormater?.date(from: "02-27-2018") as! NSDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -109,9 +110,9 @@ class SuggestionTableViewCell: UITableViewCell {
         setupCollectionView()
         heightOfImageCollectionView.constant = imageCollectionView.frame.width / 3 - 1
         progressView.progress = 0.0
-//        setTimer()
-        setTimerDisplay()
-        trimVideo(videoUrl: videoUrl as URL)
+        setTimer()
+//        setTimerDisplay()
+//        trimVideo(videoUrl: videoUrl as URL)
     }
     
     func setUpIcon() {
@@ -123,18 +124,22 @@ class SuggestionTableViewCell: UITableViewCell {
         imagePhoto.image = imgPhoto
         imagePhoto.tintColor = .white
         
-        
         let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
-        playPauseBtn.setImage(image, for: .normal)
-        playPauseBtn.tintColor = UIColor.white
+        pauseOrPlayBtn.setImage(image, for: .normal)
+        pauseOrPlayBtn.tintColor = UIColor.white
         
-        let imgSpeaker = UIImage(named: "speakers")?.withRenderingMode(.alwaysTemplate)
-        speakerBtn.setImage(imgSpeaker, for: .normal)
-        speakerBtn.tintColor = UIColor.white
         
-        let imgExpand = UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
-        expandBtn.setImage(imgExpand, for: .normal)
-        expandBtn.tintColor = UIColor.white
+//        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+//        playPauseBtn.setImage(image, for: .normal)
+//        playPauseBtn.tintColor = UIColor.white
+//
+//        let imgSpeaker = UIImage(named: "speakers")?.withRenderingMode(.alwaysTemplate)
+//        speakerBtn.setImage(imgSpeaker, for: .normal)
+//        speakerBtn.tintColor = UIColor.white
+//
+//        let imgExpand = UIImage(named: "expand")?.withRenderingMode(.alwaysTemplate)
+//        expandBtn.setImage(imgExpand, for: .normal)
+//        expandBtn.tintColor = UIColor.white
     }
     
     func setupCollectionView() {
@@ -181,8 +186,13 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     
     func playVideo(url: URL, playerView: UIView)  {
+        if playerView != nil{
+            playerLayer = nil
+            playerLayer?.removeFromSuperlayer()
+        }
         player = AVPlayer(url: url as URL)
-        
+//        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
+//        player = AVPlayer(playerItem: playerItem)
         playerLayer = AVPlayerLayer()
         playerLayer?.player = player
         playerLayer?.frame = playerView.frame
@@ -190,14 +200,11 @@ class SuggestionTableViewCell: UITableViewCell {
         playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         playerView.layer.addSublayer(playerLayer!)
-//        player?.play()
-//        if x == 0{
-//            x += 1
-//        }
+        player?.play()
+        player?.volume = 0.0
     }
     
     @objc func sliderValueChange(slider: UISlider) {
-        print("value: \(sliderBar.value)")
     }
     
     @objc func playBackgroundMusic(_ notification: NSNotification) {
@@ -240,8 +247,8 @@ class SuggestionTableViewCell: UITableViewCell {
 //        requestOption.deliveryMode = .fastFpoormat
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@", startDate, endDate)
-        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        fetchOptions.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@ AND mediaType == %d || mediaType == %d", startDate, endDate, PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: fetchOptions)
         DispatchQueue.global(qos: .background).async{
             if fetchResult.count > 0 {
                 print("num photo: \(fetchResult.count)")
@@ -381,12 +388,14 @@ class SuggestionTableViewCell: UITableViewCell {
             completionHanler(listDictImageCreateDate)
         }
     }
-    var timeInterval = 0.0
+    var timeInterval = 2.0
     func setTimer() {
         scrollingTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.autoScroll), userInfo: nil, repeats: true)
 
         
     }
+    
+    //dispay time on label
     
     func setTimerDisplay() {
         displayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displayTime), userInfo: nil, repeats: true)
@@ -395,7 +404,7 @@ class SuggestionTableViewCell: UITableViewCell {
     
     @objc func displayTime() {
         let maxTime = listAsset.count * 2 + 15
-        if isPlayingSlideShow{
+//        if isPlayingSlideShow{
         if listAsset.count > 0{
             if Int(self.countdown) < maxTime{
                 countdown += 1.0
@@ -405,8 +414,9 @@ class SuggestionTableViewCell: UITableViewCell {
             
             }
         }
-        }
+//        }
     }
+    //////////////////////////////
     
     var x = 0
     
@@ -424,20 +434,20 @@ class SuggestionTableViewCell: UITableViewCell {
 //
 //                    })
                     
-                    UIView.animate(withDuration: timeInterval, animations: {
-                        if self.x == 0{
-//                            let cell = slideShowCollectionView.cellForItem(at: )
-                            self.player?.play()
-                            let value1 = Float(15.0) / Float(self.listAsset.count - 1 + 15)
-//                            print("value: \(value1)")
-                            self.progressView.setProgress(value1, animated: true)
-                        }else{
-                            let value1 = Float(15 + self.x) / Float(self.listAsset.count - 1 + 15)
-//                            print("value: \(value1)")
-                            self.progressView.setProgress(value1, animated: true)
-                        }
-                        
-                    })
+//                    UIView.animate(withDuration: timeInterval, animations: {
+//                        if self.x == 0{
+////                            let cell = slideShowCollectionView.cellForItem(at: )
+//                            self.player?.play()
+//                            let value1 = Float(15.0) / Float(self.listAsset.count - 1 + 15)
+////                            print("value: \(value1)")
+//                            self.progressView.setProgress(value1, animated: true)
+//                        }else{
+//                            let value1 = Float(15 + self.x) / Float(self.listAsset.count - 1 + 15)
+////                            print("value: \(value1)")
+//                            self.progressView.setProgress(value1, animated: true)
+//                        }
+//
+//                    })
                     
                     
                     let newIndexPath = IndexPath(item: x, section: 0)
@@ -465,20 +475,21 @@ class SuggestionTableViewCell: UITableViewCell {
                             UIView.animate(withDuration: 2, animations: {
                                 DispatchQueue.main.async {
                                     self.isPlayingSlideShow = false
+                                    self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
                                     self.x = 0
-                                    self.countdown = 0.0
+//                                    self.countdown = 0.0
                                     self.isEndSlideShow = true
-                                    let data = ["isPlayMusic": false]
-                                    self.notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+//                                    let data = ["isPlayMusic": false]
+//                                    self.notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
                                     self.hiddenView.isHidden = true
                                     self.hiddenView.alpha = 0
                                     self.slideShowCollectionView.alpha = 1
-                                    self.progressView.progress = 0.0
-                                    self.displayTimeLbl.text = "00:00"
-                                    let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
-                                    self.playPauseBtn.setImage(image, for: .normal)
-                                    self.playPauseBtn.tintColor = UIColor.white
-                                    self.player?.pause()
+//                                    self.progressView.progress = 0.0
+//                                    self.displayTimeLbl.text = "00:00"
+//                                    let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+//                                    self.playPauseBtn.setImage(image, for: .normal)
+//                                    self.playPauseBtn.tintColor = UIColor.white
+//                                    self.player?.pause()
                                 }
                                 
                             })
@@ -492,105 +503,51 @@ class SuggestionTableViewCell: UITableViewCell {
         
     }
     
-    func trimVideo(videoUrl:URL)  {
-        
-        let manager = FileManager.default
-        
-        guard let documentDirectory = try? manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {return}
-        guard let mediaType = "mp4" as? String else {return}
-        guard let url = videoUrl as? NSURL else {return}
     
-        let asset = AVAsset(url: url as URL)
-        let length = Float(asset.duration.value) / Float(asset.duration.timescale)
-        print("video length: \(length) seconds")
-        
-        outputURL = documentDirectory.appendingPathComponent("output.mp4")
-        
-        removeFileAtURLIfExists(url: outputURL as! NSURL)
-        
-//        let outputURL : URL = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/output.mp4")
-//        removeFileAtURLIfExists(url: outputURL as NSURL)
-//        let asset = AVAsset(url: videoUrl)
-        guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return}
-        exportSession.outputURL = outputURL
-        exportSession.outputFileType = AVFileType.mp4
-        exportSession.shouldOptimizeForNetworkUse = true
-//
-        let startTrim = CMTime(seconds: Double(5.0), preferredTimescale: 1000)
-        let endTrim = CMTime(seconds: Double(20), preferredTimescale: 1000)
-        let timeRange = CMTimeRange(start: startTrim, end: endTrim)
-//
-        exportSession.timeRange = timeRange
-//
-        exportSession.exportAsynchronously { () -> Void in
-            switch exportSession.status {
-
-            case AVAssetExportSessionStatus.completed:
-//                self.playVideo(url: savePathUrl)
-                print("success + \(self.outputURL)")
-            case  AVAssetExportSessionStatus.failed:
-                print("failed \(exportSession.error)")
-            case AVAssetExportSessionStatus.cancelled:
-                print("cancelled \(exportSession.error)")
-            default:
-                print("complete")
-            }
-        }
-        
-    }
     
-    func removeFileAtURLIfExists(url: NSURL) {
-        if let filePath = url.path {
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: filePath) {
-                do{
-                    try fileManager.removeItem(atPath: filePath)
-                } catch let error as NSError {
-                    print("Couldn't remove existing destination file: \(error)")
-                }
-            }
-        }
-    }
     
     @IBAction func pauseOrPlayVideo(_ sender: Any) {
+//        if isPlayingSlideShow{
+//            isPlayingSlideShow = false
+//            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+//            backgroundMusicPlayer.pause()
+//            player?.pause()
+//        }else{
+//            isPlayingSlideShow = true
+//            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+//            if isEndSlideShow{
+//                let data = ["isPlayMusic": true]
+//                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+//                player?.play()
+//            }else{
+//                backgroundMusicPlayer.play()
+//                player?.play()
+//            }
+//
+//        }
+        
+    }
+    
+    @IBAction func pauseOrPlayAction(_ sender: Any) {
         if isPlayingSlideShow{
             isPlayingSlideShow = false
             changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
-            backgroundMusicPlayer.pause()
-            player?.pause()
         }else{
             isPlayingSlideShow = true
             changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
-            if isEndSlideShow{
-                let data = ["isPlayMusic": true]
-                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-                player?.play()
-            }else{
-                backgroundMusicPlayer.play()
-                player?.play()
-            }
-            
-            //x = 0
-            //progressView.progress = 0.0
-//            let data = ["isPlayMusic": true]
-//            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-//            let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
-//            playPauseBtn.setImage(image, for: .normal)
-//            playPauseBtn.tintColor = UIColor.white
-//            countdown = 0.0
         }
-        
     }
+    
     
     func changeImagePauseOrPlayBtn(isPlaying: Bool) {
         if isPlaying{
             let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
-            self.playPauseBtn.setImage(image, for: .normal)
-            self.playPauseBtn.tintColor = UIColor.white
+            self.pauseOrPlayBtn.setImage(image, for: .normal)
+            self.pauseOrPlayBtn.tintColor = UIColor.white
         }else{
             let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
-            self.playPauseBtn.setImage(image, for: .normal)
-            self.playPauseBtn.tintColor = UIColor.white
+            self.pauseOrPlayBtn.setImage(image, for: .normal)
+            self.pauseOrPlayBtn.tintColor = UIColor.white
         }
         
     }
@@ -598,11 +555,11 @@ class SuggestionTableViewCell: UITableViewCell {
     @IBAction func createPost(_ sender: Any) {
         if isPlayingSlideShow{
             isPlayingSlideShow = false
-            backgroundMusicPlayer.pause()
-            currentTimePlay = backgroundMusicPlayer.currentTime
-//            backgroundMusicPlayer = nil
-            player?.pause()
+//            backgroundMusicPlayer.pause()
+//            currentTimePlay = backgroundMusicPlayer.currentTime
+//            player?.pause()
             changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+            removeTimer()
         }
         delegate?.createPost(listAsset: listAsset)
     }
@@ -613,132 +570,10 @@ class SuggestionTableViewCell: UITableViewCell {
             scrollingTimer = nil
         }
     }
+    
+    
+    
+    
 }
 
-extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == imageCollectionView{
-            if listAsset.count > 2{
-                return 3
-            }
-            return 0
-            
-        }else{
-            return listAsset.count + 1
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentRow = indexPath.row
-        if collectionView == slideShowCollectionView{
-            if currentRow == 0{
-                timeInterval = 15.0
-                removeTimer()
-                setTimer()
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoForSlideShowCollectionViewCell
-                if let url = outputURL{
-//                    UIView.animate(withDuration: 0, delay: 0, options: [], animations: {
-                        //cell.playVideo(url: url)
-//                    DispatchQueue.main.async {
-                        self.playVideo(url: url, playerView: cell.playerView)
-//                    }
-                    
-//                    }, completion: nil)
-                    
-                }
-                
-                return cell
-                
-            }else{
-                timeInterval = 2.0
-                if currentRow - 1 == 0{
-                    removeTimer()
-                    setTimer()
-                }
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
-                let asset = listAsset[currentRow - 1].asset
-                
-                PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                    
-                    cell.imageBlurView.image = image
-                    if Float((image?.size.width)!) <= Float((image?.size.height)!){
-                        cell.widthOfShowImageView.constant = cell.frame.width / 2
-                    }else{
-                        cell.widthOfShowImageView.constant = cell.frame.width
-                    }
-                    cell.showImageView.image = image
-                    //                print("index path 1: \(indexPath.row)")
-                    
-                    if self.isPlayingSlideShow{
-                        if currentRow == 1 /*|| currentRow == 2*/{
-                            UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-                                cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                            }, completion: { finished in
-                                cell.showImageView.transform = CGAffineTransform.identity
-                            })
-                        }else{
-                            UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-                                cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                            }, completion: { finished in
-                                cell.showImageView.transform = CGAffineTransform.identity
-                            })
-                        }
-                    }
-                    
-                    
-                    //                UIView.animate(withDuration: 2, delay: 2, options: [.curveEaseOut], animations: {
-                    //                    cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    //                    print("index path 2: \(indexPath.row)")
-                    //                }, completion: { finished in
-                    //                    cell.showImageView.transform = CGAffineTransform.identity
-                    //                })
-                })
-                
-                return cell
-            }
-            
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageOfSuggestion", for: indexPath) as! ImageOfSuggestionCollectionViewCell
-            
-            let asset = listAsset[indexPath.row].asset
-            
-            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                
-                cell.imageView.image = image
-            })
-            if indexPath.row == 2{
-                cell.buttonView.isHidden = false
-                cell.viewAllImgBtn.setTitle("\(listAsset.count - 2)", for: .normal)
-                cell.blurEffectView.isHidden = false
-                cell.listAsset = listAsset
-            }else{
-                cell.buttonView.isHidden = true
-                cell.blurEffectView.isHidden = true
-            }
-            
-            
-            
-            return cell
-        }
-        
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print("row willDisplay: \(indexPath.row)")
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == imageCollectionView{
-        let width = imageCollectionView.frame.width / 3 - 1
-        let height = imageCollectionView.frame.height - 5
-        
-        return CGSize(width: width, height: height)
-        }else{
-            let width = slideShowCollectionView.frame.width - 1
-            let height = slideShowCollectionView.frame.height
-            return CGSize(width: width, height: height)
-        }
-    }
-}
+

@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="665" id="KGk-i7-Jjw" customClass="SuggestionTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="665" id="KGk-i7-Jjw" customClass="SuggestionTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="487" height="665"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -101,7 +101,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM1-8F-o0S">
                         <rect key="frame" x="0.0" y="349" width="487" height="250"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BIt-Ae-DYY">
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igG-N4-psc">
+                                <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BIt-Ae-DYY">
                                 <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="fD4-rL-z6t">
@@ -111,7 +115,7 @@
                                     <inset key="sectionInset" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjW-bO-DRK">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjW-bO-DRK">
                                 <rect key="frame" x="20" y="215" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="ZTm-Z2-F5D"/>
@@ -122,7 +126,7 @@
                                     <action selector="pauseOrPlayVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wb6-zX-ERc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-Lk-9an">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-Lk-9an">
                                 <rect key="frame" x="347" y="217" width="50" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="DOi-aG-Tif"/>
@@ -131,10 +135,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-xZ-nM5">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-xZ-nM5">
                                 <rect key="frame" x="45" y="226.5" width="297" height="2"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iIl-nM-an7">
+                                    <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iIl-nM-an7">
                                         <rect key="frame" x="0.0" y="0.0" width="297" height="2"/>
                                     </progressView>
                                 </subviews>
@@ -185,7 +189,7 @@
                                     <constraint firstAttribute="width" constant="20" id="yI0-op-AEG"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijo-es-aDy">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijo-es-aDy">
                                 <rect key="frame" x="442" y="215.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="fra-GB-70b"/>
@@ -193,7 +197,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="expand"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-RP-npo">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-RP-npo">
                                 <rect key="frame" x="407" y="215" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="5hh-Dl-kdn"/>
@@ -201,10 +205,17 @@
                                 </constraints>
                                 <state key="normal" image="speakers"/>
                             </button>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igG-N4-psc">
-                                <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ji8-ww-Ncr">
+                                <rect key="frame" x="218.5" y="100" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8IG-wP-ghX"/>
+                                    <constraint firstAttribute="height" constant="50" id="YK2-pe-FbI"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="pause"/>
+                                <connections>
+                                    <action selector="pauseOrPlayAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3MV-VO-bJc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BIt-Ae-DYY" secondAttribute="trailing" id="1Is-Nc-mx4"/>
@@ -212,6 +223,7 @@
                             <constraint firstItem="Rrv-dz-whC" firstAttribute="leading" secondItem="S2q-Qf-qco" secondAttribute="trailing" constant="10" id="4e1-TG-XJa"/>
                             <constraint firstItem="S2q-Qf-qco" firstAttribute="leading" secondItem="2QR-rQ-bZi" secondAttribute="trailing" constant="5" id="6Ab-YH-mA3"/>
                             <constraint firstAttribute="height" constant="250" id="7AS-BS-N0j"/>
+                            <constraint firstItem="Ji8-ww-Ncr" firstAttribute="centerY" secondItem="BIt-Ae-DYY" secondAttribute="centerY" id="83e-Kn-J93"/>
                             <constraint firstAttribute="bottom" secondItem="UjW-bO-DRK" secondAttribute="bottom" constant="10" id="8Cs-xi-3s8"/>
                             <constraint firstItem="igG-N4-psc" firstAttribute="leading" secondItem="jM1-8F-o0S" secondAttribute="leading" id="9zU-Ha-4Pi"/>
                             <constraint firstItem="igG-N4-psc" firstAttribute="top" secondItem="jM1-8F-o0S" secondAttribute="top" id="Ahr-5b-QrU"/>
@@ -233,6 +245,7 @@
                             <constraint firstItem="c0e-RP-npo" firstAttribute="centerY" secondItem="Ijo-es-aDy" secondAttribute="centerY" id="bA7-C9-9dD"/>
                             <constraint firstAttribute="trailing" secondItem="uJ2-EP-34I" secondAttribute="trailing" constant="20" id="dbt-Dr-fr8"/>
                             <constraint firstItem="7Rq-xZ-nM5" firstAttribute="leading" secondItem="UjW-bO-DRK" secondAttribute="trailing" id="iOD-hS-cN4"/>
+                            <constraint firstItem="Ji8-ww-Ncr" firstAttribute="centerX" secondItem="BIt-Ae-DYY" secondAttribute="centerX" id="izc-cj-BpO"/>
                             <constraint firstItem="2QR-rQ-bZi" firstAttribute="bottom" secondItem="S2q-Qf-qco" secondAttribute="bottom" id="jHO-sV-xuK"/>
                             <constraint firstItem="Ijo-es-aDy" firstAttribute="centerY" secondItem="UjW-bO-DRK" secondAttribute="centerY" id="jUl-gW-r8C"/>
                             <constraint firstItem="uJ2-EP-34I" firstAttribute="leading" secondItem="Rrv-dz-whC" secondAttribute="trailing" constant="5" id="lwD-fx-Pjh"/>
@@ -301,6 +314,7 @@
                 <outlet property="imageCollectionView" destination="60M-ak-2gz" id="9u4-UB-5Mm"/>
                 <outlet property="imagePhoto" destination="2QR-rQ-bZi" id="hAs-ZX-Jkl"/>
                 <outlet property="imageViewUser" destination="Rrv-dz-whC" id="MOI-nX-6fu"/>
+                <outlet property="pauseOrPlayBtn" destination="Ji8-ww-Ncr" id="Ebr-ps-rul"/>
                 <outlet property="playPauseBtn" destination="UjW-bO-DRK" id="pEk-wJ-E57"/>
                 <outlet property="progressView" destination="iIl-nM-an7" id="VOf-tE-GyX"/>
                 <outlet property="slideShowCollectionView" destination="BIt-Ae-DYY" id="g2K-fe-o86"/>

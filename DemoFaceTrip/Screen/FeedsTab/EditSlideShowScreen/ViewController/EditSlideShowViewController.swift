@@ -31,6 +31,7 @@ class EditSlideShowViewController: UIViewController {
     
     @IBOutlet weak var slideShowViewParent: UIView!
     
+    @IBOutlet weak var playerView: UIView!
     @IBOutlet weak var musicIconImageView: UIImageView!
     @IBOutlet weak var closeRecordViewBtn: UIButton!
     @IBOutlet weak var recordView: UIView!
@@ -77,13 +78,13 @@ class EditSlideShowViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        slideShowCollectionView.delegate = self
-        slideShowCollectionView.dataSource = self
-        slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
-        
-        chooseMusicCollectionView.delegate = self
-        chooseMusicCollectionView.dataSource = self
-        chooseMusicCollectionView.register(UINib.init(nibName: "TypeMusicCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TypeMusicCell")
+//        slideShowCollectionView.delegate = self
+//        slideShowCollectionView.dataSource = self
+//        slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
+//        
+//        chooseMusicCollectionView.delegate = self
+//        chooseMusicCollectionView.dataSource = self
+//        chooseMusicCollectionView.register(UINib.init(nibName: "TypeMusicCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TypeMusicCell")
         
         listImageCollectionView.delegate = self
         listImageCollectionView.dataSource = self

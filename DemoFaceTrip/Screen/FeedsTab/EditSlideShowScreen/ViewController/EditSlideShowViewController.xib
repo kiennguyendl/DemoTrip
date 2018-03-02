@@ -28,12 +28,12 @@
                 <outlet property="musicView" destination="I9Q-Oh-lq1" id="cHn-YO-qp0"/>
                 <outlet property="numberPhotosLbl" destination="M5n-4y-hV0" id="6cA-hG-cvH"/>
                 <outlet property="pauseOrPlayBtn" destination="7S1-tu-Hay" id="osj-lO-ePJ"/>
+                <outlet property="playerView" destination="lhB-Wz-AZg" id="uRT-dO-TfI"/>
                 <outlet property="progressView" destination="GWr-Lh-GBL" id="RBW-UY-KAs"/>
                 <outlet property="recordBtn" destination="DVU-Bb-O5y" id="uEM-bA-wVi"/>
                 <outlet property="recordView" destination="jRA-Dv-dNS" id="4bd-hN-8jl"/>
                 <outlet property="recordVoiceBtn" destination="hfW-ea-cKy" id="pne-r0-SNE"/>
                 <outlet property="sellectOrUnsellectBtn" destination="xCQ-KU-jSn" id="CeT-r7-z8C"/>
-                <outlet property="slideShowCollectionView" destination="oEp-CI-leZ" id="xyj-wd-KdE"/>
                 <outlet property="slideShowView" destination="pfN-yL-Wvt" id="OKy-Tn-rxh"/>
                 <outlet property="slideShowViewParent" destination="2WE-Yj-dv8" id="dcU-8l-XJX"/>
                 <outlet property="topMenuViewContraint" destination="z7q-Tb-yJb" id="b79-Ni-E5g"/>
@@ -119,16 +119,10 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-yL-Wvt">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oEp-CI-leZ">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-Wz-AZg">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="pUC-rt-VsE">
-                                        <size key="itemSize" width="50" height="50"/>
-                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </collectionViewFlowLayout>
-                                </collectionView>
+                                    <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erG-Yd-3tI">
                                     <rect key="frame" x="10" y="15" width="86" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -179,23 +173,23 @@
                             <color key="backgroundColor" red="0.90588235289999997" green="0.38431372549999998" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="erG-Yd-3tI" firstAttribute="leading" secondItem="pfN-yL-Wvt" secondAttribute="leading" constant="10" id="0Zd-vx-RSs"/>
-                                <constraint firstItem="oEp-CI-leZ" firstAttribute="leading" secondItem="pfN-yL-Wvt" secondAttribute="leading" id="0cl-gH-aXw"/>
-                                <constraint firstAttribute="trailing" secondItem="oEp-CI-leZ" secondAttribute="trailing" id="66B-Ae-ERO"/>
                                 <constraint firstItem="pJb-u7-dsH" firstAttribute="leading" secondItem="pfN-yL-Wvt" secondAttribute="leading" id="9nd-tx-Jfj"/>
                                 <constraint firstItem="Py1-h7-8W4" firstAttribute="leading" secondItem="L52-Ng-HqX" secondAttribute="trailing" constant="5" id="DKd-KI-Z2x"/>
                                 <constraint firstAttribute="bottom" secondItem="pJb-u7-dsH" secondAttribute="bottom" id="GR7-Q5-hCS"/>
+                                <constraint firstItem="lhB-Wz-AZg" firstAttribute="top" secondItem="pfN-yL-Wvt" secondAttribute="top" id="Gtr-wP-7nx"/>
                                 <constraint firstAttribute="height" constant="235" id="HQC-ov-Dj3"/>
                                 <constraint firstItem="pJb-u7-dsH" firstAttribute="top" secondItem="pfN-yL-Wvt" secondAttribute="top" id="Qie-lH-b4d"/>
                                 <constraint firstItem="nHU-9B-mZe" firstAttribute="leading" secondItem="erG-Yd-3tI" secondAttribute="leading" id="TA8-Lk-lgg"/>
                                 <constraint firstAttribute="bottom" secondItem="7S1-tu-Hay" secondAttribute="bottom" constant="10" id="UWQ-wx-iuv"/>
                                 <constraint firstItem="erG-Yd-3tI" firstAttribute="top" secondItem="pfN-yL-Wvt" secondAttribute="top" constant="15" id="VkE-Tc-x0D"/>
+                                <constraint firstItem="lhB-Wz-AZg" firstAttribute="leading" secondItem="pfN-yL-Wvt" secondAttribute="leading" id="Wd7-tF-ITw"/>
                                 <constraint firstAttribute="trailing" secondItem="Py1-h7-8W4" secondAttribute="trailing" constant="20" id="XO0-bt-Twu"/>
-                                <constraint firstAttribute="bottom" secondItem="oEp-CI-leZ" secondAttribute="bottom" id="bor-3Z-yZp"/>
-                                <constraint firstItem="oEp-CI-leZ" firstAttribute="top" secondItem="pfN-yL-Wvt" secondAttribute="top" id="fcd-dL-WE6"/>
                                 <constraint firstItem="Py1-h7-8W4" firstAttribute="centerY" secondItem="7S1-tu-Hay" secondAttribute="centerY" id="jMd-ew-lmn"/>
                                 <constraint firstItem="7S1-tu-Hay" firstAttribute="leading" secondItem="pfN-yL-Wvt" secondAttribute="leading" constant="20" id="lxy-ex-Gkw"/>
+                                <constraint firstAttribute="bottom" secondItem="lhB-Wz-AZg" secondAttribute="bottom" id="nYK-z3-yso"/>
                                 <constraint firstItem="nHU-9B-mZe" firstAttribute="top" secondItem="erG-Yd-3tI" secondAttribute="bottom" id="rk6-DQ-lCi"/>
                                 <constraint firstAttribute="trailing" secondItem="pJb-u7-dsH" secondAttribute="trailing" id="sRI-LD-Hoc"/>
+                                <constraint firstAttribute="trailing" secondItem="lhB-Wz-AZg" secondAttribute="trailing" id="wFo-D5-Z9j"/>
                                 <constraint firstItem="L52-Ng-HqX" firstAttribute="leading" secondItem="7S1-tu-Hay" secondAttribute="trailing" id="wnp-vt-mWy"/>
                                 <constraint firstItem="L52-Ng-HqX" firstAttribute="centerY" secondItem="7S1-tu-Hay" secondAttribute="centerY" id="zhy-uD-kMl"/>
                             </constraints>

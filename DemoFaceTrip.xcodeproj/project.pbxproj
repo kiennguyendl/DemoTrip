@@ -79,6 +79,10 @@
 		FB209AF2201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB209AF0201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift */; };
 		FB209AF3201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB209AF1201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.xib */; };
 		FB238189202AB9F60031ABB2 /* Viet-Nam-Da-LAB.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FB314B6220299AC300D33E65 /* Viet-Nam-Da-LAB.mp4 */; };
+		FB24D69B2047A7AD00AABD36 /* PlayVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB24D69A2047A7AD00AABD36 /* PlayVideoView.xib */; };
+		FB24D69D2047A7BA00AABD36 /* PlayVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */; };
+		FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D6A32047FC7900AABD36 /* VideoManager.swift */; };
+		FB24FF952045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */; };
 		FB2B40BE20157F4C00404965 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B40BC20157F4C00404965 /* FeedsViewController.swift */; };
 		FB2B40BF20157F4C00404965 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2B40BD20157F4C00404965 /* FeedsViewController.xib */; };
 		FB2B40C2201580E000404965 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B40C0201580E000404965 /* FriendsViewController.swift */; };
@@ -377,6 +381,10 @@
 		FB1B6861202802F9008DEC34 /* DemoFaceTrip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoFaceTrip-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB209AF0201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForSlideShowCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB209AF1201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageForSlideShowCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB24D69A2047A7AD00AABD36 /* PlayVideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayVideoView.xib; sourceTree = "<group>"; };
+		FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoView.swift; sourceTree = "<group>"; };
+		FB24D6A32047FC7900AABD36 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuggestionTableViewCell_Delegate+DataSource.swift"; sourceTree = "<group>"; };
 		FB2B40BC20157F4C00404965 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		FB2B40BD20157F4C00404965 /* FeedsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		FB2B40C0201580E000404965 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -705,6 +713,7 @@
 			children = (
 				FBA5F7E91F871E570080B890 /* Utils.swift */,
 				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
+				FB24D6A32047FC7900AABD36 /* VideoManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1016,6 +1025,15 @@
 			path = ImageForSlideShowCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FB24D6992047A76800AABD36 /* PlayVideoView */ = {
+			isa = PBXGroup;
+			children = (
+				FB24D69A2047A7AD00AABD36 /* PlayVideoView.xib */,
+				FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */,
+			);
+			path = PlayVideoView;
+			sourceTree = "<group>";
+		};
 		FB2B40B920157DD500404965 /* FeedsScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,8 +1125,8 @@
 			isa = PBXGroup;
 			children = (
 				FBDD89B92029457A0003AA60 /* EditSlideShowViewController.swift */,
-				FBDD89BA2029457A0003AA60 /* EditSlideShowViewController.xib */,
 				FB54AB3B20298409001BD22F /* EditSlideShowDelegate+Datasource.swift */,
+				FBDD89BA2029457A0003AA60 /* EditSlideShowViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1328,6 +1346,7 @@
 				FB209AEF201EB44A00A0E185 /* ImageForSlideShowCollectionViewCell */,
 				FBD04E7920197A7E001CD8B3 /* ImageCollectionViewCell */,
 				FBA8DD60201832D000793516 /* SuggestionTableViewCell.swift */,
+				FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */,
 				FBA8DD61201832D000793516 /* SuggestionTableViewCell.xib */,
 			);
 			path = SuggestionCell;
@@ -1711,6 +1730,7 @@
 		FBE7D89520205987004CC6C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB24D6992047A76800AABD36 /* PlayVideoView */,
 				FB0E93C020219E8B007215B2 /* ContentTableViewCell */,
 				FB0E93BB20219B48007215B2 /* TitleTableViewCell */,
 				FB0E93B120217F36007215B2 /* TagFriendsTableViewCell */,
@@ -1970,6 +1990,7 @@
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
 				FB1AB7C82015D00D0072D182 /* avatar.jpg in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
+				FB24D69B2047A7AD00AABD36 /* PlayVideoView.xib in Resources */,
 				FBE0D3501FDE2006001D82FD /* DetailBookingViewController.xib in Resources */,
 				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
 				FB8D38822015A2B200A7FF1C /* FriendsCollectionViewCell.xib in Resources */,
@@ -2177,7 +2198,9 @@
 				FB1B685120280239008DEC34 /* GMUGeoJSONParser.m in Sources */,
 				FB8D38812015A2B200A7FF1C /* FriendsCollectionViewCell.swift in Sources */,
 				FB8051A41FAADB8000AD635E /* KeyNotifications.swift in Sources */,
+				FB24D69D2047A7BA00AABD36 /* PlayVideoView.swift in Sources */,
 				FB1B686020280239008DEC34 /* GQTPointQuadTreeChild.m in Sources */,
+				FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */,
 				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
 				FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */,
 				FB209AF2201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift in Sources */,
@@ -2206,6 +2229,7 @@
 				FB1B684E20280239008DEC34 /* GMUStaticCluster.m in Sources */,
 				FBA644831F8F0BBB007E968C /* ListDetailCatagoryViewController.swift in Sources */,
 				FB690DC8203FEC2400F6E331 /* ListImageViewController.swift in Sources */,
+				FB24FF952045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift in Sources */,
 				FBED69652016E4D100E0A81E /* ImageCollectionViewCell.swift in Sources */,
 				FB1B685920280239008DEC34 /* GMUPoint.m in Sources */,
 				FB54AB402029848F001BD22F /* TypeMusicCollectionViewCell.swift in Sources */,

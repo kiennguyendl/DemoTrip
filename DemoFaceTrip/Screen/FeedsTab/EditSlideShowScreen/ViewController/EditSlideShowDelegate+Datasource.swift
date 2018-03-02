@@ -15,8 +15,8 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         switch collectionView {
-        case slideShowCollectionView:
-            return (listAsset?.count)!
+//        case slideShowCollectionView:
+//            return (listAsset?.count)!
         case chooseMusicCollectionView:
             return listMusic.count
         case listImageCollectionView:
@@ -28,21 +28,21 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case slideShowCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
-            let asset = listAsset![indexPath.row].asset
-            
-            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                
-                cell.imageBlurView.image = image
-                if Float((image?.size.width)!) <= Float((image?.size.height)!){
-                    cell.widthOfShowImageView.constant = cell.frame.width / 2
-                }else{
-                    cell.widthOfShowImageView.constant = cell.frame.width
-                }
-                cell.showImageView.image = image
-            })
-            return cell
+//        case slideShowCollectionView:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
+//            let asset = listAsset![indexPath.row].asset
+//
+//            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+//
+//                cell.imageBlurView.image = image
+//                if Float((image?.size.width)!) <= Float((image?.size.height)!){
+//                    cell.widthOfShowImageView.constant = cell.frame.width / 2
+//                }else{
+//                    cell.widthOfShowImageView.constant = cell.frame.width
+//                }
+//                cell.showImageView.image = image
+//            })
+//            return cell
         case chooseMusicCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeMusicCell", for: indexPath) as! TypeMusicCollectionViewCell
             cell.typeMusicLbl.text = listMusic[indexPath.row]
@@ -73,10 +73,10 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
-        case slideShowCollectionView:
-            let width = slideShowCollectionView.frame.width - 1
-            let height = slideShowCollectionView.frame.height
-            return CGSize(width: width, height: height)
+//        case slideShowCollectionView:
+//            let width = slideShowCollectionView.frame.width - 1
+//            let height = slideShowCollectionView.frame.height
+//            return CGSize(width: width, height: height)
         case chooseMusicCollectionView:
             let width = chooseMusicCollectionView.frame.width / 4
             let height = slideShowCollectionView.frame.height
@@ -94,41 +94,41 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
         self.lastContentOffset = scrollView.contentOffset.y
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let heigth = menuView.frame.height + slideShowViewParent.frame.height + musicView.frame.height
-//        print("Height: \(heigth)")
-//        print("offset y: \(scrollView.contentOffset.y)")
-        if scrollView == listImageCollectionView{
-            if (self.lastContentOffset < scrollView.contentOffset.y) {
-                // moved to top
-                print("move up")
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.5, animations: {
-                        if scrollView.contentOffset.y > heigth{
-                            self.topMenuViewContraint.constant = -heigth
-                        }else{
-                            self.topMenuViewContraint.constant = -scrollView.contentOffset.y
-                        }
-                    })
-                }
-                
-            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-                // moved to bottom
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.5, animations: {
-                        if scrollView.contentOffset.y < 0{
-                            self.topMenuViewContraint.constant = 0
-                        }else{
-                            self.topMenuViewContraint.constant = -scrollView.contentOffset.y
-                        }
-                    })
-                }
-                print("move down")
-                
-            } else {
-                // didn't move
-                print("dont move")
-            }
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let heigth = menuView.frame.height + slideShowViewParent.frame.height + musicView.frame.height
+////        print("Height: \(heigth)")
+////        print("offset y: \(scrollView.contentOffset.y)")
+//        if scrollView == listImageCollectionView{
+//            if (self.lastContentOffset < scrollView.contentOffset.y) {
+//                // moved to top
+//                print("move up")
+//                DispatchQueue.main.async {
+//                    UIView.animate(withDuration: 0.5, animations: {
+//                        if scrollView.contentOffset.y > heigth{
+//                            self.topMenuViewContraint.constant = -heigth
+//                        }else{
+//                            self.topMenuViewContraint.constant = -scrollView.contentOffset.y
+//                        }
+//                    })
+//                }
+//
+//            } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+//                // moved to bottom
+//                DispatchQueue.main.async {
+//                    UIView.animate(withDuration: 0.5, animations: {
+//                        if scrollView.contentOffset.y < 0{
+//                            self.topMenuViewContraint.constant = 0
+//                        }else{
+//                            self.topMenuViewContraint.constant = -scrollView.contentOffset.y
+//                        }
+//                    })
+//                }
+//                print("move down")
+//
+//            } else {
+//                // didn't move
+//                print("dont move")
+//            }
+//        }
+//    }
 }
