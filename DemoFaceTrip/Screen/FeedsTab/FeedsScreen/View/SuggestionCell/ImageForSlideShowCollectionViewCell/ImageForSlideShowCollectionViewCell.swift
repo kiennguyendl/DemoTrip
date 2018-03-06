@@ -13,6 +13,8 @@ class ImageForSlideShowCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var widthOfShowImageView: NSLayoutConstraint!
     @IBOutlet weak var showImageView: UIImageView!
+    
+    var scrollingTimer: Timer? = nil
     var blurEffectView: UIVisualEffectView!
     override func awakeFromNib() {
         super.awakeFromNib()

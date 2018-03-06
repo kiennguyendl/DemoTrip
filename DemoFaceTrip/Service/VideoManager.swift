@@ -163,6 +163,7 @@ class VideoManager: NSObject {
         print("video length: \(length) seconds")
         
         var outputURL = documentDirectory.appendingPathComponent("\(fileName).mp4")
+        removeFileAtURLIfExists(url: outputURL as NSURL)
         if manager.fileExists(atPath: outputURL.path){
             //code here
             completionHandler(outputURL)
@@ -173,7 +174,7 @@ class VideoManager: NSObject {
             exportSession.shouldOptimizeForNetworkUse = true
             //
             let startTrim = CMTime(seconds: Double(10.0), preferredTimescale: 1000)
-            let endTrim = CMTime(seconds: Double(20), preferredTimescale: 1000)
+            let endTrim = CMTime(seconds: Double(25), preferredTimescale: 1000)
             let timeRange = CMTimeRange(start: startTrim, end: endTrim)
             //
             exportSession.timeRange = timeRange

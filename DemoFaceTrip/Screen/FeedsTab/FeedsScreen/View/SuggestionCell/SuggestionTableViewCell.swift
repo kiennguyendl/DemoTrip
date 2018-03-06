@@ -110,7 +110,6 @@ class SuggestionTableViewCell: UITableViewCell {
         setupCollectionView()
         heightOfImageCollectionView.constant = imageCollectionView.frame.width / 3 - 1
         progressView.progress = 0.0
-        setTimer()
 //        setTimerDisplay()
 //        trimVideo(videoUrl: videoUrl as URL)
     }
@@ -186,7 +185,9 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     
     func playVideo(url: URL, playerView: UIView)  {
-        if playerView != nil{
+        if playerLayer != nil{
+            player?.pause()
+            player = nil
             playerLayer = nil
             playerLayer?.removeFromSuperlayer()
         }
@@ -200,7 +201,7 @@ class SuggestionTableViewCell: UITableViewCell {
         playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         playerView.layer.addSublayer(playerLayer!)
-        player?.play()
+//        player?.play()
         player?.volume = 0.0
     }
     
@@ -390,6 +391,7 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     var timeInterval = 2.0
     func setTimer() {
+        
         scrollingTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.autoScroll), userInfo: nil, repeats: true)
 
         
@@ -420,20 +422,76 @@ class SuggestionTableViewCell: UITableViewCell {
     
     var x = 0
     
-    @objc func autoScroll() {
-        print("x: \(x)")
-//        sliderBar.maximumValue = Float(listAsset.count) * 2 + 15.0
+    @objc func autoScroll(_ timer: Timer) {
+        
+        let dict = timer.userInfo as! [String: Any]
+        let indexRow = dict["indexRow"] as! Int
+        let typeCell = dict["typeCell"] as! String
+        let cell = dict["cell"]
+//
+//
+//            print(indexItem)
+//            if (indexItem + 1) != self.listAsset.count{
+//                let currentIndexPath = IndexPath(row: indexItem, section: 0)
+//
+////                if typeCell == "Image"{
+////                    let currentCell = self.slideShowCollectionView.cellForItem(at: currentIndexPath) as! ImageForSlideShowCollectionViewCell
+////                    currentCell.scrollingTimer?.invalidate()
+////                }else{
+////                    let currentCell = self.slideShowCollectionView.cellForItem(at: currentIndexPath) as! VideoForSlideShowCollectionViewCell
+////                    currentCell.scrollingTimer?.invalidate()
+////                }
+//
+//
+//                let nextCellIndexPath = IndexPath(row: indexItem + 1, section: 0)
+//                self.slideShowCollectionView.scrollToItem(at: nextCellIndexPath, at: .centeredHorizontally, animated: true)
+//
+//
+////                let contentOffset: CGPoint = {
+////                    let item = (indexItem+1) % self.listAsset.count
+////                    return self.slideShowCollectionView.contentOffset
+////                }()
+////                self.slideShowCollectionView.setContentOffset(contentOffset, animated: true)
+//
+//
+//            }else{
+//                UIView.animate(withDuration: 2, animations: {
+//                    self.hiddenView.isHidden = false
+//                    self.hiddenView.alpha = 1
+//                    self.slideShowCollectionView.alpha = 0
+//                }, completion: { finished in
+//                    self.slideShowCollectionView.reloadData()
+//                    self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+//                    UIView.animate(withDuration: 2, animations: {
+//                        DispatchQueue.main.async {
+//                            self.isPlayingSlideShow = false
+//                            self.isEndSlideShow = true
+//                            self.hiddenView.isHidden = true
+//                            self.hiddenView.alpha = 0
+//                            self.slideShowCollectionView.alpha = 1
+//                        }
+//
+//                    })
+//
+//                })
+//            }
+        
+        
+        
+        
+        
+        
         if isPlayingSlideShow{
             if listAsset.count > 0{
-                
+
                 if self.x < self.listAsset.count {
-                    
+                    print("x: \(x)")
 //                    UIView.animate(withDuration: TimeInterval(Float(self.listAsset.count * 2)), delay: 0,  animations: {
 //                        self.progressView.setProgress(1.0, animated: true)
 ////                        self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
 //
 //                    })
-                    
+
 //                    UIView.animate(withDuration: timeInterval, animations: {
 //                        if self.x == 0{
 ////                            let cell = slideShowCollectionView.cellForItem(at: )
@@ -448,22 +506,54 @@ class SuggestionTableViewCell: UITableViewCell {
 //                        }
 //
 //                    })
-                    
-                    
+
+
                     let newIndexPath = IndexPath(item: x, section: 0)
 
                     self.slideShowCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
                     
-                    //                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
+//                    if x > 0{
+                        let currentPath = IndexPath(item: x - 1, section: 0)
+                        
+                        if typeCell == "image"{
+                            if let cell = cell as? ImageForSlideShowCollectionViewCell{
+                                print("image")
+                                cell.showImageView.transform = CGAffineTransform.identity
+                                UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+                                    
+                                    cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                                }, completion: { finished in
+//                                    cell.showImageView.transform = CGAffineTransform.identity
+                                })
+
+                            }
+                            
+                        }else{
+                            if let cell = cell as? VideoForSlideShowCollectionViewCell{
+//                                player?.play()
+                                print("video")
+//                                UIView.animate(withDuration: 15.0, delay: 0, options: [], animations: {
+                                
+//                                }, completion: { finished in
+//
+//                                })
+                            }
+                            
+                        }
+                        
+//                    }
                     
+
+                    //                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
+
                     //                    UIView.animate(withDuration: 2, animations: {
                     //                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
                     //                    }, completion: {fineshed in
                     //                        cell.showImageView.transform = CGAffineTransform.identity
                     //                    })
-                    
+
                     self.x = self.x + 1
-                    
+
                     if self.x == self.listAsset.count{
                         UIView.animate(withDuration: 2, animations: {
                             self.hiddenView.isHidden = false
@@ -491,13 +581,13 @@ class SuggestionTableViewCell: UITableViewCell {
 //                                    self.playPauseBtn.tintColor = UIColor.white
 //                                    self.player?.pause()
                                 }
-                                
+
                             })
-                            
+
                         })
                     }
                 }
-                
+
             }
         }
         
