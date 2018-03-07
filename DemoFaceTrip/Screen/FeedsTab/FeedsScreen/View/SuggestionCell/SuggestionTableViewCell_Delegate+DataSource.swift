@@ -37,13 +37,6 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
                 
-                
-                
-//                let data = ["indexItem": currentRow, "typeCell": "Image"] as [String : Any]
-//                print("current item: \(currentRow)")
-//                cell.scrollingTimer?.invalidate()
-//                cell.scrollingTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.autoScroll), userInfo: data, repeats: true)
-                
                 PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
                 
                     let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
@@ -55,53 +48,18 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     }
                     cell.showImageView.image = thumnail
                     
-//                    if currentRow == 1{
+
                         UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
                             cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                         }, completion: { finished in
                             cell.showImageView.transform = CGAffineTransform.identity
                         })
-//                    }else{
-//                        UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-//                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-//                        }, completion: { finished in
-//                            cell.showImageView.transform = CGAffineTransform.identity
-//                        })
-//                    }
-                    
-                    
-//                    UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-//                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                    }, completion: { finished in
-//                        cell.showImageView.transform = CGAffineTransform.identity
-//                    })
-                    
-                    
-//                    if self.isPlayingSlideShow{
-//                        if currentRow == 1 /*|| currentRow == 2*/{
-//                            UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-//                                cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                            }, completion: { finished in
-//                                cell.showImageView.transform = CGAffineTransform.identity
-//                            })
-//                        }else{
-//                            UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-//                                cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                            }, completion: { finished in
-//                                cell.showImageView.transform = CGAffineTransform.identity
-//                            })
-//                        }
-//                    }
                 })
-//                DispatchQueue.main.async {
-                
-//                }
                 removeTimer()
                 timeInterval = 2.0
                 setTimer()
                 return cell
             }else if asset?.mediaType == .video{
-//                timeInterval = 15.0
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoForSlideShowCollectionViewCell
                 
                 
@@ -110,12 +68,9 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                 PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
                     , resultHandler: {[weak self] avAsset,audiomix,info in
                         guard let strongSelf = self else{return}
-//                        DispatchQueue.main.async {
                             VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
                                 guard let strongSelf = self else{return}
-//                                UIView.animate(withDuration: 15, animations: {
                                     strongSelf.playVideo(url: url, playerView: cell.playerView)
-//                                })
 
                             })
 //                        }

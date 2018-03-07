@@ -36,18 +36,19 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var editMapBtn: UIButton!
 //    @IBOutlet weak var pauseOrPlayBtn: UIButton!
-//    @IBOutlet weak var slideShowCollectionView: UICollectionView!
+    @IBOutlet weak var slideShowCollectionView: UICollectionView!
 //    @IBOutlet weak var heightOfSlideShowView: NSLayoutConstraint!
     
     var googleMapsView:GMSMapView!
     var locationManager = CLLocationManager()
     var clusterManager: GMUClusterManager!
     
-    var scrollingTimer = Timer()
+    var scrollingTimer: Timer? = nil
     var displayTimer = Timer()
-    var isShowingVideo = false
+    var isShowingVideo = true
     var backgroundMusicPlayer: AVAudioPlayer!
     var isEndSlideShow = true
+    var timeInterval = 2.0
     
     var listImageAsset: [AsssetInfor] = []
     var listVideoAsset: [AsssetInfor] = []
@@ -69,32 +70,33 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 //                    })
 //                }
                 
-                for asset in listAsset{
-                    if asset.asset?.mediaType == PHAssetMediaType.audio{
-                        listVideoAsset.append(asset)
-                    }
-                    
-                    if asset.asset?.mediaType == PHAssetMediaType.image{
-                        listImageAsset.append(asset)
-                    }
-                }
+//                for asset in listAsset{
+//                    if asset.asset?.mediaType == PHAssetMediaType.audio{
+//                        listVideoAsset.append(asset)
+//                    }
+//
+//                    if asset.asset?.mediaType == PHAssetMediaType.image{
+//                        listImageAsset.append(asset)
+//                    }
+//                }
+//
+//                let listImage = getImageFromListAsset(listImageAsset: listImageAsset)
+//
+//                VideoManager.shareInstance.generateVideoFromListImage(listImage: listImage, viewSize: playerView, completionHandler: { [weak self] url in
+//
+//                    guard let strongSelf = self else{return}
+//                    strongSelf.player = AVPlayer(url: url as URL)
+//
+//                    strongSelf.playerLayer = AVPlayerLayer()
+//                    strongSelf.playerLayer?.player = strongSelf.player
+//                    strongSelf.playerLayer?.frame = strongSelf.playerView.frame
+//
+//                    strongSelf.playerView.layer.addSublayer(strongSelf.playerLayer!)
+//                    strongSelf.player?.play()
+//                })
                 
-                let listImage = getImageFromListAsset(listImageAsset: listImageAsset)
-                
-                VideoManager.shareInstance.generateVideoFromListImage(listImage: listImage, viewSize: playerView, completionHandler: { [weak self] url in
-                    
-                    guard let strongSelf = self else{return}
-                    strongSelf.player = AVPlayer(url: url as URL)
-                    
-                    strongSelf.playerLayer = AVPlayerLayer()
-                    strongSelf.playerLayer?.player = strongSelf.player
-                    strongSelf.playerLayer?.frame = strongSelf.playerView.frame
-                    
-                    strongSelf.playerView.layer.addSublayer(strongSelf.playerLayer!)
-                    strongSelf.player?.play()
-                })
-                
-                
+                slideShowCollectionView.reloadData()
+//                layoutIfNeeded()
                 
                 DispatchQueue.main.async {
                     self.loadMap()
@@ -108,11 +110,11 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         setupView()
         setupButton()
         setupAvatar()
-//        setupCollectionView()
-//        addObserverForView()
+        setupCollectionView()
+        addObserverForView()
 //        setTimer()
-        addPlayerView()
-        layoutIfNeeded()
+//        addPlayerView()
+//        layoutIfNeeded()
     }
     
     
@@ -183,11 +185,12 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         
     }
     
-//    func setupCollectionView() {
-//        slideShowCollectionView.delegate = self
-//        slideShowCollectionView.dataSource = self
-//        slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
-//    }
+    func setupCollectionView() {
+        slideShowCollectionView.delegate = self
+        slideShowCollectionView.dataSource = self
+        slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
+        slideShowCollectionView.register(UINib.init(nibName: "VideoForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "VideoCell")
+    }
     
     func setupAvatar() {
         avatarImage.layer.cornerRadius = avatarImage.frame.width / 2
@@ -264,6 +267,16 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @IBAction func editContentSlideShow(_ sender: Any) {
+        if backgroundMusicPlayer != nil{
+            if playerLayer != nil{
+                player?.pause()
+                player = nil
+                playerLayer = nil
+            }
+            backgroundMusicPlayer.pause()
+            backgroundMusicPlayer = nil
+            isShowingVideo = false
+        }
         delgate?.editSlideShow(listAsset: listAsset!)
     }
     
@@ -276,7 +289,9 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     override func layoutSublayers(of layer: CALayer) {
-        videoView?.frame = playerView.bounds
+//        videoView?.frame = playerView.bounds
+        slideShowCollectionView.frame = playerView.bounds
+        layoutIfNeeded()
     }
     
     
@@ -430,132 +445,98 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 //
 //
 //    }
+    
+    func playVideo(url: URL, playerView: UIView)  {
+        if playerLayer != nil{
+            player?.pause()
+            player = nil
+            playerLayer = nil
+            playerLayer?.removeFromSuperlayer()
+        }
+        player = AVPlayer(url: url as URL)
+        //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
+        //        player = AVPlayer(playerItem: playerItem)
+        playerLayer = AVPlayerLayer()
+        playerLayer?.player = player
+        playerLayer?.frame = playerView.frame
+        playerLayer?.backgroundColor = UIColor.white.cgColor
+        playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+        playerView.layer.addSublayer(playerLayer!)
+        if isShowingVideo{
+            player?.play()
+        }else{
+            player?.pause()
+        }
+        player?.volume = 0.0
+    }
+    
+    func removeTimer() {
+        scrollingTimer?.invalidate()
+        if scrollingTimer != nil{
+            scrollingTimer = nil
+        }
+    }
+    func setTimer() {
+        
+        scrollingTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.autoScroll), userInfo: nil, repeats: true)
+        
+        
+    }
+    
+    @objc func autoScroll(_ timer: Timer) {
+        
+        if isShowingVideo{
+            
+            let currentOffset = slideShowCollectionView.contentOffset
+            let contentWidth = slideShowCollectionView.frame.width
+            let totalContentWidthOfCV = contentWidth * CGFloat((listAsset?.count)!)
+            
+//            if currentOffset.x >= 0 || currentOffset.x <= contentWidth{
+//                let data = ["isPlayMusic": true]
+//                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+//            }
+            
+            if currentOffset.x < totalContentWidthOfCV{
+                let newOffsetX = currentOffset.x + contentWidth
+                slideShowCollectionView.contentOffset = CGPoint(x: newOffsetX, y: currentOffset.y)
+            }else{
+                
+                let newOffsetX = CGFloat(0.0)
+                
+                UIView.animate(withDuration: 2, animations: {
+                    self.hiddenView.isHidden = false
+                    self.hiddenView.alpha = 1
+                    self.slideShowCollectionView.alpha = 0
+                }, completion: { finished in
+                    self.slideShowCollectionView.contentOffset = CGPoint(x: newOffsetX, y: currentOffset.y)
+                    self.slideShowCollectionView.reloadData()
+                    self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+                    UIView.animate(withDuration: 2, animations: {
+                        DispatchQueue.main.async {
+                            self.isShowingVideo = false
+                            let data = ["isPlayMusic": false]
+                            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+//                            self.player?.pause()
+                            //                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
+//                            self.x = 0
+                            self.isEndSlideShow = true
+                            self.hiddenView.isHidden = true
+                            self.hiddenView.alpha = 0
+                            self.slideShowCollectionView.alpha = 1
+                            //                                    self.player?.pause()
+                        }
+                        
+                    })
+                    
+                })
+            }
+            
+        }
+        
+    }
 }
 
-//extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (listAsset?.count)!
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
-//
-//        let asset = listAsset![indexPath.row].asset
-//
-//        PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-//
-//            cell.imageBlurView.image = image
-//            if Float((image?.size.width)!) <= Float((image?.size.height)!){
-//                cell.widthOfShowImageView.constant = cell.frame.width / 2
-//            }else{
-//                cell.widthOfShowImageView.constant = cell.frame.width
-//            }
-//            cell.showImageView.image = image
-//
-//            if self.isShowingVideo{
-//                if indexPath.row == 0 || indexPath.row == 1{
-//                    UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-//                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                        //                        print("index path 2: \(indexPath.row)")
-//                    }, completion: { finished in
-//                        cell.showImageView.transform = CGAffineTransform.identity
-//                    })
-//                }else{
-//                    UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-//                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//                        //                        print("index path 2: \(indexPath.row)")
-//                    }, completion: { finished in
-//                        cell.showImageView.transform = CGAffineTransform.identity
-//                    })
-//                }
-//            }
-//
-//
-//        })
-//
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = slideShowCollectionView.frame.width - 1
-//        let height = slideShowCollectionView.frame.height
-//        return CGSize(width: width, height: height)
-//    }
-//}
 
-extension ContentTableViewCell: GMUClusterManagerDelegate, GMSMapViewDelegate, GMUClusterRendererDelegate{
-    
-    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
-        
-        return false
-    }
-    
-    // MARK: - GMUMapViewDelegate
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
-        return false
-    }
-    
-    func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
-        
-        //        if marker.userData is PointItem{
-        let items = marker.userData as! PointItem
-        let image = items.images[0]
-//        UIGraphicsBeginImageContextWithOptions(CGSize(width: 60, height: 60), true, 0)
-//        image.draw(in: CGRect(x: 0, y: 0, width: 60, height: 60))
-        
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-//        let textStyle = NSMutableParagraphStyle()
-//        textStyle.alignment = NSTextAlignment.center
-//        let textColor = UIColor.white
-//        let attributes=[
-//            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
-//            NSAttributedStringKey.paragraphStyle: textStyle,
-//            NSAttributedStringKey.foregroundColor: textColor,
-//            NSAttributedStringKey.backgroundColor: UIColor.blue] as [NSAttributedStringKey : Any]
-//        let text = "14"
-//
-//        let textH = UIFont.boldSystemFont(ofSize: 14).lineHeight
-//        let textY = ((newImage?.size.height)!-textH)/2
-//        let textRect = CGRect(x: 0, y: textY, width: (newImage?.size.width)!, height: textH)
-//        text.draw(in: textRect.integral, withAttributes: attributes)
-//        let result = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-        
-        let markerView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100)))
-        markerView.backgroundColor = .clear
-        
-        let markerImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 60, height: 60))
-        markerImage.image = UIImage(named: "infowindow")
-        
-        let imgInside = UIImageView(frame: CGRect(x: 30, y: 30, width: 50, height: 45))
-        imgInside.image = image
-        
-        let label = UILabel(frame: CGRect(x: 65, y: 15, width: 20, height: 20))
-        label.text = "32"
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.backgroundColor = .blue
-        label.textColor = .white
-        label.textAlignment = .center
-        label.layer.cornerRadius = label.frame.width / 2
-        label.layer.masksToBounds = true
-        
-        markerView.addSubview(markerImage)
-        markerView.addSubview(imgInside)
-        markerView.addSubview(label)
-        
-        UIGraphicsBeginImageContextWithOptions(markerView.frame.size, false, UIScreen.main.scale)
-        markerView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let imageConverted: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-        marker.icon = imageConverted
-        // Center the marker at the center of the image.
-        marker.groundAnchor = CGPoint(x: 0.5, y: 1)
 
-    }
-}
+

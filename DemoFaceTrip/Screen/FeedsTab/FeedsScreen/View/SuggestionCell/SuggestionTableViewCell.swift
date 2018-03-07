@@ -201,7 +201,11 @@ class SuggestionTableViewCell: UITableViewCell {
         playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         playerView.layer.addSublayer(playerLayer!)
-        player?.play()
+        if isPlayingSlideShow{
+            player?.play()
+        }else{
+            player?.pause()
+        }
         player?.volume = 0.0
     }
     
@@ -449,6 +453,7 @@ class SuggestionTableViewCell: UITableViewCell {
                     UIView.animate(withDuration: 2, animations: {
                         DispatchQueue.main.async {
                             self.isPlayingSlideShow = false
+                            self.player?.pause()
 //                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
                             self.x = 0
                             self.isEndSlideShow = true

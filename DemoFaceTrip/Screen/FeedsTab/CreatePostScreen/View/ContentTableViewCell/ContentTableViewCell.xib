@@ -21,9 +21,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGp-cb-bv3">
                         <rect key="frame" x="10" y="184.5" width="371" height="220"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pI-hq-UzI">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pI-hq-UzI">
                                 <rect key="frame" x="0.0" y="0.0" width="371" height="220"/>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-gT-ZnR">
+                                <rect key="frame" x="0.0" y="0.0" width="371" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BEX-WE-74h">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-nv-hK6">
                                 <rect key="frame" x="10" y="15" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -47,16 +57,28 @@
                                     <action selector="editContentSlideShow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mhK-vV-P3O"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftS-7v-P8H">
+                                <rect key="frame" x="0.0" y="0.0" width="371" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3pI-hq-UzI" secondAttribute="trailing" id="4ON-dz-gtM"/>
+                            <constraint firstAttribute="trailing" secondItem="ftS-7v-P8H" secondAttribute="trailing" id="56U-hE-XIo"/>
                             <constraint firstAttribute="trailing" secondItem="6Ei-sW-YbZ" secondAttribute="trailing" constant="20" id="6b2-rJ-Gbk"/>
+                            <constraint firstAttribute="bottom" secondItem="bVf-gT-ZnR" secondAttribute="bottom" id="89b-yI-9o6"/>
                             <constraint firstItem="Snm-OM-0ef" firstAttribute="top" secondItem="pzy-nv-hK6" secondAttribute="bottom" id="8WU-Y0-OmP"/>
                             <constraint firstItem="pzy-nv-hK6" firstAttribute="leading" secondItem="iGp-cb-bv3" secondAttribute="leading" constant="10" id="A9n-7j-Uso"/>
+                            <constraint firstItem="ftS-7v-P8H" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" id="Bsf-LN-N5s"/>
+                            <constraint firstItem="bVf-gT-ZnR" firstAttribute="leading" secondItem="iGp-cb-bv3" secondAttribute="leading" id="GHq-ty-JrQ"/>
                             <constraint firstItem="pzy-nv-hK6" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" constant="15" id="GWV-Lo-7rY"/>
+                            <constraint firstItem="ftS-7v-P8H" firstAttribute="leading" secondItem="iGp-cb-bv3" secondAttribute="leading" id="IFY-J6-YOp"/>
+                            <constraint firstAttribute="trailing" secondItem="bVf-gT-ZnR" secondAttribute="trailing" id="Inl-Uq-vG7"/>
+                            <constraint firstItem="bVf-gT-ZnR" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" id="Kc8-Fp-uER"/>
                             <constraint firstItem="3pI-hq-UzI" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" id="OVm-US-FPj"/>
                             <constraint firstItem="6Ei-sW-YbZ" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" constant="15" id="bPl-Y3-iE3"/>
+                            <constraint firstAttribute="bottom" secondItem="ftS-7v-P8H" secondAttribute="bottom" id="cKj-ZZ-Wl8"/>
                             <constraint firstAttribute="bottom" secondItem="3pI-hq-UzI" secondAttribute="bottom" id="lfA-56-XQf"/>
                             <constraint firstItem="Snm-OM-0ef" firstAttribute="leading" secondItem="pzy-nv-hK6" secondAttribute="leading" id="x2a-nd-eEc"/>
                             <constraint firstItem="3pI-hq-UzI" firstAttribute="leading" secondItem="iGp-cb-bv3" secondAttribute="leading" id="ywc-6i-Sdh"/>
@@ -167,10 +189,12 @@
                 <outlet property="contentTextPost" destination="1Rz-AV-jOG" id="wUb-7v-35g"/>
                 <outlet property="editBtn" destination="6Ei-sW-YbZ" id="mFC-xx-7Zv"/>
                 <outlet property="editMapBtn" destination="afb-Si-pp5" id="OHC-QS-wuw"/>
+                <outlet property="hiddenView" destination="ftS-7v-P8H" id="Yse-XN-iYE"/>
                 <outlet property="map" destination="ENP-Qx-RDq" id="lle-P3-nlu"/>
                 <outlet property="mapView" destination="Z7a-1c-KB2" id="gni-hb-dXs"/>
                 <outlet property="nameUser" destination="d0H-1D-Xn5" id="H3Z-0G-S4V"/>
                 <outlet property="playerView" destination="3pI-hq-UzI" id="XYU-x1-bx5"/>
+                <outlet property="slideShowCollectionView" destination="bVf-gT-ZnR" id="mFq-Gp-mFm"/>
                 <outlet property="slideShowView" destination="iGp-cb-bv3" id="HVn-7Z-jkU"/>
             </connections>
             <point key="canvasLocation" x="60.5" y="255.5"/>

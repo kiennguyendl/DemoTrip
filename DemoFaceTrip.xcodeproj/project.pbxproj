@@ -157,6 +157,7 @@
 		FBBD8C871FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBBD8C861FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib */; };
 		FBBD8C891FA04AFB00BCD169 /* CustomNavigationbarForDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBD8C881FA04AFB00BCD169 /* CustomNavigationbarForDetailViewController.swift */; };
 		FBC37CB71FA1CBCC00E2E3A3 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC37CB61FA1CBCC00E2E3A3 /* Setting.swift */; };
+		FBC455A2204F88CD009B5DFC /* ContentTableViewCell_Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC455A1204F88CD009B5DFC /* ContentTableViewCell_Delegate+DataSource.swift */; };
 		FBC5551A1FB3EC8800AC510D /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC555181FB3EC8800AC510D /* ReviewsTableViewCell.swift */; };
 		FBC5551B1FB3EC8800AC510D /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC555191FB3EC8800AC510D /* ReviewsTableViewCell.xib */; };
 		FBC5551F1FB3FDAE00AC510D /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC5551D1FB3FDAE00AC510D /* RatingTableViewCell.swift */; };
@@ -460,6 +461,7 @@
 		FBBD8C861FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationbarForDetailViewController.xib; sourceTree = "<group>"; };
 		FBBD8C881FA04AFB00BCD169 /* CustomNavigationbarForDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationbarForDetailViewController.swift; sourceTree = "<group>"; };
 		FBC37CB61FA1CBCC00E2E3A3 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		FBC455A1204F88CD009B5DFC /* ContentTableViewCell_Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentTableViewCell_Delegate+DataSource.swift"; sourceTree = "<group>"; };
 		FBC555181FB3EC8800AC510D /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		FBC555191FB3EC8800AC510D /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
 		FBC5551D1FB3FDAE00AC510D /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 			isa = PBXGroup;
 			children = (
 				FB0E93C120219ECA007215B2 /* ContentTableViewCell.swift */,
+				FBC455A1204F88CD009B5DFC /* ContentTableViewCell_Delegate+DataSource.swift */,
 				FB0E93C220219ECA007215B2 /* ContentTableViewCell.xib */,
 			);
 			path = ContentTableViewCell;
@@ -2191,6 +2194,7 @@
 				FBEB18301FB01C8700E52E59 /* NewBookingViewController.swift in Sources */,
 				FBE7D892202057DB004CC6C3 /* FeedScreenProtocol.swift in Sources */,
 				FBA5F7EA1F871E570080B890 /* Utils.swift in Sources */,
+				FBC455A2204F88CD009B5DFC /* ContentTableViewCell_Delegate+DataSource.swift in Sources */,
 				FB147B901FDA91D9006BC428 /* NavigationControllerExtension.swift in Sources */,
 				FBE241191F9EF2A700833E8A /* HeaderZeroForDetail.swift in Sources */,
 				FBF59C9E1FD00A7800789040 /* CircularTransition.swift in Sources */,

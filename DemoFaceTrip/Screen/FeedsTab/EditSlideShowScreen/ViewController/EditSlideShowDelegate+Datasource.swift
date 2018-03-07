@@ -15,8 +15,8 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         switch collectionView {
-//        case slideShowCollectionView:
-//            return (listAsset?.count)!
+        case slideShowCollectionView:
+            return (listAsset?.count)!
         case chooseMusicCollectionView:
             return listMusic.count
         case listImageCollectionView:
@@ -27,22 +27,71 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let currentRow = indexPath.row
+        
+        if collectionView == slideShowCollectionView{
+            print("afasfasfasfasfasf")
+        }
+        
         switch collectionView {
-//        case slideShowCollectionView:
+        case slideShowCollectionView:
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
-//            let asset = listAsset![indexPath.row].asset
-//
-//            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-//
-//                cell.imageBlurView.image = image
-//                if Float((image?.size.width)!) <= Float((image?.size.height)!){
-//                    cell.widthOfShowImageView.constant = cell.frame.width / 2
-//                }else{
-//                    cell.widthOfShowImageView.constant = cell.frame.width
-//                }
-//                cell.showImageView.image = image
-//            })
-//            return cell
+            let asset = listAsset![indexPath.row].asset
+
+            let currentRow = indexPath.row
+            
+            if currentRow == 0{
+                let data = ["isPlayMusic": true]
+                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+            }
+            if asset?.mediaType == .image{
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
+                
+                PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+                    
+                    let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
+                    cell.imageBlurView.image = thumnail
+                    if Float((image?.size.width)!) <= Float((image?.size.height)!){
+                        cell.widthOfShowImageView.constant = cell.frame.width
+                    }else{
+                        cell.widthOfShowImageView.constant = cell.frame.width
+                    }
+                    cell.showImageView.image = thumnail
+                    
+                    
+                    UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                    }, completion: { finished in
+                        cell.showImageView.transform = CGAffineTransform.identity
+                    })
+                })
+                removeTimer()
+                timeInterval = 2.0
+                setTimer()
+                return cell
+            }else if asset?.mediaType == .video{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoForSlideShowCollectionViewCell
+                
+                
+                print("current item: \(currentRow)")
+                
+                PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
+                    , resultHandler: {[weak self] avAsset,audiomix,info in
+                        guard let strongSelf = self else{return}
+                        VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
+                            guard let strongSelf = self else{return}
+                            strongSelf.playVideo(url: url, playerView: cell.playerView)
+                            
+                        })
+                        
+                })
+                removeTimer()
+                timeInterval = 15.0
+                setTimer()
+                return cell
+            }
+            return UICollectionViewCell()
         case chooseMusicCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeMusicCell", for: indexPath) as! TypeMusicCollectionViewCell
             cell.typeMusicLbl.text = listMusic[indexPath.row]
@@ -73,10 +122,10 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch collectionView {
-//        case slideShowCollectionView:
-//            let width = slideShowCollectionView.frame.width - 1
-//            let height = slideShowCollectionView.frame.height
-//            return CGSize(width: width, height: height)
+        case slideShowCollectionView:
+            let width = slideShowCollectionView.frame.width 
+            let height = slideShowCollectionView.frame.height
+            return CGSize(width: width, height: height)
         case chooseMusicCollectionView:
             let width = chooseMusicCollectionView.frame.width / 4
             let height = slideShowCollectionView.frame.height
