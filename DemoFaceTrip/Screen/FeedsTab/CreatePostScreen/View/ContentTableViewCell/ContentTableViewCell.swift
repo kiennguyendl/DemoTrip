@@ -37,7 +37,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var editMapBtn: UIButton!
 //    @IBOutlet weak var pauseOrPlayBtn: UIButton!
 //    @IBOutlet weak var slideShowCollectionView: UICollectionView!
-    @IBOutlet weak var heightOfSlideShowView: NSLayoutConstraint!
+//    @IBOutlet weak var heightOfSlideShowView: NSLayoutConstraint!
     
     var googleMapsView:GMSMapView!
     var locationManager = CLLocationManager()
@@ -130,7 +130,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         mapView.layer.cornerRadius = 10
         mapView.layer.masksToBounds = true
         
-        heightOfSlideShowView.constant = slideShowView.frame.width * (3 / 4)
+//        heightOfSlideShowView.constant = slideShowView.frame.width * (3 / 4)
     }
     
     func addObserverForView() {

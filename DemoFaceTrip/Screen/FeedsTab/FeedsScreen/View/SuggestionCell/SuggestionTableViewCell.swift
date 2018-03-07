@@ -201,7 +201,7 @@ class SuggestionTableViewCell: UITableViewCell {
         playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         playerView.layer.addSublayer(playerLayer!)
-//        player?.play()
+        player?.play()
         player?.volume = 0.0
     }
     
@@ -423,172 +423,89 @@ class SuggestionTableViewCell: UITableViewCell {
     var x = 0
     
     @objc func autoScroll(_ timer: Timer) {
-        
-        let dict = timer.userInfo as! [String: Any]
-        let indexRow = dict["indexRow"] as! Int
-        let typeCell = dict["typeCell"] as! String
-        let cell = dict["cell"]
-//
-//
-//            print(indexItem)
-//            if (indexItem + 1) != self.listAsset.count{
-//                let currentIndexPath = IndexPath(row: indexItem, section: 0)
-//
-////                if typeCell == "Image"{
-////                    let currentCell = self.slideShowCollectionView.cellForItem(at: currentIndexPath) as! ImageForSlideShowCollectionViewCell
-////                    currentCell.scrollingTimer?.invalidate()
-////                }else{
-////                    let currentCell = self.slideShowCollectionView.cellForItem(at: currentIndexPath) as! VideoForSlideShowCollectionViewCell
-////                    currentCell.scrollingTimer?.invalidate()
-////                }
-//
-//
-//                let nextCellIndexPath = IndexPath(row: indexItem + 1, section: 0)
-//                self.slideShowCollectionView.scrollToItem(at: nextCellIndexPath, at: .centeredHorizontally, animated: true)
-//
-//
-////                let contentOffset: CGPoint = {
-////                    let item = (indexItem+1) % self.listAsset.count
-////                    return self.slideShowCollectionView.contentOffset
-////                }()
-////                self.slideShowCollectionView.setContentOffset(contentOffset, animated: true)
-//
-//
-//            }else{
-//                UIView.animate(withDuration: 2, animations: {
-//                    self.hiddenView.isHidden = false
-//                    self.hiddenView.alpha = 1
-//                    self.slideShowCollectionView.alpha = 0
-//                }, completion: { finished in
-//                    self.slideShowCollectionView.reloadData()
-//                    self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
-//                    UIView.animate(withDuration: 2, animations: {
-//                        DispatchQueue.main.async {
-//                            self.isPlayingSlideShow = false
-//                            self.isEndSlideShow = true
-//                            self.hiddenView.isHidden = true
-//                            self.hiddenView.alpha = 0
-//                            self.slideShowCollectionView.alpha = 1
-//                        }
-//
-//                    })
-//
-//                })
-//            }
-        
-        
-        
-        
-        
-        
+  
         if isPlayingSlideShow{
-            if listAsset.count > 0{
-
-                if self.x < self.listAsset.count {
-                    print("x: \(x)")
-//                    UIView.animate(withDuration: TimeInterval(Float(self.listAsset.count * 2)), delay: 0,  animations: {
-//                        self.progressView.setProgress(1.0, animated: true)
-////                        self.sliderBar.setValue(self.sliderBar.maximumValue, animated: true)
-//
-//                    })
-
-//                    UIView.animate(withDuration: timeInterval, animations: {
-//                        if self.x == 0{
-////                            let cell = slideShowCollectionView.cellForItem(at: )
-//                            self.player?.play()
-//                            let value1 = Float(15.0) / Float(self.listAsset.count - 1 + 15)
-////                            print("value: \(value1)")
-//                            self.progressView.setProgress(value1, animated: true)
-//                        }else{
-//                            let value1 = Float(15 + self.x) / Float(self.listAsset.count - 1 + 15)
-////                            print("value: \(value1)")
-//                            self.progressView.setProgress(value1, animated: true)
-//                        }
-//
-//                    })
-
-
-                    let newIndexPath = IndexPath(item: x, section: 0)
-
-                    self.slideShowCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
-                    
-//                    if x > 0{
-                        let currentPath = IndexPath(item: x - 1, section: 0)
-                        
-                        if typeCell == "image"{
-                            if let cell = cell as? ImageForSlideShowCollectionViewCell{
-                                print("image")
-                                cell.showImageView.transform = CGAffineTransform.identity
-                                UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-                                    
-                                    cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                                }, completion: { finished in
-//                                    cell.showImageView.transform = CGAffineTransform.identity
-                                })
-
-                            }
-                            
-                        }else{
-                            if let cell = cell as? VideoForSlideShowCollectionViewCell{
-//                                player?.play()
-                                print("video")
-//                                UIView.animate(withDuration: 15.0, delay: 0, options: [], animations: {
-                                
-//                                }, completion: { finished in
-//
-//                                })
-                            }
-                            
+            
+            let currentOffset = slideShowCollectionView.contentOffset
+            let contentWidth = slideShowCollectionView.frame.width
+            let totalContentWidthOfCV = contentWidth * CGFloat(listAsset.count)
+            
+            
+            if currentOffset.x < totalContentWidthOfCV{
+                let newOffsetX = currentOffset.x + contentWidth
+                slideShowCollectionView.contentOffset = CGPoint(x: newOffsetX, y: currentOffset.y)
+            }else{
+                
+                let newOffsetX = CGFloat(0.0)
+                
+                UIView.animate(withDuration: 2, animations: {
+                    self.hiddenView.isHidden = false
+                    self.hiddenView.alpha = 1
+                    self.slideShowCollectionView.alpha = 0
+                }, completion: { finished in
+                    self.slideShowCollectionView.contentOffset = CGPoint(x: newOffsetX, y: currentOffset.y)
+                    self.slideShowCollectionView.reloadData()
+                    self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+                    UIView.animate(withDuration: 2, animations: {
+                        DispatchQueue.main.async {
+                            self.isPlayingSlideShow = false
+//                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
+                            self.x = 0
+                            self.isEndSlideShow = true
+                            self.hiddenView.isHidden = true
+                            self.hiddenView.alpha = 0
+                            self.slideShowCollectionView.alpha = 1
+                            //                                    self.player?.pause()
                         }
                         
-//                    }
+                    })
                     
-
-                    //                     let cell = self.slideShowCollectionView.cellForItem(at: newIndexPath) as!ImageForSlideShowCollectionViewCell
-
-                    //                    UIView.animate(withDuration: 2, animations: {
-                    //                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    //                    }, completion: {fineshed in
-                    //                        cell.showImageView.transform = CGAffineTransform.identity
-                    //                    })
-
-                    self.x = self.x + 1
-
-                    if self.x == self.listAsset.count{
-                        UIView.animate(withDuration: 2, animations: {
-                            self.hiddenView.isHidden = false
-                            self.hiddenView.alpha = 1
-                            self.slideShowCollectionView.alpha = 0
-                        }, completion: { finished in
-                            self.slideShowCollectionView.reloadData()
-                            self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
-                            UIView.animate(withDuration: 2, animations: {
-                                DispatchQueue.main.async {
-                                    self.isPlayingSlideShow = false
-                                    self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
-                                    self.x = 0
-//                                    self.countdown = 0.0
-                                    self.isEndSlideShow = true
-//                                    let data = ["isPlayMusic": false]
-//                                    self.notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-                                    self.hiddenView.isHidden = true
-                                    self.hiddenView.alpha = 0
-                                    self.slideShowCollectionView.alpha = 1
-//                                    self.progressView.progress = 0.0
-//                                    self.displayTimeLbl.text = "00:00"
-//                                    let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
-//                                    self.playPauseBtn.setImage(image, for: .normal)
-//                                    self.playPauseBtn.tintColor = UIColor.white
-//                                    self.player?.pause()
-                                }
-
-                            })
-
-                        })
-                    }
-                }
-
+                })
             }
+
+            
+            
+//            if listAsset.count > 0{
+//
+//                if self.x < self.listAsset.count {
+//                    print("x: \(x)")
+//
+//                    let newIndexPath = IndexPath(item: x, section: 0)
+//
+//                    self.slideShowCollectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
+//
+//
+//                    let currentPath = IndexPath(item: x - 1, section: 0)
+//
+//                    self.x = self.x + 1
+//
+//                    if self.x == self.listAsset.count{
+//                        UIView.animate(withDuration: 2, animations: {
+//                            self.hiddenView.isHidden = false
+//                            self.hiddenView.alpha = 1
+//                            self.slideShowCollectionView.alpha = 0
+//                        }, completion: { finished in
+//                            self.slideShowCollectionView.reloadData()
+//                            self.slideShowCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+//                            UIView.animate(withDuration: 2, animations: {
+//                                DispatchQueue.main.async {
+//                                    self.isPlayingSlideShow = false
+//                                    self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
+//                                    self.x = 0
+//                                    self.isEndSlideShow = true
+//                                    self.hiddenView.isHidden = true
+//                                    self.hiddenView.alpha = 0
+//                                    self.slideShowCollectionView.alpha = 1
+////                                    self.player?.pause()
+//                                }
+//
+//                            })
+//
+//                        })
+//                    }
+//                }
+//
+//            }
         }
         
     }

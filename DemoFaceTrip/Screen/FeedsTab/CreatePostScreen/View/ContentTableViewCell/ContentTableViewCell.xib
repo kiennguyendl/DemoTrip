@@ -167,7 +167,6 @@
                 <outlet property="contentTextPost" destination="1Rz-AV-jOG" id="wUb-7v-35g"/>
                 <outlet property="editBtn" destination="6Ei-sW-YbZ" id="mFC-xx-7Zv"/>
                 <outlet property="editMapBtn" destination="afb-Si-pp5" id="OHC-QS-wuw"/>
-                <outlet property="heightOfSlideShowView" destination="zsq-6v-HGZ" id="Vbi-7e-kRe"/>
                 <outlet property="map" destination="ENP-Qx-RDq" id="lle-P3-nlu"/>
                 <outlet property="mapView" destination="Z7a-1c-KB2" id="gni-hb-dXs"/>
                 <outlet property="nameUser" destination="d0H-1D-Xn5" id="H3Z-0G-S4V"/>

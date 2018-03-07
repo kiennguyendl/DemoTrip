@@ -56,11 +56,11 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     cell.showImageView.image = thumnail
                     
 //                    if currentRow == 1{
-//                        UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
-//                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-//                        }, completion: { finished in
-//                            cell.showImageView.transform = CGAffineTransform.identity
-//                        })
+                        UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
+                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                        }, completion: { finished in
+                            cell.showImageView.transform = CGAffineTransform.identity
+                        })
 //                    }else{
 //                        UIView.animate(withDuration: 2, delay: 2, options: [], animations: {
 //                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -111,13 +111,13 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     , resultHandler: {[weak self] avAsset,audiomix,info in
                         guard let strongSelf = self else{return}
 //                        DispatchQueue.main.async {
-//                            VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
-//                                guard let strongSelf = self else{return}
-////                                UIView.animate(withDuration: 15, animations: {
-//                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
-////                                })
-//
-//                            })
+                            VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
+                                guard let strongSelf = self else{return}
+//                                UIView.animate(withDuration: 15, animations: {
+                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
+//                                })
+
+                            })
 //                        }
                         
                         
@@ -153,10 +153,25 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             
             let asset = listAsset[indexPath.row].asset
             
-            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                
-                cell.imageView.image = image
-            })
+            if asset?.mediaType == .image{
+                PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+                    
+                    cell.imageView.image = image
+                })
+            }else{
+                PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
+                    , resultHandler: {[weak self] avAsset,audiomix,info in
+                        guard let strongSelf = self else{return}
+      
+                        
+                        let image = VideoManager.shareInstance.getThumnailVideo(asset: avAsset!)
+                        DispatchQueue.main.async {
+                            cell.imageView.image = image
+                        }
+                        
+                })
+            }
+            
             if indexPath.row == 2{
                 cell.buttonView.isHidden = false
                 cell.viewAllImgBtn.setTitle("\(listAsset.count - 2)", for: .normal)

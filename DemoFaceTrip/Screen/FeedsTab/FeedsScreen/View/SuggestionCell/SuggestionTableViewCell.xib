@@ -101,10 +101,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM1-8F-o0S">
                         <rect key="frame" x="0.0" y="349" width="487" height="250"/>
                         <subviews>
-                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igG-N4-psc">
-                                <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BIt-Ae-DYY">
                                 <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,6 +212,10 @@
                                     <action selector="pauseOrPlayAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3MV-VO-bJc"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igG-N4-psc">
+                                <rect key="frame" x="0.0" y="0.0" width="487" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BIt-Ae-DYY" secondAttribute="trailing" id="1Is-Nc-mx4"/>
