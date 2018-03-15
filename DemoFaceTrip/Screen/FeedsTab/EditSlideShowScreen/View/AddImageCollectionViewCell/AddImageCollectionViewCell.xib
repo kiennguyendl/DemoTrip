@@ -44,6 +44,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="147" height="109"/>
+            <connections>
+                <outlet property="addMoreImageOrVide" destination="tAe-gX-Npf" id="iKi-cg-XsW"/>
+            </connections>
             <point key="canvasLocation" x="40.5" y="81.5"/>
         </collectionViewCell>
     </objects>

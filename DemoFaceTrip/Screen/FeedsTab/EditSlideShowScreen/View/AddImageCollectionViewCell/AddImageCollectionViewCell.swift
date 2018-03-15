@@ -9,7 +9,8 @@
 import UIKit
 
 class AddImageCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var addMoreImageOrVide: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

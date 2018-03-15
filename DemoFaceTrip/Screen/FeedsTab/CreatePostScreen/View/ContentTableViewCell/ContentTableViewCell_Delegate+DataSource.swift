@@ -21,8 +21,11 @@ extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         let currentRow = indexPath.row
         
         if currentRow == 0{
-            let data = ["isPlayMusic": true]
-            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+            
+            if isShowingVideo == true{
+                let data = ["isPlayMusic": true, "musicFile": enspired] as [String : Any]
+                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+            }
         }
         let asset = listAsset![currentRow].asset
         
@@ -48,6 +51,28 @@ extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
                     cell.showImageView.transform = CGAffineTransform.identity
                 })
             })
+            
+            if currentRow == 0{
+                cell.avartarImg.isHidden = true
+                UIView.transition(with: cell.tilteMoments, duration: 2, options: [.curveEaseOut, .transitionFlipFromLeft], animations: {
+                    cell.tilteMoments.isHidden = false
+                }, completion: { finished in
+                    UIView.transition(with: cell.tilteMoments, duration: 1, options: [.curveEaseIn, .transitionFlipFromLeft], animations: {
+                        cell.tilteMoments.isHidden = true
+                    }, completion: nil)
+                    
+                })
+            }else if currentRow == (listAsset?.count)! - 1{
+                cell.tilteMoments.isHidden = true
+                cell.avartarImg.isHidden = false
+                cell.avartarImg.image = #imageLiteral(resourceName: "avatar.jpg")
+                cell.avartarImg.layer.cornerRadius = cell.avartarImg.frame.width / 2
+                cell.avartarImg.layer.masksToBounds = true
+            }else{
+                cell.tilteMoments.isHidden = true
+                cell.avartarImg.isHidden = true
+            }
+            
             removeTimer()
             timeInterval = 2.0
             setTimer()
@@ -65,6 +90,18 @@ extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
                         guard let strongSelf = self else{return}
                         strongSelf.playVideo(url: url, playerView: cell.playerView)
                         
+                        if currentRow == 0{
+                            UIView.transition(with: cell.tilteMoments, duration: 3.0, options: [.curveEaseOut, .transitionFlipFromLeft], animations: {
+                                cell.tilteMoments.isHidden = false
+                            }, completion: { finished in
+                                UIView.transition(with: cell.tilteMoments, duration: 1, options: [.curveEaseIn, .transitionFlipFromLeft], animations: {
+                                    cell.tilteMoments.isHidden = true
+                                }, completion: nil)
+                                
+                            })
+                        }else{
+                            cell.tilteMoments.isHidden = true
+                        }
                     })
                     
             })

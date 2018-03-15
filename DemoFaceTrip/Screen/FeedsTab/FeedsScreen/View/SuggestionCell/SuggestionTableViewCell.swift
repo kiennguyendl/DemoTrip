@@ -68,8 +68,8 @@ class SuggestionTableViewCell: UITableViewCell {
     
 //    let videoUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "Viet-Nam-Da-LAB", ofType: "mp4")!)
 //    var outputURL: URL?
-    var player: AVPlayer?
-    var playerLayer:AVPlayerLayer?
+    weak var player: AVPlayer?
+    weak var playerLayer:AVPlayerLayer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -80,10 +80,10 @@ class SuggestionTableViewCell: UITableViewCell {
 //        addObserverForView()
         
         //test ip 8+ and real device
-//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-10-2017") as! NSDate, endDate: dateFormater?.date(from: "02-29-2017") as! NSDate)
+//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-10-2018") as! NSDate, endDate: dateFormater?.date(from: "03-13-2018") as! NSDate)
         
         // test ip 6+
-        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "12-26-2017") as! NSDate, endDate: dateFormater?.date(from: "02-27-2018") as! NSDate)
+        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2018") as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -185,28 +185,58 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     
     func playVideo(url: URL, playerView: UIView)  {
-        if playerLayer != nil{
-            player?.pause()
-            player = nil
-            playerLayer = nil
-            playerLayer?.removeFromSuperlayer()
+        
+//        if playerLayer == nil{
+//            player = AVPlayer(url: url as URL)
+//            //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
+//            //        player = AVPlayer(playerItem: playerItem)
+//
+//            playerLayer = AVPlayerLayer()
+//            playerLayer?.player = player
+//            playerLayer?.frame = playerView.frame
+//            playerLayer?.backgroundColor = UIColor.white.cgColor
+//            playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//
+//            playerView.layer.addSublayer(playerLayer!)
+//            player?.volume = 0.0
+//            player?.play()
+//        }else{
+//            player = nil
+//            player = AVPlayer(url: url as URL)
+//            playerLayer?.player = nil
+//            playerLayer?.player = player
+//            player?.play()
+//        }
+        DispatchQueue.main.async {
+        if self.playerLayer != nil{
+            
+                self.player?.pause()
+                self.player = nil
+                self.playerLayer = nil
+                self.playerLayer?.removeFromSuperlayer()
+                playerView.layer.sublayers = nil
+            
+            
         }
-        player = AVPlayer(url: url as URL)
+            self.player = AVPlayer(url: url as URL)
 //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
 //        player = AVPlayer(playerItem: playerItem)
-        playerLayer = AVPlayerLayer()
-        playerLayer?.player = player
-        playerLayer?.frame = playerView.frame
-        playerLayer?.backgroundColor = UIColor.white.cgColor
-        playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        
-        playerView.layer.addSublayer(playerLayer!)
-        if isPlayingSlideShow{
-            player?.play()
+
+        self.playerLayer = AVPlayerLayer()
+        self.playerLayer?.player = self.player
+        self.playerLayer?.frame = playerView.frame
+        self.playerLayer?.backgroundColor = UIColor.white.cgColor
+        self.playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+
+        playerView.layer.addSublayer(self.playerLayer!)
+        if self.isPlayingSlideShow{
+            self.player?.play()
         }else{
-            player?.pause()
+            self.player?.pause()
         }
-        player?.volume = 0.0
+        self.player?.volume = 0.0
+            
+        }
     }
     
     @objc func sliderValueChange(slider: UISlider) {
@@ -252,7 +282,7 @@ class SuggestionTableViewCell: UITableViewCell {
 //        requestOption.deliveryMode = .fastFpoormat
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "creationDate >= %@ AND creationDate <= %@ AND mediaType == %d || mediaType == %d", startDate, endDate, PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        fetchOptions.predicate = NSPredicate(format: "(creationDate >= %@ AND creationDate <= %@) AND (mediaType == %d || mediaType == %d)", startDate, endDate, PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: fetchOptions)
         DispatchQueue.global(qos: .background).async{
             if fetchResult.count > 0 {
@@ -262,8 +292,9 @@ class SuggestionTableViewCell: UITableViewCell {
                     let asset = fetchResult.object(at: i)
                     let location = asset.location
                     let createDate = asset.creationDate
-                    let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset)
+                    let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: true)
                     self.listAssetInfor.append(assetInfor)
+                    
                 }
                 
                 self.classifyImageByCreateDate(listImage: self.listAssetInfor, completionHanler: {[weak self] data in
@@ -424,7 +455,7 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     //////////////////////////////
     
-    var x = 0
+//    var x = 0
     
     @objc func autoScroll(_ timer: Timer) {
   
@@ -446,6 +477,16 @@ class SuggestionTableViewCell: UITableViewCell {
                     self.hiddenView.isHidden = false
                     self.hiddenView.alpha = 1
                     self.slideShowCollectionView.alpha = 0
+//                    if self.backgroundMusicPlayer != nil{
+//                        self.backgroundMusicPlayer.stop()
+//                        self.backgroundMusicPlayer = nil
+//                    }
+//                    
+//                    if self.playerLayer != nil{
+//                        self.player?.pause()
+//                        self.player = nil
+//                        self.playerLayer = nil
+//                    }
                 }, completion: { finished in
                     self.slideShowCollectionView.contentOffset = CGPoint(x: newOffsetX, y: currentOffset.y)
                     self.slideShowCollectionView.reloadData()
@@ -455,7 +496,7 @@ class SuggestionTableViewCell: UITableViewCell {
                             self.isPlayingSlideShow = false
                             self.player?.pause()
 //                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
-                            self.x = 0
+//                            self.x = 0
                             self.isEndSlideShow = true
                             self.hiddenView.isHidden = true
                             self.hiddenView.alpha = 0

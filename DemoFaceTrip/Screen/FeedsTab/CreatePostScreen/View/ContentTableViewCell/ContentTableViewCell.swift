@@ -23,6 +23,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var slideShowView: UIView!
+    @IBOutlet weak var reloadBtn: UIButton!
     
 //    @IBOutlet weak var showTimeLbl: UILabel!
 //    @IBOutlet weak var progressView: UIProgressView!
@@ -142,10 +143,10 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @objc func playBackgroundMusic(_ notification: NSNotification) {
-        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool{
-            
-            let audioUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: "01 The Moment", ofType: "mp3")!)
-            
+        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
+
+            let audioUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!)
+
             do{
                 if backgroundMusicPlayer == nil{
                     backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl as URL)
@@ -280,6 +281,29 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         delgate?.editSlideShow(listAsset: listAsset!)
     }
     
+    @IBAction func reloadContentSlideShow(_ sender: Any) {
+        reloadSlideShow()
+    }
+    
+    func reloadSlideShow() {
+        if isShowingVideo{
+            if backgroundMusicPlayer != nil{
+                if playerLayer != nil{
+                    player?.pause()
+                    player = nil
+                    playerLayer = nil
+                }
+                backgroundMusicPlayer.pause()
+                backgroundMusicPlayer = nil
+            }
+            let currentOffset = slideShowCollectionView.contentOffset
+            slideShowCollectionView.contentOffset = CGPoint(x: 0, y: currentOffset.y)
+            slideShowCollectionView.reloadData()
+        }else{
+            isShowingVideo = true
+            slideShowCollectionView.reloadData()
+        }
+    }
     
     func addPlayerView() {
         videoView = PlayVideoView()
@@ -515,7 +539,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
                     UIView.animate(withDuration: 2, animations: {
                         DispatchQueue.main.async {
                             self.isShowingVideo = false
-                            let data = ["isPlayMusic": false]
+                            let data = ["isPlayMusic": false, "musicFile": enspired] as [String : Any]
                             notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
 //                            self.player?.pause()
                             //                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
@@ -535,8 +559,9 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         }
         
     }
+    
+    
 }
-
 
 
 

@@ -27,22 +27,41 @@
                             <constraint firstAttribute="width" constant="328" id="a1S-xc-soH"/>
                         </constraints>
                     </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facetrip Moments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfP-Ix-OfR">
+                        <rect key="frame" x="67.5" y="91" width="194.5" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hrw-V8-N8T">
+                        <rect key="frame" x="134" y="76" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="EEZ-5P-7az"/>
+                            <constraint firstAttribute="width" constant="60" id="M6e-x5-I2B"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="e6P-ze-2A4" secondAttribute="trailing" id="4Ae-ft-g2F"/>
                 <constraint firstItem="YtE-9a-Ina" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="4rJ-Jd-c1j"/>
+                <constraint firstItem="Hrw-V8-N8T" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="D98-bp-7Qf"/>
+                <constraint firstItem="Hrw-V8-N8T" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="DZl-g6-Ert"/>
                 <constraint firstItem="e6P-ze-2A4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZW5-qh-UVr"/>
                 <constraint firstItem="YtE-9a-Ina" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="ZtO-Im-YYJ"/>
                 <constraint firstAttribute="bottom" secondItem="e6P-ze-2A4" secondAttribute="bottom" id="aIv-Sv-att"/>
+                <constraint firstItem="kfP-Ix-OfR" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="hMc-12-jOR"/>
                 <constraint firstItem="e6P-ze-2A4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="t9G-4D-qWX"/>
                 <constraint firstItem="YtE-9a-Ina" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="v5I-z4-cx7"/>
+                <constraint firstItem="kfP-Ix-OfR" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="vx3-84-ZTK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="328" height="212"/>
             <connections>
+                <outlet property="avartarImg" destination="Hrw-V8-N8T" id="HTk-yK-bD1"/>
                 <outlet property="imageBlurView" destination="e6P-ze-2A4" id="I1g-xb-qyG"/>
                 <outlet property="showImageView" destination="YtE-9a-Ina" id="ZMV-iG-3gw"/>
+                <outlet property="tilteMoments" destination="kfP-Ix-OfR" id="qtH-Pw-Pzs"/>
                 <outlet property="widthOfShowImageView" destination="a1S-xc-soH" id="3DD-Zc-113"/>
             </connections>
             <point key="canvasLocation" x="55" y="53"/>

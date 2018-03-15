@@ -47,6 +47,7 @@ extension CreatePostViewController: UITableViewDelegate, UITableViewDataSource{
 //            cell.contentTextPost.sizeToFit()
             //cell.contentTextPost.text = "What's on your mind?"
             cell.listAsset = listAsset
+            cell.isShowingVideo = true
             cell.delgate = self
             return cell
         default:

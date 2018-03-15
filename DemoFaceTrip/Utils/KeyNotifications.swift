@@ -29,3 +29,6 @@ let keyPlaymusicNotificationCreatePost = "keyPlaymusicNotificationCreatePost"
 
 //using for display list image
 let keyShowListImageScreen = "keyShowListImageScreen"
+
+//using for editing screen
+let keyPlaymusicNotificationEditPost = "keyPlaymusicNotificationEditPost"

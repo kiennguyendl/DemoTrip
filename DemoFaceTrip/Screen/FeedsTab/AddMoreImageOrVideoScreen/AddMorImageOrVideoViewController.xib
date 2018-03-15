@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddMorImageOrVideoViewController" customModule="DemoFaceTrip" customModuleProvider="target">
+            <connections>
+                <outlet property="listAssetCollectionView" destination="Axr-nv-jjP" id="pfU-Jh-kDp"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6B-GQ-Fgp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPj-Tx-HQR">
+                            <rect key="frame" x="20" y="10" width="60" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="1VA-cb-Mgd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelPick:" destination="-1" eventType="touchUpInside" id="Fe5-tQ-k39"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRR-fV-52y">
+                            <rect key="frame" x="295" y="10" width="60" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="uOA-G6-Lpa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="donePick:" destination="-1" eventType="touchUpInside" id="kbz-3b-Spi"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Image or Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vF-zM-fze">
+                            <rect key="frame" x="106.5" y="10" width="162" height="55"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="1vF-zM-fze" firstAttribute="top" secondItem="L6B-GQ-Fgp" secondAttribute="top" constant="10" id="Gwi-mY-eUq"/>
+                        <constraint firstItem="FRR-fV-52y" firstAttribute="top" secondItem="L6B-GQ-Fgp" secondAttribute="top" constant="10" id="KO0-zg-S5u"/>
+                        <constraint firstAttribute="bottom" secondItem="1vF-zM-fze" secondAttribute="bottom" id="MDq-O7-SFL"/>
+                        <constraint firstAttribute="bottom" secondItem="JPj-Tx-HQR" secondAttribute="bottom" id="R01-m0-Jhr"/>
+                        <constraint firstItem="JPj-Tx-HQR" firstAttribute="top" secondItem="L6B-GQ-Fgp" secondAttribute="top" constant="10" id="bgU-AF-SXm"/>
+                        <constraint firstAttribute="height" constant="65" id="elx-Nn-fOx"/>
+                        <constraint firstAttribute="bottom" secondItem="FRR-fV-52y" secondAttribute="bottom" id="glQ-ZE-c6U"/>
+                        <constraint firstItem="JPj-Tx-HQR" firstAttribute="leading" secondItem="L6B-GQ-Fgp" secondAttribute="leading" constant="20" id="mhZ-9L-fjk"/>
+                        <constraint firstAttribute="trailing" secondItem="FRR-fV-52y" secondAttribute="trailing" constant="20" id="t6h-gI-7Lc"/>
+                        <constraint firstItem="1vF-zM-fze" firstAttribute="centerX" secondItem="L6B-GQ-Fgp" secondAttribute="centerX" id="zWs-Il-7fJ"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Axr-nv-jjP">
+                    <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="7rW-9I-3xT">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Axr-nv-jjP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2ia-i7-MsO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L6B-GQ-Fgp" secondAttribute="trailing" id="A6y-Rz-7HG"/>
+                <constraint firstItem="Axr-nv-jjP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HWt-Uz-jeh"/>
+                <constraint firstItem="Axr-nv-jjP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="NvL-bC-EcV"/>
+                <constraint firstItem="L6B-GQ-Fgp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ywd-pL-Rdg"/>
+                <constraint firstItem="Axr-nv-jjP" firstAttribute="top" secondItem="L6B-GQ-Fgp" secondAttribute="bottom" id="ifP-W9-Lzp"/>
+                <constraint firstItem="L6B-GQ-Fgp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tiY-Fg-s56"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

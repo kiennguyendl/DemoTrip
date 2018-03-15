@@ -11,11 +11,17 @@ import UIKit
 class ImagePickerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pickerBtn: UIButton!
-    
+    @IBOutlet weak var checkedImage: UIImageView!
+    var isPicked = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
     }
 
+    override var isSelected: Bool{
+        didSet{
+            
+        }
+    }
 }

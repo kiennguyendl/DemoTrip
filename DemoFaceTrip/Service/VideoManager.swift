@@ -173,8 +173,8 @@ class VideoManager: NSObject {
             exportSession.outputFileType = AVFileType.mp4
             exportSession.shouldOptimizeForNetworkUse = true
             //
-            let startTrim = CMTime(seconds: Double(10.0), preferredTimescale: 1000)
-            let endTrim = CMTime(seconds: Double(25), preferredTimescale: 1000)
+            let startTrim = CMTime(seconds: Double(1.0), preferredTimescale: 1000)
+            let endTrim = CMTime(seconds: Double(15), preferredTimescale: 1000)
             let timeRange = CMTimeRange(start: startTrim, end: endTrim)
             //
             exportSession.timeRange = timeRange

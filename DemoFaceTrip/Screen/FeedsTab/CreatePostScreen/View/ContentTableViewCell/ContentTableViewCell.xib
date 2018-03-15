@@ -24,7 +24,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pI-hq-UzI">
                                 <rect key="frame" x="0.0" y="0.0" width="371" height="220"/>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-gT-ZnR">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-gT-ZnR">
                                 <rect key="frame" x="0.0" y="0.0" width="371" height="220"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BEX-WE-74h">
@@ -46,6 +46,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAx-bH-zA1">
+                                <rect key="frame" x="336" y="185" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="aRs-Lw-drb"/>
+                                    <constraint firstAttribute="height" constant="25" id="fdK-42-90P"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="oCw-Cc-ueG"/>
+                                    <constraint firstAttribute="width" constant="25" id="onY-vR-8Qt"/>
+                                </constraints>
+                                <state key="normal" image="reload"/>
+                                <connections>
+                                    <action selector="reloadContentSlideShow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e26-BM-BCC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ei-sW-YbZ">
                                 <rect key="frame" x="291" y="15" width="60" height="20"/>
                                 <constraints>
@@ -77,9 +90,11 @@
                             <constraint firstAttribute="trailing" secondItem="bVf-gT-ZnR" secondAttribute="trailing" id="Inl-Uq-vG7"/>
                             <constraint firstItem="bVf-gT-ZnR" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" id="Kc8-Fp-uER"/>
                             <constraint firstItem="3pI-hq-UzI" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" id="OVm-US-FPj"/>
+                            <constraint firstAttribute="trailing" secondItem="WAx-bH-zA1" secondAttribute="trailing" constant="10" id="aZz-im-SvM"/>
                             <constraint firstItem="6Ei-sW-YbZ" firstAttribute="top" secondItem="iGp-cb-bv3" secondAttribute="top" constant="15" id="bPl-Y3-iE3"/>
                             <constraint firstAttribute="bottom" secondItem="ftS-7v-P8H" secondAttribute="bottom" id="cKj-ZZ-Wl8"/>
                             <constraint firstAttribute="bottom" secondItem="3pI-hq-UzI" secondAttribute="bottom" id="lfA-56-XQf"/>
+                            <constraint firstAttribute="bottom" secondItem="WAx-bH-zA1" secondAttribute="bottom" constant="10" id="vqp-dt-9tD"/>
                             <constraint firstItem="Snm-OM-0ef" firstAttribute="leading" secondItem="pzy-nv-hK6" secondAttribute="leading" id="x2a-nd-eEc"/>
                             <constraint firstItem="3pI-hq-UzI" firstAttribute="leading" secondItem="iGp-cb-bv3" secondAttribute="leading" id="ywc-6i-Sdh"/>
                             <constraint firstAttribute="height" constant="220" id="zsq-6v-HGZ"/>
@@ -194,6 +209,7 @@
                 <outlet property="mapView" destination="Z7a-1c-KB2" id="gni-hb-dXs"/>
                 <outlet property="nameUser" destination="d0H-1D-Xn5" id="H3Z-0G-S4V"/>
                 <outlet property="playerView" destination="3pI-hq-UzI" id="XYU-x1-bx5"/>
+                <outlet property="reloadBtn" destination="WAx-bH-zA1" id="qsD-iB-W99"/>
                 <outlet property="slideShowCollectionView" destination="bVf-gT-ZnR" id="mFq-Gp-mFm"/>
                 <outlet property="slideShowView" destination="iGp-cb-bv3" id="HVn-7Z-jkU"/>
             </connections>
@@ -202,5 +218,6 @@
     </objects>
     <resources>
         <image name="avatar.jpg" width="600" height="450"/>
+        <image name="reload" width="50" height="50"/>
     </resources>
 </document>

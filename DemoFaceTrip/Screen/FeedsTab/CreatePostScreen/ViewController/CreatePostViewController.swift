@@ -32,6 +32,12 @@ class CreatePostViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = true
         initLeftRightButton()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        notificationCenter.removeObserver(self)
     }
     
     func initLeftRightButton() {
@@ -87,11 +93,21 @@ extension CreatePostViewController: HeightForTextView{
     func editSlideShow(listAsset: [AsssetInfor]) {
         let vc = EditSlideShowViewController()
         vc.listAsset = listAsset
-        present(vc, animated: true, completion: nil)
+        vc.delegate = self
+//        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func heightOfTextView(height: CGFloat) {
         self.contentPostTableView.beginUpdates()
         self.contentPostTableView.endUpdates()
+    }
+}
+
+extension CreatePostViewController: EditSlideShowProtocol{
+    func doneEditSlideShow(listAsset: [AsssetInfor]) {
+        self.listAsset = []
+        self.listAsset = listAsset
+        contentPostTableView.reloadData()
     }
 }

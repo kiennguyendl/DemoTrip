@@ -21,35 +21,30 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-vZ-YY7">
                         <rect key="frame" x="0.0" y="0.0" width="134" height="111"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-OX-oZN">
-                        <rect key="frame" x="99" y="10" width="25" height="25"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zUE-bY-TWW">
+                        <rect key="frame" x="104" y="10" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="AHg-z7-yVW"/>
-                            <constraint firstAttribute="width" constant="25" id="fj4-wW-vW3"/>
+                            <constraint firstAttribute="width" constant="20" id="TiG-6R-gE8"/>
+                            <constraint firstAttribute="height" constant="20" id="iAC-QJ-EXd"/>
                         </constraints>
-                        <state key="normal" image="check"/>
-                    </button>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dCR-OX-oZN" secondAttribute="trailing" constant="10" id="1ii-6l-HJM"/>
                 <constraint firstItem="WeC-vZ-YY7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5i0-Co-VWa"/>
                 <constraint firstAttribute="bottom" secondItem="WeC-vZ-YY7" secondAttribute="bottom" id="HV8-iA-1f6"/>
+                <constraint firstItem="zUE-bY-TWW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="TFB-di-pYu"/>
                 <constraint firstItem="WeC-vZ-YY7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VIh-kU-4NA"/>
-                <constraint firstItem="dCR-OX-oZN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YyU-jT-XMb"/>
+                <constraint firstAttribute="trailing" secondItem="zUE-bY-TWW" secondAttribute="trailing" constant="10" id="ZYl-NX-agL"/>
                 <constraint firstAttribute="trailing" secondItem="WeC-vZ-YY7" secondAttribute="trailing" id="aGr-Vx-YjO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="134" height="111"/>
             <connections>
+                <outlet property="checkedImage" destination="zUE-bY-TWW" id="EPq-mz-awc"/>
                 <outlet property="imageView" destination="WeC-vZ-YY7" id="A3M-Y2-xgb"/>
-                <outlet property="pickerBtn" destination="dCR-OX-oZN" id="fSq-8X-tgg"/>
             </connections>
             <point key="canvasLocation" x="32" y="82.5"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="check" width="40" height="40"/>
-    </resources>
 </document>

@@ -68,11 +68,27 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                 PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
                     , resultHandler: {[weak self] avAsset,audiomix,info in
                         guard let strongSelf = self else{return}
+                        if avAsset == nil{
+                            
+                        }else{
                             VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
                                 guard let strongSelf = self else{return}
-                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
-
+                                strongSelf.playVideo(url: url, playerView: cell.playerView)
+//                                cell.playVideo(url: url)
+                                
+                                
+//                                var player = AVPlayer(url: url as URL)
+//                                var playerLayer = AVPlayerLayer()
+//                                playerLayer.player = player
+//                                playerLayer.frame = cell.frame
+//                                playerLayer.backgroundColor = UIColor.white.cgColor
+//                                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//                                cell.layer.addSublayer(playerLayer)
+//                                player.volume = 0.0
+//                                player.play()
                             })
+                        }
+                        
 //                        }
                         
                         
@@ -118,11 +134,15 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     , resultHandler: {[weak self] avAsset,audiomix,info in
                         guard let strongSelf = self else{return}
       
-                        
-                        let image = VideoManager.shareInstance.getThumnailVideo(asset: avAsset!)
-                        DispatchQueue.main.async {
-                            cell.imageView.image = image
+                        if avAsset == nil{
+                            cell.imageView.image = UIImage()
+                        }else{
+                            let image = VideoManager.shareInstance.getThumnailVideo(asset: avAsset!)
+                            DispatchQueue.main.async {
+                                cell.imageView.image = image
+                            }
                         }
+                        
                         
                 })
             }
@@ -150,7 +170,9 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         
     }
     
-        
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print("cell: \(cell.contentView)")
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == imageCollectionView{
             let width = imageCollectionView.frame.width / 3 - 1

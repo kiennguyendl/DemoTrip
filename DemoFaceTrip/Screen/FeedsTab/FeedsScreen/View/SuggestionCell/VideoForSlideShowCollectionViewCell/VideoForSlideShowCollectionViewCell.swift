@@ -11,6 +11,9 @@ import  AVFoundation
 
 class VideoForSlideShowCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playerView: UIView!
+    @IBOutlet weak var tilteMoments: UILabel!
+    @IBOutlet weak var avartarImg: UIImageView!
+    
     var player: AVPlayer?
     var playerLayer:AVPlayerLayer?
     var scrollingTimer: Timer? = nil
@@ -22,16 +25,30 @@ class VideoForSlideShowCollectionViewCell: UICollectionViewCell {
             playerLayer = nil
             playerLayer?.removeFromSuperlayer()
         }
+        
+//        avartarImg.layer.cornerRadius = avartarImg.frame.width / 2
+//        avartarImg.layer.masksToBounds = true
     }
     override func prepareForReuse() {
         player = nil
         playerLayer = nil
         playerLayer?.removeFromSuperlayer()
+        
+//        if playerLayer != nil{
+//        DispatchQueue.main.async {
+//            self.player?.play()
+//        }
+//        }
+//        self.layer.sublayers = nil
+        print("==================>>>>> self.layer.sublayers.count \(self.layer.sublayers?.count)")
     }
 
     func playVideo(url: URL)  {
         if playerLayer != nil{
-            player?.play()
+//            DispatchQueue.main.async {
+                self.player?.play()
+//            }
+            
         }else{
             player = AVPlayer(url: url as URL)
             
@@ -42,7 +59,9 @@ class VideoForSlideShowCollectionViewCell: UICollectionViewCell {
             playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             
             self.playerView.layer.addSublayer(playerLayer!)
-            player?.play()
+//            DispatchQueue.main.async {
+                self.player?.play()
+//            }
         }
         
     }

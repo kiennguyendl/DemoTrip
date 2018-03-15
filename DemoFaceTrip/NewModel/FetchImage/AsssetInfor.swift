@@ -15,11 +15,13 @@ class AsssetInfor: NSObject {
     var location: CLLocation?
     var createDate: Date?
     var asset: PHAsset?
+    var isPicked = false
     
-    init(location: CLLocation?, createDate: Date, asset: PHAsset) {
+    init(location: CLLocation?, createDate: Date, asset: PHAsset, isPicked: Bool) {
         self.location = location
         self.createDate = createDate
         self.asset = asset
+        self.isPicked = isPicked
     }
 }
 

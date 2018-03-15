@@ -33,6 +33,13 @@
 		FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */; };
 		FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */; };
 		FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */; };
+		FB054F912050D6CE00CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8D2050D6C900CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 */; };
+		FB054F922050D6CE00CB29DE /* Happy-Pharrell-Williams.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8E2050D6CA00CB29DE /* Happy-Pharrell-Williams.mp3 */; };
+		FB054F932050D6CE00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8F2050D6CD00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 */; };
+		FB054F942050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F902050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 */; };
+		FB054F962050D8C400CB29DE /* NameMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB054F952050D8C400CB29DE /* NameMusic.swift */; };
+		FB08DF882052796000811063 /* VideoItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08DF862052796000811063 /* VideoItemCollectionViewCell.swift */; };
+		FB08DF892052796000811063 /* VideoItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB08DF872052796000811063 /* VideoItemCollectionViewCell.xib */; };
 		FB09B6A31FCD552500F1BB3A /* SubMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB09B6A11FCD552500F1BB3A /* SubMenuTableViewCell.swift */; };
 		FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */; };
 		FB0E93B020217DE3007215B2 /* CreatePostTableViewDelegate+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E93AF20217DE3007215B2 /* CreatePostTableViewDelegate+Datasource.swift */; };
@@ -93,6 +100,8 @@
 		FB2B40CD2015974A00404965 /* FeedsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2B40CB2015974A00404965 /* FeedsTableViewCell.xib */; };
 		FB314B602029959E00D33E65 /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB314B5E2029959E00D33E65 /* AddImageCollectionViewCell.swift */; };
 		FB314B612029959E00D33E65 /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB314B5F2029959E00D33E65 /* AddImageCollectionViewCell.xib */; };
+		FB36F8E42053863700E2F7CF /* AddMorImageOrVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36F8E22053863700E2F7CF /* AddMorImageOrVideoViewController.swift */; };
+		FB36F8E52053863700E2F7CF /* AddMorImageOrVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36F8E32053863700E2F7CF /* AddMorImageOrVideoViewController.xib */; };
 		FB3872F21FA81390005FFBCD /* CalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3872F11FA81390005FFBCD /* CalendarProtocols.swift */; };
 		FB452A961F99B60A00D0709D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB452A951F99B60A00D0709D /* Color.swift */; };
 		FB452A981F99B64A00D0709D /* ListEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB452A971F99B64A00D0709D /* ListEnum.swift */; };
@@ -296,6 +305,13 @@
 		FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselsCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB054F8D2050D6C900CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "HappyBirthday-Guitar_4e3zq.mp3"; sourceTree = "<group>"; };
+		FB054F8E2050D6CA00CB29DE /* Happy-Pharrell-Williams.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Happy-Pharrell-Williams.mp3"; sourceTree = "<group>"; };
+		FB054F8F2050D6CD00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3"; sourceTree = "<group>"; };
+		FB054F902050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3"; sourceTree = "<group>"; };
+		FB054F952050D8C400CB29DE /* NameMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameMusic.swift; sourceTree = "<group>"; };
+		FB08DF862052796000811063 /* VideoItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB08DF872052796000811063 /* VideoItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB09B6A11FCD552500F1BB3A /* SubMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubMenuTableViewCell.swift; sourceTree = "<group>"; };
 		FB09B6A21FCD552500F1BB3A /* SubMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubMenuTableViewCell.xib; sourceTree = "<group>"; };
 		FB0E93AF20217DE3007215B2 /* CreatePostTableViewDelegate+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatePostTableViewDelegate+Datasource.swift"; sourceTree = "<group>"; };
@@ -397,6 +413,8 @@
 		FB314B5E2029959E00D33E65 /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB314B5F2029959E00D33E65 /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB314B6220299AC300D33E65 /* Viet-Nam-Da-LAB.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Viet-Nam-Da-LAB.mp4"; sourceTree = "<group>"; };
+		FB36F8E22053863700E2F7CF /* AddMorImageOrVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMorImageOrVideoViewController.swift; sourceTree = "<group>"; };
+		FB36F8E32053863700E2F7CF /* AddMorImageOrVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMorImageOrVideoViewController.xib; sourceTree = "<group>"; };
 		FB3872F11FA81390005FFBCD /* CalendarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocols.swift; sourceTree = "<group>"; };
 		FB452A951F99B60A00D0709D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FB452A971F99B64A00D0709D /* ListEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEnum.swift; sourceTree = "<group>"; };
@@ -714,7 +732,6 @@
 			isa = PBXGroup;
 			children = (
 				FBA5F7E91F871E570080B890 /* Utils.swift */,
-				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
 				FB24D6A32047FC7900AABD36 /* VideoManager.swift */,
 			);
 			path = Service;
@@ -772,6 +789,15 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
+		FB08DF852052676C00811063 /* VideoPickedCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB08DF862052796000811063 /* VideoItemCollectionViewCell.swift */,
+				FB08DF872052796000811063 /* VideoItemCollectionViewCell.xib */,
+			);
+			path = VideoPickedCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		FB09B6A01FCD54FB00F1BB3A /* SubMenuTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,6 +828,7 @@
 		FB0E93AD20217877007215B2 /* FeedsTab */ = {
 			isa = PBXGroup;
 			children = (
+				FB36F8E12053851E00E2F7CF /* AddMoreImageOrVideoScreen */,
 				FB690DC5203FEBEE00F6E331 /* ListImageScreen */,
 				FBDD89B82029411B0003AA60 /* EditSlideShowScreen */,
 				FB2B40B920157DD500404965 /* FeedsScreen */,
@@ -1095,6 +1122,15 @@
 			path = AddImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FB36F8E12053851E00E2F7CF /* AddMoreImageOrVideoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB36F8E22053863700E2F7CF /* AddMorImageOrVideoViewController.swift */,
+				FB36F8E32053863700E2F7CF /* AddMorImageOrVideoViewController.xib */,
+			);
+			path = AddMoreImageOrVideoScreen;
+			sourceTree = "<group>";
+		};
 		FB3872F01FA8137E005FFBCD /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,6 +1146,7 @@
 				FB452A971F99B64A00D0709D /* ListEnum.swift */,
 				FB452A951F99B60A00D0709D /* Color.swift */,
 				FB8051A31FAADB8000AD635E /* KeyNotifications.swift */,
+				FB054F952050D8C400CB29DE /* NameMusic.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1137,6 +1174,7 @@
 		FB54AB3A20298332001BD22F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB08DF852052676C00811063 /* VideoPickedCollectionViewCell */,
 				FB314B5D2029957100D33E65 /* AddImageCollectionViewCell */,
 				FB54AB42202984F0001BD22F /* ImagePickerCollectionViewCell */,
 				FB54AB3D20298465001BD22F /* TypeMusicCollectionViewCell */,
@@ -1347,6 +1385,7 @@
 			children = (
 				FB139FDD202BE5340080B177 /* VideoForSlideShowCollectionViewCell */,
 				FB209AEF201EB44A00A0E185 /* ImageForSlideShowCollectionViewCell */,
+				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
 				FBD04E7920197A7E001CD8B3 /* ImageCollectionViewCell */,
 				FBA8DD60201832D000793516 /* SuggestionTableViewCell.swift */,
 				FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */,
@@ -1518,6 +1557,10 @@
 		FBD04E882019E72C001CD8B3 /* MusicTest */ = {
 			isa = PBXGroup;
 			children = (
+				FB054F8E2050D6CA00CB29DE /* Happy-Pharrell-Williams.mp3 */,
+				FB054F8D2050D6C900CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 */,
+				FB054F8F2050D6CD00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 */,
+				FB054F902050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 */,
 				FBD04E892019E73F001CD8B3 /* 01 The Moment.mp3 */,
 				FB314B6220299AC300D33E65 /* Viet-Nam-Da-LAB.mp4 */,
 			);
@@ -1968,6 +2011,7 @@
 				FBE95A6A1FEB8D1500690D8F /* PaymentViewController.xib in Resources */,
 				FB0E93BA202180C2007215B2 /* FriendCollectionViewCell.xib in Resources */,
 				FB80519E1FAACFA400AD635E /* CalendarTableViewCell.xib in Resources */,
+				FB054F922050D6CE00CB29DE /* Happy-Pharrell-Williams.mp3 in Resources */,
 				FBFBBD0C1F85D77E0062C6DC /* HomeTableViewCell.xib in Resources */,
 				FB8D2A581FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib in Resources */,
 				FBC8892F1F9DD9070017241E /* NewHomeCollectionViewCell.xib in Resources */,
@@ -1975,11 +2019,14 @@
 				FB8D2A651FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.xib in Resources */,
 				FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */,
 				FBACA10B1FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib in Resources */,
+				FB054F912050D6CE00CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 in Resources */,
 				FBE0D35F1FDE3E8E001D82FD /* BookingPaymentViewController.xib in Resources */,
 				FB0036C21FAC5C4900D9C38A /* BookingCollectionViewCell.xib in Resources */,
+				FB08DF892052796000811063 /* VideoItemCollectionViewCell.xib in Resources */,
 				FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */,
 				FBFB7F3F1FB2E057006DDE2A /* NewMapViewViewController.xib in Resources */,
 				FBCDD2221FB581A600BB0F00 /* ChooseCityViewController.xib in Resources */,
+				FB054F942050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 in Resources */,
 				FBC7BC761FA449CD00D31BC6 /* HeaderCollectionViewCell.xib in Resources */,
 				FB00D4F31FC92C3600FC84CE /* ListingViewController.xib in Resources */,
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
@@ -1991,9 +2038,11 @@
 				FBBD8C871FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib in Resources */,
 				FBDD89BC2029457A0003AA60 /* EditSlideShowViewController.xib in Resources */,
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
+				FB054F932050D6CE00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 in Resources */,
 				FB1AB7C82015D00D0072D182 /* avatar.jpg in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FB24D69B2047A7AD00AABD36 /* PlayVideoView.xib in Resources */,
+				FB36F8E52053863700E2F7CF /* AddMorImageOrVideoViewController.xib in Resources */,
 				FBE0D3501FDE2006001D82FD /* DetailBookingViewController.xib in Resources */,
 				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
 				FB8D38822015A2B200A7FF1C /* FriendsCollectionViewCell.xib in Resources */,
@@ -2185,6 +2234,7 @@
 				FB1B685D20280239008DEC34 /* GMUHeatmapTileLayer.m in Sources */,
 				FBB0660E1F8DF6F2002BF21C /* FoodTour.swift in Sources */,
 				FBFBBD101F85DA610062C6DC /* HomeCollectionViewCell.swift in Sources */,
+				FB36F8E42053863700E2F7CF /* AddMorImageOrVideoViewController.swift in Sources */,
 				FB2B40BE20157F4C00404965 /* FeedsViewController.swift in Sources */,
 				FBCF70AB1FC3D09400463256 /* CategoryMenu.swift in Sources */,
 				FBE099441FC581AB00F756B0 /* ItemMenu.swift in Sources */,
@@ -2200,12 +2250,14 @@
 				FBF59C9E1FD00A7800789040 /* CircularTransition.swift in Sources */,
 				FB03C6821F84D29F005FC7A2 /* NavigationController.swift in Sources */,
 				FB1B685120280239008DEC34 /* GMUGeoJSONParser.m in Sources */,
+				FB08DF882052796000811063 /* VideoItemCollectionViewCell.swift in Sources */,
 				FB8D38812015A2B200A7FF1C /* FriendsCollectionViewCell.swift in Sources */,
 				FB8051A41FAADB8000AD635E /* KeyNotifications.swift in Sources */,
 				FB24D69D2047A7BA00AABD36 /* PlayVideoView.swift in Sources */,
 				FB1B686020280239008DEC34 /* GQTPointQuadTreeChild.m in Sources */,
 				FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */,
 				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
+				FB054F962050D8C400CB29DE /* NameMusic.swift in Sources */,
 				FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */,
 				FB209AF2201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift in Sources */,
 				FB034B081FC276EE003448AC /* DayTripAndExcursionsTourMenu.swift in Sources */,
