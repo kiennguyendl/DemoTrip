@@ -80,10 +80,10 @@ class SuggestionTableViewCell: UITableViewCell {
 //        addObserverForView()
         
         //test ip 8+ and real device
-//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-10-2018") as! NSDate, endDate: dateFormater?.date(from: "03-13-2018") as! NSDate)
+//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-16-2018") as! NSDate, endDate: dateFormater?.date(from: "03-20-2018") as! NSDate)
         
         // test ip 6+
-        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2018") as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)
+        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2017") as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -123,7 +123,7 @@ class SuggestionTableViewCell: UITableViewCell {
         imagePhoto.image = imgPhoto
         imagePhoto.tintColor = .white
         
-        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "reload")?.withRenderingMode(.alwaysTemplate)
         pauseOrPlayBtn.setImage(image, for: .normal)
         pauseOrPlayBtn.tintColor = UIColor.white
         
@@ -495,7 +495,7 @@ class SuggestionTableViewCell: UITableViewCell {
                         DispatchQueue.main.async {
                             self.isPlayingSlideShow = false
                             self.player?.pause()
-//                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
+                            self.changeImagePauseOrPlayBtn(isPlaying: self.isPlayingSlideShow)
 //                            self.x = 0
                             self.isEndSlideShow = true
                             self.hiddenView.isHidden = true
@@ -583,25 +583,28 @@ class SuggestionTableViewCell: UITableViewCell {
     
     @IBAction func pauseOrPlayAction(_ sender: Any) {
         if isPlayingSlideShow{
-            isPlayingSlideShow = false
-            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+            self.slideShowCollectionView.contentOffset = CGPoint(x: 0, y: slideShowCollectionView.contentOffset.y)
+            slideShowCollectionView.reloadData()
+//            isPlayingSlideShow = false
+//            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
         }else{
             isPlayingSlideShow = true
-            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+//            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+            slideShowCollectionView.reloadData()
         }
     }
     
     
     func changeImagePauseOrPlayBtn(isPlaying: Bool) {
-        if isPlaying{
-            let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
-            self.pauseOrPlayBtn.setImage(image, for: .normal)
-            self.pauseOrPlayBtn.tintColor = UIColor.white
-        }else{
-            let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
-            self.pauseOrPlayBtn.setImage(image, for: .normal)
-            self.pauseOrPlayBtn.tintColor = UIColor.white
-        }
+//        if isPlaying{
+//            let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+//            self.pauseOrPlayBtn.setImage(image, for: .normal)
+//            self.pauseOrPlayBtn.tintColor = UIColor.white
+//        }else{
+//            let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+//            self.pauseOrPlayBtn.setImage(image, for: .normal)
+//            self.pauseOrPlayBtn.tintColor = UIColor.white
+//        }
         
     }
     
@@ -611,9 +614,10 @@ class SuggestionTableViewCell: UITableViewCell {
 //            backgroundMusicPlayer.pause()
 //            currentTimePlay = backgroundMusicPlayer.currentTime
 //            player?.pause()
-            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
+//            changeImagePauseOrPlayBtn(isPlaying: isPlayingSlideShow)
             removeTimer()
         }
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         delegate?.createPost(listAsset: listAsset)
     }
     

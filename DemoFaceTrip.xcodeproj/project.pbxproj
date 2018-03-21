@@ -90,6 +90,8 @@
 		FB24D69D2047A7BA00AABD36 /* PlayVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */; };
 		FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24D6A32047FC7900AABD36 /* VideoManager.swift */; };
 		FB24FF952045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */; };
+		FB2A8D40206253C5008B4314 /* EditMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2A8D3E206253C5008B4314 /* EditMapViewController.swift */; };
+		FB2A8D41206253C5008B4314 /* EditMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2A8D3F206253C5008B4314 /* EditMapViewController.xib */; };
 		FB2B40BE20157F4C00404965 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B40BC20157F4C00404965 /* FeedsViewController.swift */; };
 		FB2B40BF20157F4C00404965 /* FeedsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2B40BD20157F4C00404965 /* FeedsViewController.xib */; };
 		FB2B40C2201580E000404965 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2B40C0201580E000404965 /* FriendsViewController.swift */; };
@@ -113,6 +115,7 @@
 		FB54AB462029851B001BD22F /* ImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB54AB442029851B001BD22F /* ImagePickerCollectionViewCell.xib */; };
 		FB690DC8203FEC2400F6E331 /* ListImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB690DC6203FEC2400F6E331 /* ListImageViewController.swift */; };
 		FB690DC9203FEC2400F6E331 /* ListImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB690DC7203FEC2400F6E331 /* ListImageViewController.xib */; };
+		FB718754205B5FD400905B86 /* VideoPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB718753205B5FD400905B86 /* VideoPlayerManager.swift */; };
 		FB80519D1FAACFA400AD635E /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80519B1FAACFA300AD635E /* CalendarTableViewCell.swift */; };
 		FB80519E1FAACFA400AD635E /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB80519C1FAACFA300AD635E /* CalendarTableViewCell.xib */; };
 		FB8051A11FAAD01500AD635E /* BookingTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80519F1FAAD01500AD635E /* BookingTourViewController.swift */; };
@@ -402,6 +405,8 @@
 		FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoView.swift; sourceTree = "<group>"; };
 		FB24D6A32047FC7900AABD36 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuggestionTableViewCell_Delegate+DataSource.swift"; sourceTree = "<group>"; };
+		FB2A8D3E206253C5008B4314 /* EditMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMapViewController.swift; sourceTree = "<group>"; };
+		FB2A8D3F206253C5008B4314 /* EditMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditMapViewController.xib; sourceTree = "<group>"; };
 		FB2B40BC20157F4C00404965 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		FB2B40BD20157F4C00404965 /* FeedsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsViewController.xib; sourceTree = "<group>"; };
 		FB2B40C0201580E000404965 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +431,7 @@
 		FB54AB442029851B001BD22F /* ImagePickerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePickerCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB690DC6203FEC2400F6E331 /* ListImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListImageViewController.swift; sourceTree = "<group>"; };
 		FB690DC7203FEC2400F6E331 /* ListImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListImageViewController.xib; sourceTree = "<group>"; };
+		FB718753205B5FD400905B86 /* VideoPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerManager.swift; sourceTree = "<group>"; };
 		FB80519B1FAACFA300AD635E /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		FB80519C1FAACFA300AD635E /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		FB80519F1FAAD01500AD635E /* BookingTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTourViewController.swift; sourceTree = "<group>"; };
@@ -732,7 +738,9 @@
 			isa = PBXGroup;
 			children = (
 				FBA5F7E91F871E570080B890 /* Utils.swift */,
+				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
 				FB24D6A32047FC7900AABD36 /* VideoManager.swift */,
+				FB718753205B5FD400905B86 /* VideoPlayerManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -828,6 +836,7 @@
 		FB0E93AD20217877007215B2 /* FeedsTab */ = {
 			isa = PBXGroup;
 			children = (
+				FB2A8D3B206252AC008B4314 /* EditMapScreen */,
 				FB36F8E12053851E00E2F7CF /* AddMoreImageOrVideoScreen */,
 				FB690DC5203FEBEE00F6E331 /* ListImageScreen */,
 				FBDD89B82029411B0003AA60 /* EditSlideShowScreen */,
@@ -1062,6 +1071,31 @@
 				FB24D69C2047A7BA00AABD36 /* PlayVideoView.swift */,
 			);
 			path = PlayVideoView;
+			sourceTree = "<group>";
+		};
+		FB2A8D3B206252AC008B4314 /* EditMapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB2A8D3D206252C2008B4314 /* View */,
+				FB2A8D3C206252BB008B4314 /* ViewController */,
+			);
+			path = EditMapScreen;
+			sourceTree = "<group>";
+		};
+		FB2A8D3C206252BB008B4314 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB2A8D3E206253C5008B4314 /* EditMapViewController.swift */,
+				FB2A8D3F206253C5008B4314 /* EditMapViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FB2A8D3D206252C2008B4314 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FB2B40B920157DD500404965 /* FeedsScreen */ = {
@@ -1385,7 +1419,6 @@
 			children = (
 				FB139FDD202BE5340080B177 /* VideoForSlideShowCollectionViewCell */,
 				FB209AEF201EB44A00A0E185 /* ImageForSlideShowCollectionViewCell */,
-				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
 				FBD04E7920197A7E001CD8B3 /* ImageCollectionViewCell */,
 				FBA8DD60201832D000793516 /* SuggestionTableViewCell.swift */,
 				FB24FF942045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift */,
@@ -2023,6 +2056,7 @@
 				FBE0D35F1FDE3E8E001D82FD /* BookingPaymentViewController.xib in Resources */,
 				FB0036C21FAC5C4900D9C38A /* BookingCollectionViewCell.xib in Resources */,
 				FB08DF892052796000811063 /* VideoItemCollectionViewCell.xib in Resources */,
+				FB2A8D41206253C5008B4314 /* EditMapViewController.xib in Resources */,
 				FB9FB3F81F8C8756006CA1AE /* ProfileViewController.xib in Resources */,
 				FBFB7F3F1FB2E057006DDE2A /* NewMapViewViewController.xib in Resources */,
 				FBCDD2221FB581A600BB0F00 /* ChooseCityViewController.xib in Resources */,
@@ -2183,6 +2217,7 @@
 				FB1B685020280239008DEC34 /* GMUDefaultClusterRenderer.m in Sources */,
 				FB54AB452029851B001BD22F /* ImagePickerCollectionViewCell.swift in Sources */,
 				FB00D4F21FC92C3600FC84CE /* ListingViewController.swift in Sources */,
+				FB2A8D40206253C5008B4314 /* EditMapViewController.swift in Sources */,
 				FB1B684D20280239008DEC34 /* GMUClusterManager.m in Sources */,
 				FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */,
 				FBB066021F8DACD8002BF21C /* DetailViewController.swift in Sources */,
@@ -2306,6 +2341,7 @@
 				FBEB182F1FB01C8700E52E59 /* MonthCollectionViewCell.swift in Sources */,
 				FBE736411FCE51CA00018517 /* LocalLifeSubMenu.swift in Sources */,
 				FBE95A691FEB8D1500690D8F /* PaymentViewController.swift in Sources */,
+				FB718754205B5FD400905B86 /* VideoPlayerManager.swift in Sources */,
 				FBC7BC5E1FA4250F00D31BC6 /* TableViewDetail+Delegate+DataSource.swift in Sources */,
 				FBC7BC5A1FA4243C00D31BC6 /* HomeCollectionViewDelegate+DataSource.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,

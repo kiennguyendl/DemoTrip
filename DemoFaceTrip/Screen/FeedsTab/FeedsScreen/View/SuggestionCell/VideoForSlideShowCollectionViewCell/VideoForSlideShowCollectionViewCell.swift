@@ -40,7 +40,13 @@ class VideoForSlideShowCollectionViewCell: UICollectionViewCell {
 //        }
 //        }
 //        self.layer.sublayers = nil
-        print("==================>>>>> self.layer.sublayers.count \(self.layer.sublayers?.count)")
+        
+//        print("==================>>>>> self.layer.sublayers.count \(self.layer.sublayers?.count)")
+//        if let subView = self.viewWithTag(100){
+//            subView.removeFromSuperview()
+//        }
+        
+//        VideoPlayerManager.shareInstance.removeSubView(cell: self)
     }
 
     func playVideo(url: URL)  {

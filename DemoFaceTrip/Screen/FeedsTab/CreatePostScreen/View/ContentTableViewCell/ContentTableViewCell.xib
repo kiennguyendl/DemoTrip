@@ -164,6 +164,9 @@
                                     <constraint firstAttribute="height" constant="20" id="wjB-jn-GH4"/>
                                 </constraints>
                                 <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editContentMap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JQ3-MR-c37"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -14,7 +14,10 @@ import GooglePlaces
 protocol HeightForTextView {
     func heightOfTextView(height: CGFloat)
     func editSlideShow(listAsset: [AsssetInfor])
+    func editMap(listAsset: [AsssetInfor])
+    func showListImageInPossition(listAsset: [AsssetInfor])
 }
+
 class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 
     var delgate:HeightForTextView?
@@ -47,7 +50,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     var scrollingTimer: Timer? = nil
     var displayTimer = Timer()
     var isShowingVideo = true
-    var backgroundMusicPlayer: AVAudioPlayer!
+//    var backgroundMusicPlayer: AVAudioPlayer!
     var isEndSlideShow = true
     var timeInterval = 2.0
     
@@ -55,8 +58,8 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     var listVideoAsset: [AsssetInfor] = []
     
     var videoView: PlayVideoView?
-    var player: AVPlayer?
-    var playerLayer:AVPlayerLayer?
+    weak var player: AVPlayer?
+    weak var playerLayer:AVPlayerLayer?
     
     var listAsset: [AsssetInfor]?{
         didSet{
@@ -112,7 +115,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         setupButton()
         setupAvatar()
         setupCollectionView()
-        addObserverForView()
+//        addObserverForView()
 //        setTimer()
 //        addPlayerView()
 //        layoutIfNeeded()
@@ -136,38 +139,38 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 //        heightOfSlideShowView.constant = slideShowView.frame.width * (3 / 4)
     }
     
-    func addObserverForView() {
-        
-        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic(_:)), name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil)
-        
-    }
-    
-    @objc func playBackgroundMusic(_ notification: NSNotification) {
-        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
-
-            let audioUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!)
-
-            do{
-                if backgroundMusicPlayer == nil{
-                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl as URL)
-                }
-            }catch{
-                print("can not play file")
-            }
-            if backgroundMusicPlayer == nil {
-                print("Could not create audio player")
-                return
-            }
-            if isPlayMusic{
-                print("playing music")
-                backgroundMusicPlayer.play()
-            }else{
-                print("the end play music")
-                backgroundMusicPlayer.pause()
-                backgroundMusicPlayer = nil
-            }
-        }
-    }
+//    func addObserverForView() {
+//
+//        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic(_:)), name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil)
+//
+//    }
+//
+//    @objc func playBackgroundMusic(_ notification: NSNotification) {
+//        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
+//
+//            let audioUrl : NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!)
+//
+//            do{
+//                if backgroundMusicPlayer == nil{
+//                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl as URL)
+//                }
+//            }catch{
+//                print("can not play file")
+//            }
+//            if backgroundMusicPlayer == nil {
+//                print("Could not create audio player")
+//                return
+//            }
+//            if isPlayMusic{
+//                print("playing music")
+//                backgroundMusicPlayer.play()
+//            }else{
+//                print("the end play music")
+//                backgroundMusicPlayer.pause()
+//                backgroundMusicPlayer = nil
+//            }
+//        }
+//    }
     
     func setupButton() {
         editBtn.tintColor = UIColor.white
@@ -183,7 +186,9 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         editMapBtn.setTitle("Edit", for: UIControlState.normal)
         
 //        changeImagePauseOrPlayBtn(isPlaying: isShowingVideo)
-        
+        let image = UIImage(named: "reload")?.withRenderingMode(.alwaysTemplate)
+        self.reloadBtn.setImage(image, for: .normal)
+        self.reloadBtn.tintColor = UIColor.white
     }
     
     func setupCollectionView() {
@@ -207,8 +212,11 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: latitue, longitude: longtitue, zoom: 12)
         self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.map.frame.width, height: self.map.frame.height), camera: camera)
         self.googleMapsView.camera = camera
+//        self.googleMapsView.isUserInteractionEnabled = false
         self.map.addSubview(googleMapsView)
 //        googleMapsView.isUserInteractionEnabled = false
+        self.googleMapsView.settings.scrollGestures = false
+        self.googleMapsView.settings.zoomGestures = false
         
         let iconGenerator = GMUDefaultClusterIconGenerator()
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
@@ -268,18 +276,32 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     @IBAction func editContentSlideShow(_ sender: Any) {
-        if backgroundMusicPlayer != nil{
-            if playerLayer != nil{
-                player?.pause()
-                player = nil
-                playerLayer = nil
-            }
-            backgroundMusicPlayer.pause()
-            backgroundMusicPlayer = nil
+//        if backgroundMusicPlayer != nil{
+//            if playerLayer != nil{
+//                player?.pause()
+//                player = nil
+//                playerLayer = nil
+//            }
+//            backgroundMusicPlayer.pause()
+//            backgroundMusicPlayer = nil
             isShowingVideo = false
-        }
+//        }
+        
+        let data = ["isPlayMusic": false, "musicFile": enspired] as [String : Any]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         delgate?.editSlideShow(listAsset: listAsset!)
     }
+    
+    @IBAction func editContentMap(_ sender: Any) {
+        isShowingVideo = false
+        
+        let data = ["isPlayMusic": false, "musicFile": enspired] as [String : Any]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+        VideoPlayerManager.shareInstance.removePLayerLayer()
+        delgate?.editMap(listAsset: listAsset!)
+    }
+    
     
     @IBAction func reloadContentSlideShow(_ sender: Any) {
         reloadSlideShow()
@@ -287,15 +309,15 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     
     func reloadSlideShow() {
         if isShowingVideo{
-            if backgroundMusicPlayer != nil{
-                if playerLayer != nil{
-                    player?.pause()
-                    player = nil
-                    playerLayer = nil
-                }
-                backgroundMusicPlayer.pause()
-                backgroundMusicPlayer = nil
-            }
+//            if backgroundMusicPlayer != nil{
+//                if playerLayer != nil{
+//                    player?.pause()
+//                    player = nil
+//                    playerLayer = nil
+//                }
+//                backgroundMusicPlayer.pause()
+//                backgroundMusicPlayer = nil
+//            }
             let currentOffset = slideShowCollectionView.contentOffset
             slideShowCollectionView.contentOffset = CGPoint(x: 0, y: currentOffset.y)
             slideShowCollectionView.reloadData()
@@ -471,28 +493,31 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
 //    }
     
     func playVideo(url: URL, playerView: UIView)  {
-        if playerLayer != nil{
-            player?.pause()
-            player = nil
-            playerLayer = nil
-            playerLayer?.removeFromSuperlayer()
+        DispatchQueue.main.async {
+            if self.playerLayer != nil{
+            self.player?.pause()
+            self.player = nil
+            self.playerLayer = nil
+            self.playerLayer?.removeFromSuperlayer()
+            playerView.layer.sublayers = nil
         }
-        player = AVPlayer(url: url as URL)
+        self.player = AVPlayer(url: url as URL)
         //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
         //        player = AVPlayer(playerItem: playerItem)
-        playerLayer = AVPlayerLayer()
-        playerLayer?.player = player
-        playerLayer?.frame = playerView.frame
-        playerLayer?.backgroundColor = UIColor.white.cgColor
-        playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.playerLayer = AVPlayerLayer()
+        self.playerLayer?.player = self.player
+        self.playerLayer?.frame = playerView.frame
+        self.playerLayer?.backgroundColor = UIColor.white.cgColor
+        self.playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
-        playerView.layer.addSublayer(playerLayer!)
-        if isShowingVideo{
-            player?.play()
+        playerView.layer.addSublayer(self.playerLayer!)
+        if self.isShowingVideo{
+            self.player?.play()
         }else{
-            player?.pause()
+            self.player?.pause()
         }
-        player?.volume = 0.0
+        self.player?.volume = 0.0
+        }
     }
     
     func removeTimer() {

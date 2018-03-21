@@ -126,10 +126,6 @@ class EditSlideShowViewController: BaseViewController {
         addObserverForView()
     }
     
-//    @objc func longPress(sender : UIGestureRecognizer) {
-//        print("long press")
-//    }
-    
     func initLeftRightButton() {
         let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
         navigationItem.leftBarButtonItem = cancelButton
@@ -156,6 +152,7 @@ class EditSlideShowViewController: BaseViewController {
             backgroundMusicPlayer = nil
             isShowingVideo = false
         }
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         navigationController?.popViewController(animated: true)
     }
     
@@ -255,22 +252,22 @@ class EditSlideShowViewController: BaseViewController {
         }
     }
 
-    @IBAction func cancelEdit(_ sender: Any) {
-        if backgroundMusicPlayer != nil{
-            if playerLayer != nil{
-                player?.pause()
-                player = nil
-                playerLayer = nil
-            }
-            backgroundMusicPlayer.pause()
-            backgroundMusicPlayer = nil
-            isShowingVideo = false
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func doneEditTop(_ sender: Any) {
-    }
+//    @IBAction func cancelEdit(_ sender: Any) {
+//        VideoPlayerManager.shareInstance.removePLayerLayer()
+//
+//        if backgroundMusicPlayer != nil{
+//
+//            backgroundMusicPlayer.pause()
+//            backgroundMusicPlayer = nil
+//            isShowingVideo = false
+//        }
+//
+//        notificationCenter.removeObserver(self)
+//        dismiss(animated: true, completion: nil)
+//    }
+//    
+//    @IBAction func doneEditTop(_ sender: Any) {
+//    }
     
     @IBAction func discardEdit(_ sender: Any) {
     }
@@ -282,6 +279,21 @@ class EditSlideShowViewController: BaseViewController {
                 listAssetPicked.append(item)
             }
         }
+        
+        if backgroundMusicPlayer != nil{
+            backgroundMusicPlayer.pause()
+            backgroundMusicPlayer = nil
+            isShowingVideo = false
+        }
+        
+//        if playerLayer != nil{
+//            player?.pause()
+//            player = nil
+//            playerLayer = nil
+//            playerLayer?.removeFromSuperlayer()
+//        }
+        
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         notificationCenter.removeObserver(self)
         
         delegate?.doneEditSlideShow(listAsset: listAssetPicked)
@@ -322,28 +334,32 @@ class EditSlideShowViewController: BaseViewController {
     
     
     func playVideo(url: URL, playerView: UIView)  {
-        if playerLayer != nil{
-            player?.pause()
-            player = nil
-            playerLayer = nil
-            playerLayer?.removeFromSuperlayer()
+        DispatchQueue.main.async {
+            if self.playerLayer != nil{
+                self.player?.pause()
+                self.player = nil
+                self.playerLayer = nil
+                self.playerLayer?.removeFromSuperlayer()
+                playerView.layer.sublayers = nil
+            }
+            self.player = AVPlayer(url: url as URL)
+            //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
+            //        player = AVPlayer(playerItem: playerItem)
+            self.playerLayer = AVPlayerLayer()
+            self.playerLayer?.player = self.player
+            self.playerLayer?.frame = playerView.frame
+            self.playerLayer?.backgroundColor = UIColor.white.cgColor
+            self.playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            
+            playerView.layer.addSublayer(self.playerLayer!)
+            if self.isShowingVideo{
+                self.player?.play()
+            }else{
+                self.player?.pause()
+            }
+            self.player?.volume = 0.0
         }
-        player = AVPlayer(url: url as URL)
-        //        var playerItem: AVPlayerItem = AVPlayerItem(asset: avAsset)
-        //        player = AVPlayer(playerItem: playerItem)
-        playerLayer = AVPlayerLayer()
-        playerLayer?.player = player
-        playerLayer?.frame = playerView.frame
-        playerLayer?.backgroundColor = UIColor.white.cgColor
-        playerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
-        playerView.layer.addSublayer(playerLayer!)
-        if isShowingVideo{
-            player?.play()
-        }else{
-            player?.pause()
-        }
-        player?.volume = 0.0
     }
     
     func removeTimer() {

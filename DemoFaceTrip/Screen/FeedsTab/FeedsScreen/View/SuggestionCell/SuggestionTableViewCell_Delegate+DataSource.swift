@@ -27,7 +27,7 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentRow = indexPath.row
+        let currentRow = indexPath.item
 
         if collectionView == slideShowCollectionView{
 
@@ -62,8 +62,8 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             }else if asset?.mediaType == .video{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoForSlideShowCollectionViewCell
                 
-                
                 print("current item: \(currentRow)")
+                
                 
                 PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
                     , resultHandler: {[weak self] avAsset,audiomix,info in
@@ -73,7 +73,17 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                         }else{
                             VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
                                 guard let strongSelf = self else{return}
-                                strongSelf.playVideo(url: url, playerView: cell.playerView)
+                                
+                                DispatchQueue.main.async {
+//                                    VideoPlayerManager.shareInstance.addPlayerView(cell: cell, url: url, indexPath: indexPath)
+                                    VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
+                                    if strongSelf.isPlayingSlideShow{
+                                        VideoPlayerManager.shareInstance.playVideo()
+                                    }
+//                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
+                                }
+                                
+//                                strongSelf.playVideo(url: url, playerView: cell.playerView)
 //                                cell.playVideo(url: url)
                                 
                                 

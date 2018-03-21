@@ -88,20 +88,29 @@ extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
                     guard let strongSelf = self else{return}
                     VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
                         guard let strongSelf = self else{return}
-                        strongSelf.playVideo(url: url, playerView: cell.playerView)
-                        
-                        if currentRow == 0{
-                            UIView.transition(with: cell.tilteMoments, duration: 3.0, options: [.curveEaseOut, .transitionFlipFromLeft], animations: {
-                                cell.tilteMoments.isHidden = false
-                            }, completion: { finished in
-                                UIView.transition(with: cell.tilteMoments, duration: 1, options: [.curveEaseIn, .transitionFlipFromLeft], animations: {
+//                        strongSelf.playVideo(url: url, playerView: cell.playerView)
+                        DispatchQueue.main.async {
+                            VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
+                            if strongSelf.isShowingVideo{
+                                VideoPlayerManager.shareInstance.playVideo()
+                                if currentRow == 0{
+                                    UIView.transition(with: cell.tilteMoments, duration: 3.0, options: [.curveEaseOut, .transitionFlipFromLeft], animations: {
+                                        cell.tilteMoments.isHidden = false
+                                    }, completion: { finished in
+                                        UIView.transition(with: cell.tilteMoments, duration: 1, options: [.curveEaseIn, .transitionFlipFromLeft], animations: {
+                                            cell.tilteMoments.isHidden = true
+                                        }, completion: nil)
+                                        
+                                    })
+                                }else{
                                     cell.tilteMoments.isHidden = true
-                                }, completion: nil)
-                                
-                            })
-                        }else{
-                            cell.tilteMoments.isHidden = true
+                                }
+                            }
+                            
                         }
+                        
+                        
+                        
                     })
                     
             })
@@ -130,8 +139,8 @@ extension ContentTableViewCell: GMUClusterManagerDelegate, GMSMapViewDelegate, G
     // MARK: - GMUMapViewDelegate
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
-        return false
+        delgate?.showListImageInPossition(listAsset: listAsset!)
+        return true
     }
     
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
