@@ -205,19 +205,47 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func loadMap() {
-        let latitue = 10.958833
-        let longtitue = 108.260929
+        let latitude = 10.958833
+        let longitude = 108.260929
         
+        
+
 //        let location = CLLocationCoordinate2D(latitude: latitue, longitude: longtitue)
-        let camera = GMSCameraPosition.camera(withLatitude: latitue, longitude: longtitue, zoom: 12)
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 15)
         self.googleMapsView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.map.frame.width, height: self.map.frame.height), camera: camera)
         self.googleMapsView.camera = camera
-//        self.googleMapsView.isUserInteractionEnabled = false
         self.map.addSubview(googleMapsView)
-//        googleMapsView.isUserInteractionEnabled = false
+//        self.googleMapsView.setMinZoom(10, maxZoom: 20)
+        
         self.googleMapsView.settings.scrollGestures = false
         self.googleMapsView.settings.zoomGestures = false
         
+        ///////
+        var bounds = GMSCoordinateBounds()
+
+        let latitude1 = 10.958833
+        let longitude1 = 108.260929
+
+//        let marker1 = GMSMarker()
+//        marker1.position = CLLocationCoordinate2D(latitude:latitude1, longitude:longitude1)
+//        marker1.map = self.googleMapsView
+        bounds = bounds.includingCoordinate(CLLocationCoordinate2D(latitude: latitude1, longitude: longitude1))
+
+        let latitude2 = 10.952448
+        let longitude2 = 108.200280
+
+//        let marker2 = GMSMarker()
+//        marker2.position = CLLocationCoordinate2D(latitude:latitude2, longitude:longitude2)
+//        marker2.map = self.googleMapsView
+        bounds = bounds.includingCoordinate(CLLocationCoordinate2D(latitude: latitude2, longitude: longitude2))
+
+        let update = GMSCameraUpdate.fit(bounds)
+        let cameraUpdate = googleMapsView.camera(for: bounds, insets: UIEdgeInsets.zero)
+//        self.googleMapsView.animate(with: update)
+//        googleMapsView.camera = cameraUpdate!
+        self.googleMapsView.moveCamera(update)
+        
+        //////////////
         let iconGenerator = GMUDefaultClusterIconGenerator()
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: googleMapsView, clusterIconGenerator: iconGenerator)

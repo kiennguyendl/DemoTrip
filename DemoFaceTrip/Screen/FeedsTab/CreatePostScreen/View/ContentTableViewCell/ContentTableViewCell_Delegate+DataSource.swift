@@ -143,6 +143,10 @@ extension ContentTableViewCell: GMUClusterManagerDelegate, GMSMapViewDelegate, G
         return true
     }
     
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        print("kaka")
+    }
+    
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
         
         //        if marker.userData is PointItem{
