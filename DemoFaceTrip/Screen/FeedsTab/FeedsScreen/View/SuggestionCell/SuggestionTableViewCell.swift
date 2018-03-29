@@ -80,7 +80,7 @@ class SuggestionTableViewCell: UITableViewCell {
 //        addObserverForView()
         
         //test ip 8+ and real device
-//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-16-2018") as! NSDate, endDate: dateFormater?.date(from: "03-20-2018") as! NSDate)
+//        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-25-2018") as! NSDate, endDate: dateFormater?.date(from: "03-28-2018") as! NSDate)
         
         // test ip 6+
         fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2017") as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)

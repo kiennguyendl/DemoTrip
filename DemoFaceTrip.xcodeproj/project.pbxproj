@@ -33,6 +33,10 @@
 		FB03C68D1F84DC93005FC7A2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */; };
 		FB03C6911F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */; };
 		FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */; };
+		FB04B6A52064FAD800F45349 /* TagFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04B6A32064FAD800F45349 /* TagFriendsCollectionViewCell.swift */; };
+		FB04B6A62064FAD800F45349 /* TagFriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB04B6A42064FAD800F45349 /* TagFriendsCollectionViewCell.xib */; };
+		FB04B6AC2064FC8E00F45349 /* PickATagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB04B6AA2064FC8E00F45349 /* PickATagViewController.swift */; };
+		FB04B6AD2064FC8E00F45349 /* PickATagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB04B6AB2064FC8E00F45349 /* PickATagViewController.xib */; };
 		FB054F912050D6CE00CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8D2050D6C900CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 */; };
 		FB054F922050D6CE00CB29DE /* Happy-Pharrell-Williams.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8E2050D6CA00CB29DE /* Happy-Pharrell-Williams.mp3 */; };
 		FB054F932050D6CE00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB054F8F2050D6CD00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 */; };
@@ -105,6 +109,11 @@
 		FB36F8E42053863700E2F7CF /* AddMorImageOrVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB36F8E22053863700E2F7CF /* AddMorImageOrVideoViewController.swift */; };
 		FB36F8E52053863700E2F7CF /* AddMorImageOrVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB36F8E32053863700E2F7CF /* AddMorImageOrVideoViewController.xib */; };
 		FB3872F21FA81390005FFBCD /* CalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3872F11FA81390005FFBCD /* CalendarProtocols.swift */; };
+		FB38DB4B2068966500B2AECC /* BaseCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38DB4A2068966500B2AECC /* BaseCollectionViewLayout.swift */; };
+		FB38DB4D2068C5B800B2AECC /* PickATagCustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38DB4C2068C5B800B2AECC /* PickATagCustomLayout.swift */; };
+		FB38DB512068EC0300B2AECC /* PickATagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38DB4F2068EC0300B2AECC /* PickATagCollectionViewCell.swift */; };
+		FB38DB522068EC0300B2AECC /* PickATagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB38DB502068EC0300B2AECC /* PickATagCollectionViewCell.xib */; };
+		FB38DB542068EC8C00B2AECC /* pickATag.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB38DB532068EC8C00B2AECC /* pickATag.jpg */; };
 		FB452A961F99B60A00D0709D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB452A951F99B60A00D0709D /* Color.swift */; };
 		FB452A981F99B64A00D0709D /* ListEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB452A971F99B64A00D0709D /* ListEnum.swift */; };
 		FB54946C1FA6FF9C003645E3 /* CalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB54946B1FA6FF9C003645E3 /* CalendarExtension.swift */; };
@@ -121,6 +130,9 @@
 		FB8051A11FAAD01500AD635E /* BookingTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB80519F1FAAD01500AD635E /* BookingTourViewController.swift */; };
 		FB8051A21FAAD01500AD635E /* BookingTourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8051A01FAAD01500AD635E /* BookingTourViewController.xib */; };
 		FB8051A41FAADB8000AD635E /* KeyNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8051A31FAADB8000AD635E /* KeyNotifications.swift */; };
+		FB82B5CD2063691B0050528D /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82B5CB2063691B0050528D /* CoverViewController.swift */; };
+		FB82B5CE2063691B0050528D /* CoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB82B5CC2063691B0050528D /* CoverViewController.xib */; };
+		FB82B5D020636D560050528D /* khanh-tien-001-090007177.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB82B5CF20636D560050528D /* khanh-tien-001-090007177.jpg */; };
 		FB8D2A571FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D2A551FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.swift */; };
 		FB8D2A581FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8D2A561FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib */; };
 		FB8D2A641FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8D2A621FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift */; };
@@ -227,6 +239,8 @@
 		FBE7363D1FCE50AD00018517 /* FoodSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7363C1FCE50AD00018517 /* FoodSubMenu.swift */; };
 		FBE7363F1FCE50E200018517 /* ShoppingSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7363E1FCE50E200018517 /* ShoppingSubMenu.swift */; };
 		FBE736411FCE51CA00018517 /* LocalLifeSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE736401FCE51CA00018517 /* LocalLifeSubMenu.swift */; };
+		FBE77BA32069F97C0014924F /* DrawLineOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE77BA12069F97C0014924F /* DrawLineOnMapViewController.swift */; };
+		FBE77BA42069F97C0014924F /* DrawLineOnMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE77BA22069F97C0014924F /* DrawLineOnMapViewController.xib */; };
 		FBE7D892202057DB004CC6C3 /* FeedScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7D891202057DB004CC6C3 /* FeedScreenProtocol.swift */; };
 		FBE7D898202059A9004CC6C3 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7D896202059A9004CC6C3 /* CreatePostViewController.swift */; };
 		FBE7D899202059A9004CC6C3 /* CreatePostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE7D897202059A9004CC6C3 /* CreatePostViewController.xib */; };
@@ -247,6 +261,9 @@
 		FBF41A161FD6A74000CD7D4B /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF41A141FD6A74000CD7D4B /* CoverTableViewCell.swift */; };
 		FBF41A171FD6A74000CD7D4B /* CoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF41A151FD6A74000CD7D4B /* CoverTableViewCell.xib */; };
 		FBF59C9E1FD00A7800789040 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF59C9D1FD00A7800789040 /* CircularTransition.swift */; };
+		FBF6414A206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */; };
+		FBF64152206B3452008BE5B9 /* PickATagCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF64150206B3452008BE5B9 /* PickATagCollectionReusableView.swift */; };
+		FBF64153206B3452008BE5B9 /* PickATagCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF64151206B3452008BE5B9 /* PickATagCollectionReusableView.xib */; };
 		FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F8A1F8636EC007CF7EA /* Hotel.swift */; };
 		FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */; };
 		FBF90F8D1F8637CF007CF7EA /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */; };
@@ -308,6 +325,10 @@
 		FB03C68B1F84DC93005FC7A2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		FB03C68F1F84E87D005FC7A2 /* CarouselsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB03C6901F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselsCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB04B6A32064FAD800F45349 /* TagFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB04B6A42064FAD800F45349 /* TagFriendsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagFriendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB04B6AA2064FC8E00F45349 /* PickATagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagViewController.swift; sourceTree = "<group>"; };
+		FB04B6AB2064FC8E00F45349 /* PickATagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickATagViewController.xib; sourceTree = "<group>"; };
 		FB054F8D2050D6C900CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "HappyBirthday-Guitar_4e3zq.mp3"; sourceTree = "<group>"; };
 		FB054F8E2050D6CA00CB29DE /* Happy-Pharrell-Williams.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Happy-Pharrell-Williams.mp3"; sourceTree = "<group>"; };
 		FB054F8F2050D6CD00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3"; sourceTree = "<group>"; };
@@ -421,6 +442,11 @@
 		FB36F8E22053863700E2F7CF /* AddMorImageOrVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMorImageOrVideoViewController.swift; sourceTree = "<group>"; };
 		FB36F8E32053863700E2F7CF /* AddMorImageOrVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMorImageOrVideoViewController.xib; sourceTree = "<group>"; };
 		FB3872F11FA81390005FFBCD /* CalendarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocols.swift; sourceTree = "<group>"; };
+		FB38DB4A2068966500B2AECC /* BaseCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewLayout.swift; sourceTree = "<group>"; };
+		FB38DB4C2068C5B800B2AECC /* PickATagCustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagCustomLayout.swift; sourceTree = "<group>"; };
+		FB38DB4F2068EC0300B2AECC /* PickATagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB38DB502068EC0300B2AECC /* PickATagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickATagCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB38DB532068EC8C00B2AECC /* pickATag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pickATag.jpg; sourceTree = "<group>"; };
 		FB452A951F99B60A00D0709D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FB452A971F99B64A00D0709D /* ListEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEnum.swift; sourceTree = "<group>"; };
 		FB54946B1FA6FF9C003645E3 /* CalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtension.swift; sourceTree = "<group>"; };
@@ -437,6 +463,9 @@
 		FB80519F1FAAD01500AD635E /* BookingTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTourViewController.swift; sourceTree = "<group>"; };
 		FB8051A01FAAD01500AD635E /* BookingTourViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingTourViewController.xib; sourceTree = "<group>"; };
 		FB8051A31FAADB8000AD635E /* KeyNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyNotifications.swift; sourceTree = "<group>"; };
+		FB82B5CB2063691B0050528D /* CoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
+		FB82B5CC2063691B0050528D /* CoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoverViewController.xib; sourceTree = "<group>"; };
+		FB82B5CF20636D560050528D /* khanh-tien-001-090007177.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "khanh-tien-001-090007177.jpg"; sourceTree = "<group>"; };
 		FB8D2A551FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB8D2A561FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB8D2A621FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMonthCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -545,6 +574,8 @@
 		FBE7363C1FCE50AD00018517 /* FoodSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSubMenu.swift; sourceTree = "<group>"; };
 		FBE7363E1FCE50E200018517 /* ShoppingSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingSubMenu.swift; sourceTree = "<group>"; };
 		FBE736401FCE51CA00018517 /* LocalLifeSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLifeSubMenu.swift; sourceTree = "<group>"; };
+		FBE77BA12069F97C0014924F /* DrawLineOnMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawLineOnMapViewController.swift; sourceTree = "<group>"; };
+		FBE77BA22069F97C0014924F /* DrawLineOnMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawLineOnMapViewController.xib; sourceTree = "<group>"; };
 		FBE7D891202057DB004CC6C3 /* FeedScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScreenProtocol.swift; sourceTree = "<group>"; };
 		FBE7D896202059A9004CC6C3 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		FBE7D897202059A9004CC6C3 /* CreatePostViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostViewController.xib; sourceTree = "<group>"; };
@@ -565,6 +596,9 @@
 		FBF41A141FD6A74000CD7D4B /* CoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
 		FBF41A151FD6A74000CD7D4B /* CoverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoverTableViewCell.xib; sourceTree = "<group>"; };
 		FBF59C9D1FD00A7800789040 /* CircularTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
+		FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewLayoutV2.swift; sourceTree = "<group>"; };
+		FBF64150206B3452008BE5B9 /* PickATagCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagCollectionReusableView.swift; sourceTree = "<group>"; };
+		FBF64151206B3452008BE5B9 /* PickATagCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickATagCollectionReusableView.xib; sourceTree = "<group>"; };
 		FBF90F8A1F8636EC007CF7EA /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -797,6 +831,53 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
+		FB04B6A12064FA8900F45349 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB82B5CB2063691B0050528D /* CoverViewController.swift */,
+				FB82B5CC2063691B0050528D /* CoverViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FB04B6A22064FA9300F45349 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBE77BA02069F9550014924F /* DrawLineOnMapViewController */,
+				FB04B6A32064FAD800F45349 /* TagFriendsCollectionViewCell.swift */,
+				FB04B6A42064FAD800F45349 /* TagFriendsCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB04B6A72064FC6200F45349 /* PickATagScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB04B6A92064FC7500F45349 /* View */,
+				FB04B6A82064FC6E00F45349 /* ViewController */,
+			);
+			path = PickATagScreen;
+			sourceTree = "<group>";
+		};
+		FB04B6A82064FC6E00F45349 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB04B6AA2064FC8E00F45349 /* PickATagViewController.swift */,
+				FB04B6AB2064FC8E00F45349 /* PickATagViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FB04B6A92064FC7500F45349 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FBF6414B206B3335008BE5B9 /* HeaderOfPickATag */,
+				FB38DB4E2068EBDE00B2AECC /* PickATagCollectionViewCell */,
+				FB38DB49206895F600B2AECC /* CustomLayoutForPickATag */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FB08DF852052676C00811063 /* VideoPickedCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,6 +917,8 @@
 		FB0E93AD20217877007215B2 /* FeedsTab */ = {
 			isa = PBXGroup;
 			children = (
+				FB04B6A72064FC6200F45349 /* PickATagScreen */,
+				FB82B5CA206368FB0050528D /* CoverScreen */,
 				FB2A8D3B206252AC008B4314 /* EditMapScreen */,
 				FB36F8E12053851E00E2F7CF /* AddMoreImageOrVideoScreen */,
 				FB690DC5203FEBEE00F6E331 /* ListImageScreen */,
@@ -1173,6 +1256,24 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		FB38DB49206895F600B2AECC /* CustomLayoutForPickATag */ = {
+			isa = PBXGroup;
+			children = (
+				FBF64148206B2D2B008BE5B9 /* V2 */,
+				FBF64147206B2D21008BE5B9 /* V1 */,
+			);
+			path = CustomLayoutForPickATag;
+			sourceTree = "<group>";
+		};
+		FB38DB4E2068EBDE00B2AECC /* PickATagCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB38DB4F2068EC0300B2AECC /* PickATagCollectionViewCell.swift */,
+				FB38DB502068EC0300B2AECC /* PickATagCollectionViewCell.xib */,
+			);
+			path = PickATagCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		FB452A941F99B5DE00D0709D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1250,6 +1351,15 @@
 				FBD8C2E51FAD774900D32210 /* ViewController */,
 			);
 			path = BookingView;
+			sourceTree = "<group>";
+		};
+		FB82B5CA206368FB0050528D /* CoverScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB04B6A22064FA9300F45349 /* View */,
+				FB04B6A12064FA8900F45349 /* ViewController */,
+			);
+			path = CoverScreen;
 			sourceTree = "<group>";
 		};
 		FB8D2A4F1FAB0CDD00ECCF06 /* HeaderView */ = {
@@ -1430,6 +1540,8 @@
 		FBA8DD64201867AA00793516 /* ImageForFakeData */ = {
 			isa = PBXGroup;
 			children = (
+				FB82B5CF20636D560050528D /* khanh-tien-001-090007177.jpg */,
+				FB38DB532068EC8C00B2AECC /* pickATag.jpg */,
 			);
 			path = ImageForFakeData;
 			sourceTree = "<group>";
@@ -1779,6 +1891,15 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		FBE77BA02069F9550014924F /* DrawLineOnMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FBE77BA12069F97C0014924F /* DrawLineOnMapViewController.swift */,
+				FBE77BA22069F97C0014924F /* DrawLineOnMapViewController.xib */,
+			);
+			path = DrawLineOnMapViewController;
+			sourceTree = "<group>";
+		};
 		FBE7D8902020575E004CC6C3 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -1888,6 +2009,32 @@
 				FBF59C9D1FD00A7800789040 /* CircularTransition.swift */,
 			);
 			path = TransitionViewControllerFromCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FBF64147206B2D21008BE5B9 /* V1 */ = {
+			isa = PBXGroup;
+			children = (
+				FB38DB4A2068966500B2AECC /* BaseCollectionViewLayout.swift */,
+				FB38DB4C2068C5B800B2AECC /* PickATagCustomLayout.swift */,
+			);
+			path = V1;
+			sourceTree = "<group>";
+		};
+		FBF64148206B2D2B008BE5B9 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */,
+			);
+			path = V2;
+			sourceTree = "<group>";
+		};
+		FBF6414B206B3335008BE5B9 /* HeaderOfPickATag */ = {
+			isa = PBXGroup;
+			children = (
+				FBF64150206B3452008BE5B9 /* PickATagCollectionReusableView.swift */,
+				FBF64151206B3452008BE5B9 /* PickATagCollectionReusableView.xib */,
+			);
+			path = HeaderOfPickATag;
 			sourceTree = "<group>";
 		};
 		FBFB8AC11F9ADF6C0087D0DD /* HeaderZeroForTableViewCell */ = {
@@ -2039,6 +2186,7 @@
 				FBB3F6A41FB1AF67003BC910 /* MapViewViewController.xib in Resources */,
 				FBF2B7C91FE0C72A00DA5850 /* MenuView.xib in Resources */,
 				FBA8DD63201832D000793516 /* SuggestionTableViewCell.xib in Resources */,
+				FB82B5D020636D560050528D /* khanh-tien-001-090007177.jpg in Resources */,
 				FBE7D899202059A9004CC6C3 /* CreatePostViewController.xib in Resources */,
 				FB54AB462029851B001BD22F /* ImagePickerCollectionViewCell.xib in Resources */,
 				FBE95A6A1FEB8D1500690D8F /* PaymentViewController.xib in Resources */,
@@ -2048,6 +2196,7 @@
 				FBFBBD0C1F85D77E0062C6DC /* HomeTableViewCell.xib in Resources */,
 				FB8D2A581FAB123B00ECCF06 /* DayOfWeekCollectionViewCell.xib in Resources */,
 				FBC8892F1F9DD9070017241E /* NewHomeCollectionViewCell.xib in Resources */,
+				FB38DB522068EC0300B2AECC /* PickATagCollectionViewCell.xib in Resources */,
 				FB139FE1202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.xib in Resources */,
 				FB8D2A651FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.xib in Resources */,
 				FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */,
@@ -2061,6 +2210,7 @@
 				FBFB7F3F1FB2E057006DDE2A /* NewMapViewViewController.xib in Resources */,
 				FBCDD2221FB581A600BB0F00 /* ChooseCityViewController.xib in Resources */,
 				FB054F942050D6CE00CB29DE /* ProtectorsOfTheEarth-TwoStepsFromH_phh2.mp3 in Resources */,
+				FB04B6AD2064FC8E00F45349 /* PickATagViewController.xib in Resources */,
 				FBC7BC761FA449CD00D31BC6 /* HeaderCollectionViewCell.xib in Resources */,
 				FB00D4F31FC92C3600FC84CE /* ListingViewController.xib in Resources */,
 				FBFBBD111F85DA610062C6DC /* HomeCollectionViewCell.xib in Resources */,
@@ -2069,16 +2219,21 @@
 				FB2B40C3201580E000404965 /* FriendsViewController.xib in Resources */,
 				FBC555201FB3FDAE00AC510D /* RatingTableViewCell.xib in Resources */,
 				FB54AB412029848F001BD22F /* TypeMusicCollectionViewCell.xib in Resources */,
+				FB82B5CE2063691B0050528D /* CoverViewController.xib in Resources */,
+				FB38DB542068EC8C00B2AECC /* pickATag.jpg in Resources */,
 				FBBD8C871FA04AF100BCD169 /* CustomNavigationbarForDetailViewController.xib in Resources */,
 				FBDD89BC2029457A0003AA60 /* EditSlideShowViewController.xib in Resources */,
 				FB9FB3EF1F8C86CC006CA1AE /* InboxViewController.xib in Resources */,
 				FB054F932050D6CE00CB29DE /* LoveampSorrowPlayfulKissOST-Bea_sw3k.mp3 in Resources */,
 				FB1AB7C82015D00D0072D182 /* avatar.jpg in Resources */,
+				FBF64153206B3452008BE5B9 /* PickATagCollectionReusableView.xib in Resources */,
+				FBE77BA42069F97C0014924F /* DrawLineOnMapViewController.xib in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FB24D69B2047A7AD00AABD36 /* PlayVideoView.xib in Resources */,
 				FB36F8E52053863700E2F7CF /* AddMorImageOrVideoViewController.xib in Resources */,
 				FBE0D3501FDE2006001D82FD /* DetailBookingViewController.xib in Resources */,
 				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
+				FB04B6A62064FAD800F45349 /* TagFriendsCollectionViewCell.xib in Resources */,
 				FB8D38822015A2B200A7FF1C /* FriendsCollectionViewCell.xib in Resources */,
 				FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */,
 				FB0E93BF20219B75007215B2 /* TitleTableViewCell.xib in Resources */,
@@ -2294,6 +2449,8 @@
 				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
 				FB054F962050D8C400CB29DE /* NameMusic.swift in Sources */,
 				FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */,
+				FBF6414A206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift in Sources */,
+				FB38DB4B2068966500B2AECC /* BaseCollectionViewLayout.swift in Sources */,
 				FB209AF2201EB4AF00A0E185 /* ImageForSlideShowCollectionViewCell.swift in Sources */,
 				FB034B081FC276EE003448AC /* DayTripAndExcursionsTourMenu.swift in Sources */,
 				FB452A961F99B60A00D0709D /* Color.swift in Sources */,
@@ -2319,14 +2476,19 @@
 				FBE0D35E1FDE3E8E001D82FD /* BookingPaymentViewController.swift in Sources */,
 				FB1B684E20280239008DEC34 /* GMUStaticCluster.m in Sources */,
 				FBA644831F8F0BBB007E968C /* ListDetailCatagoryViewController.swift in Sources */,
+				FB38DB4D2068C5B800B2AECC /* PickATagCustomLayout.swift in Sources */,
 				FB690DC8203FEC2400F6E331 /* ListImageViewController.swift in Sources */,
 				FB24FF952045332F006D6D31 /* SuggestionTableViewCell_Delegate+DataSource.swift in Sources */,
 				FBED69652016E4D100E0A81E /* ImageCollectionViewCell.swift in Sources */,
+				FB38DB512068EC0300B2AECC /* PickATagCollectionViewCell.swift in Sources */,
 				FB1B685920280239008DEC34 /* GMUPoint.m in Sources */,
 				FB54AB402029848F001BD22F /* TypeMusicCollectionViewCell.swift in Sources */,
+				FB04B6AC2064FC8E00F45349 /* PickATagViewController.swift in Sources */,
+				FB82B5CD2063691B0050528D /* CoverViewController.swift in Sources */,
 				FBC37CB71FA1CBCC00E2E3A3 /* Setting.swift in Sources */,
 				FBB066101F8DF879002BF21C /* CityTour.swift in Sources */,
 				FB1B680120280162008DEC34 /* PointItem.swift in Sources */,
+				FBF64152206B3452008BE5B9 /* PickATagCollectionReusableView.swift in Sources */,
 				FB1B685E20280239008DEC34 /* GMUWeightedLatLng.m in Sources */,
 				FBFB8AC51F9ADFB50087D0DD /* HeaderZeroView.swift in Sources */,
 				FB034B041FC275EF003448AC /* RecentlyMenu.swift in Sources */,
@@ -2343,6 +2505,7 @@
 				FBE95A691FEB8D1500690D8F /* PaymentViewController.swift in Sources */,
 				FB718754205B5FD400905B86 /* VideoPlayerManager.swift in Sources */,
 				FBC7BC5E1FA4250F00D31BC6 /* TableViewDetail+Delegate+DataSource.swift in Sources */,
+				FB04B6A52064FAD800F45349 /* TagFriendsCollectionViewCell.swift in Sources */,
 				FBC7BC5A1FA4243C00D31BC6 /* HomeCollectionViewDelegate+DataSource.swift in Sources */,
 				FBFBBD0B1F85D77E0062C6DC /* HomeTableViewCell.swift in Sources */,
 				FB0E93BE20219B75007215B2 /* TitleTableViewCell.swift in Sources */,
@@ -2352,6 +2515,7 @@
 				FBE7D89B202061C5004CC6C3 /* FeedsTableViewDelegate+DataSource.swift in Sources */,
 				FBE7362B1FCE494100018517 /* ShowAndConcertsSubMenu.swift in Sources */,
 				FB54AB3C20298409001BD22F /* EditSlideShowDelegate+Datasource.swift in Sources */,
+				FBE77BA32069F97C0014924F /* DrawLineOnMapViewController.swift in Sources */,
 				FBB0660A1F8DF53F002BF21C /* Attraction.swift in Sources */,
 				FB54946C1FA6FF9C003645E3 /* CalendarExtension.swift in Sources */,
 				FBE7362D1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift in Sources */,

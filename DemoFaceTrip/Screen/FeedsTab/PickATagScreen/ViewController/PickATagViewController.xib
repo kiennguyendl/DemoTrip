@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PickATagViewController" customModule="DemoFaceTrip" customModuleProvider="target">
+            <connections>
+                <outlet property="exitBtn" destination="4fN-aZ-9YC" id="m7o-QN-CkE"/>
+                <outlet property="listTypeTagCollectionView" destination="Bcw-Ui-dtm" id="dcY-Vw-Lhz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fN-aZ-9YC">
+                    <rect key="frame" x="20" y="40" width="20" height="20"/>
+                    <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Yld-kx-vrV"/>
+                        <constraint firstAttribute="height" constant="20" id="iDo-Ot-Gef"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="deleteBlack"/>
+                    <connections>
+                        <action selector="exit:" destination="-1" eventType="touchUpInside" id="TFm-PC-2ks"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick A Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSR-7h-sbG">
+                    <rect key="frame" x="145" y="69.5" width="85" height="20.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bcw-Ui-dtm">
+                    <rect key="frame" x="10" y="110" width="355" height="557"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewLayout key="collectionViewLayout" id="aTe-dN-tfU" customClass="PickATagCustomLayout" customModule="DemoFaceTrip" customModuleProvider="target"/>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bcw-Ui-dtm" secondAttribute="trailing" constant="10" id="6Q1-zK-ntq"/>
+                <constraint firstItem="4fN-aZ-9YC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9UN-bF-vtg"/>
+                <constraint firstItem="Bcw-Ui-dtm" firstAttribute="top" secondItem="SSR-7h-sbG" secondAttribute="bottom" constant="20" id="SL4-4J-aT1"/>
+                <constraint firstItem="4fN-aZ-9YC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="cei-sS-Vgu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bcw-Ui-dtm" secondAttribute="bottom" id="d1B-Ed-Yvs"/>
+                <constraint firstItem="SSR-7h-sbG" firstAttribute="bottom" secondItem="4fN-aZ-9YC" secondAttribute="bottom" constant="30" id="gmC-m2-qIW"/>
+                <constraint firstItem="Bcw-Ui-dtm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="uoq-HZ-f8i"/>
+                <constraint firstItem="SSR-7h-sbG" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="woE-SG-l7j"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="deleteBlack" width="96" height="96"/>
+    </resources>
+</document>

@@ -53,7 +53,11 @@ class FeedsViewController: BaseViewController {
 
 extension FeedsViewController: FeedProtocol{
     func createPost(listAsset: [AsssetInfor]) {
-        let vc = CreatePostViewController()
+//        let vc = CreatePostViewController()
+//        vc.listAsset = listAsset
+//        navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = CoverViewController()
         vc.listAsset = listAsset
         navigationController?.pushViewController(vc, animated: true)
     }
