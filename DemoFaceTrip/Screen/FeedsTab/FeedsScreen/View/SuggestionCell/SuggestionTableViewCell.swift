@@ -83,7 +83,7 @@ class SuggestionTableViewCell: UITableViewCell {
 //        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "03-25-2018") as! NSDate, endDate: dateFormater?.date(from: "03-28-2018") as! NSDate)
         
         // test ip 6+
-        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2017") as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)
+        fetchImageFromDateToDate(startDate: dateFormater?.date(from: "02-06-2017")! as! NSDate, endDate: dateFormater?.date(from: "02-28-2018") as! NSDate)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -276,13 +276,18 @@ class SuggestionTableViewCell: UITableViewCell {
     }
     
     func fetchImageFromDateToDate(startDate: NSDate, endDate: NSDate) {
+        var count = 0
         let imageManager = PHImageManager()
         let requestOption = PHImageRequestOptions()
         requestOption.isSynchronous = true
 //        requestOption.deliveryMode = .fastFpoormat
         
         let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "(creationDate >= %@ AND creationDate <= %@) AND (mediaType == %d || mediaType == %d)", startDate, endDate, PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.predicate = NSPredicate(format: "(mediaType == %d || mediaType == %d)", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        
+//        fetchOptions.predicate = NSPredicate(format: "(creationDate >= %@ AND creationDate <= %@) AND (mediaType == %d || mediaType == %d)", startDate, endDate, PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: fetchOptions)
         DispatchQueue.global(qos: .background).async{
             if fetchResult.count > 0 {
@@ -291,10 +296,23 @@ class SuggestionTableViewCell: UITableViewCell {
                 for i in 0..<fetchResult.count {
                     let asset = fetchResult.object(at: i)
                     let location = asset.location
-                    let createDate = asset.creationDate
-                    let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: true)
-                    self.listAssetInfor.append(assetInfor)
+//                    print("location: \(location)")
+                    if location != nil{
+//                        print("location: \((location?.coordinate.latitude)!) + \((location?.coordinate.longitude)!)")
+                        
+                        let latitude = self.roundNum(a: (location?.coordinate.latitude)!)
+                        let longitude = self.roundNum(a: (location?.coordinate.longitude)!)
+                        
+                        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        let createDate = asset.creationDate
+                        let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: true)
+                        self.listAssetInfor.append(assetInfor)
+                        count += 1
+                    }
                     
+//                    let createDate = asset.creationDate
+//                    let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: true)
+//                    self.listAssetInfor.append(assetInfor)
                 }
                 
                 self.classifyImageByCreateDate(listImage: self.listAssetInfor, completionHanler: {[weak self] data in
@@ -308,12 +326,21 @@ class SuggestionTableViewCell: UITableViewCell {
 //                        strongSelf.listAsset
                         if let listAssetInfor = index.imagesCreateByDate{
                             strongSelf.listAsset += listAssetInfor
+                            
+                            
                         }
                     }
                     
                     DispatchQueue.main.async {
                         
-                        if strongSelf.listAsset.count == fetchResult.count{
+                        if strongSelf.listAsset.count == count{
+//                            let sortedDict = ImagesManager.shareInstance.groupdImagesByLocation(listAsset: strongSelf.listAsset)
+                            
+                            for list in strongSelf.listAsset{
+                                print("\nlocal hihi: \((list.location)!)")
+                            }
+                            let abc = strongSelf.groupdImagesByLocation(listAsset: strongSelf.listAsset)
+                            
                             strongSelf.slideShowCollectionView.reloadData()
                             strongSelf.imageCollectionView.reloadData()
                         }
@@ -324,6 +351,40 @@ class SuggestionTableViewCell: UITableViewCell {
             }
         }
         
+    }
+    
+    func roundNum(a:Double)->Double{
+        let mu = pow(10.0,2.0)
+        let r = round(a*mu) / mu
+        return r
+    }
+    
+    func groupdImagesByLocation(listAsset: [AsssetInfor]) -> [CLLocationCoordinate2D: [AsssetInfor]] {
+        var dictImageCreateByLocation = [CLLocationCoordinate2D: [AsssetInfor]]()
+        
+        for assetInfor in listAsset{
+            
+            if let key = assetInfor.location{
+                print("\nlocation kaka: \(key)")
+                if dictImageCreateByLocation.count > 0{
+                    if dictImageCreateByLocation.keys.contains(key){
+                        dictImageCreateByLocation[key]?.append(assetInfor)
+                    }else{
+                        dictImageCreateByLocation[key] = [AsssetInfor]()
+                        dictImageCreateByLocation[key]?.append(assetInfor)
+                    }
+                }else{
+                    dictImageCreateByLocation[key] = [AsssetInfor]()
+                    dictImageCreateByLocation[key]?.append(assetInfor)
+                }
+            }
+        }
+        
+        //        for (k,v) in (Array(dictImageCreateByLocation).sorted{$0.1[0].createDate! < $1.1[0].createDate!}){
+        //            print("\(k): \(v)")
+        //        }
+        
+        return dictImageCreateByLocation
     }
     
     func getAddressFromLocation(location: CLLocation) -> String{
@@ -367,8 +428,8 @@ class SuggestionTableViewCell: UITableViewCell {
                 
                 if let location = img.location{
                     let geocoder = CLGeocoder()
-                    
-                    geocoder.reverseGeocodeLocation(location) { (data, error) -> Void in
+                    let loca = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                    geocoder.reverseGeocodeLocation(loca) { (data, error) -> Void in
                         
                         //get address and extract city and state
                         guard let data = data else {return}
@@ -633,4 +694,28 @@ class SuggestionTableViewCell: UITableViewCell {
     
 }
 
+
+extension CLLocationCoordinate2D : Hashable
+    
+{
+    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return fabs(lhs.longitude - rhs.longitude) < .ulpOfOne &&  fabs(lhs.latitude - rhs.latitude) < .ulpOfOne
+    }
+    
+    
+    
+    
+    public var hashValue: Int {
+        
+        get {
+            
+            return Int(Int(Float(self.latitude)) << 32)|Int(Float(self.longitude))
+            
+        }
+        
+    }
+    
+    
+    
+}
 

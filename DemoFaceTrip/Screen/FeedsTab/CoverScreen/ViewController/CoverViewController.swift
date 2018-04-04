@@ -38,7 +38,7 @@ class CoverViewController: BaseViewController {
         
         // set none color for navigation bar
         setNoneColorForNavigation()
-        initLeftRightButton()
+        initLeftRightButton(titleLeft: "Cancel", titleRight: "Next")
         self.title = "Edit Memories"
     }
     
@@ -48,40 +48,46 @@ class CoverViewController: BaseViewController {
 //        navigationController?.isNavigationBarHidden = true
     }
 
-    func setNoneColorForNavigation() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        //        UIApplication.shared.statusBarStyle = .lightContent
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.tintColor = .white
-    }
+//    func setNoneColorForNavigation() {
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.view.backgroundColor = .clear
+//        //        UIApplication.shared.statusBarStyle = .lightContent
+//        self.navigationController?.navigationBar.barStyle = .black
+//        self.navigationController?.navigationBar.tintColor = .white
+//    }
+//    
+//    func setDefaultColorForNavigation() {
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        
+//        self.navigationController?.navigationBar.isTranslucent = false
+//        self.navigationController?.view.backgroundColor = .white
+//        self.navigationController?.navigationBar.barStyle = .default
+//        self.navigationController?.navigationBar.tintColor = UIColor.black
+//    }
     
-    func setDefaultColorForNavigation() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.view.backgroundColor = .white
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-    }
+//    func initLeftRightButton() {
+//        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
+//        navigationItem.leftBarButtonItem = cancelButton
+//
+//        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextStep))
+//        navigationItem.rightBarButtonItem = postButton
+//    }
     
-    func initLeftRightButton() {
-        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
-        navigationItem.leftBarButtonItem = cancelButton
-        
-        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextStep))
-        navigationItem.rightBarButtonItem = postButton
-    }
-    
-    @objc func cancelEditPost() {
+    override func leftButton() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func nextStep() {
+    override func rightButton() {
         
+    }
+    
+    @IBAction func editCover(_ sender: Any) {
+        let vc = EditCoverViewController()
+        vc.listAsset = listAsset
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setUpLayout() {

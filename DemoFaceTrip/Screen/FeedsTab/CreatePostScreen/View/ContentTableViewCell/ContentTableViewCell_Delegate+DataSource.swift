@@ -149,63 +149,65 @@ extension ContentTableViewCell: GMUClusterManagerDelegate, GMSMapViewDelegate, G
     
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
         
-        //        if marker.userData is PointItem{
-        let items = marker.userData as! PointItem
-        let image = items.images[0]
-        //        UIGraphicsBeginImageContextWithOptions(CGSize(width: 60, height: 60), true, 0)
-        //        image.draw(in: CGRect(x: 0, y: 0, width: 60, height: 60))
-        
-        //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        //        let textStyle = NSMutableParagraphStyle()
-        //        textStyle.alignment = NSTextAlignment.center
-        //        let textColor = UIColor.white
-        //        let attributes=[
-        //            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
-        //            NSAttributedStringKey.paragraphStyle: textStyle,
-        //            NSAttributedStringKey.foregroundColor: textColor,
-        //            NSAttributedStringKey.backgroundColor: UIColor.blue] as [NSAttributedStringKey : Any]
-        //        let text = "14"
-        //
-        //        let textH = UIFont.boldSystemFont(ofSize: 14).lineHeight
-        //        let textY = ((newImage?.size.height)!-textH)/2
-        //        let textRect = CGRect(x: 0, y: textY, width: (newImage?.size.width)!, height: textH)
-        //        text.draw(in: textRect.integral, withAttributes: attributes)
-        //        let result = UIGraphicsGetImageFromCurrentImageContext()
-        //        UIGraphicsEndImageContext()
-        
-        let markerView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100)))
-        markerView.backgroundColor = .clear
-        
-        let markerImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 60, height: 60))
-        markerImage.image = UIImage(named: "infowindow")
-        
-        let imgInside = UIImageView(frame: CGRect(x: 30, y: 30, width: 50, height: 45))
-        imgInside.image = image
-        
-        let label = UILabel(frame: CGRect(x: 65, y: 15, width: 20, height: 20))
-        label.text = "32"
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.backgroundColor = .blue
-        label.textColor = .white
-        label.textAlignment = .center
-        label.layer.cornerRadius = label.frame.width / 2
-        label.layer.masksToBounds = true
-        
-        markerView.addSubview(markerImage)
-        markerView.addSubview(imgInside)
-        markerView.addSubview(label)
-        
-        UIGraphicsBeginImageContextWithOptions(markerView.frame.size, false, UIScreen.main.scale)
-        markerView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let imageConverted: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        //        UIGraphicsEndImageContext()
-        marker.icon = imageConverted
-        // Center the marker at the center of the image.
-        marker.groundAnchor = CGPoint(x: 0.5, y: 1)
+//        //        if marker.userData is PointItem{
+//        let items = marker.userData as! PointItem
+//        let image = items.images[0]
+//
+//
+//        //        UIGraphicsBeginImageContextWithOptions(CGSize(width: 60, height: 60), true, 0)
+//        //        image.draw(in: CGRect(x: 0, y: 0, width: 60, height: 60))
+//
+//        //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//
+//        //        let textStyle = NSMutableParagraphStyle()
+//        //        textStyle.alignment = NSTextAlignment.center
+//        //        let textColor = UIColor.white
+//        //        let attributes=[
+//        //            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
+//        //            NSAttributedStringKey.paragraphStyle: textStyle,
+//        //            NSAttributedStringKey.foregroundColor: textColor,
+//        //            NSAttributedStringKey.backgroundColor: UIColor.blue] as [NSAttributedStringKey : Any]
+//        //        let text = "14"
+//        //
+//        //        let textH = UIFont.boldSystemFont(ofSize: 14).lineHeight
+//        //        let textY = ((newImage?.size.height)!-textH)/2
+//        //        let textRect = CGRect(x: 0, y: textY, width: (newImage?.size.width)!, height: textH)
+//        //        text.draw(in: textRect.integral, withAttributes: attributes)
+//        //        let result = UIGraphicsGetImageFromCurrentImageContext()
+//        //        UIGraphicsEndImageContext()
+//
+//        let markerView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100)))
+//        markerView.backgroundColor = .clear
+//
+//        let markerImage = UIImageView(frame: CGRect(x: 25, y: 25, width: 60, height: 60))
+//        markerImage.image = UIImage(named: "infowindow")
+//
+//        let imgInside = UIImageView(frame: CGRect(x: 30, y: 30, width: 50, height: 45))
+//        imgInside.image = image
+//
+//        let label = UILabel(frame: CGRect(x: 65, y: 15, width: 20, height: 20))
+//        label.text = "32"
+//        label.font = UIFont.systemFont(ofSize: 10)
+//        label.backgroundColor = .blue
+//        label.textColor = .white
+//        label.textAlignment = .center
+//        label.layer.cornerRadius = label.frame.width / 2
+//        label.layer.masksToBounds = true
+//
+//        markerView.addSubview(markerImage)
+//        markerView.addSubview(imgInside)
+//        markerView.addSubview(label)
+//
+//        UIGraphicsBeginImageContextWithOptions(markerView.frame.size, false, UIScreen.main.scale)
+//        markerView.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        let imageConverted: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        //        UIGraphicsEndImageContext()
+//        marker.icon = imageConverted
+//        // Center the marker at the center of the image.
+//        marker.groundAnchor = CGPoint(x: 0.5, y: 1)
         
     }
 }

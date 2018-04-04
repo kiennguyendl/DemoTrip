@@ -12,12 +12,12 @@ import CoreLocation
 import UIKit
 class AsssetInfor: NSObject {
     
-    var location: CLLocation?
+    var location: CLLocationCoordinate2D?
     var createDate: Date?
     var asset: PHAsset?
     var isPicked = false
     
-    init(location: CLLocation?, createDate: Date, asset: PHAsset, isPicked: Bool) {
+    init(location: CLLocationCoordinate2D?, createDate: Date, asset: PHAsset, isPicked: Bool) {
         self.location = location
         self.createDate = createDate
         self.asset = asset

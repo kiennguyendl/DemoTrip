@@ -258,19 +258,19 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func createClusterItems() {
-        var images = [UIImage]()
-        for asset in listAsset!{
-            PHImageManager.default().requestImage(for: asset.asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                
-                images.append(image!)
-            })
-        }
-        let item = PointItem(position: CLLocationCoordinate2DMake(10.958833, 108.260929), images: images)
-        
-        let item2 = PointItem(position: CLLocationCoordinate2DMake(10.952448, 108.200280), images: images)
-        
-        clusterManager.add(item)
-        clusterManager.add(item2)
+//        var images = [UIImage]()
+//        for asset in listAsset!{
+//            PHImageManager.default().requestImage(for: asset.asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+//
+//                images.append(image!)
+//            })
+//        }
+//        let item = PointItem(position: CLLocationCoordinate2DMake(10.958833, 108.260929), images: images)
+//        
+//        let item2 = PointItem(position: CLLocationCoordinate2DMake(10.952448, 108.200280), images: images)
+//
+//        clusterManager.add(item)
+//        clusterManager.add(item2)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

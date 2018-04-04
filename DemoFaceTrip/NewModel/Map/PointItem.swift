@@ -12,10 +12,16 @@ import CoreLocation
 
 class PointItem: NSObject, GMUClusterItem {
     var position: CLLocationCoordinate2D
-    var images: [UIImage] = []
-    
-    init(position: CLLocationCoordinate2D, images: [UIImage]){
+//    var images: [UIImage] = []
+    var listAsset: [AsssetInfor]
+    var startPoint = false
+    var endPoint = false
+    init(position: CLLocationCoordinate2D, listAsset: [AsssetInfor]/*images: [UIImage]*/, startPoint: Bool, endPoint: Bool){
         self.position = position
-        self.images = images
+//        self.images = images
+        self.listAsset = listAsset
+        self.startPoint = startPoint
+        self.endPoint = endPoint
     }
+    
 }

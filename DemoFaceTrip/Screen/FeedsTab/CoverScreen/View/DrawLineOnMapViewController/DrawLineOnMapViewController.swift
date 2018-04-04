@@ -25,11 +25,17 @@ class DrawLineOnMapViewController: BaseViewController {
     var googleMap: GMSMapView!
     var locationManager = CLLocationManager()
     var clusterManager: GMUClusterManager!
-    var listAsset: [AsssetInfor] = []
+    var dictAssetByLocaiton = [CLLocationCoordinate2D: [AsssetInfor]]()
+    var listAsset: [AsssetInfor]!{
+        didSet{
+            dictAssetByLocaiton = ImagesManager.shareInstance.groupdImagesByLocation(listAsset: listAsset)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initLeftRightButton()
+
+        initLeftRightButton(titleLeft: "Cancel", titleRight: "Next")
         settingMap()
         
     }
@@ -45,24 +51,29 @@ class DrawLineOnMapViewController: BaseViewController {
         googleMap.frame = CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height)
     }
     
-    func initLeftRightButton() {
-        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
-        navigationItem.leftBarButtonItem = cancelButton
-        
-        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextStep))
-        navigationItem.rightBarButtonItem = postButton
-    }
-    
-    @objc func cancelEditPost() {
+//    override func initLeftRightButton() {
+//        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
+//        navigationItem.leftBarButtonItem = cancelButton
+//        
+//        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextStep))
+//        navigationItem.rightBarButtonItem = postButton
+//    }
+//    
+    override func leftButton() {
         navigationController?.popViewController(animated: true)
     }
-    
-    @objc func nextStep() {
+    override func rightButton() {
         
     }
     
+    
     func settingMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: arrayPossition[0].latitude, longitude: arrayPossition[0].longitude, zoom: 10)
+        var locations = [CLLocationCoordinate2D]()
+        for (k,v) in dictAssetByLocaiton{
+            locations.append(k)
+        }
+        
+        let camera = GMSCameraPosition.camera(withLatitude: locations[0].latitude, longitude: locations[0].longitude, zoom: 10)
         googleMap = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height), camera: camera)
         googleMap.camera = camera
         self.mapView.addSubview(googleMap)
@@ -77,8 +88,8 @@ class DrawLineOnMapViewController: BaseViewController {
     
     func autoZoomMap() {
         var bounds = GMSCoordinateBounds()
-        for pos in arrayPossition{
-            bounds = bounds.includingCoordinate(pos)
+        for key in dictAssetByLocaiton.keys{
+            bounds = bounds.includingCoordinate(CLLocationCoordinate2D(latitude: key.latitude, longitude: key.longitude))
         }
         
         let update = GMSCameraUpdate.fit(bounds)
@@ -98,16 +109,28 @@ class DrawLineOnMapViewController: BaseViewController {
     
     func createClusterItem() {
         
-        var images = [UIImage]()
-        for asset in listAsset{
-            PHImageManager.default().requestImage(for: asset.asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                
-                images.append(image!)
-            })
-        }
+        var arrayKey = Array(dictAssetByLocaiton.keys)
         
-        for pos in arrayPossition{
-            let item = PointItem(position: pos, images: images)
+        for (key,value) in dictAssetByLocaiton{
+            
+            let pos = CLLocationCoordinate2D(latitude: key.latitude, longitude: key.longitude)
+            
+//            var images = [UIImage]()
+//            for asset in value{
+//                PHImageManager.default().requestImage(for: asset.asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+//
+//                    images.append(image!)
+//                })
+//            }
+            var item: PointItem!
+            if key == arrayKey.first{
+                item = PointItem(position: pos, listAsset: value, startPoint: true, endPoint: false)
+            }else if key == arrayKey.last{
+                item = PointItem(position: pos, listAsset: value, startPoint: false, endPoint: true)
+            }else{
+                item = PointItem(position: pos, listAsset: value, startPoint: false, endPoint: false)
+            }
+            
             clusterManager.add(item)
         }
     }
@@ -115,13 +138,13 @@ class DrawLineOnMapViewController: BaseViewController {
     func drawLine() {
         var path = GMSMutablePath()
         
-        for pos in arrayPossition{
-            path.add(pos)
+        for key in dictAssetByLocaiton.keys{
+            path.add(CLLocationCoordinate2D(latitude: key.latitude, longitude: key.longitude))
         }
         
         let line = GMSPolyline(path: path)
         line.strokeWidth = 2.0
-        line.strokeColor = .red
+        line.strokeColor = UIColor(red: 77/255, green: 153/255, blue: 255/255, alpha: 1)
         line.map = googleMap
     }
     
@@ -139,6 +162,8 @@ extension DrawLineOnMapViewController: GMUClusterManagerDelegate, GMSMapViewDele
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         let vc = ListImageViewController()
+        let item = marker.userData as! PointItem
+        let listAsset = item.listAsset
         vc.listAsset = listAsset
         navigationController?.pushViewController(vc, animated: true)
         return true
@@ -146,10 +171,20 @@ extension DrawLineOnMapViewController: GMUClusterManagerDelegate, GMSMapViewDele
     
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
         
-        let item = marker.userData as! PointItem
+        guard let item = marker.userData as? PointItem else{return}
+//        print("location: \(item.position.latitude) + \(item.position.longitude)")
+        let listAsset = item.listAsset
         
-        let randomIndex = Int(arc4random_uniform(UInt32(item.images.count)))
-        let image = item.images[randomIndex]
+        var images = [UIImage]()
+        for asset in listAsset{
+            PHImageManager.default().requestImage(for: asset.asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+                
+                images.append(image!)
+            })
+        }
+        
+//        let randomIndex = Int(arc4random_uniform(UInt32(item.images.count)))
+        let image = images[0]
         
         let markerView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 100, height: 100)))
         markerView.backgroundColor = .clear
@@ -160,18 +195,35 @@ extension DrawLineOnMapViewController: GMUClusterManagerDelegate, GMSMapViewDele
         let imgInside = UIImageView(frame: CGRect(x: 30, y: 30, width: 50, height: 45))
         imgInside.image = image
         
-        let label = UILabel(frame: CGRect(x: 65, y: 15, width: 20, height: 20))
-        label.text = "\(item.images.count)"
+        let label = UILabel(frame: CGRect(x: 65, y: 15, width: 30, height: 20))
+        label.text = "\(images.count)"
         label.font = UIFont.systemFont(ofSize: 10)
         label.backgroundColor = UIColor(red: 77/255, green: 153/255, blue: 255/255, alpha: 1)
         label.textColor = .white
         label.textAlignment = .center
-        label.layer.cornerRadius = label.frame.width / 2
+        label.layer.cornerRadius = label.frame.height / 2
         label.layer.masksToBounds = true
         
+        let startOrEndPointImage = UIImageView(frame: CGRect(x: 48, y: 78, width: 15, height: 15))
+        startOrEndPointImage.image = UIImage(named: "marker")?.withRenderingMode(.alwaysTemplate)
+        startOrEndPointImage.isHidden = true
+
+        if item.startPoint == true{
+            startOrEndPointImage.isHidden = false
+            startOrEndPointImage.tintColor = .green
+        }else if item.endPoint == true{
+            startOrEndPointImage.isHidden = false
+            startOrEndPointImage.tintColor = .red
+        }else{
+            startOrEndPointImage.isHidden = true
+        }
+        
+        
+        markerView.addSubview(startOrEndPointImage)
         markerView.addSubview(markerImage)
         markerView.addSubview(imgInside)
         markerView.addSubview(label)
+        
         
         UIGraphicsBeginImageContextWithOptions(markerView.frame.size, false, UIScreen.main.scale)
         markerView.layer.render(in: UIGraphicsGetCurrentContext()!)

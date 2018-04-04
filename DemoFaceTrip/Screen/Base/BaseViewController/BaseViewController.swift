@@ -136,6 +136,42 @@ class BaseViewController: UIViewController {
     func hideIndicator() {
         activityIndicator.stopAnimating()
     }
+    
+    func setNoneColorForNavigation() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        //        UIApplication.shared.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.tintColor = .white
+    }
+    
+    func setDefaultColorForNavigation() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.view.backgroundColor = .white
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+    }
+    
+    func initLeftRightButton(titleLeft: String, titleRight: String) {
+        let leftBtn: UIBarButtonItem = UIBarButtonItem(title: titleLeft, style: .done, target: self, action: #selector(leftButton))
+        navigationItem.leftBarButtonItem = leftBtn
+        
+        let rightBtn: UIBarButtonItem = UIBarButtonItem(title: titleRight, style: .done, target: self, action: #selector(rightButton))
+        navigationItem.rightBarButtonItem = rightBtn
+    }
+    
+    @objc func leftButton() {
+        
+    }
+    
+    @objc func rightButton() {
+        
+    }
 }
 
 

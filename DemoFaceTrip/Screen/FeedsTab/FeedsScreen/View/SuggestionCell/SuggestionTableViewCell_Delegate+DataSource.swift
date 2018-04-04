@@ -22,7 +22,11 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             return 0
             
         }else{
-            return listAsset.count
+            if listAsset.count > 15{
+                return 15
+            }else{
+                return listAsset.count
+            }
         }
     }
     

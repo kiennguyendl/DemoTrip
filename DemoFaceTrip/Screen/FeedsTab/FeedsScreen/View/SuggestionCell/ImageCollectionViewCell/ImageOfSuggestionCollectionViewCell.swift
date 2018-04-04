@@ -30,7 +30,7 @@ class ImageOfSuggestionCollectionViewCell: UICollectionViewCell {
         
         viewAllImgBtn.setImage(image, for: .normal)
         viewAllImgBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: viewAllImgBtn.frame.width / 2, bottom: 0, right: 0)
-        viewAllImgBtn.titleEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 15)
+        viewAllImgBtn.titleEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 20)
         viewAllImgBtn.setTitle("0", for: .normal)
         
         viewAllImgBtn.tintColor = .white

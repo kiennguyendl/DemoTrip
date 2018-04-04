@@ -61,6 +61,10 @@
 		FB139FE0202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB139FDE202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.swift */; };
 		FB139FE1202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB139FDF202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.xib */; };
 		FB147B901FDA91D9006BC428 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB147B8F1FDA91D9006BC428 /* NavigationControllerExtension.swift */; };
+		FB1614182071D49E00278CCE /* PickATagCustomLayoutV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1614172071D49E00278CCE /* PickATagCustomLayoutV2.swift */; };
+		FB16141E2071ECD700278CCE /* GradientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16141C2071ECD700278CCE /* GradientCollectionViewCell.swift */; };
+		FB16141F2071ECD700278CCE /* GradientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB16141D2071ECD700278CCE /* GradientCollectionViewCell.xib */; };
+		FB161421207206ED00278CCE /* EditCoverViewControllerDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB161420207206ED00278CCE /* EditCoverViewControllerDataSource+Delegate.swift */; };
 		FB1AB7C82015D00D0072D182 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FB1AB7C72015D00C0072D182 /* avatar.jpg */; };
 		FB1B680120280162008DEC34 /* PointItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B680020280162008DEC34 /* PointItem.swift */; };
 		FB1B684920280239008DEC34 /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = FB1B680720280239008DEC34 /* GMUGridBasedClusterAlgorithm.m */; };
@@ -245,12 +249,16 @@
 		FBE7D898202059A9004CC6C3 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7D896202059A9004CC6C3 /* CreatePostViewController.swift */; };
 		FBE7D899202059A9004CC6C3 /* CreatePostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE7D897202059A9004CC6C3 /* CreatePostViewController.xib */; };
 		FBE7D89B202061C5004CC6C3 /* FeedsTableViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7D89A202061C5004CC6C3 /* FeedsTableViewDelegate+DataSource.swift */; };
+		FBE81E22207487E100142DC1 /* CustomCoverLayoutCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE81E21207487E100142DC1 /* CustomCoverLayoutCollectionView.swift */; };
 		FBE95A691FEB8D1500690D8F /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE95A671FEB8D1500690D8F /* PaymentViewController.swift */; };
 		FBE95A6A1FEB8D1500690D8F /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE95A681FEB8D1500690D8F /* PaymentViewController.xib */; };
 		FBEB182F1FB01C8700E52E59 /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB182B1FB01C8600E52E59 /* MonthCollectionViewCell.swift */; };
 		FBEB18301FB01C8700E52E59 /* NewBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB182C1FB01C8600E52E59 /* NewBookingViewController.swift */; };
 		FBEB18311FB01C8700E52E59 /* NewBookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEB182D1FB01C8600E52E59 /* NewBookingViewController.xib */; };
 		FBEB18321FB01C8700E52E59 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEB182E1FB01C8600E52E59 /* MonthCollectionViewCell.xib */; };
+		FBEB8425206DCFB000129BC2 /* EditCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB8423206DCFB000129BC2 /* EditCoverViewController.swift */; };
+		FBEB8426206DCFB000129BC2 /* EditCoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBEB8424206DCFB000129BC2 /* EditCoverViewController.xib */; };
+		FBEB8428206DFB7F00129BC2 /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEB8427206DFB7F00129BC2 /* ImagesManager.swift */; };
 		FBED69652016E4D100E0A81E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBED69632016E4D100E0A81E /* ImageCollectionViewCell.swift */; };
 		FBED69662016E4D100E0A81E /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBED69642016E4D100E0A81E /* ImageCollectionViewCell.xib */; };
 		FBF0EA6C1F87855F008D7029 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */; };
@@ -354,6 +362,10 @@
 		FB139FDE202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoForSlideShowCollectionViewCell.swift; sourceTree = "<group>"; };
 		FB139FDF202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoForSlideShowCollectionViewCell.xib; sourceTree = "<group>"; };
 		FB147B8F1FDA91D9006BC428 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
+		FB1614172071D49E00278CCE /* PickATagCustomLayoutV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagCustomLayoutV2.swift; sourceTree = "<group>"; };
+		FB16141C2071ECD700278CCE /* GradientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCollectionViewCell.swift; sourceTree = "<group>"; };
+		FB16141D2071ECD700278CCE /* GradientCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientCollectionViewCell.xib; sourceTree = "<group>"; };
+		FB161420207206ED00278CCE /* EditCoverViewControllerDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditCoverViewControllerDataSource+Delegate.swift"; sourceTree = "<group>"; };
 		FB1AB7C72015D00C0072D182 /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar.jpg; sourceTree = "<group>"; };
 		FB1B680020280162008DEC34 /* PointItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointItem.swift; sourceTree = "<group>"; };
 		FB1B680520280239008DEC34 /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
@@ -580,12 +592,16 @@
 		FBE7D896202059A9004CC6C3 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		FBE7D897202059A9004CC6C3 /* CreatePostViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePostViewController.xib; sourceTree = "<group>"; };
 		FBE7D89A202061C5004CC6C3 /* FeedsTableViewDelegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsTableViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
+		FBE81E21207487E100142DC1 /* CustomCoverLayoutCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoverLayoutCollectionView.swift; sourceTree = "<group>"; };
 		FBE95A671FEB8D1500690D8F /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		FBE95A681FEB8D1500690D8F /* PaymentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
 		FBEB182B1FB01C8600E52E59 /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBEB182C1FB01C8600E52E59 /* NewBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBookingViewController.swift; sourceTree = "<group>"; };
 		FBEB182D1FB01C8600E52E59 /* NewBookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBookingViewController.xib; sourceTree = "<group>"; };
 		FBEB182E1FB01C8600E52E59 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
+		FBEB8423206DCFB000129BC2 /* EditCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCoverViewController.swift; sourceTree = "<group>"; };
+		FBEB8424206DCFB000129BC2 /* EditCoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCoverViewController.xib; sourceTree = "<group>"; };
+		FBEB8427206DFB7F00129BC2 /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
 		FBED69632016E4D100E0A81E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FBED69642016E4D100E0A81E /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		FBF0EA6D1F87855F008D7029 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -775,6 +791,7 @@
 				FBA5F7E71F871E1D0080B890 /* RestDataManager.swift */,
 				FB24D6A32047FC7900AABD36 /* VideoManager.swift */,
 				FB718753205B5FD400905B86 /* VideoPlayerManager.swift */,
+				FBEB8427206DFB7F00129BC2 /* ImagesManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -917,6 +934,7 @@
 		FB0E93AD20217877007215B2 /* FeedsTab */ = {
 			isa = PBXGroup;
 			children = (
+				FBEB8422206DCC9C00129BC2 /* EditCoverScreen */,
 				FB04B6A72064FC6200F45349 /* PickATagScreen */,
 				FB82B5CA206368FB0050528D /* CoverScreen */,
 				FB2A8D3B206252AC008B4314 /* EditMapScreen */,
@@ -1002,6 +1020,34 @@
 				FB139FDF202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.xib */,
 			);
 			path = VideoForSlideShowCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FB1614192071EBB700278CCE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FBEB8423206DCFB000129BC2 /* EditCoverViewController.swift */,
+				FB161420207206ED00278CCE /* EditCoverViewControllerDataSource+Delegate.swift */,
+				FBEB8424206DCFB000129BC2 /* EditCoverViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FB16141A2071EBC900278CCE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB16141B2071EC2300278CCE /* GradientCollectionViewCell */,
+				FBE81E21207487E100142DC1 /* CustomCoverLayoutCollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FB16141B2071EC2300278CCE /* GradientCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FB16141C2071ECD700278CCE /* GradientCollectionViewCell.swift */,
+				FB16141D2071ECD700278CCE /* GradientCollectionViewCell.xib */,
+			);
+			path = GradientCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		FB1B67FF20280148008DEC34 /* Map */ = {
@@ -1977,6 +2023,15 @@
 			path = BookingViewController;
 			sourceTree = "<group>";
 		};
+		FBEB8422206DCC9C00129BC2 /* EditCoverScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB16141A2071EBC900278CCE /* View */,
+				FB1614192071EBB700278CCE /* ViewController */,
+			);
+			path = EditCoverScreen;
+			sourceTree = "<group>";
+		};
 		FBED69622016E4AF00E0A81E /* ImageCellForCollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2024,6 +2079,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */,
+				FB1614172071D49E00278CCE /* PickATagCustomLayoutV2.swift */,
 			);
 			path = V2;
 			sourceTree = "<group>";
@@ -2190,6 +2246,7 @@
 				FBE7D899202059A9004CC6C3 /* CreatePostViewController.xib in Resources */,
 				FB54AB462029851B001BD22F /* ImagePickerCollectionViewCell.xib in Resources */,
 				FBE95A6A1FEB8D1500690D8F /* PaymentViewController.xib in Resources */,
+				FBEB8426206DCFB000129BC2 /* EditCoverViewController.xib in Resources */,
 				FB0E93BA202180C2007215B2 /* FriendCollectionViewCell.xib in Resources */,
 				FB80519E1FAACFA400AD635E /* CalendarTableViewCell.xib in Resources */,
 				FB054F922050D6CE00CB29DE /* Happy-Pharrell-Williams.mp3 in Resources */,
@@ -2228,6 +2285,7 @@
 				FB1AB7C82015D00D0072D182 /* avatar.jpg in Resources */,
 				FBF64153206B3452008BE5B9 /* PickATagCollectionReusableView.xib in Resources */,
 				FBE77BA42069F97C0014924F /* DrawLineOnMapViewController.xib in Resources */,
+				FB16141F2071ECD700278CCE /* GradientCollectionViewCell.xib in Resources */,
 				FB9FB3F41F8C86ED006CA1AE /* BookingViewController.xib in Resources */,
 				FB24D69B2047A7AD00AABD36 /* PlayVideoView.xib in Resources */,
 				FB36F8E52053863700E2F7CF /* AddMorImageOrVideoViewController.xib in Resources */,
@@ -2392,6 +2450,7 @@
 				FBFB7F331FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift in Sources */,
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBC8892E1F9DD9070017241E /* NewHomeCollectionViewCell.swift in Sources */,
+				FBEB8425206DCFB000129BC2 /* EditCoverViewController.swift in Sources */,
 				FB0036BD1FAC483600D9C38A /* BookingTourViewControllerDelegate+DataSource.swift in Sources */,
 				FBACA10E1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift in Sources */,
 				FB1B685220280239008DEC34 /* GMUGeometryRenderer.m in Sources */,
@@ -2407,6 +2466,7 @@
 				FB1B685620280239008DEC34 /* GMUGroundOverlay.m in Sources */,
 				FBE7D898202059A9004CC6C3 /* CreatePostViewController.swift in Sources */,
 				FB034B021FC274C7003448AC /* WishListMenu.swift in Sources */,
+				FB1614182071D49E00278CCE /* PickATagCustomLayoutV2.swift in Sources */,
 				FBC5551F1FB3FDAE00AC510D /* RatingTableViewCell.swift in Sources */,
 				FB8051A11FAAD01500AD635E /* BookingTourViewController.swift in Sources */,
 				FBFDFAE31FB45D4400F88C90 /* MenuTableViewCell.swift in Sources */,
@@ -2445,6 +2505,7 @@
 				FB8051A41FAADB8000AD635E /* KeyNotifications.swift in Sources */,
 				FB24D69D2047A7BA00AABD36 /* PlayVideoView.swift in Sources */,
 				FB1B686020280239008DEC34 /* GQTPointQuadTreeChild.m in Sources */,
+				FB16141E2071ECD700278CCE /* GradientCollectionViewCell.swift in Sources */,
 				FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */,
 				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
 				FB054F962050D8C400CB29DE /* NameMusic.swift in Sources */,
@@ -2470,6 +2531,7 @@
 				FB0E93C320219ECA007215B2 /* ContentTableViewCell.swift in Sources */,
 				FBD4BB551FCD0E5000780BC1 /* extensionCollectionView.swift in Sources */,
 				FBA8DD62201832D000793516 /* SuggestionTableViewCell.swift in Sources */,
+				FB161421207206ED00278CCE /* EditCoverViewControllerDataSource+Delegate.swift in Sources */,
 				FBB0660C1F8DF615002BF21C /* ThemeParks.swift in Sources */,
 				FBD934521FD110F100097C61 /* ViewDetail.swift in Sources */,
 				FB314B602029959E00D33E65 /* AddImageCollectionViewCell.swift in Sources */,
@@ -2491,6 +2553,7 @@
 				FBF64152206B3452008BE5B9 /* PickATagCollectionReusableView.swift in Sources */,
 				FB1B685E20280239008DEC34 /* GMUWeightedLatLng.m in Sources */,
 				FBFB8AC51F9ADFB50087D0DD /* HeaderZeroView.swift in Sources */,
+				FBEB8428206DFB7F00129BC2 /* ImagesManager.swift in Sources */,
 				FB034B041FC275EF003448AC /* RecentlyMenu.swift in Sources */,
 				FBCD582F1FAAB4FB00F21F6D /* TimeBooking.swift in Sources */,
 				FBE099461FC581F000F756B0 /* ItemSubMenu.swift in Sources */,
@@ -2535,6 +2598,7 @@
 				FBB3F6A31FB1AF67003BC910 /* MapViewViewController.swift in Sources */,
 				FB11F4011FA70B98008DD080 /* DateCollectionViewCell.swift in Sources */,
 				FBDD2E071FBC464D00F94EE1 /* RateStar.swift in Sources */,
+				FBE81E22207487E100142DC1 /* CustomCoverLayoutCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCoverViewController" customModule="DemoFaceTrip" customModuleProvider="target">
+            <connections>
+                <outlet property="coverImagesCollectionView" destination="WPd-fG-AHQ" id="h7j-kx-iaZ"/>
+                <outlet property="listGradientLayerCollectionView" destination="C2C-TX-4sT" id="xMC-zX-nAA"/>
+                <outlet property="themesCollectionView" destination="Byh-CR-SDF" id="PpW-pd-haR"/>
+                <outlet property="trailingCoverCollectionView" destination="AgL-1D-rn1" id="0vK-0b-WcD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="C2C-TX-4sT">
+                    <rect key="frame" x="0.0" y="611.5" width="375" height="55.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0fq-x0-4qG">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Byh-CR-SDF">
+                    <rect key="frame" x="0.0" y="531.5" width="375" height="74"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="mnT-XQ-h86">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTv-IM-p4W">
+                    <rect key="frame" x="0.0" y="610.5" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.78236721009999999" green="0.79011342009999996" blue="0.79011342009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qY4-1g-0tN"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WPd-fG-AHQ">
+                    <rect key="frame" x="0.0" y="40" width="375" height="481.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bZ0-gD-Mth">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WPd-fG-AHQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="71n-OS-Jz2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Byh-CR-SDF" secondAttribute="trailing" id="AgL-1D-rn1"/>
+                <constraint firstItem="C2C-TX-4sT" firstAttribute="top" secondItem="BTv-IM-p4W" secondAttribute="bottom" id="Gbt-68-Y54"/>
+                <constraint firstItem="C2C-TX-4sT" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/12" id="MR3-Ex-klc"/>
+                <constraint firstItem="C2C-TX-4sT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="efw-tb-f89"/>
+                <constraint firstItem="Byh-CR-SDF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/9" id="fXL-7h-Ukf"/>
+                <constraint firstItem="BTv-IM-p4W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gWI-u2-yEz"/>
+                <constraint firstItem="C2C-TX-4sT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="h1l-od-3Yn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BTv-IM-p4W" secondAttribute="trailing" id="iHD-lh-h1I"/>
+                <constraint firstItem="Byh-CR-SDF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="keV-JY-ZBq"/>
+                <constraint firstItem="Byh-CR-SDF" firstAttribute="top" secondItem="WPd-fG-AHQ" secondAttribute="bottom" constant="10" id="lea-2G-udg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C2C-TX-4sT" secondAttribute="trailing" id="ou8-X6-SPj"/>
+                <constraint firstItem="WPd-fG-AHQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vL5-Rj-I3f"/>
+                <constraint firstItem="BTv-IM-p4W" firstAttribute="top" secondItem="Byh-CR-SDF" secondAttribute="bottom" constant="5" id="x4e-BE-ec7"/>
+                <constraint firstItem="WPd-fG-AHQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="xrX-Oa-cbJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="32.5" y="62.5"/>
+        </view>
+    </objects>
+</document>

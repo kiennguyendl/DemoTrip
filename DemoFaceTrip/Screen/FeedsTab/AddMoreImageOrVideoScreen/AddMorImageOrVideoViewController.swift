@@ -63,8 +63,8 @@ class AddMorImageOrVideoViewController: BaseViewController {
                     }
                     
                 }
-                let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: isPicked)
-                self.allAsset.append(assetInfor)
+//                let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: isPicked)
+//                self.allAsset.append(assetInfor)
                 
             }
             self.allAsset.sort{ $0.createDate! > $1.createDate! }

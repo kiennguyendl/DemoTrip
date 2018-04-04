@@ -121,27 +121,24 @@ class EditSlideShowViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         tabBarController?.tabBar.isHidden = true
-        initLeftRightButton()
+        initLeftRightButton(titleLeft: "Cancel", titleRight: "Post")
         self.title = "Edit SlideShow"
         addObserverForView()
     }
+
     
-    func initLeftRightButton() {
-        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
+    override func initLeftRightButton(titleLeft: String, titleRight: String) {
+        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: titleLeft, style: .done, target: self, action: #selector(leftButton))
         navigationItem.leftBarButtonItem = cancelButton
         
-        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Post", style: .done, target: self, action: #selector(postNews))
+        let postButton: UIBarButtonItem = UIBarButtonItem(title: titleRight, style: .done, target: self, action: #selector(rightButton))
         navigationItem.rightBarButtonItem = postButton
     }
     
-    @objc func postNews() {
-        
-    }
-    
-    @objc func cancelEditPost() {
-//        delegate?.cancelCreatePost()
-//        let data = ["isPlayMusic": false]
-//        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
+    override func leftButton() {
+        //        delegate?.cancelCreatePost()
+        //        let data = ["isPlayMusic": false]
+        //        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
         if backgroundMusicPlayer != nil{
             if playerLayer != nil{
                 player?.pause()
@@ -155,6 +152,11 @@ class EditSlideShowViewController: BaseViewController {
         VideoPlayerManager.shareInstance.removePLayerLayer()
         navigationController?.popViewController(animated: true)
     }
+    
+    override func rightButton() {
+        
+    }
+
     
     func setupLayout() {
         setupButton()
