@@ -35,4 +35,5 @@ let keyPlaymusicNotificationEditPost = "keyPlaymusicNotificationEditPost"
 
 //using for edit cover screen
 let keyChangeGradientNotificationEditCover = "keyChangeGradientNotificationEditCover"
+let keyAddThemesNotificationEditCover  = "keyAddThemesNotificationEditCover"
 

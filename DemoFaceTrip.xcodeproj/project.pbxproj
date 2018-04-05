@@ -232,6 +232,10 @@
 		FBE0D35F1FDE3E8E001D82FD /* BookingPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE0D35D1FDE3E8E001D82FD /* BookingPaymentViewController.xib */; };
 		FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBE241161F9EF29E00833E8A /* HeaderZeroForDetail.xib */; };
 		FBE241191F9EF2A700833E8A /* HeaderZeroForDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE241181F9EF2A700833E8A /* HeaderZeroForDetail.swift */; };
+		FBE6AFD620761AE700BD0AA7 /* frame3 in Resources */ = {isa = PBXBuildFile; fileRef = FBE6AFD220761AE500BD0AA7 /* frame3 */; };
+		FBE6AFD720761AE700BD0AA7 /* frame2.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE6AFD320761AE600BD0AA7 /* frame2.png */; };
+		FBE6AFD820761AE700BD0AA7 /* frame4.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE6AFD420761AE600BD0AA7 /* frame4.png */; };
+		FBE6AFD920761AE700BD0AA7 /* frame1.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE6AFD520761AE600BD0AA7 /* frame1.png */; };
 		FBE7362B1FCE494100018517 /* ShowAndConcertsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362A1FCE494100018517 /* ShowAndConcertsSubMenu.swift */; };
 		FBE7362D1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362C1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift */; };
 		FBE7362F1FCE4B0B00018517 /* EventsSubMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7362E1FCE4B0B00018517 /* EventsSubMenu.swift */; };
@@ -575,6 +579,10 @@
 		FBE0D35D1FDE3E8E001D82FD /* BookingPaymentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingPaymentViewController.xib; sourceTree = "<group>"; };
 		FBE241161F9EF29E00833E8A /* HeaderZeroForDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderZeroForDetail.xib; sourceTree = "<group>"; };
 		FBE241181F9EF2A700833E8A /* HeaderZeroForDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderZeroForDetail.swift; sourceTree = "<group>"; };
+		FBE6AFD220761AE500BD0AA7 /* frame3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = frame3; sourceTree = "<group>"; };
+		FBE6AFD320761AE600BD0AA7 /* frame2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame2.png; sourceTree = "<group>"; };
+		FBE6AFD420761AE600BD0AA7 /* frame4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame4.png; sourceTree = "<group>"; };
+		FBE6AFD520761AE600BD0AA7 /* frame1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame1.png; sourceTree = "<group>"; };
 		FBE7362A1FCE494100018517 /* ShowAndConcertsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAndConcertsSubMenu.swift; sourceTree = "<group>"; };
 		FBE7362C1FCE4AB800018517 /* SightseeingTicketsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightseeingTicketsSubMenu.swift; sourceTree = "<group>"; };
 		FBE7362E1FCE4B0B00018517 /* EventsSubMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSubMenu.swift; sourceTree = "<group>"; };
@@ -1586,6 +1594,10 @@
 		FBA8DD64201867AA00793516 /* ImageForFakeData */ = {
 			isa = PBXGroup;
 			children = (
+				FBE6AFD520761AE600BD0AA7 /* frame1.png */,
+				FBE6AFD320761AE600BD0AA7 /* frame2.png */,
+				FBE6AFD220761AE500BD0AA7 /* frame3 */,
+				FBE6AFD420761AE600BD0AA7 /* frame4.png */,
 				FB82B5CF20636D560050528D /* khanh-tien-001-090007177.jpg */,
 				FB38DB532068EC8C00B2AECC /* pickATag.jpg */,
 			);
@@ -2234,6 +2246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE6AFD720761AE700BD0AA7 /* frame2.png in Resources */,
 				FB690DC9203FEC2400F6E331 /* ListImageViewController.xib in Resources */,
 				FB238189202AB9F60031ABB2 /* Viet-Nam-Da-LAB.mp4 in Resources */,
 				FBC7BC691FA432A800D31BC6 /* CalendarCollectionViewCell.xib in Resources */,
@@ -2258,6 +2271,7 @@
 				FB8D2A651FAB2F0000ECCF06 /* HeaderMonthCollectionReusableView.xib in Resources */,
 				FB03C6921F84E87D005FC7A2 /* CarouselsCollectionViewCell.xib in Resources */,
 				FBACA10B1FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib in Resources */,
+				FBE6AFD920761AE700BD0AA7 /* frame1.png in Resources */,
 				FB054F912050D6CE00CB29DE /* HappyBirthday-Guitar_4e3zq.mp3 in Resources */,
 				FBE0D35F1FDE3E8E001D82FD /* BookingPaymentViewController.xib in Resources */,
 				FB0036C21FAC5C4900D9C38A /* BookingCollectionViewCell.xib in Resources */,
@@ -2293,6 +2307,7 @@
 				FBA644841F8F0BBB007E968C /* ListDetailCatagoryViewController.xib in Resources */,
 				FB04B6A62064FAD800F45349 /* TagFriendsCollectionViewCell.xib in Resources */,
 				FB8D38822015A2B200A7FF1C /* FriendsCollectionViewCell.xib in Resources */,
+				FBE6AFD820761AE700BD0AA7 /* frame4.png in Resources */,
 				FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */,
 				FB0E93BF20219B75007215B2 /* TitleTableViewCell.xib in Resources */,
 				FBFDFAE41FB45D4400F88C90 /* MenuTableViewCell.xib in Resources */,
@@ -2306,6 +2321,7 @@
 				FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */,
 				FBF41A171FD6A74000CD7D4B /* CoverTableViewCell.xib in Resources */,
 				FB314B612029959E00D33E65 /* AddImageCollectionViewCell.xib in Resources */,
+				FBE6AFD620761AE700BD0AA7 /* frame3 in Resources */,
 				FBB3F6991FB14980003BC910 /* MeetingPointTableViewCell.xib in Resources */,
 				FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */,
 				FB0E93B520217F7C007215B2 /* TagFriendsTableViewCell.xib in Resources */,

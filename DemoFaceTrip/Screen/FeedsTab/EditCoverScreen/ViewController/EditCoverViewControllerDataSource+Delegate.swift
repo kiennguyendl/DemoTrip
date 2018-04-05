@@ -16,7 +16,7 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             
             return arrGradient.count
         }else if collectionView == themesCollectionView{
-            return 10
+            return listFrame.count
         }else{
             return listAsset.count
         }
@@ -44,6 +44,7 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.backgroundColor = .gray
             cell.layer.cornerRadius = 5
             cell.clipsToBounds = true
+            cell.imageView.image = UIImage(named: listFrame[indexPath.item])
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
@@ -82,6 +83,9 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
         if collectionView == listGradientLayerCollectionView{
             let data = ["gradient": arrGradient[indexPath.item]]
             notificationCenter.post(name: NSNotification.Name(rawValue: keyChangeGradientNotificationEditCover), object: nil, userInfo: data)
+        }else if collectionView == themesCollectionView{
+            let data = ["theme": listFrame[indexPath.item]]
+            notificationCenter.post(name: NSNotification.Name(rawValue: keyAddThemesNotificationEditCover), object: nil, userInfo: data)
         }
     }
     
