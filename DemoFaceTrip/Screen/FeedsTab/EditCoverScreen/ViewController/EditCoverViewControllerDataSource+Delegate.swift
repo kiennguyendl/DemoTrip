@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -26,9 +27,13 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gradientCell", for: indexPath) as! GradientCollectionViewCell
             
 //            cell.gradientsColor = arrGradient[indexPath.item]
+            var cgColors: [CGColor] = []
+            for color in arrGradient[indexPath.item]{
+                cgColors.append(color.cgColor)
+            }
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame.size = cell.viewDisplayGradient.frame.size
-            gradientLayer.colors = arrGradient[indexPath.item]
+            gradientLayer.colors = cgColors
             gradientLayer.startPoint = CGPoint(x: 0, y: 0)
             gradientLayer.endPoint = CGPoint(x: 1, y: 1)
             cell.viewDisplayGradient.layer.addSublayer(gradientLayer)
@@ -42,7 +47,10 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
-            cell.imageView.image = #imageLiteral(resourceName: "avatar.jpg")
+            let asset = listAsset[indexPath.item].asset
+            PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
+                cell.imageView.image = image
+            })
             return cell
         }
     }
@@ -67,6 +75,13 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             heightItem = collectionView.frame.height
             
             return CGSize(width: widthItem, height: heightItem)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == listGradientLayerCollectionView{
+            let data = ["gradient": arrGradient[indexPath.item]]
+            notificationCenter.post(name: NSNotification.Name(rawValue: keyChangeGradientNotificationEditCover), object: nil, userInfo: data)
         }
     }
     

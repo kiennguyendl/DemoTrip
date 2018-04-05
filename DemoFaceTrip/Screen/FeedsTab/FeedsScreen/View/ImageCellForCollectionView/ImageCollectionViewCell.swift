@@ -10,6 +10,7 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    var gradient: CAGradientLayer!
     
     override func awakeFromNib() {
         super.awakeFromNib()

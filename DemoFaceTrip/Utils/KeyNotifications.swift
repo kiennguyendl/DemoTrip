@@ -32,3 +32,7 @@ let keyShowListImageScreen = "keyShowListImageScreen"
 
 //using for editing screen
 let keyPlaymusicNotificationEditPost = "keyPlaymusicNotificationEditPost"
+
+//using for edit cover screen
+let keyChangeGradientNotificationEditCover = "keyChangeGradientNotificationEditCover"
+
