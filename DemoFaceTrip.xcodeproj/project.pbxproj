@@ -276,6 +276,7 @@
 		FBF6414A206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */; };
 		FBF64152206B3452008BE5B9 /* PickATagCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF64150206B3452008BE5B9 /* PickATagCollectionReusableView.swift */; };
 		FBF64153206B3452008BE5B9 /* PickATagCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBF64151206B3452008BE5B9 /* PickATagCollectionReusableView.xib */; };
+		FBF7D5F3207884CA00AB3682 /* CoverViewControllerDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7D5F2207884CA00AB3682 /* CoverViewControllerDelegate+DataSource.swift */; };
 		FBF90F8B1F8636EC007CF7EA /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF90F8A1F8636EC007CF7EA /* Hotel.swift */; };
 		FBF90F8C1F8637CF007CF7EA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */; };
 		FBF90F8D1F8637CF007CF7EA /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */; };
@@ -623,6 +624,7 @@
 		FBF64149206B2D47008BE5B9 /* BaseCollectionViewLayoutV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewLayoutV2.swift; sourceTree = "<group>"; };
 		FBF64150206B3452008BE5B9 /* PickATagCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickATagCollectionReusableView.swift; sourceTree = "<group>"; };
 		FBF64151206B3452008BE5B9 /* PickATagCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickATagCollectionReusableView.xib; sourceTree = "<group>"; };
+		FBF7D5F2207884CA00AB3682 /* CoverViewControllerDelegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoverViewControllerDelegate+DataSource.swift"; sourceTree = "<group>"; };
 		FBF90F8A1F8636EC007CF7EA /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		FBF90F8F1F8637CF007CF7EA /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF90F901F8637CF007CF7EA /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -860,6 +862,7 @@
 			isa = PBXGroup;
 			children = (
 				FB82B5CB2063691B0050528D /* CoverViewController.swift */,
+				FBF7D5F2207884CA00AB3682 /* CoverViewControllerDelegate+DataSource.swift */,
 				FB82B5CC2063691B0050528D /* CoverViewController.xib */,
 			);
 			path = ViewController;
@@ -2485,6 +2488,7 @@
 				FB1614182071D49E00278CCE /* PickATagCustomLayoutV2.swift in Sources */,
 				FBC5551F1FB3FDAE00AC510D /* RatingTableViewCell.swift in Sources */,
 				FB8051A11FAAD01500AD635E /* BookingTourViewController.swift in Sources */,
+				FBF7D5F3207884CA00AB3682 /* CoverViewControllerDelegate+DataSource.swift in Sources */,
 				FBFDFAE31FB45D4400F88C90 /* MenuTableViewCell.swift in Sources */,
 				FB03C65D1F84BF2A005FC7A2 /* AppDelegate.swift in Sources */,
 				FBFBBD061F85CD9B0062C6DC /* ListCatagoryCollectionViewCell.swift in Sources */,

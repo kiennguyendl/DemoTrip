@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import AVFoundation
 
 class BaseViewController: UIViewController {
     //static var isScaleMenuView = false
@@ -18,6 +18,13 @@ class BaseViewController: UIViewController {
     var backBtn: UIButton!
     var sharingBtn: UIButton!
     var activityIndicator: UIActivityIndicatorView!
+    
+    var backgroundMusicPlayer: AVAudioPlayer!
+    var player: AVPlayer?
+    var playerLayer:AVPlayerLayer?
+    var listMusic = ["Inspired", "Birthday", "Playful", "Epic", "Happy"]
+    var musicType = arrayMusic[0]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statusBar  = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -171,6 +178,46 @@ class BaseViewController: UIViewController {
     
     @objc func rightButton() {
         
+    }
+    
+    func addObserverPlayMusicBackground() {
+        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic), name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil)
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    @objc func playBackgroundMusic(_ notification: NSNotification) {
+        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
+            let fileManager = FileManager.default
+            var audioUrl = getDocumentsDirectory().appendingPathComponent(musicFile)
+            
+            if !fileManager.fileExists(atPath: audioUrl.path){
+                audioUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!) as URL
+            }
+            
+            do{
+                if backgroundMusicPlayer == nil{
+                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+                }
+            }catch{
+                print("can not play file")
+            }
+            if backgroundMusicPlayer == nil {
+                print("Could not create audio player")
+                return
+            }
+            if isPlayMusic{
+                print("playing music")
+                backgroundMusicPlayer.play()
+            }else{
+                print("the end play music")
+                backgroundMusicPlayer.pause()
+                backgroundMusicPlayer = nil
+            }
+        }
     }
 }
 

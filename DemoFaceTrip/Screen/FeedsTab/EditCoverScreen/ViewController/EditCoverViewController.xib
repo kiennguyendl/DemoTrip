@@ -61,19 +61,27 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-vJ-vHl">
+                    <rect key="frame" x="40" y="281.5" width="295" height="240.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Byh-CR-SDF" firstAttribute="top" secondItem="sf6-vJ-vHl" secondAttribute="bottom" constant="10" id="12U-XR-vex"/>
                 <constraint firstItem="WPd-fG-AHQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="71n-OS-Jz2"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Byh-CR-SDF" secondAttribute="trailing" id="AgL-1D-rn1"/>
                 <constraint firstItem="C2C-TX-4sT" firstAttribute="top" secondItem="BTv-IM-p4W" secondAttribute="bottom" id="Gbt-68-Y54"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sf6-vJ-vHl" secondAttribute="trailing" constant="40" id="Ja1-yC-qGd"/>
                 <constraint firstItem="C2C-TX-4sT" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/12" id="MR3-Ex-klc"/>
+                <constraint firstItem="sf6-vJ-vHl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="RjI-53-egq"/>
                 <constraint firstItem="C2C-TX-4sT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="efw-tb-f89"/>
                 <constraint firstItem="Byh-CR-SDF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/9" id="fXL-7h-Ukf"/>
                 <constraint firstItem="BTv-IM-p4W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gWI-u2-yEz"/>
                 <constraint firstItem="C2C-TX-4sT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="h1l-od-3Yn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BTv-IM-p4W" secondAttribute="trailing" id="iHD-lh-h1I"/>
                 <constraint firstItem="Byh-CR-SDF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="keV-JY-ZBq"/>
+                <constraint firstItem="sf6-vJ-vHl" firstAttribute="height" secondItem="WPd-fG-AHQ" secondAttribute="height" multiplier="1/2" id="khu-24-c4C"/>
                 <constraint firstItem="Byh-CR-SDF" firstAttribute="top" secondItem="WPd-fG-AHQ" secondAttribute="bottom" constant="10" id="lea-2G-udg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C2C-TX-4sT" secondAttribute="trailing" id="ou8-X6-SPj"/>
                 <constraint firstItem="WPd-fG-AHQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vL5-Rj-I3f"/>

@@ -524,7 +524,7 @@ class SuggestionTableViewCell: UITableViewCell {
             
             let currentOffset = slideShowCollectionView.contentOffset
             let contentWidth = slideShowCollectionView.frame.width
-            let totalContentWidthOfCV = contentWidth * CGFloat(listAsset.count)
+            let totalContentWidthOfCV = contentWidth * CGFloat(listAsset.count - 1)
             
             
             if currentOffset.x < totalContentWidthOfCV{

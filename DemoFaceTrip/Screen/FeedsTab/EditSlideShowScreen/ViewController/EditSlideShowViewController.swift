@@ -60,9 +60,9 @@ class EditSlideShowViewController: BaseViewController {
     var isEndSlideShow = true
     var timeInterval = 2.0
     var scrollingTimer: Timer? = nil
-    var backgroundMusicPlayer: AVAudioPlayer!
-    var player: AVPlayer?
-    var playerLayer:AVPlayerLayer?
+//    var backgroundMusicPlayer: AVAudioPlayer!
+//    var player: AVPlayer?
+//    var playerLayer:AVPlayerLayer?
     
     var listImage: [UIImage] = []
     var listAssetPicked: [AsssetInfor] = []
@@ -86,8 +86,8 @@ class EditSlideShowViewController: BaseViewController {
             }
         }
     }
-    var listMusic = ["Inspired", "Birthday", "Playful", "Epic", "Happy"]
-    var musicType = arrayMusic[0]
+//    var listMusic = ["Inspired", "Birthday", "Playful", "Epic", "Happy"]
+//    var musicType = arrayMusic[0]
     var lastContentOffset: CGFloat = 0
     var selectedIndexPath = IndexPath(item: 0, section: 0)
     var isSellectAll = true
@@ -123,7 +123,8 @@ class EditSlideShowViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = true
         initLeftRightButton(titleLeft: "Cancel", titleRight: "Post")
         self.title = "Edit SlideShow"
-        addObserverForView()
+//        addObserverForView()
+        addObserverPlayMusicBackground()
     }
 
     
@@ -139,16 +140,18 @@ class EditSlideShowViewController: BaseViewController {
         //        delegate?.cancelCreatePost()
         //        let data = ["isPlayMusic": false]
         //        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotificationCreatePost), object: nil, userInfo: data)
-        if backgroundMusicPlayer != nil{
-            if playerLayer != nil{
-                player?.pause()
-                player = nil
-                playerLayer = nil
-            }
-            backgroundMusicPlayer.pause()
-            backgroundMusicPlayer = nil
-            isShowingVideo = false
-        }
+        
+        ///////
+//        if backgroundMusicPlayer != nil{
+//            if playerLayer != nil{
+//                player?.pause()
+//                player = nil
+//                playerLayer = nil
+//            }
+//            backgroundMusicPlayer.pause()
+//            backgroundMusicPlayer = nil
+//            isShowingVideo = false
+//        }
         VideoPlayerManager.shareInstance.removePLayerLayer()
         navigationController?.popViewController(animated: true)
     }
@@ -217,42 +220,42 @@ class EditSlideShowViewController: BaseViewController {
     
     func addObserverForView() {
         
-        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic(_:)), name: NSNotification.Name(rawValue: keyPlaymusicNotificationEditPost), object: nil)
+//        notificationCenter.addObserver(self, selector: #selector(playBackgroundMusic(_:)), name: NSNotification.Name(rawValue: keyPlaymusicNotificationEditPost), object: nil)
         
     }
     
-    @objc func playBackgroundMusic(_ notification: NSNotification) {
-        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
-            let fileManager = FileManager.default
-//            let audioUrl: NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!)
-           
-            var audioUrl = getDocumentsDirectory().appendingPathComponent(musicFile)
-            
-            if !fileManager.fileExists(atPath: audioUrl.path){
-                audioUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!) as URL
-            }
-            
-            do{
-                if backgroundMusicPlayer == nil{
-                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl)
-                }
-            }catch{
-                print("can not play file")
-            }
-            if backgroundMusicPlayer == nil {
-                print("Could not create audio player")
-                return
-            }
-            if isPlayMusic{
-                print("playing music")
-                backgroundMusicPlayer.play()
-            }else{
-                print("the end play music")
-                backgroundMusicPlayer.pause()
-                backgroundMusicPlayer = nil
-            }
-        }
-    }
+//    @objc func playBackgroundMusic(_ notification: NSNotification) {
+//        if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
+//            let fileManager = FileManager.default
+////            let audioUrl: NSURL = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!)
+//
+//            var audioUrl = getDocumentsDirectory().appendingPathComponent(musicFile)
+//
+//            if !fileManager.fileExists(atPath: audioUrl.path){
+//                audioUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!) as URL
+//            }
+//
+//            do{
+//                if backgroundMusicPlayer == nil{
+//                    backgroundMusicPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+//                }
+//            }catch{
+//                print("can not play file")
+//            }
+//            if backgroundMusicPlayer == nil {
+//                print("Could not create audio player")
+//                return
+//            }
+//            if isPlayMusic{
+//                print("playing music")
+//                backgroundMusicPlayer.play()
+//            }else{
+//                print("the end play music")
+//                backgroundMusicPlayer.pause()
+//                backgroundMusicPlayer = nil
+//            }
+//        }
+//    }
 
 //    @IBAction func cancelEdit(_ sender: Any) {
 //        VideoPlayerManager.shareInstance.removePLayerLayer()
@@ -510,10 +513,10 @@ class EditSlideShowViewController: BaseViewController {
         return url!
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
+//    func getDocumentsDirectory() -> URL {
+//        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        return paths[0]
+//    }
     
     @IBAction func startRecordSound(_ sender: Any) {
         if audioRecorder == nil{

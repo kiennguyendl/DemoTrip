@@ -41,7 +41,7 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             return cell
         }else if collectionView == themesCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
-            cell.backgroundColor = .gray
+//            cell.backgroundColor = .gray
             cell.layer.cornerRadius = 5
             cell.clipsToBounds = true
             cell.imageView.image = UIImage(named: listFrame[indexPath.item])

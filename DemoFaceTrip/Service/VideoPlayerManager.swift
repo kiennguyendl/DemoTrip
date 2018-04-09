@@ -54,7 +54,7 @@ class VideoPlayerManager: NSObject{
         removePlayerLayer(view: view)
         player = AVPlayer(url: url)
         playerLayer = AVPlayerLayer()
-        playerLayer.frame = view.frame
+        playerLayer.frame = view.bounds
         playerLayer.layoutIfNeeded()
         playerLayer.player = player
         view.layer.addSublayer(self.playerLayer)
