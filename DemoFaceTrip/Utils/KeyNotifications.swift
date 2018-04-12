@@ -37,3 +37,5 @@ let keyPlaymusicNotificationEditPost = "keyPlaymusicNotificationEditPost"
 let keyChangeGradientNotificationEditCover = "keyChangeGradientNotificationEditCover"
 let keyAddThemesNotificationEditCover  = "keyAddThemesNotificationEditCover"
 
+//using for Picked Friends Screen
+let keyPickFriendsNotification = "keyPickFriendsNotification"

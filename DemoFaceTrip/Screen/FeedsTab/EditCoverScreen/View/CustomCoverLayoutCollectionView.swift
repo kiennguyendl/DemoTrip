@@ -22,8 +22,8 @@ class CustomCoverLayoutCollectionView: UICollectionViewFlowLayout {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = minimumLineSpacing
         layout.itemSize = itemSize
-        layout.headerReferenceSize = CGSize(width: 20,height: 0)
-        layout.footerReferenceSize = CGSize(width: 20,height: 0)
+        layout.headerReferenceSize = CGSize(width: 0,height: 0)
+        layout.footerReferenceSize = CGSize(width: 0,height: 0)
         layout.collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
         
         return layout
@@ -66,7 +66,7 @@ class CustomCoverLayoutCollectionView: UICollectionViewFlowLayout {
             return CGPoint.zero
         }
         let collectionViewSize = collectionView.bounds.size
-        var proposedContentOffsetCenterX = proposedContentOffset.x + (collectionViewSize.width / 2)
+        let proposedContentOffsetCenterX = proposedContentOffset.x + (collectionViewSize.width / 2)
         
         let proposedRect = CGRect(x: proposedContentOffset.x,y: 0,width: collectionViewSize.width,height: collectionViewSize.height)
         var candidateAttributes = UICollectionViewLayoutAttributes()

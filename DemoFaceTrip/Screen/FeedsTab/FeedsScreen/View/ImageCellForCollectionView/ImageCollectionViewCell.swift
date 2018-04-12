@@ -11,6 +11,7 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var gradient: CAGradientLayer!
+    var layerFrame: CALayer!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/Base/BaseViewController/BaseViewController.swift"
-            timestampString = "544963111.386867"
+            timestampString = "545130237.981164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "hideIndicator()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,7 +1258,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/CreatePostScreen/View/ContentTableViewCell/ContentTableViewCell.swift"
-            timestampString = "544098031.802388"
+            timestampString = "545048634.273695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "298"
@@ -1338,7 +1338,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/CreatePostScreen/View/ContentTableViewCell/ContentTableViewCell.swift"
-            timestampString = "544098031.803944"
+            timestampString = "545048634.273909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
@@ -1482,7 +1482,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/CreatePostScreen/View/ContentTableViewCell/ContentTableViewCell.swift"
-            timestampString = "544098031.804327"
+            timestampString = "545048634.2741849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
@@ -1658,11 +1658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/PickATagScreen/ViewController/PickATagViewController.swift"
-            timestampString = "544078557.077693"
+            timestampString = "545129633.642996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "collectionView(_:layout:referenceSizeForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1770,13 +1770,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/CoverScreen/View/DrawLineOnMapViewController/DrawLineOnMapViewController.swift"
-            timestampString = "544353865.3816611"
+            timestampString = "545132526.669909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "renderer(_:willRenderMarker:)"
-            landmarkType = "7">
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1850,13 +1850,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/CoverScreen/ViewController/CoverViewController.swift"
-            timestampString = "544963111.390422"
+            timestampString = "545132526.6705019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1866,11 +1866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/Base/BaseViewController/BaseViewController.swift"
-            timestampString = "544963111.390525"
+            timestampString = "545130237.984666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "addObserverPlayMusicBackground()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1882,12 +1882,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/Base/BaseViewController/BaseViewController.swift"
-            timestampString = "544963111.390882"
+            timestampString = "545130237.98498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "playBackgroundMusic(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DemoFaceTrip/Screen/FeedsTab/EditCoverScreen/ViewController/EditCoverViewController.swift"
+            timestampString = "545132526.670961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "handleKeyBoard(show:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

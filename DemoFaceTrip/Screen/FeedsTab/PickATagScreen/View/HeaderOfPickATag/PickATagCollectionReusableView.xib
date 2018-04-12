@@ -34,6 +34,10 @@
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="Zou-07-SPb" secondAttribute="bottom" id="V5W-7C-AVh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="imageView" destination="Zou-07-SPb" id="0tP-1J-dHl"/>
+                <outlet property="type" destination="XP0-WP-aon" id="PkS-cz-7Uq"/>
+            </connections>
             <point key="canvasLocation" x="25" y="42.5"/>
         </collectionReusableView>
     </objects>

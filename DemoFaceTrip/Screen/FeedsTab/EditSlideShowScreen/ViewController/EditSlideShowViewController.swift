@@ -157,7 +157,7 @@ class EditSlideShowViewController: BaseViewController {
     }
     
     override func rightButton() {
-        
+        navigationController?.popViewController(animated: true)
     }
 
     

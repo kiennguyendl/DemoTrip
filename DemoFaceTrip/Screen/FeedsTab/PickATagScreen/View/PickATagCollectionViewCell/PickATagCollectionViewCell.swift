@@ -10,6 +10,7 @@ import UIKit
 
 class PickATagCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var typeTagLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

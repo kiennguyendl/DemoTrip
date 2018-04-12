@@ -20,7 +20,8 @@ class ListImageViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         self.title = "Images"
-        
+        initLeftRightButton(titleLeft: "Back", titleRight: "")
+        setDefaultColorForNavigation()
         listImageCollectionView.delegate = self
         listImageCollectionView.dataSource = self
         listImageCollectionView.register(UINib.init(nibName: "ImageOfSuggestionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageOfSuggestion")
@@ -32,6 +33,9 @@ class ListImageViewController: BaseViewController {
         tabBarController?.tabBar.isHidden = true
     }
 
+    override func leftButton() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ListImageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

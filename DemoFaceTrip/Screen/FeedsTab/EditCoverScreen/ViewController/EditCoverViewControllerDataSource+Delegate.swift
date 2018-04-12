@@ -17,6 +17,12 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             return arrGradient.count
         }else if collectionView == themesCollectionView{
             return listFrame.count
+        }else if collectionView == friendsCollectionView{
+            if listFriend.count > 0{
+                return listFriend.count
+            }else{
+                return 1
+            }
         }else{
             return listAsset.count
         }
@@ -46,7 +52,12 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.clipsToBounds = true
             cell.imageView.image = UIImage(named: listFrame[indexPath.item])
             return cell
-        }else{
+        }else if collectionView == friendsCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagFriends", for: indexPath) as! TagFriendsCollectionViewCell
+            cell.layer.cornerRadius = cell.frame.width / 2
+            cell.layer.masksToBounds = true
+            return cell
+        } else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
             let asset = listAsset[indexPath.item].asset
             PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
@@ -59,7 +70,7 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat = 0
         var height: CGFloat = 0
-        if collectionView == listGradientLayerCollectionView{
+        if collectionView == listGradientLayerCollectionView || collectionView == friendsCollectionView{
             
             height = collectionView.frame.height
             width = height

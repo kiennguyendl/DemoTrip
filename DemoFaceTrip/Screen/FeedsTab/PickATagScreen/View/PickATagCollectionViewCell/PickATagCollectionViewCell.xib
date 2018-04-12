@@ -40,6 +40,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="339" height="210"/>
             <connections>
+                <outlet property="imageView" destination="wvc-6w-uLL" id="Vu9-YK-8gR"/>
                 <outlet property="typeTagLbl" destination="4ab-UG-bRj" id="6Gy-YV-Ina"/>
             </connections>
             <point key="canvasLocation" x="158.5" y="197"/>

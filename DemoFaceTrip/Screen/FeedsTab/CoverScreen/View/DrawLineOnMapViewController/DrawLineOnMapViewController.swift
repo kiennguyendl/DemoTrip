@@ -32,6 +32,7 @@ class DrawLineOnMapViewController: BaseViewController {
         }
     }
     
+    var delegate: EditCoverProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +47,8 @@ class DrawLineOnMapViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.isNavigationBarHidden = false
+        setNoneColorForNavigation()
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         googleMap.frame = CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height)
     }
@@ -60,6 +62,7 @@ class DrawLineOnMapViewController: BaseViewController {
 //    }
 //    
     override func leftButton() {
+        delegate?.playSlideShow()
         navigationController?.popViewController(animated: true)
     }
     override func rightButton() {

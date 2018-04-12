@@ -37,6 +37,12 @@ class CoverViewController: BaseViewController {
             if listAsset.count > 0{
                 for assetInfor in listAsset{
                     if let asset = assetInfor.asset{
+                        if assetInfor == listAsset[0]{
+                            PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { [weak self]image, info in
+                                guard let strongSelf = self else{return}
+                                strongSelf.imageCover = image!
+                            })
+                        }
                         if asset.mediaType == .image{
                             totalTime += 3
                         }else{
@@ -49,8 +55,8 @@ class CoverViewController: BaseViewController {
     }
     var scrollingTimer: Timer? = nil
     var timeInterval = 2.0
-    var playingSlideShow = true
-    
+    var playingSlideShow = false
+    var listTaggedFriends: [Friend] = []
     @IBOutlet weak var distanceOfShowKeyBoardToBottom: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +69,7 @@ class CoverViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
         setNoneColorForNavigation()
         initLeftRightButton(titleLeft: "Cancel", titleRight: "Next")
         self.title = "Edit Memories"
@@ -124,6 +131,19 @@ class CoverViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    @IBAction func editSlideShow(_ sender: Any) {
+        playingSlideShow = false
+        let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+        progressView.progress = 0.0
+        let vc = EditSlideShowViewController()
+        vc.listAsset = listAsset
+//        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     func setUpLayout() {
         
         // setup edit title label
@@ -181,7 +201,7 @@ class CoverViewController: BaseViewController {
         editSlideShow.tintColor = .white
     }
     
-    func setUpCollectionView() {
+    private func setUpCollectionView() {
         slideShowCollectionView.delegate = self
         slideShowCollectionView.dataSource = self
         slideShowCollectionView.register(UINib.init(nibName: "ImageForSlideShowCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageForSlideShow")
@@ -198,17 +218,22 @@ class CoverViewController: BaseViewController {
         self.slideShowCollectionView.alpha = 0
         UIView.animate(withDuration: 5, animations: {
             self.coverImageView.alpha = 1
-//            self.editViewContent.alpha = 1
+            self.editViewContent.alpha = 1
 //            self.slideShowCollectionView.alpha = 0
-            let assetCover = self.listAsset[0].asset
-            PHImageManager.default().requestImage(for: assetCover!, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { [weak self]image, info in
-                guard let strongSelf = self else{return}
-                strongSelf.coverImageView.image = image!
-            })
+//            let assetCover = self.listAsset[0].asset
+//            PHImageManager.default().requestImage(for: assetCover!, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { [weak self]image, info in
+//                guard let strongSelf = self else{return}
+//                strongSelf.coverImageView.image = image!
+//            })
+            self.coverImageView.image = self.imageCover
         }, completion: {finished in
             self.coverImageView.alpha = 0
-//            self.editViewContent.alpha = 0
+            self.editViewContent.alpha = 0
             self.slideShowCollectionView.alpha = 1
+            self.playingSlideShow = true
+            UIView.animate(withDuration: TimeInterval(self.totalTime), animations: {
+                self.progressView.setProgress(1.0, animated: true)
+            })
             self.slideShowCollectionView.reloadData()
 //            self.slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
         })
@@ -231,9 +256,15 @@ class CoverViewController: BaseViewController {
     }
     
     
+    
     @IBAction func drawLineOnMap(_ sender: Any) {
+        playingSlideShow = false
+        let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+        progressView.progress = 0.0
         let vc = DrawLineOnMapViewController()
         vc.listAsset = listAsset
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
 //        present(vc, animated: true, completion: nil)
     }
@@ -258,9 +289,13 @@ class CoverViewController: BaseViewController {
                 let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
                 notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
                 self.progressView.progress = 0.0
+                self.playingSlideShow = false
                 let offsetZero = CGPoint(x: 0, y: 0)
+                coverImageView.alpha = 1
+//                slideShowCollectionView.alpha = 0
                 slideShowCollectionView.contentOffset = offsetZero
-                slideShowCollectionView.reloadData()
+                self.displayCoverImage()
+//                slideShowCollectionView.reloadData()
             }
         }
     }
@@ -280,6 +315,15 @@ extension CoverViewController: EditCoverProtocol{
 //        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
 //        slideShowCollectionView.reloadData()
         displayCoverImage()
+    }
+    
+    func doneEditCover(imageCover: UIImage, title: String, listFriendsTag: [Friend]) {
+        self.imageCover = imageCover
+        self.editTitleLbl.text = title
+        self.listTaggedFriends = listFriendsTag
+        playingSlideShow = true
+        displayCoverImage()
+        listTagFriendCollectionView.reloadData()
     }
 }
 

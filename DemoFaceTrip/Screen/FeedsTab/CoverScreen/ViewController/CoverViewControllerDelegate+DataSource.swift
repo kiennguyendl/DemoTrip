@@ -18,7 +18,11 @@ extension CoverViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 return listAsset.count
             }
         }else{
-            return 3
+            if listTaggedFriends.count > 0{
+                return listTaggedFriends.count
+            }else{
+                return 1
+            }
         }
     }
     
@@ -28,9 +32,9 @@ extension CoverViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 let data = ["isPlayMusic": true, "musicFile": musicType] as [String : Any]
                 notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
                 
-                UIView.animate(withDuration: TimeInterval(totalTime), animations: {
-                    self.progressView.setProgress(1.0, animated: true)
-                })
+//                UIView.animate(withDuration: TimeInterval(totalTime), animations: {
+//                    self.progressView.setProgress(1.0, animated: true)
+//                })
             }
             if let asset = listAsset[indexPath.item].asset{
                 if asset.mediaType == .image{

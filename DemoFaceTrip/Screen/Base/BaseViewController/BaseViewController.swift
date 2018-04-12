@@ -31,6 +31,7 @@ class BaseViewController: UIViewController {
         
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         self.initIndicator()
+        addObserverForKeyBoard()
     }
     
     ///notification center
@@ -95,7 +96,6 @@ class BaseViewController: UIViewController {
     /////////////////////
     
     func initBackButton() {
-        //navigationController?.navigationBar.barTintColor = color3
         
         navigationItem.hidesBackButton = true
         backBtn = UIButton.init(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
@@ -218,6 +218,20 @@ class BaseViewController: UIViewController {
                 backgroundMusicPlayer = nil
             }
         }
+    }
+    
+    func addObserverForKeyBoard() {
+        notificationCenter.addObserver(self, selector: #selector(showKeyBoard), name: UIKeyboardWillShowNotification, object: nil)
+        
+        notificationCenter.addObserver(self, selector: #selector(hideKeyBoard(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func showKeyBoard(_ notification: NSNotification) {
+        
+    }
+    
+    @objc func hideKeyBoard(_ notification: NSNotification) {
+        
     }
 }
 

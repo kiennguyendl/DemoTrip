@@ -10,6 +10,8 @@ import UIKit
 
 class PickATagCollectionReusableView: UICollectionReusableView {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var type: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
