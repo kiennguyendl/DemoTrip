@@ -75,7 +75,7 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                         if avAsset == nil{
                             
                         }else{
-                            VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
+                            VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", time: 15.0, completionHandler: {[weak self] url in
                                 guard let strongSelf = self else{return}
                                 
                                 DispatchQueue.main.async {

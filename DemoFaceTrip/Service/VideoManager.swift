@@ -151,7 +151,7 @@ class VideoManager: NSObject {
         
     }
     
-    func trimVideo(/*videoUrl:URL*/ asset: AVAsset, fileName: String, completionHandler: @escaping (URL)->Void) {
+    func trimVideo(/*videoUrl:URL*/ asset: AVAsset, fileName: String, time: Double, completionHandler: @escaping (URL)->Void) {
         let manager = FileManager.default
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {return}
@@ -174,7 +174,7 @@ class VideoManager: NSObject {
             exportSession.shouldOptimizeForNetworkUse = true
             //
             let startTrim = CMTime(seconds: Double(1.0), preferredTimescale: 1000)
-            let endTrim = CMTime(seconds: Double(15), preferredTimescale: 1000)
+            let endTrim = CMTime(seconds: Double(time), preferredTimescale: 1000)
             let timeRange = CMTimeRange(start: startTrim, end: endTrim)
             //
             exportSession.timeRange = timeRange

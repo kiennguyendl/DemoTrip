@@ -63,7 +63,7 @@ class CoverViewController: BaseViewController {
         
         setUpLayout()
         setUpCollectionView()
-        addObserverPlayMusicBackground()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,13 +73,14 @@ class CoverViewController: BaseViewController {
         setNoneColorForNavigation()
         initLeftRightButton(titleLeft: "Cancel", titleRight: "Next")
         self.title = "Edit Memories"
-        
+        addObserverPlayMusicBackground()
 //        playingSlideShow = true
 //        slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        removeTimer()
     }
 
 //    func setNoneColorForNavigation() {
@@ -111,11 +112,12 @@ class CoverViewController: BaseViewController {
 //    }
     
     override func leftButton() {
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         navigationController?.popViewController(animated: true)
     }
     
     override func rightButton() {
-        
+        VideoPlayerManager.shareInstance.removePLayerLayer()
     }
     
     @IBAction func editCover(_ sender: Any) {
@@ -123,7 +125,7 @@ class CoverViewController: BaseViewController {
         let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
         progressView.progress = 0.0
-//        slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         
         let vc = EditCoverViewController()
         vc.listAsset = listAsset
@@ -136,50 +138,19 @@ class CoverViewController: BaseViewController {
         playingSlideShow = false
         let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+        notificationCenter.removeObserver(self)
         progressView.progress = 0.0
+        VideoPlayerManager.shareInstance.removePLayerLayer()
+        
         let vc = EditSlideShowViewController()
         vc.listAsset = listAsset
 //        vc.delegate = self
+        vc.delegateCoverSlideShow = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
     
     func setUpLayout() {
-        
-        // setup edit title label
-//        let attributedString = NSMutableAttributedString(string: "Enter Type Title  Image Here  ")
-//        let editAttachment = NSTextAttachment()
-//        let image = UIImage(named: "edit1")!.withRenderingMode(.alwaysTemplate)
-//        
-//        editAttachment.image = image
-//        
-//        editAttachment.bounds = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        attributedString.append(NSAttributedString(attachment: editAttachment))
-//        
-//        editTitleLbl.attributedText = attributedString
-//        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(editTitle))
-//        editTitleLbl.isUserInteractionEnabled = true
-//        editTitleLbl.addGestureRecognizer(tap)
-        
-//        let tapPickATag = UITapGestureRecognizer(target: self, action: #selector(showPickATagScreen))
-//        pickATagLbl.isUserInteractionEnabled = true
-//        pickATagLbl.addGestureRecognizer(tapPickATag)
-        
-        //set up tag friends button
-//        let imageAddBtn = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
-//        tagFriendBtn.setImage(imageAddBtn, for: .normal)
-//        tagFriendBtn.tintColor = .white
-        
-//        let viewBorder = CAShapeLayer()
-//        viewBorder.path = UIBezierPath(roundedRect: tagFriendBtn.frame, cornerRadius: tagFriendBtn.frame.width / 2).cgPath
-//        viewBorder.strokeColor = UIColor.white.cgColor
-//        viewBorder.lineDashPattern = [1, 3]
-//
-//        viewBorder.frame = tagFriendBtn.frame
-//        viewBorder.fillColor = UIColor.clear.cgColor
-//        viewBorder.backgroundColor = UIColor.clear.cgColor
-//        tagFriendBtn.layer.addSublayer(viewBorder)
         
         let imageShowKeyBoard = UIImage(named: "uparrow")?.withRenderingMode(.alwaysTemplate)
         showKeyBoardBtn.setImage(imageShowKeyBoard, for: .normal)
@@ -219,12 +190,6 @@ class CoverViewController: BaseViewController {
         UIView.animate(withDuration: 5, animations: {
             self.coverImageView.alpha = 1
             self.editViewContent.alpha = 1
-//            self.slideShowCollectionView.alpha = 0
-//            let assetCover = self.listAsset[0].asset
-//            PHImageManager.default().requestImage(for: assetCover!, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { [weak self]image, info in
-//                guard let strongSelf = self else{return}
-//                strongSelf.coverImageView.image = image!
-//            })
             self.coverImageView.image = self.imageCover
         }, completion: {finished in
             self.coverImageView.alpha = 0
@@ -235,7 +200,6 @@ class CoverViewController: BaseViewController {
                 self.progressView.setProgress(1.0, animated: true)
             })
             self.slideShowCollectionView.reloadData()
-//            self.slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
         })
 
     }
@@ -311,9 +275,6 @@ class CoverViewController: BaseViewController {
 extension CoverViewController: EditCoverProtocol{
     func playSlideShow() {
         playingSlideShow = true
-//        let data = ["isPlayMusic": true, "musicFile": musicType] as [String : Any]
-//        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-//        slideShowCollectionView.reloadData()
         displayCoverImage()
     }
     

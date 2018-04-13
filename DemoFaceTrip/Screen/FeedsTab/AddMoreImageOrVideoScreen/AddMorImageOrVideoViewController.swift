@@ -19,6 +19,10 @@ class AddMorImageOrVideoViewController: BaseViewController {
     var listAsset: [AsssetInfor] = []
     var allAsset: [AsssetInfor] = []
     
+//    var arrPlayer: [AVPlayer] = []
+//    var arrPlayerLayer: [AVPlayerLayer] = []
+//    var arrPlayerItem: [AVPlayerItem] = []
+    
     var delegate: AddMoreImageOrVideoProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +67,14 @@ class AddMorImageOrVideoViewController: BaseViewController {
                     }
                     
                 }
-//                let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: isPicked)
-//                self.allAsset.append(assetInfor)
+                if let _location = location{
+                    let locationCoordinate = CLLocationCoordinate2D(latitude: (_location.coordinate.latitude), longitude: (_location.coordinate.longitude))
+                    let assetInfor = AsssetInfor(location: locationCoordinate, createDate: createDate!, asset: asset, isPicked: isPicked)
+                    self.allAsset.append(assetInfor)
+                }else{
+                    let assetInfor = AsssetInfor(location: nil, createDate: createDate!, asset: asset, isPicked: isPicked)
+                    self.allAsset.append(assetInfor)
+                }
                 
             }
             self.allAsset.sort{ $0.createDate! > $1.createDate! }
@@ -123,7 +133,25 @@ extension AddMorImageOrVideoViewController: UICollectionViewDelegate, UICollecti
                 print("duration: \(duration)")
                 DispatchQueue.main.async {
                     cell.timeVideo.text = String(format: "%02d:%02d", ((lround(duration) / 60) % 60), lround(duration) % 60)
-                    cell.playVideo(avAsset: avAseet!)
+//                    cell.playVideo(avAsset: avAseet!)
+                    
+                    VideoManager.shareInstance.trimVideo(asset: avAseet!, fileName: "video\(indexPath.item)", time: 5.0, completionHandler: { url in
+                        DispatchQueue.main.async {
+//                            VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
+//                            VideoPlayerManager.shareInstance.playVideo()
+//                            let playerItem = AVPlayerItem(asset: avAseet!)
+                            let player = AVPlayer(url: url)
+                            let playerLayer = AVPlayerLayer()
+                            playerLayer.player = player
+                            playerLayer.frame = cell.playerView.frame
+                            playerLayer.backgroundColor = UIColor.white.cgColor
+                            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                            
+                            cell.playerView.layer.addSublayer(playerLayer)
+                            player.volume = 0.0
+                            player.play()
+                        }
+                    })
                 }
                 
             })

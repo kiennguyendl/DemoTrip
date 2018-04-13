@@ -39,3 +39,6 @@ let keyAddThemesNotificationEditCover  = "keyAddThemesNotificationEditCover"
 
 //using for Picked Friends Screen
 let keyPickFriendsNotification = "keyPickFriendsNotification"
+
+//unsing for edit slide show screen
+let keyUpdateListAssetAfterSellectedOrUnsellected = "keyUpdateListAssetAfterSellectedOrUnsellected"

@@ -25,6 +25,16 @@ class VideoItemCollectionViewCell: UICollectionViewCell {
         
     }
     
+    deinit {
+        print("remove cell")
+        for subLayer in playerView.layer.sublayers!{
+            if let layer = subLayer as? AVPlayerLayer{
+                layer.player?.pause()
+                layer.removeFromSuperlayer()
+            }
+        }
+    }
+    
     func setTimer() {
         
         timerAutoPlayVideo = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(autoPlayeVideo), userInfo: nil, repeats: true)

@@ -62,19 +62,14 @@ extension CoverViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     let cellVideo = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoForSlideShowCollectionViewCell
                     
                     PHImageManager.default().requestAVAsset(forVideo: asset, options: nil
-                        , resultHandler: {[weak self] avAsset,audiomix,info in
-//                            guard let strongSelf = self else{return}
+                        , resultHandler: {avAsset,audiomix,info in
                             if avAsset == nil{
                                 
                             }else{
-                                VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(indexPath.item)", completionHandler: {[weak self] url in
-//                                    guard let strongSelf = self else{return}
-                                    
+                                VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(indexPath.item)", time: 15.0, completionHandler: { url in
                                     DispatchQueue.main.async {
                                         VideoPlayerManager.shareInstance.addPlayerLayer(view: cellVideo.playerView, url: url)
-//                                        if strongSelf.isPlayingSlideShow{
                                             VideoPlayerManager.shareInstance.playVideo()
-//                                        }
                                     }
                                 })
                             }

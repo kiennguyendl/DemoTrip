@@ -226,6 +226,8 @@
 		FBDD2E0D1FBC4A5300F94EE1 /* CalendarBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E0C1FBC4A5300F94EE1 /* CalendarBooking.swift */; };
 		FBDD89BB2029457A0003AA60 /* EditSlideShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD89B92029457A0003AA60 /* EditSlideShowViewController.swift */; };
 		FBDD89BC2029457A0003AA60 /* EditSlideShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDD89BA2029457A0003AA60 /* EditSlideShowViewController.xib */; };
+		FBDEFC6D207EFE6E00118221 /* ChooseImagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDEFC6C207EFE6E00118221 /* ChooseImagesView.xib */; };
+		FBDEFC6F207EFF6C00118221 /* ChooseImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDEFC6E207EFF6C00118221 /* ChooseImagesView.swift */; };
 		FBDF050C1FDB7D36005DA113 /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDF050A1FDB7D36005DA113 /* BookingOptionsViewController.swift */; };
 		FBDF050D1FDB7D36005DA113 /* BookingOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDF050B1FDB7D36005DA113 /* BookingOptionsViewController.xib */; };
 		FBE099401FC55ADB00F756B0 /* SubMenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE0993E1FC55ADB00F756B0 /* SubMenuItemCollectionViewCell.swift */; };
@@ -583,6 +585,8 @@
 		FBDD2E0C1FBC4A5300F94EE1 /* CalendarBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBooking.swift; sourceTree = "<group>"; };
 		FBDD89B92029457A0003AA60 /* EditSlideShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSlideShowViewController.swift; sourceTree = "<group>"; };
 		FBDD89BA2029457A0003AA60 /* EditSlideShowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSlideShowViewController.xib; sourceTree = "<group>"; };
+		FBDEFC6C207EFE6E00118221 /* ChooseImagesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseImagesView.xib; sourceTree = "<group>"; };
+		FBDEFC6E207EFF6C00118221 /* ChooseImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImagesView.swift; sourceTree = "<group>"; };
 		FBDF050A1FDB7D36005DA113 /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		FBDF050B1FDB7D36005DA113 /* BookingOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingOptionsViewController.xib; sourceTree = "<group>"; };
 		FBE079E01F9074090080EC84 /* ReadMoreTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReadMoreTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1410,6 +1414,7 @@
 		FB54AB3A20298332001BD22F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBDEFC6B207EFE4800118221 /* ChooseImagesView */,
 				FB08DF852052676C00811063 /* VideoPickedCollectionViewCell */,
 				FB314B5D2029957100D33E65 /* AddImageCollectionViewCell */,
 				FB54AB42202984F0001BD22F /* ImagePickerCollectionViewCell */,
@@ -1897,6 +1902,15 @@
 				FB54AB3920298323001BD22F /* ViewController */,
 			);
 			path = EditSlideShowScreen;
+			sourceTree = "<group>";
+		};
+		FBDEFC6B207EFE4800118221 /* ChooseImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				FBDEFC6E207EFF6C00118221 /* ChooseImagesView.swift */,
+				FBDEFC6C207EFE6E00118221 /* ChooseImagesView.xib */,
+			);
+			path = ChooseImagesView;
 			sourceTree = "<group>";
 		};
 		FBDF05091FDB7D08005DA113 /* BookingOptions Screen */ = {
@@ -2409,6 +2423,7 @@
 				FBF41A171FD6A74000CD7D4B /* CoverTableViewCell.xib in Resources */,
 				FB314B612029959E00D33E65 /* AddImageCollectionViewCell.xib in Resources */,
 				FBB3F6991FB14980003BC910 /* MeetingPointTableViewCell.xib in Resources */,
+				FBDEFC6D207EFE6E00118221 /* ChooseImagesView.xib in Resources */,
 				FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */,
 				FB0E93B520217F7C007215B2 /* TagFriendsTableViewCell.xib in Resources */,
 				FB03C6641F84BF2A005FC7A2 /* Assets.xcassets in Resources */,
@@ -2615,6 +2630,7 @@
 				FB1B686020280239008DEC34 /* GQTPointQuadTreeChild.m in Sources */,
 				FB16141E2071ECD700278CCE /* GradientCollectionViewCell.swift in Sources */,
 				FB24D6A42047FC7900AABD36 /* VideoManager.swift in Sources */,
+				FBDEFC6F207EFF6C00118221 /* ChooseImagesView.swift in Sources */,
 				FBFB7F3E1FB2E057006DDE2A /* NewMapViewViewController.swift in Sources */,
 				FB054F962050D8C400CB29DE /* NameMusic.swift in Sources */,
 				FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */,

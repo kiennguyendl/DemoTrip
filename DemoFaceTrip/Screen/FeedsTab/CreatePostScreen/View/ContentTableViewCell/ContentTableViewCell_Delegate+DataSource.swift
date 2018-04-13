@@ -86,7 +86,7 @@ extension ContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil
                 , resultHandler: {[weak self] avAsset,audiomix,info in
                     guard let strongSelf = self else{return}
-                    VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", completionHandler: {[weak self] url in
+                    VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", time: 15.0, completionHandler: {[weak self] url in
                         guard let strongSelf = self else{return}
 //                        strongSelf.playVideo(url: url, playerView: cell.playerView)
                         DispatchQueue.main.async {
