@@ -46,9 +46,10 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
         
             if currentRow == 0{
                 if isShowingVideo{
-                    let data = ["isPlayMusic": true, "musicFile": musicType] as [String : Any]
-                    notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-                    
+                    if !isRecording{
+                        let data = ["isPlayMusic": true, "musicFile": musicType] as [String : Any]
+                        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+                    }
                     UIView.animate(withDuration: TimeInterval(self.totalTime), animations: {
                         self.progressView.setProgress(1.0, animated: true)
                     })

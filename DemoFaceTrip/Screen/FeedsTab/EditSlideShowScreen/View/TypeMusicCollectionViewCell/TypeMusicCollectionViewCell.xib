@@ -18,10 +18,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="103" height="88"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C0K-Bs-gn6">
+                        <rect key="frame" x="0.0" y="0.0" width="103" height="88"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaA-MQ-E9e">
                         <rect key="frame" x="0.0" y="0.0" width="103" height="88"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -29,12 +32,17 @@
             <constraints>
                 <constraint firstItem="BaA-MQ-E9e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Gi-NR-ACS"/>
                 <constraint firstItem="BaA-MQ-E9e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Om5-wd-ayI"/>
+                <constraint firstAttribute="trailing" secondItem="C0K-Bs-gn6" secondAttribute="trailing" id="PsB-v9-hgQ"/>
                 <constraint firstAttribute="trailing" secondItem="BaA-MQ-E9e" secondAttribute="trailing" id="R5L-uR-EpG"/>
+                <constraint firstAttribute="bottom" secondItem="C0K-Bs-gn6" secondAttribute="bottom" id="cI9-cN-WaC"/>
+                <constraint firstItem="C0K-Bs-gn6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e3W-Tl-fdS"/>
                 <constraint firstAttribute="bottom" secondItem="BaA-MQ-E9e" secondAttribute="bottom" id="fNM-xd-TFi"/>
+                <constraint firstItem="C0K-Bs-gn6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qNe-K9-Zfl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="103" height="88"/>
             <connections>
+                <outlet property="backgroundMusicImageView" destination="C0K-Bs-gn6" id="n8j-ud-hXi"/>
                 <outlet property="typeMusicLbl" destination="BaA-MQ-E9e" id="isI-fy-XuG"/>
             </connections>
             <point key="canvasLocation" x="20.5" y="60"/>

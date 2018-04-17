@@ -168,6 +168,8 @@
 		FBA8DD63201832D000793516 /* SuggestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA8DD61201832D000793516 /* SuggestionTableViewCell.xib */; };
 		FBA8DD6720187DD800793516 /* AsssetInfor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA8DD6620187DD800793516 /* AsssetInfor.swift */; };
 		FBA8DD6920187E0D00793516 /* ImagesCreateByDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA8DD6820187E0D00793516 /* ImagesCreateByDate.swift */; };
+		FBA9E89E2085FDFF0066CCE7 /* ListRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9E89C2085FDFF0066CCE7 /* ListRecordTableViewCell.swift */; };
+		FBA9E89F2085FDFF0066CCE7 /* ListRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBA9E89D2085FDFF0066CCE7 /* ListRecordTableViewCell.xib */; };
 		FBACA10A1FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBACA1081FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift */; };
 		FBACA10B1FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBACA1091FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib */; };
 		FBACA10E1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBACA10C1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift */; };
@@ -220,6 +222,8 @@
 		FBD4BB551FCD0E5000780BC1 /* extensionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD4BB541FCD0E5000780BC1 /* extensionCollectionView.swift */; };
 		FBD934501FD110DA00097C61 /* ViewDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD9344F1FD110DA00097C61 /* ViewDetail.xib */; };
 		FBD934521FD110F100097C61 /* ViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD934511FD110F100097C61 /* ViewDetail.swift */; };
+		FBDA08CD208196620072DFF9 /* MusicThemeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBDA08CC208196620072DFF9 /* MusicThemeView.xib */; };
+		FBDA08CF208196D80072DFF9 /* MusicThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDA08CE208196D70072DFF9 /* MusicThemeView.swift */; };
 		FBDD2E051FBC45C400F94EE1 /* Coordination.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E041FBC45C400F94EE1 /* Coordination.swift */; };
 		FBDD2E071FBC464D00F94EE1 /* RateStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E061FBC464D00F94EE1 /* RateStar.swift */; };
 		FBDD2E091FBC485B00F94EE1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDD2E081FBC485B00F94EE1 /* Comment.swift */; };
@@ -526,6 +530,8 @@
 		FBA8DD61201832D000793516 /* SuggestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionTableViewCell.xib; sourceTree = "<group>"; };
 		FBA8DD6620187DD800793516 /* AsssetInfor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsssetInfor.swift; sourceTree = "<group>"; };
 		FBA8DD6820187E0D00793516 /* ImagesCreateByDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCreateByDate.swift; sourceTree = "<group>"; };
+		FBA9E89C2085FDFF0066CCE7 /* ListRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRecordTableViewCell.swift; sourceTree = "<group>"; };
+		FBA9E89D2085FDFF0066CCE7 /* ListRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListRecordTableViewCell.xib; sourceTree = "<group>"; };
 		FBACA1081FE217BC00475C3E /* HeaderForListingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForListingCollectionReusableView.swift; sourceTree = "<group>"; };
 		FBACA1091FE217BC00475C3E /* HeaderForListingCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderForListingCollectionReusableView.xib; sourceTree = "<group>"; };
 		FBACA10C1FE25A1100475C3E /* HeaderIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -579,6 +585,8 @@
 		FBD4BB541FCD0E5000780BC1 /* extensionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionCollectionView.swift; sourceTree = "<group>"; };
 		FBD9344F1FD110DA00097C61 /* ViewDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewDetail.xib; sourceTree = "<group>"; };
 		FBD934511FD110F100097C61 /* ViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetail.swift; sourceTree = "<group>"; };
+		FBDA08CC208196620072DFF9 /* MusicThemeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicThemeView.xib; sourceTree = "<group>"; };
+		FBDA08CE208196D70072DFF9 /* MusicThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicThemeView.swift; path = /Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Screen/FeedsTab/EditSlideShowScreen/View/MusicThemeView/MusicThemeView.swift; sourceTree = "<absolute>"; };
 		FBDD2E041FBC45C400F94EE1 /* Coordination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordination.swift; sourceTree = "<group>"; };
 		FBDD2E061FBC464D00F94EE1 /* RateStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateStar.swift; sourceTree = "<group>"; };
 		FBDD2E081FBC485B00F94EE1 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -1414,6 +1422,8 @@
 		FB54AB3A20298332001BD22F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBA9E89B2085FDDE0066CCE7 /* ListRecordTableViewCell */,
+				FBDA08CB208196380072DFF9 /* MusicThemeView */,
 				FBDEFC6B207EFE4800118221 /* ChooseImagesView */,
 				FB08DF852052676C00811063 /* VideoPickedCollectionViewCell */,
 				FB314B5D2029957100D33E65 /* AddImageCollectionViewCell */,
@@ -1655,6 +1665,7 @@
 		FBA8DD64201867AA00793516 /* ImageForFakeData */ = {
 			isa = PBXGroup;
 			children = (
+				FBDA08D02081AA5D0072DFF9 /* MusicTheme */,
 				FB06875D207C71A80074A72D /* PickATag */,
 				FB06875C207C70740074A72D /* frame */,
 				FB82B5CF20636D560050528D /* khanh-tien-001-090007177.jpg */,
@@ -1670,6 +1681,15 @@
 				FBA8DD6820187E0D00793516 /* ImagesCreateByDate.swift */,
 			);
 			path = FetchImage;
+			sourceTree = "<group>";
+		};
+		FBA9E89B2085FDDE0066CCE7 /* ListRecordTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9E89C2085FDFF0066CCE7 /* ListRecordTableViewCell.swift */,
+				FBA9E89D2085FDFF0066CCE7 /* ListRecordTableViewCell.xib */,
+			);
+			path = ListRecordTableViewCell;
 			sourceTree = "<group>";
 		};
 		FBACA1071FE2178100475C3E /* HeaderViewForListingCollectionView */ = {
@@ -1855,6 +1875,22 @@
 				FBD934511FD110F100097C61 /* ViewDetail.swift */,
 			);
 			path = ViewDetail;
+			sourceTree = "<group>";
+		};
+		FBDA08CB208196380072DFF9 /* MusicThemeView */ = {
+			isa = PBXGroup;
+			children = (
+				FBDA08CE208196D70072DFF9 /* MusicThemeView.swift */,
+				FBDA08CC208196620072DFF9 /* MusicThemeView.xib */,
+			);
+			path = MusicThemeView;
+			sourceTree = "<group>";
+		};
+		FBDA08D02081AA5D0072DFF9 /* MusicTheme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MusicTheme;
 			sourceTree = "<group>";
 		};
 		FBDD2DFF1FBC43D000F94EE1 /* NewModel */ = {
@@ -2409,6 +2445,7 @@
 				FB09B6A41FCD552500F1BB3A /* SubMenuTableViewCell.xib in Resources */,
 				FB0E93BF20219B75007215B2 /* TitleTableViewCell.xib in Resources */,
 				FB068768207C71BA0074A72D /* Love.jpg in Resources */,
+				FBDA08CD208196620072DFF9 /* MusicThemeView.xib in Resources */,
 				FBFDFAE41FB45D4400F88C90 /* MenuTableViewCell.xib in Resources */,
 				FB8051A21FAAD01500AD635E /* BookingTourViewController.xib in Resources */,
 				FB068767207C71BA0074A72D /* Other.jpeg in Resources */,
@@ -2422,6 +2459,7 @@
 				FBB066031F8DACD8002BF21C /* DetailViewController.xib in Resources */,
 				FBF41A171FD6A74000CD7D4B /* CoverTableViewCell.xib in Resources */,
 				FB314B612029959E00D33E65 /* AddImageCollectionViewCell.xib in Resources */,
+				FBA9E89F2085FDFF0066CCE7 /* ListRecordTableViewCell.xib in Resources */,
 				FBB3F6991FB14980003BC910 /* MeetingPointTableViewCell.xib in Resources */,
 				FBDEFC6D207EFE6E00118221 /* ChooseImagesView.xib in Resources */,
 				FBE241171F9EF29E00833E8A /* HeaderZeroForDetail.xib in Resources */,
@@ -2568,6 +2606,7 @@
 				FBC7BC5C1FA424A600D31BC6 /* HomeExtension.swift in Sources */,
 				FB9FB3F71F8C8756006CA1AE /* ProfileViewController.swift in Sources */,
 				FBFB7F331FB2A40E006DDE2A /* NewMeetingPointTableViewCell.swift in Sources */,
+				FBDA08CF208196D80072DFF9 /* MusicThemeView.swift in Sources */,
 				FBF90F931F86388E007CF7EA /* Experience.swift in Sources */,
 				FBC8892E1F9DD9070017241E /* NewHomeCollectionViewCell.swift in Sources */,
 				FBEB8425206DCFB000129BC2 /* EditCoverViewController.swift in Sources */,
@@ -2686,6 +2725,7 @@
 				FB139FE0202BF64B0080B177 /* VideoForSlideShowCollectionViewCell.swift in Sources */,
 				FBB3F6981FB14980003BC910 /* MeetingPointTableViewCell.swift in Sources */,
 				FBE099401FC55ADB00F756B0 /* SubMenuItemCollectionViewCell.swift in Sources */,
+				FBA9E89E2085FDFF0066CCE7 /* ListRecordTableViewCell.swift in Sources */,
 				FBE736351FCE4FBC00018517 /* WalkingBikingTourSubMenu.swift in Sources */,
 				FBEB182F1FB01C8700E52E59 /* MonthCollectionViewCell.swift in Sources */,
 				FBE736411FCE51CA00018517 /* LocalLifeSubMenu.swift in Sources */,

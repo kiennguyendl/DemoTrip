@@ -42,3 +42,11 @@ let keyPickFriendsNotification = "keyPickFriendsNotification"
 
 //unsing for edit slide show screen
 let keyUpdateListAssetAfterSellectedOrUnsellected = "keyUpdateListAssetAfterSellectedOrUnsellected"
+let keyUpdateMusicBackgroundEditSideShowScreen = "keyUpdateMusicBackgroundEditSideShowScreen"
+let keyStopBackgroundEditSlideShowScreen = "keyStopBackgroundEditSlideShowScreen"
+let keyFinishedRecordEditSlideShowScreen = "keyFinishedRecordEditSlideShowScreen"
+let keyCancelRecoredEditSlideShowScreen = "keyCancelRecoredEditSlideShowScreen"
+
+//using for theme music view screen
+let keyStopRecordWhenTheEndTheSlideShow = "keyStopRecordWhenTheEndTheSlideShow"
+let keyUpdateButtonPauseOrPlayRecord = "keyUpdateButtonPauseOrPlayRecord"

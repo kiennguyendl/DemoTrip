@@ -10,6 +10,7 @@ import UIKit
 
 class TypeMusicCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var backgroundMusicImageView: UIImageView!
     @IBOutlet weak var typeMusicLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

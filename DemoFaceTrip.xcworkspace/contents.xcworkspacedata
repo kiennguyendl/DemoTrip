@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Screen/FeedsTab/EditSlideShowScreen/View/MusicThemeView/MusicThemeView.swift">
+   </FileRef>
+   <FileRef
       location = "group:DemoFaceTrip.xcodeproj">
    </FileRef>
    <FileRef

@@ -151,6 +151,42 @@ class VideoManager: NSObject {
         
     }
     
+    func createFolder(nameFolder: String) {
+        let fileManager = FileManager.default
+        
+        guard let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {return}
+        
+        let folderPath = documentDirectory.appendingPathComponent(nameFolder, isDirectory: true)
+        if fileManager.fileExists(atPath: folderPath.path){
+            print("existed")
+            do{
+                let directoryContent = try fileManager.contentsOfDirectory(atPath: folderPath.path)
+                
+                for path in directoryContent{
+                    let fullPath = folderPath.appendingPathComponent(path)
+                    do{
+                        try fileManager.removeItem(atPath: fullPath.path)
+                    }catch{
+                        
+                    }
+                }
+                
+            }catch _ as NSError{
+                print("error")
+            }
+            
+        }else{
+            print("not existing")
+            do{
+                try fileManager.createDirectory(atPath: folderPath.path, withIntermediateDirectories: true, attributes: nil)
+                
+            }catch let error as NSError{
+                print("error create folder: \(error)")
+            }
+        }
+        
+    }
+    
     func trimVideo(/*videoUrl:URL*/ asset: AVAsset, fileName: String, time: Double, completionHandler: @escaping (URL)->Void) {
         let manager = FileManager.default
         
@@ -162,7 +198,7 @@ class VideoManager: NSObject {
         let length = Float(asset.duration.value) / Float(asset.duration.timescale)
         print("video length: \(length) seconds")
         
-        var outputURL = documentDirectory.appendingPathComponent("\(fileName).mp4")
+        let outputURL = documentDirectory.appendingPathComponent("\(fileName).mp4")
         removeFileAtURLIfExists(url: outputURL as NSURL)
         if manager.fileExists(atPath: outputURL.path){
             //code here

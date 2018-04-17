@@ -22,7 +22,7 @@ class BaseViewController: UIViewController {
     var backgroundMusicPlayer: AVAudioPlayer!
     var player: AVPlayer?
     var playerLayer:AVPlayerLayer?
-    var listMusic = ["Inspired", "Birthday", "Playful", "Epic", "Happy"]
+//    var listMusic = ["Inspired", "Birthday", "Playful", "Epic", "Happy"]
     var musicType = arrayMusic[0]
     
     override func viewDidLoad() {
@@ -192,7 +192,7 @@ class BaseViewController: UIViewController {
     @objc func playBackgroundMusic(_ notification: NSNotification) {
         if let isPlayMusic = notification.userInfo!["isPlayMusic"] as? Bool, let musicFile = notification.userInfo!["musicFile"] as? String{
             let fileManager = FileManager.default
-            var audioUrl = getDocumentsDirectory().appendingPathComponent(musicFile)
+            var audioUrl = getDocumentsDirectory().appendingPathComponent("RecordTheme").appendingPathComponent(musicFile)
             
             if !fileManager.fileExists(atPath: audioUrl.path){
                 audioUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: musicFile, ofType: "mp3")!) as URL

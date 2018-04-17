@@ -56,7 +56,7 @@ class EditSlideShowViewController: BaseViewController {
         }
     }
     var lastContentOffset: CGFloat = 0
-    var selectedIndexPath = IndexPath(item: 0, section: 0)
+//    var selectedIndexPath = IndexPath(item: 0, section: 0)
     var isSellectAll = true
     var isRecording = false
     var totalTime = 0
@@ -64,17 +64,22 @@ class EditSlideShowViewController: BaseViewController {
     var audioRecorder: AVAudioRecorder!
     
     var chooseImageView: ChooseImagesView!
+    var musicThemeView: MusicThemeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
         setupButton()
+        setDisplayTime()
     }
     
     override func viewWillLayoutSubviews() {
         if chooseImageView != nil{
             chooseImageView.frame = contentView.bounds
+        }
+        if musicThemeView != nil{
+            musicThemeView.frame = contentView.bounds
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,6 +100,42 @@ class EditSlideShowViewController: BaseViewController {
     func addObserver() {
         addObserverPlayMusicBackground()
         notificationCenter.addObserver(self, selector: #selector(updateListAsset(_:)), name: NSNotification.Name(rawValue: keyUpdateListAssetAfterSellectedOrUnsellected), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(updateMusicBackGround), name: NSNotification.Name(rawValue: keyUpdateMusicBackgroundEditSideShowScreen), object: nil)
+        
+        notificationCenter.addObserver(self, selector: #selector(startRecording(_:)), name: NSNotification.Name(rawValue: keyStopBackgroundEditSlideShowScreen), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(finishedRecording(_:)), name: NSNotification.Name(rawValue: keyFinishedRecordEditSlideShowScreen), object: nil)
+        
+        notificationCenter.addObserver(self, selector: #selector(cancelRecord(_:)), name: NSNotification.Name(rawValue: keyCancelRecoredEditSlideShowScreen), object: nil)
+    }
+    
+    @objc func cancelRecord(_ notification: NSNotification){
+        isRecording = false
+        musicType = arrayMusic[0]
+        reloadSlideShow()
+    }
+    @objc func finishedRecording(_ notification: NSNotification){
+        if let recordFileName = notification.userInfo!["recordFileName"] as? String{
+            musicType = recordFileName
+            isRecording = false
+            progressView.layer.removeAllAnimations()
+            reloadSlideShow()
+        }
+    }
+    @objc func startRecording(_ notification: NSNotification){
+        if backgroundMusicPlayer != nil{
+            backgroundMusicPlayer.pause()
+        }
+        isRecording = true
+        progressView.layer.removeAllAnimations()
+        reloadSlideShow()
+//        slideShowCollectionView.reloadData()
+    }
+    
+    @objc func updateMusicBackGround(_ notification: NSNotification){
+        if let musicStr = notification.userInfo!["typeMusic"] as? String{
+            musicType = musicStr
+            reloadSlideShow()
+        }
     }
     
     @objc func updateListAsset(_ notification: NSNotification) {
@@ -115,8 +156,15 @@ class EditSlideShowViewController: BaseViewController {
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
         delegateCoverSlideShow?.playSlideShow()
         VideoPlayerManager.shareInstance.removePLayerLayer()
-        chooseImageView.removeFromSuperview()
-        chooseImageView = nil
+        if chooseImageView != nil{
+            chooseImageView.removeFromSuperview()
+            chooseImageView = nil
+        }
+        if musicThemeView != nil{
+            musicThemeView.removeFromSuperview()
+            musicThemeView = nil
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -131,6 +179,7 @@ class EditSlideShowViewController: BaseViewController {
     func setupLayout() {
         setupButton()
         setupCollectionView()
+        setupChooseImageView()
         slideShowCollectionView.reloadData()
     }
     
@@ -145,10 +194,7 @@ class EditSlideShowViewController: BaseViewController {
     func setupButton(){
         
         photoOrVideoBtn.setTitleColor(.black, for: .normal)
-        chooseImageView = ChooseImagesView(frame: contentView.bounds, listAsset: listAsset!)
-        contentView.addSubview(chooseImageView)
-        chooseImageView.delegate = self
-        
+
         musicThemeBtn.setTitleColor(.gray, for: .normal)
         
         let imgReload = UIImage(named: "reload")?.withRenderingMode(.alwaysTemplate)
@@ -156,6 +202,18 @@ class EditSlideShowViewController: BaseViewController {
         reloadBtn.tintColor = UIColor.white
         
         progressView.progress = 0.0
+    }
+    
+    func setupChooseImageView() {
+        chooseImageView = ChooseImagesView(frame: contentView.bounds, listAsset: listAsset!)
+        contentView.addSubview(chooseImageView)
+        chooseImageView.delegate = self
+    }
+    
+    func setupMusicThemeView() {
+        VideoManager.shareInstance.createFolder(nameFolder: "RecordTheme")
+        musicThemeView = MusicThemeView(frame: contentView.bounds)
+        contentView.addSubview(musicThemeView)
     }
     
     func addObserverForView() {
@@ -231,17 +289,30 @@ class EditSlideShowViewController: BaseViewController {
         displayTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(displayTime), userInfo: nil, repeats: true)
     }
     
+    func removeDisplayTimer() {
+        displayTimer?.invalidate()
+        if displayTimer != nil{
+            displayTimer = nil
+        }
+    }
+    
     var countdown: Float = 0.0
     
     @objc func displayTime() {
-        
+       
         if isShowingVideo{
-            if isShowingVideo{
-                if Int(self.countdown) < totalTime{
-                    countdown += 1.0
-                    UIView.animate(withDuration: 1, animations: {
-                        self.timeDisplay.text = String(format: "%02d:%02d", ((lround(Double(self.countdown)) / 60) % 60), lround(Double(self.countdown)) % 60)
-                    })
+            if Int(self.countdown) < totalTime{
+                countdown += 1.0
+                UIView.animate(withDuration: 1, animations: {
+                    self.timeDisplay.text = String(format: "%02d:%02d", ((lround(Double(self.countdown)) / 60) % 60), lround(Double(self.countdown)) % 60)
+                })
+                
+                if Int(self.countdown) == totalTime{
+                    if isRecording{
+                        notificationCenter.post(name: NSNotification.Name(rawValue: keyStopRecordWhenTheEndTheSlideShow), object: nil)
+                    }else{
+                        notificationCenter.post(name: NSNotification.Name(rawValue: keyUpdateButtonPauseOrPlayRecord), object: nil)
+                    }
                 }
             }
         }
@@ -277,6 +348,9 @@ class EditSlideShowViewController: BaseViewController {
                             let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
                             notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
 //                            self.removeTimer()
+                            self.removeDisplayTimer()
+                            self.timeDisplay.text = "00:00"
+                            self.countdown = 0.0
                             self.progressView.progress = 0.0
                             self.isEndSlideShow = true
                             self.hiddenView.isHidden = true
@@ -301,37 +375,65 @@ class EditSlideShowViewController: BaseViewController {
                 listAssetPicked.append(item)
             }
         }
+        
         if isShowingVideo{
             let currentOffset = slideShowCollectionView.contentOffset
             slideShowCollectionView.contentOffset = CGPoint(x: 0, y: currentOffset.y)
             progressView.progress = 0.0
             VideoPlayerManager.shareInstance.removePLayerLayer()
-            let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
-            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+            if !isRecording{
+                let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
+                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+            }
+            removeDisplayTimer()
+            countdown = 0.0
+            timeDisplay.text = "00:00"
+            setDisplayTime()
+            slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
             slideShowCollectionView.reloadData()
         }else{
             isShowingVideo = true
             progressView.progress = 0.0
             VideoPlayerManager.shareInstance.removePLayerLayer()
-            let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
-            notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+            if !isRecording{
+                let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
+                notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
+            }
+            setDisplayTime()
             slideShowCollectionView.reloadData()
         }
     }
     
     @IBAction func reloadSlideshow(_ sender: Any) {
         
+//        removeDisplayTimer()
+//        timeDisplay.text = "00:00"
+//        countdown = 0.0
         reloadSlideShow()
     }
     
     @IBAction func displayPhotosOrVideos(_ sender: Any) {
         photoOrVideoBtn.setTitleColor(.black, for: .normal)
         musicThemeBtn.setTitleColor(.gray, for: .normal)
+        
+        if musicThemeView != nil{
+            musicThemeView.removeFromSuperview()
+            musicThemeView = nil
+            setupChooseImageView()
+        }
     }
     
     @IBAction func changeMusicBackground(_ sender: Any) {
         photoOrVideoBtn.setTitleColor(.gray, for: .normal)
         musicThemeBtn.setTitleColor(.black, for: .normal)
+        
+        if chooseImageView != nil{
+            chooseImageView.removeFromSuperview()
+            chooseImageView = nil
+            setupMusicThemeView()
+        }
+        
+        
     }
     
 //    @IBAction func selectOrUnSelectAllImage(_ sender: Any) {
