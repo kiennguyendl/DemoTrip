@@ -28,6 +28,7 @@ class SuggestionTableViewCell: UITableViewCell {
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var slideShowCollectionView: UICollectionView!
     
+    @IBOutlet weak var detailTripLbl: UILabel!
     @IBOutlet weak var pauseOrPlayBtn: UIButton!
     @IBOutlet weak var expandBtn: UIButton!
     @IBOutlet weak var speakerBtn: UIButton!
@@ -310,6 +311,9 @@ class SuggestionTableViewCell: UITableViewCell {
                         count += 1
                     }
                     
+                    if count == 15{
+                        break
+                    }
 //                    let createDate = asset.creationDate
 //                    let assetInfor = AsssetInfor(location: location, createDate: createDate!, asset: asset, isPicked: true)
 //                    self.listAssetInfor.append(assetInfor)
@@ -339,7 +343,8 @@ class SuggestionTableViewCell: UITableViewCell {
                             for list in strongSelf.listAsset{
                                 print("\nlocal hihi: \((list.location)!)")
                             }
-                            let abc = strongSelf.groupdImagesByLocation(listAsset: strongSelf.listAsset)
+                            let numberLocation = strongSelf.groupdImagesByLocation(listAsset: strongSelf.listAsset).count
+                            self?.detailTripLbl.text = "#4 Days, #\(strongSelf.listAsset.count) moments, #\(numberLocation) Locations, #6 Peoples"
                             
                             strongSelf.slideShowCollectionView.reloadData()
                             strongSelf.imageCollectionView.reloadData()

@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,27 +19,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAe-gX-Npf">
-                        <rect key="frame" x="58.5" y="26" width="30" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Gej-9K-gNX"/>
-                            <constraint firstAttribute="width" constant="30" id="asa-zX-X0w"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="109"/>
                         <state key="normal" image="add"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add more" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ean-92-6Fe">
-                        <rect key="frame" x="38.5" y="56" width="70.5" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.89610994170000002" green="0.89610994170000002" blue="0.89610994170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="tAe-gX-Npf" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="10u-sp-zaL"/>
-                <constraint firstItem="tAe-gX-Npf" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" multiplier="3/4" id="JUb-qA-yte"/>
-                <constraint firstItem="Ean-92-6Fe" firstAttribute="top" secondItem="tAe-gX-Npf" secondAttribute="bottom" id="qcU-tM-hoE"/>
-                <constraint firstItem="Ean-92-6Fe" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="wQO-jC-xEy"/>
+                <constraint firstAttribute="bottom" secondItem="tAe-gX-Npf" secondAttribute="bottom" id="4wh-xi-Zzr"/>
+                <constraint firstItem="tAe-gX-Npf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BVh-N1-rEr"/>
+                <constraint firstItem="tAe-gX-Npf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="m2B-fq-0sJ"/>
+                <constraint firstAttribute="trailing" secondItem="tAe-gX-Npf" secondAttribute="trailing" id="oyA-GF-a4B"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="147" height="109"/>

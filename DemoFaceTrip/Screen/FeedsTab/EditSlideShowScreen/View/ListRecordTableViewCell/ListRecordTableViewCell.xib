@@ -5,47 +5,62 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recordCell" id="KGk-i7-Jjw" customClass="ListRecordTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="88" id="KGk-i7-Jjw" customClass="ListRecordTableViewCell" customModule="DemoFaceTrip" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fJ-gU-evS">
-                        <rect key="frame" x="10" y="0.0" width="48" height="43.5"/>
+                        <rect key="frame" x="10" y="0.0" width="48" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oOb-zn-tWR">
-                        <rect key="frame" x="285" y="8.5" width="25" height="25"/>
+                        <rect key="frame" x="285" y="46.5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="LKt-nH-mo6"/>
-                            <constraint firstAttribute="height" constant="25" id="xsN-gN-tLc"/>
+                            <constraint firstAttribute="height" constant="25" id="32t-m4-i4G"/>
+                            <constraint firstAttribute="width" constant="25" id="tkE-jL-wow"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcY-oi-W48">
+                        <rect key="frame" x="10" y="44" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="bL1-QO-VdI"/>
+                            <constraint firstAttribute="height" constant="30" id="x1H-c1-pi4"/>
+                        </constraints>
+                        <state key="normal" image="play"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0fJ-gU-evS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AqQ-0O-fFD"/>
-                    <constraint firstItem="oOb-zn-tWR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CzU-8N-OlR"/>
-                    <constraint firstItem="0fJ-gU-evS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ST1-Zb-x4V"/>
-                    <constraint firstItem="0fJ-gU-evS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="XyD-Fi-viS"/>
-                    <constraint firstAttribute="trailing" secondItem="oOb-zn-tWR" secondAttribute="trailing" constant="10" id="ZmL-99-aYe"/>
-                    <constraint firstAttribute="bottom" secondItem="0fJ-gU-evS" secondAttribute="bottom" id="hsA-LU-7h9"/>
+                    <constraint firstItem="0fJ-gU-evS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4LC-Ws-iQi"/>
+                    <constraint firstItem="XcY-oi-W48" firstAttribute="top" secondItem="0fJ-gU-evS" secondAttribute="bottom" id="IVA-lm-7c5"/>
+                    <constraint firstAttribute="trailing" secondItem="oOb-zn-tWR" secondAttribute="trailing" constant="10" id="Nq6-MD-jDT"/>
+                    <constraint firstItem="oOb-zn-tWR" firstAttribute="centerY" secondItem="XcY-oi-W48" secondAttribute="centerY" id="WEV-Th-czL"/>
+                    <constraint firstItem="0fJ-gU-evS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="YNv-lG-raF"/>
+                    <constraint firstItem="0fJ-gU-evS" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1/2" id="m1G-fg-hsf"/>
+                    <constraint firstItem="XcY-oi-W48" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yjT-fW-YtO"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="fileNameRecordLbl" destination="0fJ-gU-evS" id="jga-CJ-Fq1"/>
                 <outlet property="imageChecked" destination="oOb-zn-tWR" id="6A8-ym-rgm"/>
+                <outlet property="pauseOrPlayBtn" destination="XcY-oi-W48" id="LI7-CR-UM1"/>
             </connections>
+            <point key="canvasLocation" x="33" y="48"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="play" width="50" height="50"/>
+    </resources>
 </document>

@@ -40,7 +40,7 @@ class CoverViewController: BaseViewController {
                         if assetInfor == listAsset[0]{
                             PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: { [weak self]image, info in
                                 guard let strongSelf = self else{return}
-                                strongSelf.imageCover = image!
+                                strongSelf.imageCover = (image?.cropImageForSlideShow(sizeView: UIScreen.main.bounds.size))!
                             })
                         }
                         if asset.mediaType == .image{
@@ -63,7 +63,7 @@ class CoverViewController: BaseViewController {
         
         setUpLayout()
         setUpCollectionView()
-        
+        setContentCover(pickTag: "TRAVEL")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +74,6 @@ class CoverViewController: BaseViewController {
         initLeftRightButton(titleLeft: "Cancel", titleRight: "Next")
         self.title = "Edit Memories"
         addObserverPlayMusicBackground()
-//        playingSlideShow = true
-//        slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,33 +81,6 @@ class CoverViewController: BaseViewController {
         removeTimer()
     }
 
-//    func setNoneColorForNavigation() {
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = .clear
-//        //        UIApplication.shared.statusBarStyle = .lightContent
-//        self.navigationController?.navigationBar.barStyle = .black
-//        self.navigationController?.navigationBar.tintColor = .white
-//    }
-//    
-//    func setDefaultColorForNavigation() {
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        
-//        self.navigationController?.navigationBar.isTranslucent = false
-//        self.navigationController?.view.backgroundColor = .white
-//        self.navigationController?.navigationBar.barStyle = .default
-//        self.navigationController?.navigationBar.tintColor = UIColor.black
-//    }
-    
-//    func initLeftRightButton() {
-//        let cancelButton: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelEditPost))
-//        navigationItem.leftBarButtonItem = cancelButton
-//
-//        let postButton: UIBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(nextStep))
-//        navigationItem.rightBarButtonItem = postButton
-//    }
     
     override func leftButton() {
         VideoPlayerManager.shareInstance.removePLayerLayer()
@@ -187,10 +158,14 @@ class CoverViewController: BaseViewController {
     
     private func displayCoverImage() {
         self.slideShowCollectionView.alpha = 0
+        
         UIView.animate(withDuration: 5, animations: {
             self.coverImageView.alpha = 1
             self.editViewContent.alpha = 1
-            self.coverImageView.image = self.imageCover
+            DispatchQueue.main.async {
+                self.coverImageView.image = self.imageCover 
+            }
+            
         }, completion: {finished in
             self.coverImageView.alpha = 0
             self.editViewContent.alpha = 0
@@ -199,9 +174,16 @@ class CoverViewController: BaseViewController {
             UIView.animate(withDuration: TimeInterval(self.totalTime), animations: {
                 self.progressView.setProgress(1.0, animated: true)
             })
+            self.slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
             self.slideShowCollectionView.reloadData()
         })
 
+    }
+    
+    private func setContentCover(pickTag: String){
+        pickATagLbl.text = pickTag
+        let numberLocation = ImagesManager.shareInstance.groupdImagesByLocation(listAsset: listAsset).count
+        detailMomentLbl.text = "\(listAsset.count) photos · 4 Days · \(numberLocation) Locations"
     }
     
     @objc func editTitle() {
@@ -226,6 +208,8 @@ class CoverViewController: BaseViewController {
         let data = ["isPlayMusic": false, "musicFile": musicType] as [String : Any]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
         progressView.progress = 0.0
+        notificationCenter.removeObserver(self)
+        VideoPlayerManager.shareInstance.removePLayerLayer()
         let vc = DrawLineOnMapViewController()
         vc.listAsset = listAsset
         vc.delegate = self
@@ -285,6 +269,12 @@ extension CoverViewController: EditCoverProtocol{
         playingSlideShow = true
         displayCoverImage()
         listTagFriendCollectionView.reloadData()
+    }
+    func doneEditSlideShow(listAsset: [AsssetInfor], music: String) {
+        playingSlideShow = true
+        self.listAsset = listAsset
+        self.musicType = music
+        displayCoverImage()
     }
 }
 

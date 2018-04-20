@@ -61,7 +61,7 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
             let asset = listAsset[indexPath.item].asset
             PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                cell.imageView.image = image
+                cell.imageView.image = image?.cropImageForSlideShow(sizeView: cell.frame.size)
             })
             return cell
         }
@@ -132,39 +132,4 @@ extension EditCoverViewController: UICollectionViewDelegate, UICollectionViewDat
 //        }
 //    }
     
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView == coverImagesCollectionView{
-//            let currentOffset = scrollView.contentOffset
-//            let cellWidth = scrollView.frame.width - 90
-//            let totalCellWidth = cellWidth * CGFloat(listAsset.count)
-//            let totalSpacingWidth = CGFloat(20 * (listAsset.count - 1))
-//            let leftSpace: CGFloat = 20
-//            let rightSpace: CGFloat = 20
-//            
-//            let totalWidthOfCollectionView = totalCellWidth + totalSpacingWidth + leftSpace + rightSpace
-//            if currentOffset.x > self.lastContentOffset.x{
-//                
-//                if currentOffset.x <= self.coverImagesCollectionView.frame.width - 90{
-//                    print("hihi")
-////                    UIView.animate(withDuration: 0.1, animations: {
-//                        self.leadingCoverCollectionView.constant = 20
-////                    })
-//                    
-//                }else if self.lastContentOffset.x > self.coverImagesCollectionView.frame.width - 90{
-////                    UIView.animate(withDuration: 0.1, animations: {
-//                        self.leadingCoverCollectionView.constant = 0
-////                    })
-//                    
-//                }
-//            }else{
-//                if currentOffset.x >= (totalWidthOfCollectionView - cellWidth) && currentOffset.x <= totalWidthOfCollectionView{
-//                    trailingCoverCollectionView.constant = 20
-//                }else{
-//                    trailingCoverCollectionView.constant = 0
-//                }
-//            }
-//            self.lastContentOffset = currentOffset
-//        }
-    }
 }

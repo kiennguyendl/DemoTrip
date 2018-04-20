@@ -11,7 +11,7 @@ import Photos
 import AVFoundation
 
 protocol EditSlideShowProtocol {
-    func doneEditSlideShow(listAsset: [AsssetInfor])
+    func doneEditSlideShow(listAsset: [AsssetInfor], music: String)
 }
 
 class EditSlideShowViewController: BaseViewController {
@@ -28,7 +28,7 @@ class EditSlideShowViewController: BaseViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var timeDisplay: UILabel!
     
-    var delegate: EditSlideShowProtocol?
+//    var delegate: EditCoverProtocol?
     var delegateCoverSlideShow: EditCoverProtocol?
     var isShowingVideo = true
     var isEndSlideShow = true
@@ -171,7 +171,7 @@ class EditSlideShowViewController: BaseViewController {
     override func rightButton() {
         let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
-        delegateCoverSlideShow?.playSlideShow()
+        delegateCoverSlideShow?.doneEditSlideShow(listAsset: listAssetPicked, music: musicType)
         navigationController?.popViewController(animated: true)
     }
 
@@ -237,7 +237,8 @@ class EditSlideShowViewController: BaseViewController {
         VideoPlayerManager.shareInstance.removePLayerLayer()
         notificationCenter.removeObserver(self)
         
-        delegate?.doneEditSlideShow(listAsset: listAssetPicked)
+//        delegate?.doneEditSlideShow(listAsset: listAssetPicked, music: musicType)
+        delegateCoverSlideShow?.doneEditSlideShow(listAsset: listAssetPicked, music: musicType)
 //        dismiss(animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
     }
@@ -378,8 +379,9 @@ class EditSlideShowViewController: BaseViewController {
         
         if isShowingVideo{
             let currentOffset = slideShowCollectionView.contentOffset
-            slideShowCollectionView.contentOffset = CGPoint(x: 0, y: currentOffset.y)
+//            progressView.layer.removeAllAnimations()
             progressView.progress = 0.0
+            progressView.layer.removeAllAnimations()
             VideoPlayerManager.shareInstance.removePLayerLayer()
             if !isRecording{
                 let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
@@ -393,13 +395,16 @@ class EditSlideShowViewController: BaseViewController {
             slideShowCollectionView.reloadData()
         }else{
             isShowingVideo = true
+//            progressView.layer.removeAllAnimations()
             progressView.progress = 0.0
+            progressView.layer.removeAllAnimations()
             VideoPlayerManager.shareInstance.removePLayerLayer()
             if !isRecording{
                 let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
                 notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
             }
             setDisplayTime()
+            slideShowCollectionView.contentOffset = CGPoint(x: 0, y: 0)
             slideShowCollectionView.reloadData()
         }
     }
@@ -565,6 +570,13 @@ extension EditSlideShowViewController: ChooseImageViewProtocol{
         let vc = AddMorImageOrVideoViewController()
         vc.listAsset = listAsset!
         vc.delegate = self
+        self.removeDisplayTimer()
+        self.timeDisplay.text = "00:00"
+        self.countdown = 0.0
+        self.progressView.progress = 0.0
+        self.isShowingVideo = false
+        let data = ["isPlayMusic": false, "musicFile": self.musicType] as [String : Any]
+        notificationCenter.post(name: NSNotification.Name(rawValue: keyPlaymusicNotification), object: nil, userInfo: data)
         present(vc, animated: true, completion: nil)
     }
     

@@ -12,6 +12,7 @@ class ListRecordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fileNameRecordLbl: UILabel!
     
+    @IBOutlet weak var pauseOrPlayBtn: UIButton!
     
     @IBOutlet weak var imageChecked: UIImageView!
     override func awakeFromNib() {

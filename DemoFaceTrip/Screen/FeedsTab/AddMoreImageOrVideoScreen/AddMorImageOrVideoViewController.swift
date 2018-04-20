@@ -116,7 +116,9 @@ extension AddMorImageOrVideoViewController: UICollectionViewDelegate, UICollecti
             
             if allAsset[currentItem].isPicked{
                 cell.checkedImage.image = #imageLiteral(resourceName: "check")
-                cell.checkedImage.backgroundColor = .blue
+                cell.checkedImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                cell.checkedImage.layer.borderWidth = 1
+                cell.checkedImage.layer.borderColor = UIColor.white.cgColor
             }else{
                 cell.checkedImage.image = UIImage()
                 cell.checkedImage.backgroundColor = .white
@@ -158,7 +160,9 @@ extension AddMorImageOrVideoViewController: UICollectionViewDelegate, UICollecti
             
             if allAsset[currentItem].isPicked{
                 cell.checkerImage.image = #imageLiteral(resourceName: "check")
-                cell.checkerImage.backgroundColor = .blue
+                cell.checkerImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                cell.checkerImage.layer.borderWidth = 1
+                cell.checkerImage.layer.borderColor = UIColor.white.cgColor
             }else{
                 cell.checkerImage.image = UIImage()
                 cell.checkerImage.backgroundColor = .white
@@ -187,7 +191,9 @@ extension AddMorImageOrVideoViewController: UICollectionViewDelegate, UICollecti
             }else{
                 allAsset[indexPath.row].isPicked = true
                 cell.checkedImage.image = #imageLiteral(resourceName: "check")
-                cell.checkedImage.backgroundColor = .blue
+                cell.checkedImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                cell.checkedImage.layer.borderWidth = 1
+                cell.checkedImage.layer.borderColor = UIColor.white.cgColor
                 
             }
         }else{
@@ -200,8 +206,9 @@ extension AddMorImageOrVideoViewController: UICollectionViewDelegate, UICollecti
             }else{
                 allAsset[indexPath.row].isPicked = true
                 cell.checkerImage.image = #imageLiteral(resourceName: "check")
-                cell.checkerImage.backgroundColor = .blue
-                
+                cell.checkerImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                cell.checkerImage.layer.borderWidth = 1
+                cell.checkerImage.layer.borderColor = UIColor.white.cgColor
             }
         }
         

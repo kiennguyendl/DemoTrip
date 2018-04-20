@@ -37,11 +37,12 @@ class MusicThemeView: BaseView {
     
     @IBOutlet weak var listRecordTableView: UITableView!
     
-    let listMusicBackground = [MusicBackground(backgroundImage: #imageLiteral(resourceName: "Travel.png"),name: "TRAVEL", typeMusic: enspired),
-                               MusicBackground(backgroundImage: #imageLiteral(resourceName: "GetAWay.jpg"),name: "FRIENDS",  typeMusic: birthday),
-                               MusicBackground(backgroundImage: #imageLiteral(resourceName: "LoneLy.jpg"),name: "BIRTHDAY",  typeMusic: playful),
-                               MusicBackground(backgroundImage: #imageLiteral(resourceName: "Love.jpg"),name: "LOVE",  typeMusic: epic),
-                               MusicBackground(backgroundImage: #imageLiteral(resourceName: "DailyLife.jpg"),name: "ALONE",  typeMusic: happy),
+    @IBOutlet weak var viewTop: UIView!
+    let listMusicBackground = [MusicBackground(backgroundImage: UIImage(named: "01-1")!,name: "TRAVEL", typeMusic: enspired),
+                               MusicBackground(backgroundImage: UIImage(named: "02-1")!,name: "FRIENDS",  typeMusic: birthday),
+                               MusicBackground(backgroundImage: UIImage(named: "03-1")!,name: "BIRTHDAY",  typeMusic: playful),
+                               MusicBackground(backgroundImage: UIImage(named: "04-1")!,name: "LOVE",  typeMusic: epic),
+                               MusicBackground(backgroundImage: UIImage(named: "01-1")!,name: "ALONE",  typeMusic: happy),
                                ]
     
     var selectedIndexPath = IndexPath(item: 0, section: 0)
@@ -52,7 +53,7 @@ class MusicThemeView: BaseView {
     var listRecord: [String] = []
     var displayTimer: Timer? = nil
     var oldOldRowIndexPathTableView = IndexPath(row: 0, section: 0)
-    
+    var isListRecordShowing = false
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -62,6 +63,7 @@ class MusicThemeView: BaseView {
         setupCollectionView()
         setupButton()
         setupCancelSaveRecordBtn()
+        addSwipeForView()
         //        setupPlayAndShowListRecord()
         addObserver()
         bottomConstraintRecordView.constant = -listRecordView.frame.height
@@ -80,6 +82,9 @@ class MusicThemeView: BaseView {
         listRecordTableView.delegate = self
         listRecordTableView.dataSource = self
         listRecordTableView.register(UINib.init(nibName: "ListRecordTableViewCell", bundle: nil), forCellReuseIdentifier: "recordCell")
+        
+        viewTop.layer.cornerRadius = viewTop.frame.height / 2
+        
     }
     
     func setupButton() {
@@ -177,6 +182,19 @@ class MusicThemeView: BaseView {
         }
     }
     
+    func addSwipeForView() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeAction(_:)))
+        swipeDown.direction = .down
+        listRecordView.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc func handleSwipeAction(_ gesture: UIGestureRecognizer) {
+        isListRecordShowing = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.bottomConstraintRecordView.constant = -self.listRecordView.frame.height
+            self.listRecordView.frame.origin.y += self.listRecordView.frame.height
+        })
+    }
     func addObserver() {
         notificationCenter.addObserver(self, selector: #selector(stopRecordWhenTheEndSlideShow(_:)), name: NSNotification.Name(rawValue: keyStopRecordWhenTheEndTheSlideShow), object: nil)
         
@@ -184,12 +202,20 @@ class MusicThemeView: BaseView {
     }
     
     @objc func updateButtonPauseOrPlay(_ notification: NSNotification){
-        let imagePlay = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
-        playOrPauseRecordBtn.setImage(imagePlay, for: .normal)
-        playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
-        playOrPauseRecordBtn.clipsToBounds = true
-        playOrPauseRecordBtn.layer.masksToBounds = true
-        playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+        if isListRecordShowing{
+            let cell = listRecordTableView.cellForRow(at: oldOldRowIndexPathTableView) as! ListRecordTableViewCell
+            let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+            cell.pauseOrPlayBtn.setImage(image, for: .normal)
+            cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+        }else{
+            let imagePlay = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+            playOrPauseRecordBtn.setImage(imagePlay, for: .normal)
+            playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
+            playOrPauseRecordBtn.clipsToBounds = true
+            playOrPauseRecordBtn.layer.masksToBounds = true
+            playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+        }
+        
     }
     @objc func stopRecordWhenTheEndSlideShow(_ notification: NSNotification) {
         
@@ -351,11 +377,12 @@ class MusicThemeView: BaseView {
             setupCancelSaveRecordBtn()
         }
         listRecord.append(recordFileName)
-        recordFileName = ""
+        
         timeRecordLbl.text = "Press to record your voice"
         let data = ["recordFileName": recordFileName]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyFinishedRecordEditSlideShowScreen), object: nil, userInfo: data)
         setupPlayAndShowListRecord()
+        recordFileName = ""
     }
     
     func setDisplayTime() {
@@ -394,11 +421,12 @@ class MusicThemeView: BaseView {
     
     @IBAction func showListRecord(_ sender: Any) {
 //        DispatchQueue.main.async {
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.bottomConstraintRecordView.constant = 0
                 self.listRecordView.frame.origin.y -= self.listRecordView.frame.height
             })
 //        }
+        isListRecordShowing = true
         listRecordTableView.reloadData()
         
     }
@@ -455,6 +483,9 @@ extension MusicThemeView: UITableViewDelegate, UITableViewDataSource{
         cell.imageChecked.layer.borderColor = UIColor.gray.cgColor
         cell.imageChecked.layer.borderWidth = 1
         cell.imageChecked.image = UIImage()
+        let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+        cell.pauseOrPlayBtn.setImage(image, for: .normal)
+        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         return cell
     }
     
@@ -479,6 +510,9 @@ extension MusicThemeView: UITableViewDelegate, UITableViewDataSource{
         cell.imageChecked.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         let data = ["recordFileName": listRecord[indexPath.row]]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyFinishedRecordEditSlideShowScreen), object: nil, userInfo: data)
+        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        cell.pauseOrPlayBtn.setImage(image, for: .normal)
+        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         oldOldRowIndexPathTableView = indexPath
     }
 }

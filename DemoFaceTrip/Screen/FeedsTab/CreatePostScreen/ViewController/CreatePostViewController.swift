@@ -134,7 +134,7 @@ extension CreatePostViewController: HeightForTextView{
         VideoPlayerManager.shareInstance.removePLayerLayer()
         let vc = EditSlideShowViewController()
         vc.listAsset = listAsset
-        vc.delegate = self
+//        vc.delegate = self
 //        present(vc, animated: true, completion: nil)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -164,9 +164,11 @@ extension CreatePostViewController: HeightForTextView{
 }
 
 extension CreatePostViewController: EditSlideShowProtocol{
-    func doneEditSlideShow(listAsset: [AsssetInfor]) {
+    func doneEditSlideShow(listAsset: [AsssetInfor], music: String) {
         self.listAsset = []
         self.listAsset = listAsset
         contentPostTableView.reloadData()
     }
 }
+
+

@@ -40,10 +40,11 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             if asset?.mediaType == .image{
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageForSlideShow", for: indexPath) as! ImageForSlideShowCollectionViewCell
-                
+                cell.showImageView.transform = CGAffineTransform.identity
                 PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
                 
-                    let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
+//                    let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
+                    let thumnail = image?.cropImageForSlideShow(sizeView: cell.frame.size)
                     cell.imageBlurView.image = thumnail
                     if Float((image?.size.width)!) <= Float((image?.size.height)!){
                         cell.widthOfShowImageView.constant = cell.frame.width
@@ -53,12 +54,15 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                     cell.showImageView.image = thumnail
                     
 
-                        UIView.animate(withDuration: 2, delay: 0, options: [], animations: {
-                            cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                        }, completion: { finished in
-                            cell.showImageView.transform = CGAffineTransform.identity
-                        })
+                    
                 })
+                if isPlayingSlideShow{
+                    UIView.animate(withDuration: 3, delay: 0, options: [], animations: {
+                        cell.showImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                    }, completion: { finished in
+                        //                    cell.showImageView.transform = CGAffineTransform.identity
+                    })
+                }
                 removeTimer()
                 timeInterval = 2.0
                 setTimer()
@@ -141,7 +145,7 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             if asset?.mediaType == .image{
                 PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
                     
-                    cell.imageView.image = image
+                    cell.imageView.image = image?.cropImageForSlideShow(sizeView: cell.frame.size)
                 })
             }else{
                 PHImageManager.default().requestAVAsset(forVideo: asset!, options: nil

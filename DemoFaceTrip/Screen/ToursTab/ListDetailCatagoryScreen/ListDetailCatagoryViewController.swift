@@ -65,7 +65,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
                         let url = URL(string: urlStr)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
-                            cell.image.image = image.squaredImageForHome
+                            cell.image.image = image.cropImageForHome
                         })
                         cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
@@ -100,7 +100,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
                         let url = URL(string: urlStr)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
-                            cell.image.image = image.squaredImageForHome
+                            cell.image.image = image.cropImageForHome
                         })
                         cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
@@ -134,7 +134,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
                         let url = URL(string: urlStr)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
-                            cell.image.image = image.squaredImageForHome
+                            cell.image.image = image.cropImageForHome
                         })
                         cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }
@@ -169,7 +169,7 @@ extension ListDetailCatagoryViewController: UICollectionViewDelegate, UICollecti
                         let url = URL(string: urlStr)
                         cell.image.af_setImage(withURL: url!, completion: { response in
                             guard let image = response.result.value else{return}
-                            cell.image.image = image.squaredImageForHome
+                            cell.image.image = image.cropImageForHome
                         })
                         cell.image.image?.af_imageAspectScaled(toFit: CGSize(width: cell.image.bounds.width, height: cell.image.bounds.height)).withRenderingMode(.alwaysOriginal)
                     }

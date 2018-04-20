@@ -29,8 +29,23 @@ class DrawLineOnMapViewController: BaseViewController {
     var listAsset: [AsssetInfor]!{
         didSet{
             dictAssetByLocaiton = ImagesManager.shareInstance.groupdImagesByLocation(listAsset: listAsset)
+//            let arrays = Array(dict).sorted{$0.1[0].createDate! < $1.1[0].createDate!}
+//            for index in arrays{
+//                dictAssetByLocaiton[index.key] = [AsssetInfor]()
+//                for value in index.value{
+//                    dictAssetByLocaiton[index.key]?.append(value)
+//                }
+//                print("create day: -----------> \(index.value[0].createDate!)")
+//            }
+//            for value in dictAssetByLocaiton.values{
+//                print("============ create day: \(value[0].createDate) =============")
+//            }
         }
     }
+    
+//    func sortListPhoto(listImage: [ImagesCreateByDate]) -> [ImagesCreateByDate] {
+//        return listImage.sorted (by: {$0.imagesCreateByDate![0].createDate! > $1.imagesCreateByDate![0].createDate!})
+//    }
     
     var delegate: EditCoverProtocol?
     override func viewDidLoad() {

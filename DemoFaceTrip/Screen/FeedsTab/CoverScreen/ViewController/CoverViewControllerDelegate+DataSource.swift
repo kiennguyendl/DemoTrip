@@ -46,7 +46,7 @@ extension CoverViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     cellImage.showImageView.transform = CGAffineTransform.identity
                     cellImage.widthOfShowImageView.constant = slideShowCollectionView.frame.width
                     PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil, resultHandler: {image, info in
-                        cellImage.showImageView.image = image!
+                        cellImage.showImageView.image = image?.cropImageForSlideShow(sizeView: cellImage.frame.size)
                         
                         
                     })

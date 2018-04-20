@@ -42,16 +42,16 @@ class BaseCollectionViewLayout: UICollectionViewLayout {
 
         totalItemsInSection = collectionView!.numberOfItems(inSection: 0)
         
-        let headerIndexPath = IndexPath(item: 0, section: 0)
+//        let headerIndexPath = IndexPath(item: 0, section: 0)
         
-        let headerCellAttributes =
-            UICollectionViewLayoutAttributes.init(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: headerIndexPath)
-        
-        headerAttributes[headerIndexPath] = headerCellAttributes
-        
-        headerCellAttributes.frame = CGRect(x: 0, y: 0, width: collectionView!.frame.width, height: collectionView!.frame.width * 0.4)
-        
-        headerAttributes[headerIndexPath] = headerCellAttributes
+//        let headerCellAttributes =
+//            UICollectionViewLayoutAttributes.init(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, with: headerIndexPath)
+//
+//        headerAttributes[headerIndexPath] = headerCellAttributes
+//
+//        headerCellAttributes.frame = CGRect(x: 0, y: 0, width: collectionView!.frame.width, height: collectionView!.frame.width * 0.4)
+//
+//        headerAttributes[headerIndexPath] = headerCellAttributes
         
         if totalItemsInSection > 0 && totalCollums > 0{
             self.calculateItemsSize()
@@ -59,8 +59,8 @@ class BaseCollectionViewLayout: UICollectionViewLayout {
             var itemIndex = 0
             var contentSizeHeight: CGFloat = 0
 
-            _collumnsYOffset[0] = (collectionView?.frame.width)! * 0.4 + itemSpacing
-            _collumnsYOffset[1] = (collectionView?.frame.width)! * 0.4 + itemSpacing
+//            _collumnsYOffset[0] = (collectionView?.frame.width)! * 0.4 + itemSpacing
+//            _collumnsYOffset[1] = (collectionView?.frame.width)! * 0.4 + itemSpacing
             
             while itemIndex < totalItemsInSection{
                 

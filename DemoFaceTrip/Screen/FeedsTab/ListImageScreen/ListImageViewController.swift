@@ -50,7 +50,7 @@ extension ListImageViewController: UICollectionViewDelegate, UICollectionViewDat
         
         PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
             
-            cell.imageView.image = image
+            cell.imageView.image = image?.cropImageForSlideShow(sizeView: cell.frame.size)
             cell.buttonView.isHidden = true
             cell.blurEffectView.isHidden = true
         })

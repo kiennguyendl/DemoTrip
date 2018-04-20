@@ -40,7 +40,7 @@ class ImagesManager: NSObject {
         }
         
         for (k,v) in (Array(dictImageCreateByLocation).sorted{$0.1[0].createDate! < $1.1[0].createDate!}){
-            print("\(k): \(v)")
+//            print("\(k): \(v)")
         }
         
         return dictImageCreateByLocation

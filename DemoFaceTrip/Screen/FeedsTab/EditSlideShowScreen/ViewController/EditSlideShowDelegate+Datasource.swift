@@ -64,7 +64,8 @@ extension EditSlideShowViewController: UICollectionViewDelegate, UICollectionVie
                 cell.showImageView.transform = CGAffineTransform.identity
                 PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
                     
-                    let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
+//                    let thumnail = VideoManager.shareInstance.getThumnailImage(image: image!)
+                    let thumnail = image?.cropImageForSlideShow(sizeView: cell.frame.size)
                     cell.imageBlurView.image = thumnail
                     if Float((image?.size.width)!) <= Float((image?.size.height)!){
                         cell.widthOfShowImageView.constant = cell.frame.width

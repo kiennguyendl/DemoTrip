@@ -29,7 +29,7 @@ extension UIImage{
     }
     
     var isLandscape: Bool{
-        return size.width > size.height
+        return size.width >= size.height
     }
     
     var breadth: CGFloat{
@@ -51,7 +51,7 @@ extension UIImage{
         return CGRect(origin: .zero, size: breadthSize)
     }
     
-    var squaredImageForHome: UIImage?{
+    var cropImageForHome: UIImage?{
         UIGraphicsBeginImageContextWithOptions(breadthSize, false, scale)
         defer { UIGraphicsEndImageContext() }
         
@@ -89,6 +89,47 @@ extension UIImage{
         return img
 
         
+    }
+    
+    func cropImageForSlideShow(sizeView: CGSize) -> UIImage {
+        
+        guard  let cgImage = self.cgImage else {
+            return self
+        }
+        let contextImage = UIImage(cgImage: cgImage)
+        let contextSize = contextImage.size
+        let widthView = sizeView.width
+        let heightView = sizeView.height
+        
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        
+        var cropWidth = widthView
+        var cropHeight = heightView
+        
+        let cropAspect: CGFloat = widthView / heightView
+        
+        if isLandscape{
+            cropHeight = contextSize.height
+            cropWidth = contextSize.height * cropAspect
+            posX = (contextSize.width - cropWidth) / 2
+        }else{
+            cropWidth = contextSize.width
+            cropHeight = contextSize.height / cropAspect
+            posY = (contextSize.height - cropHeight) / 2
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cropWidth, height: cropHeight)
+
+        let imageRef = contextImage.cgImage?.cropping(to: rect)
+        let cropped = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
+        UIGraphicsBeginImageContextWithOptions(sizeView, true, self.scale)
+        cropped.draw(in: CGRect(x: 0, y: 0, width: widthView, height: heightView))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+       
+        return UIImage()
     }
     
 }

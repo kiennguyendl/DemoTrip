@@ -17,12 +17,12 @@ class TypeTrip: NSObject {
     }
 }
 //let listTypeTrip = ["TRAVEL", "GETWAY", "LOVE", "DAILY LIFE", "LONELY", "OTHER"]
-let listTypeTrip = [TypeTrip(type: "TRAVEL", image: #imageLiteral(resourceName: "Travel.png")),
-                    TypeTrip(type: "GETWAY", image: #imageLiteral(resourceName: "GetAWay.jpg")),
-                    TypeTrip(type: "LOVE", image: #imageLiteral(resourceName: "Love.jpg")),
-                    TypeTrip(type: "DAILY LIFE", image: #imageLiteral(resourceName: "DailyLife.jpg")),
-                    TypeTrip(type: "LONELY", image: #imageLiteral(resourceName: "LoneLy.jpg")),
-                    TypeTrip(type: "OTHER", image: #imageLiteral(resourceName: "Other.jpeg"))
+let listTypeTrip = [TypeTrip(type: "TRAVEL", image: UIImage(named:"Travel")!),
+                    TypeTrip(type: "GETWAY", image: UIImage(named:"GetAWay")!),
+                    TypeTrip(type: "DAILY LIFE", image: UIImage(named:"DailyLife")!),
+                    TypeTrip(type: "LOVE", image: UIImage(named:"Love")!),
+                    TypeTrip(type: "LONELY", image: UIImage(named:"LoneLy")!),
+                    TypeTrip(type: "OTHER", image: UIImage(named:"Other")!)
                     ]
 
 protocol PickATagProtocol {

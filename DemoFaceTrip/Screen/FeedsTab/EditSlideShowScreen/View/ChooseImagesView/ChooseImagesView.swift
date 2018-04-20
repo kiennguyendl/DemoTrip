@@ -117,6 +117,9 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
         if currentItem == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddImageCell", for: indexPath) as! AddImageCollectionViewCell
             cell.addMoreImageOrVide.addTarget(self, action: #selector(pickedImageOrVideo), for: .touchUpInside)
+            let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+            cell.addMoreImageOrVide.setImage(image, for: .normal)
+            cell.addMoreImageOrVide.tintColor = .gray
             return cell
         }else{
             let asset = listAsset[currentItem - 1].asset
@@ -127,12 +130,14 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
                 cell.checkedImage.layer.masksToBounds = true
                 
                 PHImageManager.default().requestImage(for: asset!, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: { image, info in
-                    cell.imageView.image = image
+                    cell.imageView.image = image?.cropImageForSlideShow(sizeView: cell.frame.size)
                 })
                 
                 if listAsset[currentItem - 1].isPicked{
                     cell.checkedImage.image = #imageLiteral(resourceName: "check")
-                    cell.checkedImage.backgroundColor = .blue
+                    cell.checkedImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                    cell.checkedImage.layer.borderWidth = 1
+                    cell.checkedImage.layer.borderColor = UIColor.white.cgColor
                 }else{
                     cell.checkedImage.image = UIImage()
                     cell.checkedImage.backgroundColor = .white
@@ -170,7 +175,9 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
                 
                 if listAsset[currentItem - 1].isPicked{
                     cell.checkerImage.image = #imageLiteral(resourceName: "check")
-                    cell.checkerImage.backgroundColor = .blue
+                    cell.checkerImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                    cell.checkerImage.layer.borderWidth = 1
+                    cell.checkerImage.layer.borderColor = UIColor.white.cgColor
                 }else{
                     cell.checkerImage.image = UIImage()
                     cell.checkerImage.backgroundColor = .white
@@ -204,7 +211,9 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
                 }else{
                     listAsset[currentItem - 1].isPicked = true
                     cell.checkedImage.image = #imageLiteral(resourceName: "check")
-                    cell.checkedImage.backgroundColor = .blue
+                    cell.checkedImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                    cell.checkedImage.layer.borderWidth = 1
+                    cell.checkedImage.layer.borderColor = UIColor.white.cgColor
                 }
             }else{
                 let cell = listImagesCollectionView.cellForItem(at: indexPath) as! VideoItemCollectionViewCell
@@ -216,7 +225,9 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
                 }else{
                     listAsset[currentItem - 1].isPicked = true
                     cell.checkerImage.image = #imageLiteral(resourceName: "check")
-                    cell.checkerImage.backgroundColor = .blue
+                    cell.checkerImage.backgroundColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+                    cell.checkerImage.layer.borderWidth = 1
+                    cell.checkerImage.layer.borderColor = UIColor.white.cgColor
                 }
             }
             listAssetPicked = []
