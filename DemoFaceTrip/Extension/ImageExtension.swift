@@ -119,17 +119,17 @@ extension UIImage{
             posY = (contextSize.height - cropHeight) / 2
         }
         
+        let tranform = CGAffineTransform(scaleX: self.scale, y: self.scale)
+        
         let rect: CGRect = CGRect(x: posX, y: posY, width: cropWidth, height: cropHeight)
-
-        let imageRef = contextImage.cgImage?.cropping(to: rect)
+        let tranformedCropRect = rect.applying(tranform)
+        let imageRef = contextImage.cgImage?.cropping(to: tranformedCropRect)
         let cropped = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
         UIGraphicsBeginImageContextWithOptions(sizeView, true, self.scale)
         cropped.draw(in: CGRect(x: 0, y: 0, width: widthView, height: heightView))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
-       
-        return UIImage()
     }
     
 }

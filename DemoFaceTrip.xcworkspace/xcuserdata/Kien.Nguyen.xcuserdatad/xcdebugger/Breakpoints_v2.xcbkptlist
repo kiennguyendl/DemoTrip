@@ -1354,13 +1354,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/FeedsScreen/View/SuggestionCell/SuggestionTableViewCell_Delegate+DataSource.swift"
-            timestampString = "545908586.522163"
+            timestampString = "545981032.3762389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
             endingLineNumber = "42"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1370,13 +1370,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Service/VideoManager.swift"
-            timestampString = "545908586.522225"
+            timestampString = "545981032.376655"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
-            landmarkName = "removeFileAtURLIfExists(url:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1386,13 +1386,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Service/VideoManager.swift"
-            timestampString = "545908586.522671"
+            timestampString = "545981032.376971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "generateVideoFromListImage(listImage:viewSize:completionHandler:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1434,13 +1434,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/FeedsScreen/View/SuggestionCell/SuggestionTableViewCell_Delegate+DataSource.swift"
-            timestampString = "545908586.523056"
+            timestampString = "545981032.377329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "collectionView(_:didEndDisplaying:forItemAt:)"
-            landmarkType = "7">
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1706,13 +1706,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Screen/FeedsTab/FeedsScreen/View/SuggestionCell/SuggestionTableViewCell_Delegate+DataSource.swift"
-            timestampString = "545908586.5238169"
+            timestampString = "545981032.3779221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1962,13 +1962,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DemoFaceTrip/Service/VideoManager.swift"
-            timestampString = "545908586.52493"
+            timestampString = "545981032.378495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "createFolder(nameFolder:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2058,12 +2058,12 @@
                   moduleName = "DemoFaceTrip"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Screen/ToursTab/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-                  timestampString = "545908586.726688"
+                  timestampString = "545981033.082646"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
                   endingLineNumber = "53"
-                  offsetFromSymbolStart = "2849">
+                  offsetFromSymbolStart = "2080">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2073,12 +2073,12 @@
                   moduleName = "DemoFaceTrip"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Screen/ToursTab/HomeScreen/ViewController/HomeTableViewDelagate+DataSource.swift"
-                  timestampString = "545908586.729175"
+                  timestampString = "545981033.0853831"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
                   endingLineNumber = "54"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2113,6 +2113,38 @@
             endingLineNumber = "141"
             landmarkName = "restDataFollowTypeOfMenu(_:menu:action:id:idMenu:type:complertionHandler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DemoFaceTrip.RestDataManager.restDataFollowTypeOfMenu&lt;A where A: ObjectMapper.Mappable&gt;(Swift.String, menu: Swift.String, action: Swift.String, id: Swift.Int, idMenu: Swift.Int, type: Swift.String, complertionHandler: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoFaceTrip"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Service/RestDataManager.swift"
+                  timestampString = "545981033.095953"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in DemoFaceTrip.RestDataManager.restDataFollowTypeOfMenu&lt;A where A: ObjectMapper.Mappable&gt;(Swift.String, menu: Swift.String, action: Swift.String, id: Swift.Int, idMenu: Swift.Int, type: Swift.String, complertionHandler: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DemoFaceTrip"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/Demo/DemoFaceTrip/DemoFaceTrip/Service/RestDataManager.swift"
+                  timestampString = "545981033.098575"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "364">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2143,8 +2175,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

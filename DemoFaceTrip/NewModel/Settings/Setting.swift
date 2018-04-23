@@ -15,6 +15,7 @@ class Settings{
     fileprivate static let kListIDMenu = "kListIDMenu"
     fileprivate static let kCity = "kCity"
     
+    // check scale menu in home screen
     static var isScaleMenuView: Bool? {
         get{
             return UserDefaults.standard.object(forKey: kScaleHome) as? Bool
@@ -25,6 +26,7 @@ class Settings{
         }
     }
     
+    //save city picked
     static var cityPicked: String?{
         get{
             return UserDefaults.standard.object(forKey: kCityPicked) as? String
@@ -35,6 +37,7 @@ class Settings{
         }
     }
     
+    //list Id get from server
     static var listID: Data?{
         get{
             return UserDefaults.standard.object(forKey: kListIDMenu) as? Data

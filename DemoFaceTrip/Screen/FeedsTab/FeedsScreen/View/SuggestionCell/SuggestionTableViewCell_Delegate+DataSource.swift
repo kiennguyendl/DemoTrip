@@ -79,32 +79,38 @@ extension SuggestionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
                         if avAsset == nil{
                             
                         }else{
-                            VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", time: 15.0, completionHandler: {[weak self] url in
-                                guard let strongSelf = self else{return}
-                                
-                                DispatchQueue.main.async {
-//                                    VideoPlayerManager.shareInstance.addPlayerView(cell: cell, url: url, indexPath: indexPath)
-                                    VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
-                                    if strongSelf.isPlayingSlideShow{
-                                        VideoPlayerManager.shareInstance.playVideo()
+                            DispatchQueue.global().async {
+                                VideoManager.shareInstance.trimVideo(asset: avAsset!, fileName: "video\(currentRow)", time: 15.0, completionHandler: {[weak self] url in
+                                    guard let strongSelf = self else{return}
+                                    
+                                    let imageThumnail = VideoManager.shareInstance.getThumnailVideo(asset: avAsset!)
+                                    
+//                                    VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
+                                    DispatchQueue.main.async {
+                                        //                                    VideoPlayerManager.shareInstance.addPlayerView(cell: cell, url: url, indexPath: indexPath)
+                                        VideoPlayerManager.shareInstance.addPlayerLayer(view: cell.playerView, url: url)
+                                        if strongSelf.isPlayingSlideShow{
+                                            VideoPlayerManager.shareInstance.playVideo()
+                                        }
+                                        //                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
                                     }
-//                                    strongSelf.playVideo(url: url, playerView: cell.playerView)
-                                }
-                                
-//                                strongSelf.playVideo(url: url, playerView: cell.playerView)
-//                                cell.playVideo(url: url)
-                                
-                                
-//                                var player = AVPlayer(url: url as URL)
-//                                var playerLayer = AVPlayerLayer()
-//                                playerLayer.player = player
-//                                playerLayer.frame = cell.frame
-//                                playerLayer.backgroundColor = UIColor.white.cgColor
-//                                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//                                cell.layer.addSublayer(playerLayer)
-//                                player.volume = 0.0
-//                                player.play()
-                            })
+                                    
+                                    //                                strongSelf.playVideo(url: url, playerView: cell.playerView)
+                                    //                                cell.playVideo(url: url)
+                                    
+                                    
+                                    //                                var player = AVPlayer(url: url as URL)
+                                    //                                var playerLayer = AVPlayerLayer()
+                                    //                                playerLayer.player = player
+                                    //                                playerLayer.frame = cell.frame
+                                    //                                playerLayer.backgroundColor = UIColor.white.cgColor
+                                    //                                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                                    //                                cell.layer.addSublayer(playerLayer)
+                                    //                                player.volume = 0.0
+                                    //                                player.play()
+                                })
+                            }
+                            
                         }
                         
 //                        }
