@@ -9,7 +9,7 @@ target 'DemoFaceTrip' do
   	pod 'Alamofire'
 	pod 'ObjectMapper'
 	pod 'Starscream'
-    	pod 'AlamofireImage'
+    pod 'AlamofireImage'
 	pod 'ReadMoreTextView'
 	pod 'Cosmos', '~> 12.0'
 	pod 'GoogleMaps'

@@ -89,52 +89,52 @@ class MusicThemeView: BaseView {
     
     func setupButton() {
         
-        let image = UIImage(named: "record")
-        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-        recordBtn.setImage(tintedImage, for: .normal)
-        recordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
-        recordBtn.layer.borderWidth = 1
-        recordBtn.layer.cornerRadius = recordBtn.frame.width / 2
-        recordBtn.clipsToBounds = true
-        recordBtn.layer.masksToBounds = true
+        let image = UIImage(named: "Record")
+//        let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+        recordBtn.setImage(image, for: .normal)
+//        recordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        recordBtn.layer.borderWidth = 1
+//        recordBtn.layer.cornerRadius = recordBtn.frame.width / 2
+//        recordBtn.clipsToBounds = true
+//        recordBtn.layer.masksToBounds = true
         
-        recordBtn.layer.borderColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1).cgColor
+//        recordBtn.layer.borderColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1).cgColor
         
-        let imageCancelRecord = #imageLiteral(resourceName: "cancelIcon")
+        let imageCancelRecord = #imageLiteral(resourceName: "Delete")
         let tintedImageCancel = imageCancelRecord.withRenderingMode(.alwaysTemplate)
-        cancelRecordBtn.setImage(tintedImageCancel, for: .normal)
-        cancelRecordBtn.layer.cornerRadius = cancelRecordBtn.frame.width / 2
-        cancelRecordBtn.clipsToBounds = true
-        cancelRecordBtn.layer.masksToBounds = true
+        cancelRecordBtn.setImage(imageCancelRecord, for: .normal)
+//        cancelRecordBtn.layer.cornerRadius = cancelRecordBtn.frame.width / 2
+//        cancelRecordBtn.clipsToBounds = true
+//        cancelRecordBtn.layer.masksToBounds = true
         //        cancelRecordBtn.layer.borderWidth = 1
         //        cancelRecordBtn.layer.borderColor = UIColor.gray.cgColor
         cancelRecordBtn.tintColor = .gray
         
         
-        let imageSaveRecord = #imageLiteral(resourceName: "tickIcon")
+        let imageSaveRecord = #imageLiteral(resourceName: "Accept")
         let tintedImageSave = imageSaveRecord.withRenderingMode(.alwaysTemplate)
-        saveRecordBtn.setImage(tintedImageSave, for: .normal)
-        saveRecordBtn.layer.cornerRadius = saveRecordBtn.frame.width / 2
-        saveRecordBtn.clipsToBounds = true
-        saveRecordBtn.layer.masksToBounds = true
+        saveRecordBtn.setImage(imageSaveRecord, for: .normal)
+//        saveRecordBtn.layer.cornerRadius = saveRecordBtn.frame.width / 2
+//        saveRecordBtn.clipsToBounds = true
+//        saveRecordBtn.layer.masksToBounds = true
         //        saveRecordBtn.layer.borderColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1).cgColor
         //        saveRecordBtn.layer.borderWidth = 1
         saveRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         
-        let imagePlay = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+        let imagePlay = UIImage(named: "Play-1")?.withRenderingMode(.alwaysTemplate)
         playOrPauseRecordBtn.setImage(imagePlay, for: .normal)
-        playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
-        playOrPauseRecordBtn.clipsToBounds = true
-        playOrPauseRecordBtn.layer.masksToBounds = true
-        playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
+//        playOrPauseRecordBtn.clipsToBounds = true
+//        playOrPauseRecordBtn.layer.masksToBounds = true
+//        playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         
         
-        let imageListRecord = UIImage(named: "list")?.withRenderingMode(.alwaysTemplate)
+        let imageListRecord = UIImage(named: "List")?.withRenderingMode(.alwaysTemplate)
         listRecordBtn.setImage(imageListRecord, for: .normal)
-        listRecordBtn.layer.cornerRadius = listRecordBtn.frame.width / 2
-        listRecordBtn.clipsToBounds = true
-        listRecordBtn.layer.masksToBounds = true
-        listRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        listRecordBtn.layer.cornerRadius = listRecordBtn.frame.width / 2
+//        listRecordBtn.clipsToBounds = true
+//        listRecordBtn.layer.masksToBounds = true
+//        listRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         
         
         
@@ -144,17 +144,17 @@ class MusicThemeView: BaseView {
     
     func setupRecordBtn() {
         if isRecording{
-            let image = #imageLiteral(resourceName: "player_record")
+            let image = #imageLiteral(resourceName: "Pause-1")
             let tintedImage = image.withRenderingMode(.alwaysTemplate)
-            recordBtn.setImage(tintedImage, for: .normal)
-            recordBtn.tintColor = .red
-            recordBtn.layer.borderWidth = 0
+            recordBtn.setImage(image, for: .normal)
+//            recordBtn.tintColor = .red
+//            recordBtn.layer.borderWidth = 0
         }else{
-            let image = UIImage(named: "record")
-            let tintedImage = image?.withRenderingMode(.alwaysTemplate)
-            recordBtn.setImage(tintedImage, for: .normal)
-            recordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
-            recordBtn.layer.borderWidth = 1
+            let image = UIImage(named: "Record")
+//            let tintedImage = image?.withRenderingMode(.alwaysTemplate)
+            recordBtn.setImage(image, for: .normal)
+//            recordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//            recordBtn.layer.borderWidth = 1
         }
     }
     
@@ -204,16 +204,16 @@ class MusicThemeView: BaseView {
     @objc func updateButtonPauseOrPlay(_ notification: NSNotification){
         if isListRecordShowing{
             let cell = listRecordTableView.cellForRow(at: oldOldRowIndexPathTableView) as! ListRecordTableViewCell
-            let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(named: "Play-1")
             cell.pauseOrPlayBtn.setImage(image, for: .normal)
-            cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//            cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         }else{
-            let imagePlay = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+            let imagePlay = UIImage(named: "Play-1")
             playOrPauseRecordBtn.setImage(imagePlay, for: .normal)
-            playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
-            playOrPauseRecordBtn.clipsToBounds = true
-            playOrPauseRecordBtn.layer.masksToBounds = true
-            playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//            playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
+//            playOrPauseRecordBtn.clipsToBounds = true
+//            playOrPauseRecordBtn.layer.masksToBounds = true
+//            playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         }
         
     }
@@ -409,12 +409,12 @@ class MusicThemeView: BaseView {
     }
     
     @IBAction func playOrPauseRecord(_ sender: Any) {
-        let imagePlay = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        let imagePlay = UIImage(named: "Pause-2")
         playOrPauseRecordBtn.setImage(imagePlay, for: .normal)
-        playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
-        playOrPauseRecordBtn.clipsToBounds = true
-        playOrPauseRecordBtn.layer.masksToBounds = true
-        playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        playOrPauseRecordBtn.layer.cornerRadius = playOrPauseRecordBtn.frame.width / 2
+//        playOrPauseRecordBtn.clipsToBounds = true
+//        playOrPauseRecordBtn.layer.masksToBounds = true
+//        playOrPauseRecordBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         let data = ["recordFileName": listRecord.last]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyFinishedRecordEditSlideShowScreen), object: nil, userInfo: data)
     }
@@ -483,9 +483,9 @@ extension MusicThemeView: UITableViewDelegate, UITableViewDataSource{
         cell.imageChecked.layer.borderColor = UIColor.gray.cgColor
         cell.imageChecked.layer.borderWidth = 1
         cell.imageChecked.image = UIImage()
-        let image = UIImage(named: "play")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "Play-1")
         cell.pauseOrPlayBtn.setImage(image, for: .normal)
-        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         return cell
     }
     
@@ -510,9 +510,9 @@ extension MusicThemeView: UITableViewDelegate, UITableViewDataSource{
         cell.imageChecked.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         let data = ["recordFileName": listRecord[indexPath.row]]
         notificationCenter.post(name: NSNotification.Name(rawValue: keyFinishedRecordEditSlideShowScreen), object: nil, userInfo: data)
-        let image = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "Pause-2")
         cell.pauseOrPlayBtn.setImage(image, for: .normal)
-        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
+//        cell.pauseOrPlayBtn.tintColor = UIColor(red: 48/255, green: 125/255, blue: 251/255, alpha: 1)
         oldOldRowIndexPathTableView = indexPath
     }
 }

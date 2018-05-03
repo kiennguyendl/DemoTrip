@@ -117,7 +117,7 @@ extension ChooseImagesView: UICollectionViewDelegate, UICollectionViewDataSource
         if currentItem == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddImageCell", for: indexPath) as! AddImageCollectionViewCell
             cell.addMoreImageOrVide.addTarget(self, action: #selector(pickedImageOrVideo), for: .touchUpInside)
-            let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(named: "add-1")?.withRenderingMode(.alwaysTemplate)
             cell.addMoreImageOrVide.setImage(image, for: .normal)
             cell.addMoreImageOrVide.tintColor = .gray
             return cell

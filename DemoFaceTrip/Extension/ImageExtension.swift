@@ -108,15 +108,21 @@ extension UIImage{
         var cropHeight = heightView
         
         let cropAspect: CGFloat = widthView / heightView
-        
+        let cropAspectImg: CGFloat = widthImg / heightImg
         if isLandscape{
             cropHeight = contextSize.height
             cropWidth = contextSize.height * cropAspect
-            posX = (contextSize.width - cropWidth) / 2
+            posX = (contextSize.width - cropWidth) / 2 + 5
         }else{
             cropWidth = contextSize.width
-            cropHeight = contextSize.height / cropAspect
-            posY = (contextSize.height - cropHeight) / 2
+            
+//            if cropAspectImg < cropAspect{
+//                cropHeight = contextSize.height / cropAspectImg * cropAspect
+//            }else{
+                cropHeight = contextSize.height / cropAspect
+//            }
+            
+            posY = (contextSize.height - cropHeight) / 2 + 5
         }
         
         let tranform = CGAffineTransform(scaleX: self.scale, y: self.scale)
